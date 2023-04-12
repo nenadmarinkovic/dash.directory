@@ -1,9 +1,4 @@
-import Document, {
-  Html,
-  Head,
-  Main,
-  NextScript,
-} from "next/document";
+import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 
 class Doc extends Document {
@@ -38,11 +33,11 @@ class Doc extends Document {
     return (
       <Html lang="en">
         <Head>
-          <meta name="description" content="Web directory for organized minds." />
+          <meta name="description" content="Web development and design" />
           <meta content="#fff" name="theme-color" />
           <link href="/images/favicon.ico" rel="shortcut icon" />
           {/* <link href="/manifest.json" rel="manifest" /> */}
-          {/* <link href="/images/apple-touch-icon.png" rel="apple-touch-icon" /> */}
+          <link href="/images/apple-touch-icon.png" rel="apple-touch-icon" />
         </Head>
         <body>
           <Main />
