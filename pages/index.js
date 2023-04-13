@@ -1,5 +1,5 @@
 import Head from "next/head";
-import ButtonExample from "@/components/common/ButtonExample";
+import ButtonExample from "@/components/common/Button/ButtonExample";
 import ModalExample from "@/components/common/ModalExample";
 
 export default function Home() {

@@ -1,16 +1,15 @@
-import React from "react";
 import styled from "styled-components";
 import { Button } from "semantic-ui-react";
 
-const MyPopup = styled(Button)`
-  &&& {
+export const StyledButton = styled(Button)`
+&&& {
     background-color: black;
     color: white;
     font-family: inherit;
     font-size: .75rem;
-  }
+    padding: 0.3rem;
+    border: none;
+    border-radius: 5px;
+}
+  
 `;
-
-const ButtonExample = () => <MyPopup>Click Here</MyPopup>;
-
-export default ButtonExample;

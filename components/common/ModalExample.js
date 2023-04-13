@@ -2,6 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { Button, Modal } from "semantic-ui-react";
 
+import "semantic-ui-css/components/modal.min.css";
+import "semantic-ui-css/components/dimmer.min.css";
+
 const StyledButton = styled(Button)`
   &&& {
     background-color: #eaeaea;
