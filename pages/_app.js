@@ -11,7 +11,7 @@ const inter = Inter({
   variable: '--font-inter'
 });
 
-import "semantic-ui-css/semantic.min.css";
+// import "semantic-ui-css/semantic.min.css";
 
 export default function App({ Component, pageProps }) {
   const [theme, toggleTheme, componentMounted] = useTheme();
