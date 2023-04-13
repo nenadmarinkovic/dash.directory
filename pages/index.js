@@ -19,7 +19,7 @@ export default function Home() {
         marginTop={52}
         fontWeight={800}
         color="black"
-        letterSpacing="0px"
+        letterSpacing="-.003rem"
       >
         Dash Directory
       </Heading>
