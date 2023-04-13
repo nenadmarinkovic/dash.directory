@@ -1,3 +1,5 @@
+/* Globally available styles and theme related custom classes */
+
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
@@ -9,6 +11,7 @@ export const GlobalStyle = createGlobalStyle`
     html,
     body {
       height: 100%;
+      background-color: ${({ theme }) => theme.background};
       padding: 0;
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
@@ -19,32 +22,12 @@ export const GlobalStyle = createGlobalStyle`
       padding: 115px;
     }
 
-    h1 {
-        font-family: inherit;
-        color: #010101;
-        font-size: 81px;
-        letter-spacing: -0.055em;
-        line-height: 0.9em;
-        text-indent: -0.03em;
-        margin-bottom: 4rem;
-        margin-top: 10px;
-        font-weight: 740;
+    /* Theme related custom classes */
+
+    .themed {
+      &-modal {
+        background-color: ${({ theme }) => theme.background};
+        color: ${({ theme }) => theme.color};
+      }
     }
-
-    p {
-        font-size: 15px;
-        font-weight: 400;
-        line-height: 22.5px;
-    }
-/* 
-    .ub-bg-clr_white {
-      background-color: black;
-    } */
-
-    .custom-modal {
-    
-      background-color: ${({ theme }) => theme.backgroundColor};
-    }
-
-
     `;

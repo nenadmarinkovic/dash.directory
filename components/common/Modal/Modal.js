@@ -2,7 +2,7 @@ import React from "react";
 
 import { Pane, Dialog, Button } from "evergreen-ui";
 
-export default function Test() {
+export default function Modal() {
   const [isShown, setIsShown] = React.useState(false);
 
   return (
@@ -10,14 +10,13 @@ export default function Test() {
       <Dialog
         isShown={isShown}
         title="Dialog title"
-        containerProps={{ className: "custom-modal" }}
+        containerProps={{ className: "themed-modal" }}
         onCloseComplete={() => setIsShown(false)}
         confirmLabel="Delete"
       >
         Are you sure you want to delete this item?
       </Dialog>
-
-      <Button onClick={() => setIsShown(true)}>Show Dialog</Button>
+      <Button className="custom-theme" onClick={() => setIsShown(true)}>Show Dialog</Button>
     </Pane>
   );
 }
