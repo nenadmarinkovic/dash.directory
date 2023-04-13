@@ -1,5 +1,5 @@
 import Test from "@/components/common/Test";
-import { Heading } from "evergreen-ui";
+import { Heading, Paragraph } from "evergreen-ui";
 import Head from "next/head";
 
 export default function Home() {
@@ -12,18 +12,27 @@ export default function Home() {
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
 
-   
-     <Test/>
-     <Heading is="h1" size={1200} marginTop={52} fontWeight={800} color="black" letterSpacing="0px">
-      Dash Directory
-     </Heading>
-      <br/>
-      <br/>
-      <br/>
-      <h1>Hello, Dash Directory</h1>
-      <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
+      <Test />
+      <Heading
+        is="h1"
+        size={1200}
+        marginTop={52}
+        fontWeight={800}
+        color="black"
+        letterSpacing="0px"
+      >
+        Dash Directory
+      </Heading>
+      <br />
+      <Paragraph>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </Paragraph>
     </>
   );
 }

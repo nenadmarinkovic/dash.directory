@@ -10,20 +10,14 @@ export default function Test() {
       <Dialog
         isShown={isShown}
         title="Dialog title"
-        containerProps={{className: "custom-modal"}}
+        containerProps={{ className: "custom-modal" }}
         onCloseComplete={() => setIsShown(false)}
         confirmLabel="Delete"
       >
         Are you sure you want to delete this item?
       </Dialog>
 
-      <Button
-        color="yellow"
-        backgroundColor="black"
-        onClick={() => setIsShown(true)}
-      >
-        Show Dialog
-      </Button>
+      <Button onClick={() => setIsShown(true)}>Show Dialog</Button>
     </Pane>
   );
 }
