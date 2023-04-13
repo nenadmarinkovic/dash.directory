@@ -6,6 +6,8 @@ const MyPopup = styled(Button)`
   &&& {
     background-color: black;
     color: white;
+    font-family: inherit;
+    font-size: .75rem;
   }
 `;
 

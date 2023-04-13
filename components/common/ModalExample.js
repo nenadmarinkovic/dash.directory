@@ -1,5 +1,17 @@
 import React from "react";
+import styled from "styled-components";
 import { Button, Modal } from "semantic-ui-react";
+
+const StyledButton = styled(Button)`
+  &&& {
+    background-color: #eaeaea;
+    color: black;
+    font-family: inherit;
+    font-size: .75rem;
+    margin-left: 0.25rem;
+  }
+
+`;
 
 function exampleReducer(state, action) {
   switch (action.type) {
@@ -21,9 +33,9 @@ const ModalExample = () => {
 
   return (
     <>
-      <Button onClick={() => dispatch({ type: "open", size: "mini" })}>
+      <StyledButton onClick={() => dispatch({ type: "open", size: "mini" })}>
         Mini
-      </Button>
+      </StyledButton>
 
       <Modal
         size={size}
