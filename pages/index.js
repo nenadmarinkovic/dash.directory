@@ -1,6 +1,6 @@
+import Test from "@/components/common/Test";
+import { Heading } from "evergreen-ui";
 import Head from "next/head";
-import ButtonExample from "@/components/common/Button/ButtonExample";
-import ModalExample from "@/components/common/ModalExample";
 
 export default function Home() {
   return (
@@ -12,8 +12,11 @@ export default function Home() {
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
 
-      <ButtonExample />
-      <ModalExample />
+   
+     <Test/>
+     <Heading is="h1" size={1200} marginTop={52} fontWeight={800} color="black" letterSpacing="0px">
+      Dash Directory
+     </Heading>
       <br/>
       <br/>
       <br/>
