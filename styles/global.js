@@ -20,6 +20,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     h1 {
+        font-family: inherit;
         color: #010101;
         font-size: 81px;
         letter-spacing: -0.055em;
@@ -35,5 +36,5 @@ export const GlobalStyle = createGlobalStyle`
         font-weight: 400;
         line-height: 22.5px;
     }
-    
+
     `;
