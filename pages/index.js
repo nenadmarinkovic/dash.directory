@@ -30,7 +30,7 @@ export default function Home({ theme, toggleTheme }) {
           <ContainerWrap>
             <Heading
               is="h1"
-              marginTop={12}
+              marginTop={78}
               lineHeight={1.25}
               fontSize={58}
               marginBottom={8}
@@ -38,7 +38,7 @@ export default function Home({ theme, toggleTheme }) {
               color="black"
               letterSpacing="-.003rem"
             >
-              Dash Directory
+              Web directory for organized minds
             </Heading>
             <Paragraph size={500} color="muted">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

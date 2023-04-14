@@ -18,21 +18,12 @@ export const HeaderMain = styled.div`
   align-items: center;
 `;
 
-export const HomeLink = styled.div`
-  cursor: pointer;
-  /* color: ${({ theme }) => theme.color}; */
-  transition: 0.3s;
-
-  a {
-    /* color: ${({ theme }) => theme.color}; */
-  }
-`;
-
 export const HeaderLinks = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 35%;
+  margin-bottom: 5px;
 
   @media (max-width: 47.95rem) {
     display: none;
