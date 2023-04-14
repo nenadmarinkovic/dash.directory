@@ -10,6 +10,7 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ContainerWrap } from "../Container/Container";
+import { Small, Text } from "evergreen-ui";
 // import Menu from "./Menu";
 
 function Header({ theme, toggleTheme, openMenu, setOpenMenu }) {
@@ -25,15 +26,21 @@ function Header({ theme, toggleTheme, openMenu, setOpenMenu }) {
                 href="/"
                 className={router.pathname === "/" ? "active-link" : ""}
               >
-                Home
+                <Text>Home</Text>
               </Link>
             </HomeLink>
             <HeaderLinks>
-              <HeaderLink>About</HeaderLink>
-              <HeaderLink>Pricing</HeaderLink>
-              <HeaderLink>Login</HeaderLink>
+              <HeaderLink>
+                <Text>About</Text>
+              </HeaderLink>
+              <HeaderLink>
+                <Text>Pricing</Text>
+              </HeaderLink>
+              <HeaderLink>
+                <Text>Login</Text>
+              </HeaderLink>
               <ThemeButton onClick={toggleTheme}>
-                {theme === "light" ? "Dark mode" : "Light mode"}
+                <Text> {theme === "light" ? "Dark mode" : "Light mode"}</Text>
               </ThemeButton>
             </HeaderLinks>
             {/* <MenuButton>
