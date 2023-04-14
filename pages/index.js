@@ -35,7 +35,7 @@ export default function Home({ theme, toggleTheme }) {
               fontSize={58}
               marginBottom={8}
               fontWeight={900}
-              color="black"
+              color={theme === "light" ? "black" : "white"}
               letterSpacing="-.003rem"
             >
               Web directory for organized minds

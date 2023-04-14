@@ -9,14 +9,16 @@ export default function Modal() {
     <Pane>
       <Dialog
         isShown={isShown}
-        title="Dialog title"
+        title="Login"
         containerProps={{ className: "themed-modal" }}
         onCloseComplete={() => setIsShown(false)}
-        confirmLabel="Delete"
+        confirmLabel="Join"
       >
-        Are you sure you want to delete this item?
+        Are you ready to join?
       </Dialog>
-      <Button className="custom-theme" onClick={() => setIsShown(true)}>Show Dialog</Button>
+      <Button className="custom-theme" onClick={() => setIsShown(true)}>
+        Login
+      </Button>
     </Pane>
   );
 }

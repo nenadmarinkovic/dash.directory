@@ -26,7 +26,10 @@ export const GlobalStyle = createGlobalStyle`
     .themed {
       &-modal {
         background-color: ${({ theme }) => theme.background};
-        color: ${({ theme }) => theme.color};
+        h4 {
+          color: ${({ theme }) => theme.color};
+        }
+        
       }
     }
     `;
