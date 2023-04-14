@@ -1,8 +1,16 @@
+import { useState } from "react";
 import Modal from "@/components/common/Modal/Modal";
+import Header from "@/components/layout/Header/Header";
+import {
+  ContainerWrap,
+  MainSection,
+  ThemeLayout,
+} from "@/components/layout/Container/Container";
 import { Heading, Paragraph } from "evergreen-ui";
 import Head from "next/head";
 
-export default function Home() {
+export default function Home({ theme, toggleTheme }) {
+  const [openMenu, setOpenMenu] = useState(false);
   return (
     <>
       <Head>
@@ -11,39 +19,39 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
-
-      <Modal />
-      <Heading
-        is="h1"
-        marginTop={12}
-        lineHeight={1.25}
-        fontSize={58}
-        marginBottom={8}
-        fontWeight={900}
-        color="black"
-        letterSpacing="-.003rem"
-      >
-        Dash Directory
-      </Heading>
-      <Paragraph size={500} color="muted">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
-      </Paragraph>
-
-      <Paragraph size={400} marginTop="1rem">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
-      </Paragraph>
+      <Header
+        toggleTheme={toggleTheme}
+        theme={theme}
+        openMenu={openMenu}
+        setOpenMenu={setOpenMenu}
+      />
+      <ThemeLayout openMenu={openMenu}>
+        <MainSection>
+          <ContainerWrap>
+            <Heading
+              is="h1"
+              marginTop={12}
+              lineHeight={1.25}
+              fontSize={58}
+              marginBottom={8}
+              fontWeight={900}
+              color="black"
+              letterSpacing="-.003rem"
+            >
+              Dash Directory
+            </Heading>
+            <Paragraph size={500} color="muted">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </Paragraph>
+          </ContainerWrap>
+        </MainSection>
+      </ThemeLayout>
     </>
   );
 }

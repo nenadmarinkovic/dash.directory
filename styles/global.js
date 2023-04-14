@@ -19,7 +19,6 @@ export const GlobalStyle = createGlobalStyle`
       scrollbar-gutter: stable;
       -moz-osx-font-smoothing: grayscale;
       min-height: 100vh;
-      padding: 115px;
     }
 
     /* Theme related custom classes */
