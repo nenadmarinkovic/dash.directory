@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import { ContainerWrap } from "../Container/Container";
 import { Small, Text } from "evergreen-ui";
 import Image from "next/image";
+import Logo from "../Logo/Logo";
 // import Menu from "./Menu";
 
 function Header({ theme, toggleTheme, openMenu, setOpenMenu }) {
@@ -21,23 +22,7 @@ function Header({ theme, toggleTheme, openMenu, setOpenMenu }) {
       <HeaderWrap>
         <ContainerWrap>
           <HeaderMain>
-            <Link href="/">
-              {theme === "light" ? (
-                <Image
-                  src={"./logo-light.svg"}
-                  width={252}
-                  height={40}
-                  alt="Logo"
-                />
-              ) : (
-                <Image
-                  src={"./logo-dark.svg"}
-                  width={252}
-                  height={40}
-                  alt="Logo"
-                />
-              )}
-            </Link>
+           <Logo theme={theme}/>
 
             <HeaderLinks>
               <HeaderLink>
