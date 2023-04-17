@@ -1,7 +1,7 @@
 import React from "react";
 import { BannerWrap, BannerItem, BannerText } from "./styled";
 import { ContainerWrap } from "@/components/Container/Container";
-import { Heading, Paragraph, Strong } from "evergreen-ui";
+import { Button, Heading, Paragraph, Strong } from "evergreen-ui";
 
 function Banner({ theme }) {
   return (
@@ -33,6 +33,7 @@ function Banner({ theme }) {
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat.
             </Paragraph>
+            <Button marginTop={23}>Button</Button>
           </BannerText>
         </BannerItem>
         <BannerItem>

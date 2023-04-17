@@ -22,7 +22,7 @@ export const HeaderLinks = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 35%;
+  width: 50%;
   margin-bottom: 3px;
 
   @media (max-width: 47.95rem) {
