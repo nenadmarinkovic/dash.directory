@@ -1,12 +1,8 @@
-import React from 'react'
+import React from "react";
+import { BannerWrap } from "./styled";
 
 function Banner() {
-  return (
-    <BannerWrap>
-      
-
-    </BannerWrap>
-  )
+  return <BannerWrap>Test</BannerWrap>;
 }
 
-export default Banner
+export default Banner;
