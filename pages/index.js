@@ -1,11 +1,11 @@
 import { useState } from "react";
-import Modal from "@/components/common/Modal/Modal";
-import Header from "@/components/layout/Header/Header";
+import Modal from "@/components/Modal/Modal";
+import Header from "@/components/Header/Header";
 import {
   ContainerWrap,
   MainSection,
   ThemeLayout,
-} from "@/components/layout/Container/Container";
+} from "@/components/Container/Container";
 import { Heading, Paragraph } from "evergreen-ui";
 import Head from "next/head";
 

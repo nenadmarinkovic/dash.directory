@@ -12,7 +12,7 @@ import { ContainerWrap } from "../Container/Container";
 import { Small, Text } from "evergreen-ui";
 import Image from "next/image";
 import Logo from "../Logo/Logo";
-import Modal from "@/components/common/Modal/Modal";
+import Modal from "@/components/Modal/Modal";
 // import Menu from "./Menu";
 
 function Header({ theme, toggleTheme, openMenu, setOpenMenu }) {
