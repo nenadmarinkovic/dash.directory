@@ -1,5 +1,3 @@
-/* Globally available styles and theme related custom classes */
-
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
@@ -21,23 +19,15 @@ export const GlobalStyle = createGlobalStyle`
       min-height: 100vh;
     }
 
-    /* Theme related custom classes */
-
-    .button {
-      background: black;
-      color: white;
-      :hover {
-        background: black;
-      }
-    }
+    /* Theme */
 
     .themed {
       &-modal {
         background-color: ${({ theme }) => theme.background};
+
         h4 {
           color: ${({ theme }) => theme.color};
         }
-        
       }
     }
     `;
