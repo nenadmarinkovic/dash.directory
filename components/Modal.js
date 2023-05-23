@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Pane, Dialog, Button } from "evergreen-ui";
 
 export default function Modal() {

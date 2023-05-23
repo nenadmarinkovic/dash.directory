@@ -1,10 +1,10 @@
 import { useState } from "react";
-import Modal from "@/components/Modal/Modal";
-import Header from "@/components/Header/Header";
-import { MainSection, ThemeLayout } from "@/components/Container/Container";
+import Modal from "@/components/Modal";
+import Header from "@/components/Header";
+import { MainSection, ThemeLayout } from "@/components/Container";
 
 import Head from "next/head";
-import Banner from "@/components/Banner/Banner";
+import Banner from "@/components/Banner";
 
 export default function Home({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);

@@ -4,11 +4,11 @@ import {
   HeaderLinks,
   HeaderLink,
   ThemeButton,
-} from "./styled";
-import { ContainerWrap } from "../Container/Container";
+} from "../styles/components/header";
+import { ContainerWrap } from "./Container";
 import { Text } from "evergreen-ui";
-import Logo from "../Logo/Logo";
-import Modal from "@/components/Modal/Modal";
+import Logo from "./Logo";
+import Modal from "@/components/Modal";
 
 function Header({ theme, toggleTheme }) {
   return (
