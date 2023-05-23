@@ -29,16 +29,15 @@ function Banner({ theme }) {
             >
               Dash Directory is a powerful online platform designed to simplify
               your digital life. A clean and distraction-free environment
-              enhances your user experience, reduces your cognitive load, and
+              enhances your web experience, reduces your cognitive load, and
               enables you to organize your notes, manage bookmarks, and stay on
               top of your daily tasks.
             </Paragraph>
             <Button
-              appearance="success"
+              appearance="neutral"
               fontWeight="bold"
-              intent="destructive"
               width={100}
-              marginTop={23}
+              marginTop={25}
             >
               Learn more
             </Button>
