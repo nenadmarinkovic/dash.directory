@@ -1,7 +1,7 @@
 import React from "react";
 import { BannerWrap, BannerItem, BannerText } from "./styled";
 import { ContainerWrap } from "@/components/Container/Container";
-import { Button, Heading, Paragraph, Strong } from "evergreen-ui";
+import { Button, Heading, Paragraph } from "evergreen-ui";
 
 function Banner({ theme }) {
   return (
@@ -9,12 +9,6 @@ function Banner({ theme }) {
       <BannerWrap>
         <BannerItem>
           <BannerText>
-            <Strong
-              color={theme === "light" ? "#FF6633" : "#3DD0FF"}
-              fontWeight="800"
-            >
-              — DASH DIRECTORY
-            </Strong>
             <Heading
               is="h1"
               marginTop={8}
@@ -27,13 +21,21 @@ function Banner({ theme }) {
             >
               Web directory for organized minds
             </Heading>
-            <Paragraph size={500} color="muted" marginTop={18} lineHeight="1.8">
+            <Paragraph size={500} color="muted" marginTop={18} lineHeight={1.75}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat.
             </Paragraph>
-            <Button marginTop={23}>Button</Button>
+            <Button
+              appearance="success"
+              fontWeight="bold"
+              intent="destructive"
+              width={100}
+              marginTop={23}
+            >
+              Learn more
+            </Button>
           </BannerText>
         </BannerItem>
         <BannerItem>

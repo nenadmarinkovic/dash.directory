@@ -23,6 +23,14 @@ export const GlobalStyle = createGlobalStyle`
 
     /* Theme related custom classes */
 
+    .button {
+      background: black;
+      color: white;
+      :hover {
+        background: black;
+      }
+    }
+
     .themed {
       &-modal {
         background-color: ${({ theme }) => theme.background};
