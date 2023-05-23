@@ -21,11 +21,17 @@ function Banner({ theme }) {
             >
               Web directory for organized minds
             </Heading>
-            <Paragraph size={500} color="muted" marginTop={18} lineHeight={1.75}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+            <Paragraph
+              size={500}
+              color="muted"
+              marginTop={18}
+              lineHeight={1.75}
+            >
+              Dash Directory is a powerful online platform designed to simplify
+              your digital life. A clean and distraction-free environment
+              enhances your user experience, reduces your cognitive load, and
+              enables you to organize your notes, manage bookmarks, and stay on
+              top of your daily tasks.
             </Paragraph>
             <Button
               appearance="success"
