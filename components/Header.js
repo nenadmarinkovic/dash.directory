@@ -5,7 +5,7 @@ import {
   HeaderLink,
   ThemeButton,
 } from "../styles/components/header";
-import { ContainerWrap } from "./Container";
+import { ContainerWrap } from "../styles/components/layout";
 import { Text } from "evergreen-ui";
 import Logo from "./Logo";
 import Modal from "@/components/Modal";

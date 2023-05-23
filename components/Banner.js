@@ -1,6 +1,10 @@
 import React from "react";
-import { BannerWrap, BannerItem, BannerText } from "../styles/components/banner"
-import { ContainerWrap } from "@/components/Container";
+import {
+  BannerWrap,
+  BannerItem,
+  BannerText,
+} from "../styles/components/banner";
+import { ContainerWrap } from "../styles/components/layout";
 import { Button, Heading, Paragraph } from "evergreen-ui";
 
 function Banner({ theme }) {
