@@ -15,9 +15,7 @@ export default function Modal() {
       >
         Are you ready to join?
       </Dialog>
-      <Button className="custom-theme" onClick={() => setIsShown(true)}>
-        Login
-      </Button>
+      <Button onClick={() => setIsShown(true)}>Login</Button>
     </Pane>
   );
 }

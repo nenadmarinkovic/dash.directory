@@ -6,9 +6,8 @@ import {
   ThemeButton,
 } from "../styles/components/header";
 import { ContainerWrap } from "../styles/components/layout";
-import { Text } from "evergreen-ui";
+import { Button, Text } from "evergreen-ui";
 import Logo from "./Logo";
-import Modal from "@/components/Modal";
 import Link from "next/link";
 
 function Header({ theme, toggleTheme }) {
@@ -27,13 +26,16 @@ function Header({ theme, toggleTheme }) {
               <HeaderLink>
                 <Text>Pricing</Text>
               </HeaderLink>
-              <HeaderLink>
-                <Text>Login</Text>
-              </HeaderLink>
               <ThemeButton onClick={toggleTheme}>
                 <Text> {theme === "light" ? "Dark mode" : "Light mode"}</Text>
               </ThemeButton>
-              <Modal />
+              <HeaderLink>
+                <Text>Contact</Text>
+              </HeaderLink>
+              <HeaderLink>
+                <Text>Login</Text>
+              </HeaderLink>
+              <Button width={100}>Sign up</Button>
             </HeaderLinks>
           </HeaderMain>
         </ContainerWrap>
