@@ -3,6 +3,10 @@ import styled from "styled-components";
 export const BannerWrap = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 960px) {
+    flex-direction: column;
+  }
 `;
 
 export const BannerItem = styled.div`
@@ -13,6 +17,10 @@ export const BannerItem = styled.div`
 
   svg {
     width: 98%;
+  }
+
+  @media (max-width: 960px) {
+    width: 100%;
   }
 `;
 
