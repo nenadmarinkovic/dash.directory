@@ -9,6 +9,7 @@ import { ContainerWrap } from "../styles/components/layout";
 import { Text } from "evergreen-ui";
 import Logo from "./Logo";
 import Modal from "@/components/Modal";
+import Link from "next/link";
 
 function Header({ theme, toggleTheme }) {
   return (
@@ -16,7 +17,9 @@ function Header({ theme, toggleTheme }) {
       <HeaderWrap>
         <ContainerWrap>
           <HeaderMain>
-            <Logo theme={theme} />
+            <Link href="/">
+              <Logo theme={theme} />
+            </Link>
             <HeaderLinks>
               <HeaderLink>
                 <Text>About</Text>
