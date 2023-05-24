@@ -26,12 +26,12 @@ function Header({ theme, toggleTheme }) {
               <HeaderLink>
                 <Text>Pricing</Text>
               </HeaderLink>
-              <ThemeButton onClick={toggleTheme}>
-                <Text> {theme === "light" ? "Dark mode" : "Light mode"}</Text>
-              </ThemeButton>
               <HeaderLink>
                 <Text>Contact</Text>
               </HeaderLink>
+              <ThemeButton onClick={toggleTheme}>
+                <Text> {theme === "light" ? "Dark mode" : "Light mode"}</Text>
+              </ThemeButton>
               <HeaderLink>
                 <Text>Login</Text>
               </HeaderLink>
