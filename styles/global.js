@@ -36,11 +36,11 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     #part2 {
-      animation-delay: 0.25s;
+      animation-delay: 0.35s;
     }
 
     #part1 {
-      animation-delay: 0.5s;
+      animation-delay: 0.75s;
     
     }
 
