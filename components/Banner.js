@@ -47,7 +47,7 @@ function Banner({ theme }) {
             </Button>
           </BannerText>
         </BannerItem>
-        <BannerItem>
+        <BannerItem className="banner">
           <svg
             width="812"
             height="591"
@@ -56,7 +56,7 @@ function Banner({ theme }) {
             xmlns="http://www.w3.org/2000/svg"
           >
             <g id="Logo Banner">
-              <g id="Part3">
+              <g id="part3">
                 <path
                   id="Vector"
                   d="M421.921 254.138L421.73 310.897V370.179V367.497L145.615 528.445L147.311 413.636L421.921 254.138Z"
@@ -68,7 +68,7 @@ function Banner({ theme }) {
                   fill={theme === "light" ? "black" : "white"}
                 />
               </g>
-              <g id="Part2">
+              <g id="part2">
                 <path
                   id="Vector_3"
                   d="M372.688 169.447L372.497 226.142L146.547 357.516L146.738 300.757L372.688 169.447Z"
@@ -85,7 +85,7 @@ function Banner({ theme }) {
                   fill="url(#paint2_linear_6_249)"
                 />
               </g>
-              <g id="Part1">
+              <g id="part1">
                 <path
                   id="Vector_6"
                   d="M372.048 56.441L371.857 113.2L323.772 141.196L97.8204 272.507L97.6291 336.153L48.5869 364.66L48.9058 244.255L372.048 56.441Z"

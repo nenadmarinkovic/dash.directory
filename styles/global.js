@@ -19,6 +19,46 @@ export const GlobalStyle = createGlobalStyle`
       min-height: 100vh;
     }
 
+    // Animation banner
+
+    #part1, #part2, #part3 {
+      position: absolute;
+      animation-name: bounce;
+      animation-duration: 1s;
+      top: 50px;
+      animation-timing-function: ease-in-out;
+      opacity: 0;
+      animation-fill-mode: forwards;
+    }
+
+    #part3 {
+      animation-delay: 0s;
+    }
+
+    #part2 {
+      animation-delay: 0.5s;
+    }
+
+    #part1 {
+      animation-delay: 1s;
+    
+    }
+
+    @keyframes bounce {
+      0% {
+        transform: translateY(50px);
+      }
+
+      50% {
+        transform: translateY(0);
+      }
+
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
     /* Theme */
 
     .themed {
