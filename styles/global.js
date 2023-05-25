@@ -18,8 +18,8 @@ export const GlobalStyle = createGlobalStyle`
       -moz-osx-font-smoothing: grayscale;
       min-height: 100vh;
     }
-
-    // Animation banner
+  
+   /* Banner animation */
 
     #part1, #part2, #part3 {
       position: absolute;
@@ -36,11 +36,11 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     #part2 {
-      animation-delay: 0.5s;
+      animation-delay: 0.25s;
     }
 
     #part1 {
-      animation-delay: 1s;
+      animation-delay: 0.5s;
     
     }
 
