@@ -1,20 +1,20 @@
 import React from "react";
 import {
-  PanelWrap,
-  PanelFlex,
-  PanelTitle,
-  PanelSmall,
-  PanelFull,
-} from "../styles/components/panel";
+  CardsWrap,
+  CardsFlex,
+  CardsTitle,
+  CardsSmall,
+  CardsFull,
+} from "../styles/components/cards";
 import { Heading, Paragraph } from "evergreen-ui";
 import { ContainerWrap } from "@/styles/components/layout";
 import { Circle, Line } from "@/styles/components/helpers";
 
-function Panel({ theme }) {
+function Cards({ theme }) {
   return (
-    <PanelWrap>
+    <CardsWrap>
       <ContainerWrap>
-        <PanelTitle>
+        <CardsTitle>
           <Line />
           <Circle>1</Circle>
           <Heading
@@ -42,9 +42,9 @@ function Panel({ theme }) {
             your digital life. A clean and distraction-free environment enhances
             your web experience.
           </Paragraph>
-        </PanelTitle>
-        <PanelFlex>
-          <PanelSmall>
+        </CardsTitle>
+        <CardsFlex>
+          <CardsSmall>
             <Heading
               is="h2"
               lineHeight={1.25}
@@ -66,8 +66,8 @@ function Panel({ theme }) {
               your digital life. A clean and distraction-free environment
               enhances your web experience.
             </Paragraph>
-          </PanelSmall>
-          <PanelSmall>
+          </CardsSmall>
+          <CardsSmall>
             <Heading
               is="h2"
               lineHeight={1.25}
@@ -89,9 +89,9 @@ function Panel({ theme }) {
               your digital life. A clean and distraction-free environment
               enhances your web experience.
             </Paragraph>
-          </PanelSmall>
-        </PanelFlex>
-        <PanelFull>
+          </CardsSmall>
+        </CardsFlex>
+        <CardsFull>
           <Heading
             is="h2"
             lineHeight={1.25}
@@ -108,10 +108,10 @@ function Panel({ theme }) {
             your digital life. A clean and distraction-free environment enhances
             your web experience.
           </Paragraph>
-        </PanelFull>
+        </CardsFull>
       </ContainerWrap>
-    </PanelWrap>
+    </CardsWrap>
   );
 }
 
-export default Panel;
+export default Cards;
