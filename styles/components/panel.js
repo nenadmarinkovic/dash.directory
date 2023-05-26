@@ -10,7 +10,6 @@ export const PanelFlex = styled.main`
   background: ${({ theme }) => theme.background};
   display: flex;
   justify-content: space-between;
-
 `;
 
 export const PanelSmall = styled.div`
