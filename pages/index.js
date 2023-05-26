@@ -3,6 +3,7 @@ import Head from "next/head";
 import Header from "@/components/Header";
 import { MainSection, ThemeLayout } from "../styles/components/layout";
 import Banner from "@/components/Banner";
+import Panel from "@/components/Panel";
 
 export default function Home({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
@@ -22,6 +23,7 @@ export default function Home({ theme, toggleTheme }) {
       <ThemeLayout openMenu={openMenu}>
         <MainSection>
           <Banner theme={theme} />
+          <Panel theme={theme} />
         </MainSection>
       </ThemeLayout>
     </>
