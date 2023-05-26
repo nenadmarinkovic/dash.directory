@@ -2,7 +2,7 @@ export const lightTheme = {
   background: "#fff",
   color: "#000",
   colorInvert: "#fff",
-  dimmed: "#F8F8F8",
+  dimmed: "#FBFBFB",
   headerBackground: "rgba(255, 255, 255, 0.75)",
   lineBackground:
     "linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(185, 185, 185) 100%)",
