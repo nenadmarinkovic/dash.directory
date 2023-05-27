@@ -5,12 +5,15 @@ import {
   CardsTitle,
   CardsSmall,
   CardsFull,
+  CardItems,
+  CardItem,
 } from "../styles/components/cards";
-import { Heading, Paragraph } from "evergreen-ui";
+import { Heading, Paragraph, Text } from "evergreen-ui";
 import { ContainerWrap } from "@/styles/components/layout";
 import { Circle, Line } from "@/styles/components/helpers";
 
 function Cards({ theme }) {
+  let bw = theme === "light" ? "#000" : "#FFF";
   return (
     <CardsWrap>
       <ContainerWrap>
@@ -24,7 +27,7 @@ function Cards({ theme }) {
             fontSize={38}
             marginBottom={8}
             fontWeight={900}
-            color={theme === "light" ? "black" : "white"}
+            color={bw}
             letterSpacing="-.003rem"
             textAlign="center"
           >
@@ -51,7 +54,7 @@ function Cards({ theme }) {
               fontSize={38}
               marginBottom={8}
               fontWeight={800}
-              color={theme === "light" ? "black" : "white"}
+              color={bw}
               letterSpacing="-.003rem"
             >
               Learn
@@ -66,6 +69,23 @@ function Cards({ theme }) {
               your digital life. A clean and distraction-free environment
               enhances your web experience.
             </Paragraph>
+            <CardItems>
+              <CardItem>
+                <Text fontSize={17} fontWeight={700} color={bw}>
+                  Organize notes
+                </Text>
+              </CardItem>
+              <CardItem>
+                <Text fontSize={17} fontWeight={700} color={bw}>
+                  Save bookmarks
+                </Text>
+              </CardItem>
+              <CardItem>
+                <Text fontSize={17} fontWeight={700} color={bw}>
+                  Schedule events
+                </Text>
+              </CardItem>
+            </CardItems>
           </CardsSmall>
           <CardsSmall>
             <Heading
@@ -74,7 +94,7 @@ function Cards({ theme }) {
               fontSize={38}
               marginBottom={8}
               fontWeight={800}
-              color={theme === "light" ? "black" : "white"}
+              color={bw}
               letterSpacing="-.003rem"
             >
               Learn
@@ -89,6 +109,23 @@ function Cards({ theme }) {
               your digital life. A clean and distraction-free environment
               enhances your web experience.
             </Paragraph>
+            <CardItems>
+              <CardItem>
+                <Text fontSize={17} fontWeight={700} color={bw}>
+                  Organize notes
+                </Text>
+              </CardItem>
+              <CardItem>
+                <Text fontSize={17} fontWeight={700} color={bw}>
+                  Save bookmarks
+                </Text>
+              </CardItem>
+              <CardItem>
+                <Text fontSize={17} fontWeight={700} color={bw}>
+                  Schedule events
+                </Text>
+              </CardItem>
+            </CardItems>
           </CardsSmall>
         </CardsFlex>
         <CardsFull>
@@ -98,12 +135,12 @@ function Cards({ theme }) {
             fontSize={38}
             marginBottom={8}
             fontWeight={800}
-            color={theme === "light" ? "black" : "white"}
+            color={bw}
             letterSpacing="-.003rem"
           >
             Learn
           </Heading>
-          <Paragraph size={500} color="muted" marginTop={18} lineHeight={1.75}>
+          <Paragraph size={500} color="muted" marginTop={18} lineHeight={1.75} width={'50%'}>
             Dash Directory is a powerful online platform designed to simplify
             your digital life. A clean and distraction-free environment enhances
             your web experience.

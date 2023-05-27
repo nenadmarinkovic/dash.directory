@@ -17,17 +17,15 @@ export const CardsSmall = styled.div`
   width: 48%;
   border-radius: 5px;
   padding: 2.8rem;
-  height: 500px;
   border: 0.5px solid rgba(200, 200, 200, 0.38);
 `;
 
 export const CardsFull = styled.div`
-  margin-top: 3rem;
+  margin-top: 2.5rem;
   background: ${({ theme }) => theme.dimmed};
   width: 100%;
   border-radius: 5px;
   padding: 2.8rem;
-  height: 200px;
   border: 0.5px solid rgba(200, 200, 200, 0.38);
 `;
 
@@ -41,4 +39,16 @@ export const CardsTitle = styled.div`
   h2 {
     margin-left: 1rem;
   }
+`;
+
+export const CardItems = styled.div`
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const CardItem = styled.div`
+  margin-top: 1rem;
+  padding: 1.2rem 0;
+  border-bottom: 0.5px solid rgba(200, 200, 200, 0.38);
 `;
