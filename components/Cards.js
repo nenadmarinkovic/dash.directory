@@ -51,13 +51,13 @@ function Cards({ theme }) {
             <Heading
               is="h2"
               lineHeight={1.25}
-              fontSize={38}
+              fontSize={32}
               marginBottom={8}
               fontWeight={800}
               color={bw}
               letterSpacing="-.003rem"
             >
-              Learn
+              Organize notes
             </Heading>
             <Paragraph
               size={500}
@@ -91,13 +91,13 @@ function Cards({ theme }) {
             <Heading
               is="h2"
               lineHeight={1.25}
-              fontSize={38}
+              fontSize={32}
               marginBottom={8}
               fontWeight={800}
               color={bw}
               letterSpacing="-.003rem"
             >
-              Learn
+              Menage bookmarks
             </Heading>
             <Paragraph
               size={500}
@@ -132,15 +132,21 @@ function Cards({ theme }) {
           <Heading
             is="h2"
             lineHeight={1.25}
-            fontSize={38}
+            fontSize={32}
             marginBottom={8}
             fontWeight={800}
             color={bw}
             letterSpacing="-.003rem"
           >
-            Learn
+            Stay on top of your daily tasks
           </Heading>
-          <Paragraph size={500} color="muted" marginTop={18} lineHeight={1.75} width={'50%'}>
+          <Paragraph
+            size={500}
+            color="muted"
+            marginTop={18}
+            lineHeight={1.75}
+            width={"50%"}
+          >
             Dash Directory is a powerful online platform designed to simplify
             your digital life. A clean and distraction-free environment enhances
             your web experience.
