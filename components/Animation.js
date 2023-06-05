@@ -30,8 +30,10 @@ export default function Animation({ theme }) {
       full: { backgroundColor: theme === "light" ? "#FBFBFB" : "#000" },
       partial: { backgroundColor: theme === "light" ? "#FBFBFB" : "#000" },
     },
+    transition: { duration: 0 },
     initial: "partial",
     whileInView: "full",
+
     viewport: { amount: 1, once: true },
   };
 
@@ -108,17 +110,25 @@ export default function Animation({ theme }) {
                   key={i}
                   className="carousel-slide"
                 >
-                 {
-                 index === 0 ?  <div>1</div> :
-                 index === 1 ?  <div>2</div> :
-                 index === 2 ?  <div>3</div> :
-                 index === 3 ?  <div>4</div> :
-                 index === 4 ?  <div>5</div> :
-                 index === 5 ?  <div>6</div> :
-                 index === 6 ?  <div>7</div> :
-                 index === 7 ?  <div>8</div> :
-                 <div>0</div>
-                }
+                  {index === 0 ? (
+                    <div>1</div>
+                  ) : index === 1 ? (
+                    <div>2</div>
+                  ) : index === 2 ? (
+                    <div>3</div>
+                  ) : index === 3 ? (
+                    <div>4</div>
+                  ) : index === 4 ? (
+                    <div>5</div>
+                  ) : index === 5 ? (
+                    <div>6</div>
+                  ) : index === 6 ? (
+                    <div>7</div>
+                  ) : index === 7 ? (
+                    <div>8</div>
+                  ) : (
+                    <div>0</div>
+                  )}
                 </motion.div>
               ))}
             </motion.div>
