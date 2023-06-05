@@ -17,7 +17,7 @@ function Banner({ theme }) {
         <BannerItem>
           <BannerText>
             <Text>
-              Currently in BETA mode. See <Link href="/updates">Updates</Link>{" "}
+              Currently in Development mode. See <Link href="/updates">Updates</Link>{" "}
               for more.
             </Text>
             <Heading
