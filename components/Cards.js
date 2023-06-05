@@ -32,7 +32,7 @@ function Cards({ theme }) {
             letterSpacing="-.003rem"
             textAlign="center"
           >
-            We’ll help you to
+            We’ll help you to stay efficient
           </Heading>
 
           <Paragraph
@@ -42,7 +42,7 @@ function Cards({ theme }) {
             lineHeight={1.75}
             textAlign="center"
           >
-            Dash Directory is designed to help individuals boost their focus and
+            Dash Directory is designed to help you boost your focus and
             productivity. Here&apos;s a short text highlighting how our platform
             can support you in achieving your goals:
           </Paragraph>
@@ -72,7 +72,7 @@ function Cards({ theme }) {
                 color={bw}
                 letterSpacing="-.003rem"
               >
-                Organize notes
+                Write notes
               </Heading>
             </CardTitleFlex>
 
