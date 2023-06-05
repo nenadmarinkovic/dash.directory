@@ -32,7 +32,7 @@ function Cards({ theme }) {
             letterSpacing="-.003rem"
             textAlign="center"
           >
-            We’ll help you get started
+            We’ll help you to
           </Heading>
 
           <Paragraph
@@ -42,9 +42,9 @@ function Cards({ theme }) {
             lineHeight={1.75}
             textAlign="center"
           >
-            Dash Directory is a powerful online platform designed to simplify
-            your digital life. A clean and distraction-free environment enhances
-            your web experience.
+            Dash Directory is designed to help individuals boost their focus and
+            productivity. Here&apos;s a short text highlighting how our platform
+            can support you in achieving your goals:
           </Paragraph>
         </CardsTitle>
         <CardsFlex>
@@ -82,24 +82,24 @@ function Cards({ theme }) {
               marginTop={18}
               lineHeight={1.75}
             >
-              Dash Directory is a powerful online platform designed to simplify
-              your digital life. A clean and distraction-free environment
-              enhances your web experience.
+              Easily write down your thoughts, ideas, and important information
+              in a user-friendly interface. Quickly locate and access specific
+              notes whenever you need them.
             </Paragraph>
             <CardItems>
               <CardItem>
                 <Text fontSize={17} fontWeight={700} color={bw}>
-                  Organize notes
+                  Effortless Note Creation
                 </Text>
               </CardItem>
               <CardItem>
                 <Text fontSize={17} fontWeight={700} color={bw}>
-                  Save bookmarks
+                  Categorize and Tag
                 </Text>
               </CardItem>
               <CardItem>
                 <Text fontSize={17} fontWeight={700} color={bw}>
-                  Schedule events
+                  Rich Formatting Options
                 </Text>
               </CardItem>
             </CardItems>
@@ -137,24 +137,24 @@ function Cards({ theme }) {
               marginTop={18}
               lineHeight={1.75}
             >
-              Dash Directory is a powerful online platform designed to simplify
-              your digital life. A clean and distraction-free environment
-              enhances your web experience.
+              Dash Directory offers a centralized platform to manage all your
+              bookmarks. Say goodbye to scattered and disorganized bookmarks
+              across multiple browsers and devices.
             </Paragraph>
             <CardItems>
               <CardItem>
                 <Text fontSize={17} fontWeight={700} color={bw}>
-                  Organize notes
+                  Centralized Bookmark Management
                 </Text>
               </CardItem>
               <CardItem>
                 <Text fontSize={17} fontWeight={700} color={bw}>
-                  Save bookmarks
+                  Bookmark Sync
                 </Text>
               </CardItem>
               <CardItem>
                 <Text fontSize={17} fontWeight={700} color={bw}>
-                  Schedule events
+                  Folder Organization
                 </Text>
               </CardItem>
             </CardItems>
@@ -193,11 +193,12 @@ function Cards({ theme }) {
             color="muted"
             marginTop={18}
             lineHeight={1.75}
-            width={"50%"}
+            width={"70%"}
           >
-            Dash Directory is a powerful online platform designed to simplify
-            your digital life. A clean and distraction-free environment enhances
-            your web experience.
+            Dash Directory is your ultimate productivity companion, empowering
+            you to stay focused and make the most out of your time. With our
+            intuitive interface and powerful features, we streamline your
+            workflow, allowing you to concentrate on what truly matters.
           </Paragraph>
         </CardsFull>
       </ContainerWrap>
