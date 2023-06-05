@@ -124,14 +124,14 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     .carousel-slide {
+      background-color: ${({ theme }) => theme.dimmed};
+      color: ${({ theme }) => theme.color};
+      border: 0.5px solid rgba(200, 200, 200, 0.38);
       width: 300px;
       height: 300px;
-      background-color: #EAEAEA;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 5px;
-      color: ${({ theme }) => theme.color};
-      border: 0.5px solid rgba(200, 200, 200, 0.38);
     }
 `;

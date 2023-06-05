@@ -26,14 +26,9 @@ export default function Animation({ theme }) {
   let bw = theme === "light" ? "#000" : "#FFF";
 
   const slideAnimation = {
-    variants: {
-      full: { backgroundColor: theme === "light" ? "#FBFBFB" : "#000" },
-      partial: { backgroundColor: theme === "light" ? "#FBFBFB" : "#000" },
-    },
     transition: { duration: 0 },
     initial: "partial",
     whileInView: "full",
-
     viewport: { amount: 1, once: true },
   };
 
