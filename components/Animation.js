@@ -102,13 +102,23 @@ export default function Animation({ theme }) {
               </Paragraph>
             </AboutTitle>
             <motion.div ref={carouselRef} className="carousel" style={{ x }}>
-              {Array.from(Array(8).keys()).map((i) => (
+              {Array.from(Array(8).keys()).map((i, index) => (
                 <motion.div
                   {...slideAnimation}
                   key={i}
                   className="carousel-slide"
                 >
-                  {i + 1}
+                 {
+                 index === 0 ?  <div>1</div> :
+                 index === 1 ?  <div>2</div> :
+                 index === 2 ?  <div>3</div> :
+                 index === 3 ?  <div>4</div> :
+                 index === 4 ?  <div>5</div> :
+                 index === 5 ?  <div>6</div> :
+                 index === 6 ?  <div>7</div> :
+                 index === 7 ?  <div>8</div> :
+                 <div>0</div>
+                }
                 </motion.div>
               ))}
             </motion.div>
