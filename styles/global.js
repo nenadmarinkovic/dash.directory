@@ -134,4 +134,21 @@ export const GlobalStyle = createGlobalStyle`
       justify-content: center;
       border-radius: 5px;
     }
+
+    .carousel-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem;
+
+      span {
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      svg {
+        width: 35px;
+        height: 35px;
+      }
+    }
 `;
