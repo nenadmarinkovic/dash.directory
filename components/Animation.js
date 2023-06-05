@@ -3,7 +3,7 @@ import { motion, useTransform, useScroll } from "framer-motion";
 import { throttle } from "throttle-debounce-ts";
 import { useEffect, useRef, useState } from "react";
 import { AboutTitle } from "../styles/components/about";
-import { Heading, Paragraph, Text } from "evergreen-ui";
+import { Button, Heading, Paragraph, Text } from "evergreen-ui";
 import { Circle, Line } from "@/styles/components/helpers";
 
 function useElementViewportPosition(ref) {
@@ -414,6 +414,9 @@ export default function Animation({ theme }) {
                 productivity. Here&apos;s a short text highlighting how our
                 platform can support you in achieving your goals:
               </Paragraph>
+              <Button className="themed-button" marginTop={15} width={120}>
+                Sign up
+              </Button>
             </AboutTitle>
           </div>
         </div>
