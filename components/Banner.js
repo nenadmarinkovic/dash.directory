@@ -5,7 +5,8 @@ import {
   BannerText,
 } from "../styles/components/banner";
 import { ContainerWrap } from "../styles/components/layout";
-import { Button, Heading, Paragraph } from "evergreen-ui";
+import { Button, Heading, Paragraph, Text } from "evergreen-ui";
+import Link from "next/link";
 
 function Banner({ theme }) {
   let bw = theme === "light" ? "#000" : "#FFF";
@@ -15,6 +16,10 @@ function Banner({ theme }) {
       <BannerWrap>
         <BannerItem>
           <BannerText>
+            <Text>
+              Currently in BETA mode. See <Link href="/updates">Updates</Link>{" "}
+              for more.
+            </Text>
             <Heading
               is="h1"
               marginTop={8}

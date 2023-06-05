@@ -19,6 +19,12 @@ export const GlobalStyle = createGlobalStyle`
       min-height: 100vh;
 
     }
+
+    a {
+      color: #3faeff;
+      font-weight: bold;
+      text-decoration: none;
+    }
   
    /* Banner animation */
 
