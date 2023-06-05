@@ -78,7 +78,7 @@ export const GlobalStyle = createGlobalStyle`
 
         &:not([disabled]):hover {
           background-color: ${({ theme }) => theme.buttonColor};
-          color: ${({ theme }) => theme.color};
+          color: #000;
         }
       }
     }
