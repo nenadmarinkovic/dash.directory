@@ -108,7 +108,7 @@ export const GlobalStyle = createGlobalStyle`
     .sticky-wrapper {
       position: sticky;
       top: 0;
-      height: 58vh;
+     
       width: 100%;
       display: flex;
       flex-direction: column;

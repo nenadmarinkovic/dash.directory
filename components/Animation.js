@@ -67,7 +67,7 @@ export default function Animation({ theme }) {
   return (
     <div>
       <section ref={ref}>
-        <div className="container" style={{ height: "300vh" }}>
+        <div className="container" style={{ height: "320vh" }}>
           <div className="sticky-wrapper">
             <AboutTitle>
               <Line />
@@ -83,7 +83,7 @@ export default function Animation({ theme }) {
                 letterSpacing="-.003rem"
                 textAlign="center"
               >
-                We’ll help you to stay efficient
+                Keep your focus on what is important
               </Heading>
 
               <Paragraph
@@ -386,6 +386,35 @@ export default function Animation({ theme }) {
                 </motion.div>
               ))}
             </motion.div>
+            <AboutTitle>
+              <Line />
+              <Circle>3</Circle>
+              <Heading
+                is="h2"
+                marginTop={8}
+                lineHeight={1.25}
+                fontSize={38}
+                marginBottom={8}
+                fontWeight={900}
+                color={bw}
+                letterSpacing="-.003rem"
+                textAlign="center"
+              >
+                Create your profile now
+              </Heading>
+
+              <Paragraph
+                size={500}
+                color="muted"
+                marginTop={18}
+                lineHeight={1.75}
+                textAlign="center"
+              >
+                Dash Directory is designed to help you boost your focus and
+                productivity. Here&apos;s a short text highlighting how our
+                platform can support you in achieving your goals:
+              </Paragraph>
+            </AboutTitle>
           </div>
         </div>
       </section>

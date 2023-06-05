@@ -34,7 +34,7 @@ function About({ theme }) {
             letterSpacing="-.003rem"
             textAlign="center"
           >
-            We’ll help you to stay efficient
+            Stay efficient during the day
           </Heading>
 
           <Paragraph
@@ -186,7 +186,7 @@ function About({ theme }) {
               color={bw}
               letterSpacing="-.003rem"
             >
-              Stay on top of your daily tasks
+              Organize your daily tasks
             </Heading>
           </AboutTitleFlex>
 
@@ -206,9 +206,8 @@ function About({ theme }) {
       </ContainerWrap>
 
       <ContainerWrap>
-        <Animation theme={theme}/>
+        <Animation theme={theme} />
       </ContainerWrap>
-      <div style={{ height: "4000px" }}></div>
     </AboutWrap>
   );
 }

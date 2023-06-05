@@ -34,7 +34,7 @@ export const AboutTitle = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin: 0 12rem;
+  margin: 3.5rem 12rem 0 12rem;
 
   h2 {
     margin-left: 1rem;
