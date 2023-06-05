@@ -40,7 +40,7 @@ function Banner({ theme }) {
               top of your daily tasks.
             </Paragraph>
             <Button
-              appearance="neutral"
+              className="themed-button"
               fontWeight="bold"
               width={100}
               marginTop={25}

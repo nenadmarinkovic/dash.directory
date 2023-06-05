@@ -52,3 +52,14 @@ export const CardItem = styled.div`
   padding: 1.2rem 0;
   border-bottom: 0.5px solid rgba(200, 200, 200, 0.38);
 `;
+
+export const CardTitleFlex = styled.div`
+  display: flex;
+  align-items: center;
+
+  svg {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+`;

@@ -69,5 +69,16 @@ export const GlobalStyle = createGlobalStyle`
           color: ${({ theme }) => theme.color};
         }
       }
+
+      &-button {
+        background-color: ${({ theme }) => theme.buttonBackground};
+        color: ${({ theme }) => theme.buttonColor};
+        transition: .3s;
+
+        :not([disabled]):hover {
+          background:   ${({ theme }) => theme.buttonColor};
+          color: ${({ theme }) => theme.buttonBackground};
+        }
+      }
     }
     `;

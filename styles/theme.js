@@ -6,6 +6,8 @@ export const lightTheme = {
   headerBackground: "rgba(255, 255, 255, 0.75)",
   lineBackground:
     "linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(185, 185, 185) 100%)",
+  buttonBackground: "#000",
+  buttonColor: "#FFF",
 };
 
 export const darkTheme = {
@@ -16,4 +18,6 @@ export const darkTheme = {
   headerBackground: "rgba(0, 0, 0, 0.5)",
   lineBackground:
     "linear-gradient(0deg, rgb(185, 185, 185) 0%, rgb(0, 0, 0) 100%)",
+  buttonBackground: "#000",
+  buttonColor: "#FFF",
 };
