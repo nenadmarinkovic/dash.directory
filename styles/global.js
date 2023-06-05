@@ -17,6 +17,7 @@ export const GlobalStyle = createGlobalStyle`
       scrollbar-gutter: stable;
       -moz-osx-font-smoothing: grayscale;
       min-height: 100vh;
+
     }
   
    /* Banner animation */
@@ -81,4 +82,48 @@ export const GlobalStyle = createGlobalStyle`
         }
       }
     }
-    `;
+
+    .motion-progress {
+      position: fixed;
+      z-index: 1;
+      width: 100%;
+      height: 4px;
+      top: 0;
+      left: 0;
+    }
+
+    .motion-progress > div {
+      width: 100%;
+      height: 100%;
+    }
+
+    .sticky-wrapper {
+      position: sticky;
+      top: 0;
+      height: 58vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .carousel {
+      display: flex;
+      gap: 48px;
+      margin-top: 3.5rem;
+    }
+
+    .carousel-slide {
+      width: 300px;
+      height: 300px;
+      background-color: #EAEAEA;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px;
+      color: ${({ theme }) => theme.color};
+      border: 0.5px solid rgba(200, 200, 200, 0.38);
+    }
+`;

@@ -21,7 +21,7 @@ export const AboutSmall = styled.div`
 `;
 
 export const AboutFull = styled.div`
-  margin-top: 2.5rem;
+  margin-top: 2.7rem;
   background: ${({ theme }) => theme.dimmed};
   width: 100%;
   border-radius: 5px;

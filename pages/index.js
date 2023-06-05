@@ -20,12 +20,11 @@ export default function Home({ theme, toggleTheme }) {
         openMenu={openMenu}
         setOpenMenu={setOpenMenu}
       />
-      <ThemeLayout openMenu={openMenu}>
-        <MainSection>
-          <Banner theme={theme} />
-          <About theme={theme} />
-        </MainSection>
-      </ThemeLayout>
+
+      <MainSection>
+        <Banner theme={theme} />
+        <About theme={theme} />
+      </MainSection>
     </>
   );
 }

@@ -12,9 +12,11 @@ import {
 import { Heading, Paragraph, Text } from "evergreen-ui";
 import { ContainerWrap } from "@/styles/components/layout";
 import { Circle, Line } from "@/styles/components/helpers";
+import Animation from "./Animation";
 
 function About({ theme }) {
   let bw = theme === "light" ? "#000" : "#FFF";
+
   return (
     <AboutWrap>
       <ContainerWrap>
@@ -202,6 +204,11 @@ function About({ theme }) {
           </Paragraph>
         </AboutFull>
       </ContainerWrap>
+
+      <ContainerWrap>
+        <Animation theme={theme}/>
+      </ContainerWrap>
+      <div style={{ height: "4000px" }}></div>
     </AboutWrap>
   );
 }
