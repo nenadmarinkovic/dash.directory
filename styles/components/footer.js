@@ -21,6 +21,11 @@ export const FooterFlex = styled.div`
 
   &.links {
     margin-top: -3px;
+
+    a {
+      color: inherit;
+      font-weight: inherit;
+    }
   }
 `;
 

@@ -32,7 +32,7 @@ function Footer({ theme }) {
               Terms of Service
             </Text>
             <Text color="muted" marginTop={15}>
-              Contact the developer
+              <a href="https://nenadmarinkovic.com">Contact the developer</a>
             </Text>
           </FooterFlex>
         </FooterInside>
