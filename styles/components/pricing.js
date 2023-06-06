@@ -32,4 +32,10 @@ export const PricingCardItem = styled.div`
 export const Money = styled.span`
   font-size: 2rem;
   font-weight: bold;
+  color: ${({ theme }) => theme.color};
+
+  /* .month {
+    font-size: 1rem;
+    color: #666;
+  } */
 `;
