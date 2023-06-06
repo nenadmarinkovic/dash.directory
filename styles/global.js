@@ -95,7 +95,7 @@ export const GlobalStyle = createGlobalStyle`
       height: 300vh;
 
       @media (max-width: 1560px) {
-        height: 580vh;
+        height: 650vh;
       }
      }
 
