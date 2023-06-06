@@ -68,7 +68,7 @@ export default function Animation({ theme }) {
   return (
     <div>
       <section ref={ref}>
-        <div className="container" style={{ height: "320vh" }}>
+        <div className="container" style={{ height: "300vh" }}>
           <div className="sticky-wrapper">
             <AboutTitle>
               <Line />

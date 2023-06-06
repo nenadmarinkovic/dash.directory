@@ -209,8 +209,6 @@ function About({ theme }) {
 
       <ContainerWrap>
         <Animation theme={theme} />
-        {/* TODO: Remove */}
-        <div style={{ height: "3000px" }}></div>
       </ContainerWrap>
     </AboutWrap>
   );

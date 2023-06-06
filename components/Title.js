@@ -11,7 +11,7 @@ const Title = ({ title, id }) => {
         fontWeight={600}
         textTransform="uppercase"
         color="#666"
-        letterSpacing=".2rem"
+        letterSpacing=".25rem"
         textAlign="center"
       >
         {title}

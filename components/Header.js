@@ -27,7 +27,9 @@ function Header({ theme, toggleTheme }) {
                 </ScrollIntoView>
               </HeaderLink>
               <HeaderLink>
-                <Text>Pricing</Text>
+                <ScrollIntoView selector="#pricing">
+                  <Text>Pricing</Text>
+                </ScrollIntoView>
               </HeaderLink>
               <HeaderLink>
                 <Text>Contact</Text>

@@ -1,9 +1,10 @@
 import { useState } from "react";
 import Head from "next/head";
 import Header from "@/components/Header";
-import { MainSection, ThemeLayout } from "../styles/components/layout";
+import { MainSection } from "../styles/components/layout";
 import Banner from "@/components/Banner";
 import About from "@/components/About";
+import Pricing from "../components/Pricing";
 
 export default function Home({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
@@ -24,6 +25,7 @@ export default function Home({ theme, toggleTheme }) {
       <MainSection>
         <Banner theme={theme} />
         <About theme={theme} />
+        <Pricing theme={theme} />
       </MainSection>
     </>
   );
