@@ -47,7 +47,6 @@ function Footer({ theme }) {
           fontSize={13}
           marginTop="auto"
         >
-          {" "}
           © {new Date().getFullYear()} Dash Directory
         </Text>
       </Year>
