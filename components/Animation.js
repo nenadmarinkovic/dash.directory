@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { AboutTitle } from "../styles/components/about";
 import { Button, Heading, Paragraph, Text } from "evergreen-ui";
 import { Circle, Line } from "@/styles/components/helpers";
+import Link from "next/link";
 
 function useElementViewportPosition(ref) {
   const [position, setPosition] = useState([0, 0]);
@@ -406,9 +407,11 @@ export default function Animation({ theme }) {
                 productivity. Here&apos;s a short text highlighting how our
                 platform can support you in achieving your goals:
               </Paragraph>
-              <Button className="themed-button" marginTop={15} width={120}>
-                Sign up
-              </Button>
+              <Link href="/signup">
+                <Button className="themed-button" marginTop={15} width={120}>
+                  Sign up
+                </Button>
+              </Link>
             </AboutTitle>
           </div>
         </div>

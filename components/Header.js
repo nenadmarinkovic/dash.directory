@@ -35,7 +35,11 @@ function Header({ theme, toggleTheme }) {
               <HeaderLink>
                 <Text>Login</Text>
               </HeaderLink>
-              <Button className="themed-button" width={100}>Sign up</Button>
+              <Link href="/signup">
+                <Button className="themed-button" width={100}>
+                  Sign up
+                </Button>
+              </Link>
             </HeaderLinks>
           </HeaderMain>
         </ContainerWrap>
