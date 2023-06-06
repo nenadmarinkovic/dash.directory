@@ -95,7 +95,7 @@ export const GlobalStyle = createGlobalStyle`
       height: 300vh;
 
       @media (max-width: 1560px) {
-        height: 650vh;
+        height: 720vh;
       }
      }
 
@@ -103,7 +103,7 @@ export const GlobalStyle = createGlobalStyle`
       position: fixed;
       z-index: 1;
       width: 100%;
-      height: 4px;
+      height: 3px;
       top: 0;
       left: 0;
     }
