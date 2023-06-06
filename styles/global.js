@@ -91,6 +91,14 @@ export const GlobalStyle = createGlobalStyle`
 
      /* Framer animation */
 
+    .container-animation {
+      height: 300vh;
+
+      @media (max-width: 1560px) {
+        height: 520vh;
+      }
+     }
+
     .motion-progress {
       position: fixed;
       z-index: 1;
@@ -108,7 +116,6 @@ export const GlobalStyle = createGlobalStyle`
     .sticky-wrapper {
       position: sticky;
       top: 0;
-     
       width: 100%;
       display: flex;
       flex-direction: column;

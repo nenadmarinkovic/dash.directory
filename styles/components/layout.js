@@ -21,4 +21,8 @@ export const ContainerWrap = styled.div`
   @media (max-width: 25rem) {
     max-width: 100%;
   }
+
+  @media (max-width: 1560px) {
+    max-width: 72.8rem;
+  }
 `;
