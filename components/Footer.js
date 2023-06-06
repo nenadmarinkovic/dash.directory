@@ -23,7 +23,7 @@ function Footer({ theme }) {
             <Text color={bw} marginTop={10}>
               See <Link href="/updates">Updates</Link> for more.
             </Text>
-            <Text fontSize={13} marginTop="auto"> © {new Date().getFullYear()} Dash Directory</Text>
+            <Text textAlign="center" fontSize={13} marginTop="auto"> © {new Date().getFullYear()} Dash Directory</Text>
           </FooterFlex>
         </FooterInside>
       </ContainerWrap>
