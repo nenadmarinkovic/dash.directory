@@ -7,6 +7,7 @@ import {
 import { ContainerWrap } from "../styles/components/layout";
 import { Button, Heading, Paragraph, Text } from "evergreen-ui";
 import Link from "next/link";
+import ScrollIntoView from "react-scroll-into-view";
 
 function Banner({ theme }) {
   let bw = theme === "light" ? "#000" : "#FFF";
@@ -17,8 +18,8 @@ function Banner({ theme }) {
         <BannerItem>
           <BannerText>
             <Text>
-              Currently in Development mode. See <Link href="/updates">Updates</Link>{" "}
-              for more.
+              Currently in Development mode. See{" "}
+              <Link href="/updates">Updates</Link> for more.
             </Text>
             <Heading
               is="h1"
@@ -44,14 +45,17 @@ function Banner({ theme }) {
               enables you to organize your notes, manage bookmarks, and stay on
               top of your daily tasks.
             </Paragraph>
-            <Button
-              className="themed-button"
-              fontWeight="bold"
-              width={100}
-              marginTop={25}
-            >
-              Learn more
-            </Button>
+
+            <ScrollIntoView selector="#about">
+              <Button
+                className="themed-button"
+                fontWeight="bold"
+                width={100}
+                marginTop={25}
+              >
+                Learn more
+              </Button>
+            </ScrollIntoView>
           </BannerText>
         </BannerItem>
         <BannerItem>

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const BannerWrap = styled.div`
   display: flex;
   justify-content: space-between;
-  padding-top: 5.5rem;
+  padding-top: 7.5rem;
 
   @media (max-width: 960px) {
     flex-direction: column;

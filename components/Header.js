@@ -9,6 +9,7 @@ import { ContainerWrap } from "../styles/components/layout";
 import { Button, Text } from "evergreen-ui";
 import Logo from "./Logo";
 import Link from "next/link";
+import ScrollIntoView from "react-scroll-into-view";
 
 function Header({ theme, toggleTheme }) {
   return (
@@ -21,7 +22,9 @@ function Header({ theme, toggleTheme }) {
             </Link>
             <HeaderLinks>
               <HeaderLink>
-                <Text>About</Text>
+                <ScrollIntoView selector="#about">
+                  <Text>About</Text>
+                </ScrollIntoView>
               </HeaderLink>
               <HeaderLink>
                 <Text>Pricing</Text>

@@ -13,6 +13,7 @@ import { Heading, Paragraph, Text } from "evergreen-ui";
 import { ContainerWrap } from "@/styles/components/layout";
 import { Circle, Line } from "@/styles/components/helpers";
 import Animation from "./Animation";
+import Title from "./Title";
 
 function About({ theme }) {
   let bw = theme === "light" ? "#000" : "#FFF";
@@ -20,6 +21,7 @@ function About({ theme }) {
   return (
     <AboutWrap>
       <ContainerWrap>
+        <Title title="About the platform" id="about" />
         <AboutTitle>
           <Line />
           <Circle>1</Circle>
@@ -34,7 +36,7 @@ function About({ theme }) {
             letterSpacing="-.003rem"
             textAlign="center"
           >
-            Stay efficient during the day
+            It&apos; all about efficiency
           </Heading>
 
           <Paragraph
