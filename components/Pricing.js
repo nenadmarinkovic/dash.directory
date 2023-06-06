@@ -3,12 +3,14 @@ import {
   PricingCards,
   PricingCard,
   PricingCardItem,
+  PricingAdditional,
   Money,
 } from "../styles/components/pricing";
-import { Heading, Paragraph, Text } from "evergreen-ui";
+import { Button, Heading, Paragraph, Text } from "evergreen-ui";
 import { ContainerWrap } from "@/styles/components/layout";
 
 import Title from "./Title";
+import Link from "next/link";
 
 function Pricing({ theme }) {
   let bw = theme === "light" ? "#000" : "#FFF";
@@ -153,6 +155,35 @@ function Pricing({ theme }) {
           </PricingCardItem>
         </PricingCard>
       </PricingCards>
+      <PricingAdditional>
+        <Heading
+          is="h4"
+          lineHeight={1.25}
+          fontSize={28}
+          marginBottom={8}
+          fontWeight={900}
+          color={bw}
+          letterSpacing="-.003rem"
+          textAlign="center"
+        >
+          Updates
+        </Heading>
+
+        <Paragraph
+          size={500}
+          color="muted"
+          marginTop={18}
+          lineHeight={1.75}
+          textAlign="center"
+        >
+          Dash Directory is designed to help you boost your focus and
+          productivity. Here&apos;s a short text highlighting how our platform
+          can support you in achieving your goals:
+        </Paragraph>
+        <Button fontSize={14} appearance="minimal" marginTop={15}>
+          <Link href="/updates">See updates</Link>
+        </Button>
+      </PricingAdditional>
     </ContainerWrap>
   );
 }

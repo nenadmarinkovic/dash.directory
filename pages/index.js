@@ -5,6 +5,7 @@ import { MainSection } from "../styles/components/layout";
 import Banner from "@/components/Banner";
 import About from "@/components/About";
 import Pricing from "../components/Pricing";
+import Footer from "../components/Footer";
 
 export default function Home({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
@@ -26,6 +27,7 @@ export default function Home({ theme, toggleTheme }) {
         <Banner theme={theme} />
         <About theme={theme} />
         <Pricing theme={theme} />
+        <Footer theme={theme} />
       </MainSection>
     </>
   );

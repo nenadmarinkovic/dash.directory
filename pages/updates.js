@@ -2,6 +2,7 @@ import { useState } from "react";
 import Head from "next/head";
 import Header from "@/components/Header";
 import { ContainerWrap, MainSection } from "../styles/components/layout";
+import Footer from "../components/Footer";
 
 export default function Home({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
@@ -23,6 +24,7 @@ export default function Home({ theme, toggleTheme }) {
         <ContainerWrap>
           <div>Updates: Soon</div>
         </ContainerWrap>
+        <Footer theme={theme} />
       </MainSection>
     </>
   );

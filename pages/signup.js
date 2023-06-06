@@ -3,6 +3,7 @@ import Head from "next/head";
 import Header from "@/components/Header";
 import { MainSection } from "../styles/components/layout";
 import Sign from "@/components/Sign";
+import Footer from "../components/Footer";
 
 export default function Home({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
@@ -22,6 +23,7 @@ export default function Home({ theme, toggleTheme }) {
 
       <MainSection>
         <Sign/>
+        <Footer theme={theme}/>
       </MainSection>
     </>
   );

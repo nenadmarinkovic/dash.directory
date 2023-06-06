@@ -23,8 +23,8 @@ export const PricingCardItem = styled.div`
   margin-top: 1rem;
 
   svg {
-    height: 35px;
-    width: 35px;
+    height: 30px;
+    width: 30px;
     margin-right: 10px;
   }
 `;
@@ -33,9 +33,9 @@ export const Money = styled.span`
   font-size: 2rem;
   font-weight: bold;
   color: ${({ theme }) => theme.color};
+`;
 
-  /* .month {
-    font-size: 1rem;
-    color: #666;
-  } */
+export const PricingAdditional = styled.div`
+  text-align: center;
+  margin: 7.5rem 12rem 0 12rem;
 `;

@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const AboutWrap = styled.section`
   flex: 1;
-  padding-bottom: 5.5rem;
 `;
 
 export const AboutFlex = styled.main`
