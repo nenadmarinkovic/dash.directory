@@ -3,6 +3,7 @@ import {
   FooterWrap,
   FooterInside,
   FooterFlex,
+  Year,
 } from "../styles/components/footer";
 import { ContainerWrap } from "../styles/components/layout";
 import { Text } from "evergreen-ui";
@@ -23,10 +24,33 @@ function Footer({ theme }) {
             <Text color={bw} marginTop={10}>
               See <Link href="/updates">Updates</Link> for more.
             </Text>
-            <Text textAlign="center" fontSize={13} marginTop="auto"> © {new Date().getFullYear()} Dash Directory</Text>
+          </FooterFlex>
+
+          <FooterFlex className="links">
+            <Text color="muted">About the Platform</Text>
+            <Text color="muted" marginTop={15}>
+              Terms of Service
+            </Text>
+            <Text color="muted" marginTop={15}>
+              Contact the developer
+            </Text>
           </FooterFlex>
         </FooterInside>
       </ContainerWrap>
+      <Year>
+        <Text
+          paddingTop={30}
+          paddingBottom={30}
+          display="block"
+          width="100%"
+          textAlign="center"
+          fontSize={13}
+          marginTop="auto"
+        >
+          {" "}
+          © {new Date().getFullYear()} Dash Directory
+        </Text>
+      </Year>
     </FooterWrap>
   );
 }
