@@ -36,7 +36,7 @@ function About({ theme }) {
             letterSpacing="-.003rem"
             textAlign="center"
           >
-            It&apos; all about efficiency
+            It&apos;s all about efficiency
           </Heading>
 
           <Paragraph
