@@ -9,6 +9,10 @@ export const AboutFlex = styled.main`
   background: ${({ theme }) => theme.background};
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 960px) {
+    flex-direction: column;
+  }
 `;
 
 export const AboutSmall = styled.div`
@@ -17,6 +21,12 @@ export const AboutSmall = styled.div`
   border-radius: 5px;
   padding: 2.8rem;
   border: 0.5px solid rgba(200, 200, 200, 0.38);
+
+  @media (max-width: 960px) {
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+  }
 `;
 
 export const AboutFull = styled.div`
@@ -26,6 +36,18 @@ export const AboutFull = styled.div`
   border-radius: 5px;
   padding: 2.8rem;
   border: 0.5px solid rgba(200, 200, 200, 0.38);
+
+  p {
+    width: 70%;
+
+    @media (max-width: 960px) {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 960px) {
+   padding: 1.5rem;
+    }
 `;
 
 export const AboutTitle = styled.div`
@@ -37,6 +59,10 @@ export const AboutTitle = styled.div`
 
   h2 {
     margin-left: 1rem;
+  }
+
+  @media (max-width: 960px) {
+    margin: 2.75rem 0;
   }
 `;
 
@@ -60,5 +86,9 @@ export const AboutTitleFlex = styled.div`
     width: 30px;
     height: 30px;
     margin-right: 10px;
+  }
+
+  @media (max-width: 960px) {
+    flex-direction: column;
   }
 `;

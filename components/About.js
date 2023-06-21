@@ -197,7 +197,6 @@ function About({ theme }) {
             color="muted"
             marginTop={18}
             lineHeight={1.75}
-            width={"70%"}
           >
             Dash Directory is your ultimate productivity companion, empowering
             you to stay focused and make the most out of your time. With our

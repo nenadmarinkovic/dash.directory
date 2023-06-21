@@ -97,6 +97,10 @@ export const GlobalStyle = createGlobalStyle`
       @media (max-width: 1560px) {
         height: 720vh;
       }
+
+      @media (max-width: 960px) {
+        height: unset;
+      }
      }
 
     .motion-progress {
@@ -128,6 +132,11 @@ export const GlobalStyle = createGlobalStyle`
       display: flex;
       gap: 48px;
       margin-top: 3.5rem;
+
+      @media (max-width: 960px) {
+       flex-wrap: wrap;
+       justify-content: center;
+      }
     }
 
     .carousel-slide {
@@ -140,6 +149,12 @@ export const GlobalStyle = createGlobalStyle`
       align-items: center;
       justify-content: center;
       border-radius: 5px;
+
+      @media (max-width: 960px) {
+        min-width: 300px;
+        height: unset;
+        justify-content: center;
+      }
     }
 
     .carousel-item {
@@ -157,5 +172,9 @@ export const GlobalStyle = createGlobalStyle`
         width: 35px;
         height: 35px;
       }
+
+      @media (max-width: 960px) {
+        padding: 1.5rem;
+     }
     }
 `;

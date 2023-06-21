@@ -12,6 +12,11 @@ export const FooterInside = styled.div`
   height: 100%;
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 960px) {
+    flex-direction: column;
+    justify-items: center;
+  }
 `;
 
 export const FooterFlex = styled.div`
@@ -26,6 +31,14 @@ export const FooterFlex = styled.div`
       color: inherit;
       font-weight: inherit;
     }
+
+    @media (max-width: 960px) {
+      margin-top: 1.5rem !important;
+    }
+  }
+
+  @media (max-width: 960px) {
+    align-items: center;
   }
 `;
 
