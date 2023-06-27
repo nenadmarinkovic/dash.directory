@@ -21,6 +21,7 @@ export const AboutSmall = styled.div`
   border-radius: 5px;
   padding: 2.8rem;
   border: 0.5px solid rgba(200, 200, 200, 0.38);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
   @media (max-width: 960px) {
     width: 100%;
@@ -36,6 +37,7 @@ export const AboutFull = styled.div`
   border-radius: 5px;
   padding: 2.8rem;
   border: 0.5px solid rgba(200, 200, 200, 0.38);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
   p {
     width: 70%;
@@ -46,8 +48,8 @@ export const AboutFull = styled.div`
   }
 
   @media (max-width: 960px) {
-   padding: 1.5rem;
-    }
+    padding: 1.5rem;
+  }
 `;
 
 export const AboutTitle = styled.div`

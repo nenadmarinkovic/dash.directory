@@ -149,6 +149,7 @@ export const GlobalStyle = createGlobalStyle`
       align-items: center;
       justify-content: center;
       border-radius: 5px;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
       @media (max-width: 960px) {
         min-width: 300px;
