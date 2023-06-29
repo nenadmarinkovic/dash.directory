@@ -18,7 +18,7 @@ export const PricingCard = styled.div`
   border-radius: 5px;
   padding: 2.8rem;
   border: 0.5px solid rgba(200, 200, 200, 0.38);
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 3px 24px;
 
   @media (max-width: 960px) {
     width: 100%;
