@@ -31,9 +31,6 @@ function Header({ theme, toggleTheme }) {
                   <Text>Pricing</Text>
                 </ScrollIntoView>
               </HeaderLink>
-              <HeaderLink>
-                <Text>Contact</Text>
-              </HeaderLink>
               <ThemeButton onClick={toggleTheme}>
                 <Text> {theme === "light" ? "Dark mode" : "Light mode"}</Text>
               </ThemeButton>
