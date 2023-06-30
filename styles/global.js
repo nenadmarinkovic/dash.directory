@@ -163,6 +163,7 @@ export const GlobalStyle = createGlobalStyle`
     .carousel-slide {
       background-color: ${({ theme }) => theme.dimmed};
       color: ${({ theme }) => theme.color};
+      border: 0.5px solid rgba(200, 200, 200, 0.38);
       width: 300px;
       height: 300px;
       display: flex;
