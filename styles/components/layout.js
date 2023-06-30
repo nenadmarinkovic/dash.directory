@@ -30,7 +30,7 @@ export const ContainerWrap = styled.div`
 export const CenteredSection = styled.div`
   margin: 5.5rem 12.5rem 1.5rem 12.5rem;
 
-  @media (max-width: 25rem) {
+  @media (max-width: 960px) {
     margin: 3.5rem 0;
   }
 `;

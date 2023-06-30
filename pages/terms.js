@@ -55,6 +55,7 @@ export default function Home({ theme, toggleTheme }) {
               <Strong
                 display="block"
                 marginTop={18}
+                marginBottom={18}
                 size={500}
                 color="muted"
                 lineHeight={1.75}
@@ -79,6 +80,7 @@ export default function Home({ theme, toggleTheme }) {
               <Strong
                 display="block"
                 marginTop={18}
+                marginBottom={18}
                 size={500}
                 color="muted"
                 lineHeight={1.75}
@@ -99,6 +101,7 @@ export default function Home({ theme, toggleTheme }) {
               <Strong
                 display="block"
                 marginTop={18}
+                marginBottom={18}
                 size={500}
                 color="muted"
                 lineHeight={1.75}
@@ -118,6 +121,7 @@ export default function Home({ theme, toggleTheme }) {
               <Strong
                 display="block"
                 marginTop={18}
+                marginBottom={18}
                 size={500}
                 color="muted"
                 lineHeight={1.75}
@@ -135,6 +139,7 @@ export default function Home({ theme, toggleTheme }) {
               <Strong
                 display="block"
                 marginTop={18}
+                marginBottom={18}
                 size={500}
                 color="muted"
                 lineHeight={1.75}
@@ -154,6 +159,7 @@ export default function Home({ theme, toggleTheme }) {
               <Strong
                 display="block"
                 marginTop={18}
+                marginBottom={18}
                 size={500}
                 color="muted"
                 lineHeight={1.75}
@@ -173,6 +179,7 @@ export default function Home({ theme, toggleTheme }) {
                 lineHeight={1.75}
                 display="block"
                 marginTop={18}
+                marginBottom={18}
               >
                 Governing Law These Terms shall be governed by and construed in
                 accordance with the laws of the jurisdiction where Dash
@@ -185,6 +192,7 @@ export default function Home({ theme, toggleTheme }) {
                 lineHeight={1.75}
                 display="block"
                 marginTop={18}
+                marginBottom={18}
               >
                 Last updated: 12.06.2023
               </Paragraph>
