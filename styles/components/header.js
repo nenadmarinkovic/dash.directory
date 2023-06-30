@@ -23,7 +23,6 @@ export const HeaderLinks = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 48%;
   margin-bottom: 3px;
 
   @media (max-width: 47.95rem) {
@@ -36,6 +35,7 @@ export const HeaderLink = styled.div`
   cursor: pointer;
   display: flex;
   justify-content: center;
+  margin-right: 2.5rem;
 `;
 
 export const ThemeButton = styled.button`
@@ -44,4 +44,5 @@ export const ThemeButton = styled.button`
   font-size: 0.9rem;
   border: none;
   cursor: pointer;
+  margin-right: 2.5rem;
 `;

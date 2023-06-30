@@ -11,7 +11,7 @@ import Logo from "./Logo";
 import Link from "next/link";
 import ScrollIntoView from "react-scroll-into-view";
 
-function Header({ theme, toggleTheme }) {
+function Header({ theme, toggleTheme, showHeaderLink }) {
   return (
     <>
       <HeaderWrap>
@@ -21,12 +21,12 @@ function Header({ theme, toggleTheme }) {
               <Logo theme={theme} />
             </Link>
             <HeaderLinks>
-              <HeaderLink>
+              <HeaderLink style={{ display: `${!showHeaderLink && "none"}` }}>
                 <ScrollIntoView selector="#about">
                   <Text>About</Text>
                 </ScrollIntoView>
               </HeaderLink>
-              <HeaderLink>
+              <HeaderLink style={{ display: `${!showHeaderLink && "none"}` }}>
                 <ScrollIntoView selector="#pricing">
                   <Text>Pricing</Text>
                 </ScrollIntoView>
@@ -34,9 +34,7 @@ function Header({ theme, toggleTheme }) {
               <ThemeButton onClick={toggleTheme}>
                 <Text> {theme === "light" ? "Dark mode" : "Light mode"}</Text>
               </ThemeButton>
-              <HeaderLink>
-                <Text>Login</Text>
-              </HeaderLink>
+
               <Link href="/signup">
                 <Button className="themed-button" width={100}>
                   Sign up

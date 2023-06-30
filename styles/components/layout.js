@@ -28,5 +28,18 @@ export const ContainerWrap = styled.div`
 `;
 
 export const CenteredSection = styled.div`
-  margin: 5.5rem 0 2.5rem 0;
+  margin: 5.5rem 12.5rem 1.5rem 12.5rem;
+
+  @media (max-width: 25rem) {
+    margin: 3.5rem 0;
+  }
+`;
+
+export const CenteredLayout = styled.div`
+  text-align: center;
+  padding: 1.5rem 0 30% 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;

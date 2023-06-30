@@ -21,6 +21,7 @@ export default function Home({ theme, toggleTheme }) {
         theme={theme}
         openMenu={openMenu}
         setOpenMenu={setOpenMenu}
+        showHeaderLink={true}
       />
 
       <MainSection>

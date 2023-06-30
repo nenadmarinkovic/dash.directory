@@ -86,7 +86,28 @@ export const GlobalStyle = createGlobalStyle`
           background-color: ${({ theme }) => theme.buttonColor};
           color: #000;
         }
+
+   
       }
+    }
+
+    .custom-button-small-svg {
+        svg {
+          width: 21px;
+          height: 21px;
+          display: block;
+          margin-right: 10px;
+        }
+    }
+
+
+    .custom-button-big-svg {
+        svg {
+          width: 25px;
+          height: 25px;
+          display: block;
+          margin-right: 10px;
+        }
     }
 
      /* Framer animation */
