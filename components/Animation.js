@@ -94,9 +94,10 @@ export default function Animation({ theme }) {
                 lineHeight={1.75}
                 textAlign="center"
               >
-                Dash Directory is designed to help you boost your focus and
-                productivity. Here&apos;s a short text highlighting how our
-                platform can support you in achieving your goals:
+                Dash Directory is a comprehensive platform that optimizes
+                productivity, organization, and focus, allowing users to
+                efficiently manage their tasks, information, bookmarks, and
+                events.
               </Paragraph>
             </AboutTitle>
             <motion.div ref={carouselRef} className="carousel" style={{ x }}>
@@ -229,12 +230,11 @@ export default function Animation({ theme }) {
                         letterSpacing="-.003rem"
                         textAlign="center"
                       >
-                        Distraction-free environment
+                        Event organization
                       </Heading>
                       <Text>
-                        Utilize Dash Directory&apos;s clean and clutter-free
-                        interface to create a distraction-free zone for your
-                        work.
+                        Dash Directory allows users to create and manage events,
+                        with options for reminders and attendee management.
                       </Text>
                     </div>
                   ) : index === 4 ? (
@@ -263,45 +263,11 @@ export default function Animation({ theme }) {
                         letterSpacing="-.003rem"
                         textAlign="center"
                       >
-                        Customized Workspace
+                        Note Taking
                       </Heading>
                       <Text>
-                        Utilize Dash Directory&apos;s clean and clutter-free
-                        interface to create a distraction-free zone for your
-                        work.
-                      </Text>
-                    </div>
-                  ) : index === 5 ? (
-                    <div className="carousel-item">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth="1.5"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"
-                        />
-                      </svg>
-                      <Heading
-                        is="h4"
-                        marginTop={8}
-                        lineHeight={1.25}
-                        fontSize={23}
-                        color={bw}
-                        fontWeight={900}
-                        letterSpacing="-.003rem"
-                        textAlign="center"
-                      >
-                        Distraction-free environment
-                      </Heading>
-                      <Text>
-                        Utilize Dash Directory&apos;s clean and clutter-free
-                        interface to create a distraction-free zone for your
-                        work.
+                        Dash Directory includes a note-taking feature, allowing
+                        users to jot down important information or ideas.
                       </Text>
                     </div>
                   ) : (
@@ -334,9 +300,9 @@ export default function Animation({ theme }) {
                 lineHeight={1.75}
                 textAlign="center"
               >
-                Dash Directory is designed to help you boost your focus and
-                productivity. Here&apos;s a short text highlighting how our
-                platform can support you in achieving your goals:
+                Profile creation feature will be available on Dash Directory
+                soon, enabling users to customize their settings and personalize
+                their experience.
               </Paragraph>
               <Link href="/signup">
                 <Button className="themed-button" marginTop={15} width={120}>
