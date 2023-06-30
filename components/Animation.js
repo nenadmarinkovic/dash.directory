@@ -134,9 +134,8 @@ export default function Animation({ theme }) {
                         Distraction-free environment
                       </Heading>
                       <Text>
-                        Utilize Dash Directory&apos;s clean and clutter-free
-                        interface to create a distraction-free zone for your
-                        work.
+                        Dash Directory provides a clutter-free workspace for
+                        focused work.
                       </Text>
                     </div>
                   ) : index === 1 ? (
@@ -168,9 +167,8 @@ export default function Animation({ theme }) {
                         Task Prioritization
                       </Heading>
                       <Text>
-                        Utilize Dash Directory&apos;s clean and clutter-free
-                        interface to create a distraction-free zone for your
-                        work.
+                        Users can prioritize tasks based on importance or
+                        deadlines.
                       </Text>
                     </div>
                   ) : index === 2 ? (
@@ -202,9 +200,8 @@ export default function Animation({ theme }) {
                         Search functionality
                       </Heading>
                       <Text>
-                        Utilize Dash Directory&apos;s clean and clutter-free
-                        interface to create a distraction-free zone for your
-                        work.
+                        Dash Directory offers a powerful search feature to
+                        quickly find specific tasks or bookmarks.
                       </Text>
                     </div>
                   ) : index === 3 ? (
