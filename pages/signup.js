@@ -11,11 +11,9 @@ import {
 import Footer from "../components/Footer";
 
 export default function Home({ theme, toggleTheme }) {
-  
   const [openMenu, setOpenMenu] = useState(false);
   const [isShownEmail, setIsShownEmail] = useState(false);
   const [isShownGithub, setIsShownGithub] = useState(false);
-
 
   let bw = theme === "light" ? "#000" : "#FFF";
 
@@ -56,9 +54,9 @@ export default function Home({ theme, toggleTheme }) {
               textAlign="center"
               marginTop={30}
             >
-              This page is currently under development This new feature will
+              This page is currently under development. This new feature will
               allow you to securely access your Dash Directory account, ensuring
-              a personalized and seamless experience.{" "}
+              a personalized and seamless experience.
             </Paragraph>
           </CenteredSection>
           <CenteredLayout>
