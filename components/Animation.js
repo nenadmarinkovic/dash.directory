@@ -100,7 +100,7 @@ export default function Animation({ theme }) {
               </Paragraph>
             </AboutTitle>
             <motion.div ref={carouselRef} className="carousel" style={{ x }}>
-              {Array.from(Array(8).keys()).map((i, index) => (
+              {Array.from(Array(5).keys()).map((i, index) => (
                 <motion.div
                   {...slideAnimation}
                   key={i}
@@ -275,72 +275,6 @@ export default function Animation({ theme }) {
                       </Text>
                     </div>
                   ) : index === 5 ? (
-                    <div className="carousel-item">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth="1.5"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"
-                        />
-                      </svg>
-                      <Heading
-                        is="h4"
-                        marginTop={8}
-                        lineHeight={1.25}
-                        fontSize={23}
-                        color={bw}
-                        fontWeight={900}
-                        letterSpacing="-.003rem"
-                        textAlign="center"
-                      >
-                        Distraction-free environment
-                      </Heading>
-                      <Text>
-                        Utilize Dash Directory&apos;s clean and clutter-free
-                        interface to create a distraction-free zone for your
-                        work.
-                      </Text>
-                    </div>
-                  ) : index === 6 ? (
-                    <div className="carousel-item">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth="1.5"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"
-                        />
-                      </svg>
-                      <Heading
-                        is="h4"
-                        marginTop={8}
-                        lineHeight={1.25}
-                        fontSize={23}
-                        color={bw}
-                        fontWeight={900}
-                        letterSpacing="-.003rem"
-                        textAlign="center"
-                      >
-                        Distraction-free environment
-                      </Heading>
-                      <Text>
-                        Utilize Dash Directory&apos;s clean and clutter-free
-                        interface to create a distraction-free zone for your
-                        work.
-                      </Text>
-                    </div>
-                  ) : index === 7 ? (
                     <div className="carousel-item">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
