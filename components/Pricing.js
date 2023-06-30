@@ -176,8 +176,8 @@ function Pricing({ theme }) {
           textAlign="center"
         >
           The Updates page keeps users informed about the latest features,
-          improvements, and announcements, ensuring they stay up to date with
-          the platform&apos;s developments.
+          improvements, and announcements related to Dash Directory, ensuring
+          they stay up to date with the platform&apos;s developments.
         </Paragraph>
         <Button fontSize={14} appearance="minimal" marginTop={15}>
           <Link href="/updates">See updates</Link>

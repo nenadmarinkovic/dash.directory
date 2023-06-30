@@ -62,6 +62,7 @@ export default function Home({ theme, toggleTheme }) {
           <CenteredLayout>
             <Pane>
               <Dialog
+                containerProps={{ className: "themed-modal" }}
                 isShown={isShownGithub}
                 title="Continue with GitHub"
                 onCloseComplete={() => setIsShownGithub(false)}
@@ -94,6 +95,7 @@ export default function Home({ theme, toggleTheme }) {
             </Pane>
             <Pane>
               <Dialog
+                containerProps={{ className: "themed-modal" }}
                 isShown={isShownEmail}
                 title="Continue with Email"
                 onCloseComplete={() => setIsShownEmail(false)}
