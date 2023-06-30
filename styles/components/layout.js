@@ -26,3 +26,7 @@ export const ContainerWrap = styled.div`
     max-width: 72.8rem;
   }
 `;
+
+export const CenteredSection = styled.div`
+  margin: 5.5rem 0 2.5rem 0;
+`;

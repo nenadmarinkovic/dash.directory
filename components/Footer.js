@@ -27,12 +27,20 @@ function Footer({ theme }) {
           </FooterFlex>
 
           <FooterFlex className="links">
-            <Text color="muted">About the Platform</Text>
             <Text color="muted" marginTop={15}>
-              Terms of Service
+            <Link href="/terms">
+            Terms of Service
+            </Link>
+             
             </Text>
             <Text color="muted" marginTop={15}>
-              <a href="https://nenadmarinkovic.com">Contact the developer</a>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://nenadmarinkovic.com"
+              >
+                Contact the developer
+              </a>
             </Text>
           </FooterFlex>
         </FooterInside>
