@@ -132,7 +132,7 @@ function About({ theme }) {
                 color={bw}
                 letterSpacing="-.003rem"
               >
-                Menage bookmarks
+                Manage bookmarks
               </Heading>
             </AboutTitleFlex>
             <Paragraph
