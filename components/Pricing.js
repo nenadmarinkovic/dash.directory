@@ -33,8 +33,7 @@ function Pricing({ theme }) {
           </Heading>
           <Money>€ 0</Money>
           <Text marginTop={16}>
-            Dash Directory is your ultimate productivity companion, empowering
-            you to stay focused and make the most out of your time.
+            Access to basic features without any charge.
           </Text>
           <PricingCardItem>
             <svg
@@ -50,7 +49,7 @@ function Pricing({ theme }) {
                 d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <Text>Deploy from CLI or personal git</Text>
+            <Text> Enjoy the benefits of Dash Directory without any cost</Text>
           </PricingCardItem>
           <PricingCardItem>
             <svg
@@ -66,7 +65,7 @@ function Pricing({ theme }) {
                 d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <Text>Deploy from CLI or personal git</Text>
+            <Text>Task and event management functionalities</Text>
           </PricingCardItem>
           <PricingCardItem>
             <svg
@@ -74,15 +73,16 @@ function Pricing({ theme }) {
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth="1.5"
-              stroke={bw}
+              stroke="currentColor"
             >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <Text>Deploy from CLI or personal git</Text>
+
+            <Text>Priority customer support for prompt assistance</Text>
           </PricingCardItem>
         </PricingCard>
         <PricingCard>
@@ -102,8 +102,7 @@ function Pricing({ theme }) {
           </Money>
 
           <Text marginTop={16}>
-            Dash Directory is your ultimate productivity companion, empowering
-            you to stay focused and make the most out of your time.
+            Get additional features and premium support.
           </Text>
           <PricingCardItem>
             <svg
@@ -119,7 +118,7 @@ function Pricing({ theme }) {
                 d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <Text>Deploy from CLI or personal git</Text>
+            <Text>Enjoy the benefits of Dash Directory without any cost</Text>
           </PricingCardItem>
           <PricingCardItem>
             <svg
@@ -135,7 +134,7 @@ function Pricing({ theme }) {
                 d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <Text>Deploy from CLI or personal git</Text>
+            <Text>Task and event management functionalities</Text>
           </PricingCardItem>
           <PricingCardItem>
             <svg
@@ -151,7 +150,7 @@ function Pricing({ theme }) {
                 d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <Text>Deploy from CLI or personal git</Text>
+            <Text>Priority customer support for prompt assistance</Text>
           </PricingCardItem>
         </PricingCard>
       </PricingCards>
@@ -176,9 +175,9 @@ function Pricing({ theme }) {
           lineHeight={1.75}
           textAlign="center"
         >
-          Dash Directory is designed to help you boost your focus and
-          productivity. Here&apos;s a short text highlighting how our platform
-          can support you in achieving your goals:
+          The Updates page keeps users informed about the latest features,
+          improvements, and announcements, ensuring they stay up to date with
+          the platform&apos;s developments.
         </Paragraph>
         <Button fontSize={14} appearance="minimal" marginTop={15}>
           <Link href="/updates">See updates</Link>

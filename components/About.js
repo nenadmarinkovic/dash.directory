@@ -142,8 +142,7 @@ function About({ theme }) {
               lineHeight={1.75}
             >
               Dash Directory offers a centralized platform to manage all your
-              bookmarks. Say goodbye to scattered and disorganized bookmarks
-              across multiple browsers and devices.
+              bookmarks. Say goodbye to scattered and disorganized bookmarks.
             </Paragraph>
             <AboutItems>
               <AboutItem>
