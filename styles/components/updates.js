@@ -11,6 +11,7 @@ export const Update = styled.div`
   padding: 1.8rem;
   color: ${({ theme }) => theme.color};
   border-radius: 5px;
+  border: 0.5px solid rgba(200, 200, 200, 0.38);
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
     rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 
