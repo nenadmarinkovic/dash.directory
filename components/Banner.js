@@ -30,6 +30,7 @@ function Banner({ theme }) {
               fontWeight={900}
               color={bw}
               letterSpacing="-.003rem"
+              className="big-header"
             >
               Web directory for organized minds
             </Heading>

@@ -64,7 +64,7 @@ export const AboutTitle = styled.div`
   }
 
   @media (max-width: 960px) {
-    margin: 2.75rem 0;
+    margin: 1.75rem 0;
   }
 `;
 

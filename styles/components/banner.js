@@ -7,7 +7,7 @@ export const BannerWrap = styled.div`
 
   @media (max-width: 960px) {
     flex-direction: column;
-    padding-top: 1.5rem;
+    padding-top: 0;
   }
 `;
 
@@ -24,6 +24,7 @@ export const BannerItem = styled.div`
 
   @media (max-width: 960px) {
     width: 100%;
+    margin: 1.5rem 0;
   }
 `;
 

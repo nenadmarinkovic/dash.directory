@@ -17,4 +17,8 @@ export const Line = styled.div`
   height: 120px;
   background: rgb(0, 0, 0);
   background: ${({ theme }) => theme.lineBackground};
+
+  @media (max-width: 960px) {
+    height: 80px;
+  }
 `;

@@ -25,6 +25,13 @@ export const GlobalStyle = createGlobalStyle`
       font-weight: bold;
       text-decoration: none;
     }
+
+    .big-header {
+      @media (max-width: 960px) {
+        font-size: 38px;
+        margin: 2rem 0;
+      }
+    }
   
    /* Banner animation */
 
