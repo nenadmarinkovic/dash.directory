@@ -43,5 +43,5 @@ export const FooterFlex = styled.div`
 `;
 
 export const Year = styled.div`
-  background-color: ${({ theme }) => theme.clear};
+  background-color: ${({ theme }) => theme.background};
 `;
