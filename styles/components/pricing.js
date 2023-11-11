@@ -13,7 +13,7 @@ export const PricingCards = styled.div`
 export const PricingCard = styled.div`
   display: flex;
   flex-direction: column;
-  background: ${({ theme }) => theme.dimmed};
+  background: ${({ theme }) => theme.clear};
   width: 43.5%;
   border-radius: 5px;
   padding: 2.8rem;

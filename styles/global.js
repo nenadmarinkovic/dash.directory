@@ -168,7 +168,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     .carousel-slide {
-      background-color: ${({ theme }) => theme.dimmed};
+      background-color: ${({ theme }) => theme.clear};
       color: ${({ theme }) => theme.color};
       width: 300px;
       height: 300px;
@@ -177,7 +177,7 @@ export const GlobalStyle = createGlobalStyle`
       justify-content: center;
       border-radius: 5px;
       border: 0.5px solid rgba(200, 200, 200, 0.38);
-              box-shadow: rgba(149, 157, 165, 0.2) 0px 3px 24px;
+              box-shadow: rgba(149, 157, 165, 0.1) 0px 3px 24px;
 
       @media (max-width: 960px) {
         min-width: 300px;

@@ -16,7 +16,7 @@ export const AboutFlex = styled.main`
 `;
 
 export const AboutSmall = styled.div`
-  background: ${({ theme }) => theme.dimmed};
+  background: ${({ theme }) => theme.clear};
   width: 48%;
   border-radius: 5px;
   padding: 2.8rem;
@@ -32,7 +32,7 @@ export const AboutSmall = styled.div`
 
 export const AboutFull = styled.div`
   margin-top: 2.7rem;
-  background: ${({ theme }) => theme.dimmed};
+  background: ${({ theme }) => theme.clear};
   width: 100%;
   border-radius: 5px;
   padding: 2.8rem;

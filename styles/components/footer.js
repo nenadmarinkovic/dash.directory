@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const FooterWrap = styled.footer`
-  background-color: ${({ theme }) => theme.dimmed};
+  background-color: ${({ theme }) => theme.background};
   border-top: 0.5px solid rgba(200, 200, 200, 0.38);
   margin-top: 9.75rem;
-  height: 325px;
+  height: 225px;
 `;
 
 export const FooterInside = styled.div`
@@ -43,5 +43,5 @@ export const FooterFlex = styled.div`
 `;
 
 export const Year = styled.div`
-  background-color: ${({ theme }) => theme.dimmed};
+  background-color: ${({ theme }) => theme.clear};
 `;
