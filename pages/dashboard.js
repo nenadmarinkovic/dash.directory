@@ -4,13 +4,22 @@ import Header from "@/components/Header";
 import {
   ContainerWrap,
   MainSection,
+  CenteredSection,
+  CenteredLayout,
   ThemeLayout,
 } from "../styles/components/layout";
 import Footer from "../components/Footer";
 import { useAuth } from "../context/AuthContext";
 import { DashboardWrap } from "../styles/pages/dashboard";
-import { StatusIndicator, Alert, Text, Strong } from "evergreen-ui";
-import { AlertWrap } from "../styles/components/helpers";
+import {
+  Heading,
+  Strong,
+  StatusIndicator,
+  Button,
+  Paragraph,
+  Text,
+} from "evergreen-ui";
+import Link from "next/link";
 
 export default function DashboardPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
@@ -18,7 +27,7 @@ export default function DashboardPage({ theme, toggleTheme }) {
 
   // TODO: Move this logic
   let textColor = theme === "light" ? "#000" : "#F8FAFF";
-  let textMuted = theme === "light" ? "#676f89" : "#8B93A8";
+  let bw = theme === "light" ? "#000" : "#FFF";
 
   useEffect(() => {}, [currentUser]);
 
@@ -40,48 +49,83 @@ export default function DashboardPage({ theme, toggleTheme }) {
       <ThemeLayout>
         <MainSection>
           <ContainerWrap>
-            <DashboardWrap>
-              {currentUser ? (
-                <>
-                  {!currentUser?.emailVerified || !currentUser?.displayName ? (
-                    <StatusIndicator color="warning">
-                      <Text color={textColor}>
-                        Hi
-                        <Strong color={textColor}>
-                          {currentUser?.displayName &&
-                            `, ${currentUser?.displayName}`}
-                        </Strong>
-                        . Please verify your email in order to fully use Dash
-                        Directory.
-                      </Text>
-                    </StatusIndicator>
-                  ) : (
-                    <StatusIndicator color="success">
-                      <Text color={textColor}>
-                        Welcome,
-                        <Strong color={textColor}>
-                          {currentUser?.displayName}
-                        </Strong>
-                        ! <br /> Your Dashboard is still in developer-mode.
-                        Thanks for being patient.
-                      </Text>
-                    </StatusIndicator>
-                  )}
-                </>
-              ) : (
-                <AlertWrap>
-                  <Alert
-                    intent="warning"
-                    title="Sign up or log in to use Dashboard"
-                    marginBottom={32}
+            {!currentUser && (
+              <>
+                <CenteredSection>
+                  <Heading
+                    is="h1"
+                    align="center"
+                    marginTop={8}
+                    lineHeight={1.25}
+                    fontSize={58}
+                    marginBottom={8}
+                    fontWeight={900}
+                    color={bw}
+                    letterSpacing="-.003rem"
                   >
-                    <Text color={textMuted} display="block" paddingTop={10}>
-                      This page is available only to authenticated users.
+                    Authentication Required
+                  </Heading>
+                  <Paragraph
+                    size={500}
+                    lineHeight={1.75}
+                    textAlign="center"
+                    marginTop={30}
+                    color="muted"
+                  >
+                    It seems like you`re trying to access a restricted area, and
+                    you haven`t been authenticated yet. This could be because
+                    you`re not logged in or don`t have the necessary permissions
+                    to view Dashboard page.
+                  </Paragraph>
+                </CenteredSection>
+                <CenteredLayout>
+                  <Link href="/signup">
+                    <Button
+                      className="custom-button-big-svg"
+                      appearance="primary"
+                      fontWeight="bold"
+                      width={280}
+                      height={50}
+                    >
+                      <Text fontWeight="bold" color="#FFF">
+                        Create account
+                      </Text>
+                    </Button>
+                  </Link>
+                </CenteredLayout>
+              </>
+            )}
+
+            {currentUser && (
+              <DashboardWrap>
+                {!currentUser?.emailVerified || !currentUser?.displayName ? (
+                  <StatusIndicator color="warning">
+                    <Text color={textColor} fontSize={14}>
+                      Welcome
+                      <Strong color={textColor} fontSize={14}>
+                        {currentUser?.displayName &&
+                          `, ${currentUser?.displayName}`}
+                        .
+                      </Strong>
+                      <br />
+                      Please verify your email in order to fully use Dash
+                      Directory.
                     </Text>
-                  </Alert>
-                </AlertWrap>
-              )}
-            </DashboardWrap>
+                  </StatusIndicator>
+                ) : (
+                  <StatusIndicator color="success">
+                    <Text color={textColor} fontSize={14}>
+                      Welcome,
+                      <Strong color={textColor} fontSize={14}>
+                        {currentUser?.displayName}
+                      </Strong>
+                      ! <br /> Your Dashboard is still in developer-mode. Thanks
+                      for being patient.
+                    </Text>
+                  </StatusIndicator>
+                )}
+              </DashboardWrap>
+            )}
           </ContainerWrap>
         </MainSection>
         <Footer theme={theme} />

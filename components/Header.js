@@ -86,7 +86,7 @@ function Header({ theme, toggleTheme, showHeaderLink, currentUser }) {
 
               {!currentUser ? (
                 <Link href="/signup">
-                  <Button className="themed-button" width={100}>
+                  <Button className="themed-button"  fontWeight="bold" width={100}>
                     Sign up
                   </Button>
                 </Link>

@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Strong, TextInput, Button, Paragraph, toaster } from "evergreen-ui";
+import {
+  Strong,
+  TextInput,
+  Button,
+  Text,
+  Paragraph,
+  toaster,
+} from "evergreen-ui";
 import { useAuth } from "../context/AuthContext";
 import { useRouter } from "next/router";
 import { SignForm, SignField } from "../styles/components/signin";
@@ -95,7 +102,9 @@ function Sign({ theme }) {
           onClick={submitHandler}
           appearance="primary"
         >
-          {isCreatingAccount ? " Create account" : "Login"}
+          <Text size={3} fontWeight="bold" color="#FFF">
+            {isCreatingAccount ? " Create account" : "Login"}
+          </Text>
         </Button>
       </SignField>
 

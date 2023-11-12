@@ -197,9 +197,8 @@ function Pricing({ theme }) {
           improvements, and announcements related to Dash Directory, ensuring
           they stay up to date with the platform&apos;s developments.
         </Paragraph>
-        <Button fontSize={14} appearance="minimal" marginTop={15}>
-          <Link href="/updates">See updates</Link>
-        </Button>
+        <br />
+        <Link href="/updates">See updates</Link>
       </PricingAdditional>
     </ContainerWrap>
   );

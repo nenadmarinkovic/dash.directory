@@ -38,3 +38,8 @@ export const AlertWrap = styled.div`
   height: 100%;
   margin-top: 10px;
 `;
+
+export const NotFound = styled.div`
+  margin: 5.5rem 0;
+  text-align: center;
+`;
