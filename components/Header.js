@@ -54,9 +54,17 @@ function Header({ theme, toggleTheme, showHeaderLink, currentUser }) {
               )}
 
               {currentUser && (
-                <HeaderLink style={{ display: `${!showHeaderLink && "none"}` }}>
+                <HeaderLink >
                   <Link href="/dashboard">
-                    <Text>Dashboard</Text>
+                    <Text
+                      className={
+                        router.pathname.includes("/dashboard")
+                          ? "active-link"
+                          : ""
+                      }
+                    >
+                      Dashboard
+                    </Text>
                   </Link>
                 </HeaderLink>
               )}

@@ -32,6 +32,10 @@ export const GlobalStyle = createGlobalStyle`
         margin: 2rem 0;
       }
     }
+
+    .active-link {
+      border-bottom: 1px solid black;
+    }
   
    /* Banner animation */
 

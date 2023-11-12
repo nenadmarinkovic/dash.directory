@@ -10,8 +10,8 @@ import {
 import Footer from "../components/Footer";
 import { useAuth } from "../context/AuthContext";
 import { DashboardWrap } from "../styles/pages/dashboard";
-import { StatusIndicator, Spinner, toaster } from "evergreen-ui";
-import { SpinnerWrap } from "../styles/components/helpers";
+import { StatusIndicator, Spinner, toaster, Alert } from "evergreen-ui";
+import { AlertWrap } from "../styles/components/helpers";
 
 export default function DashboardPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
@@ -57,9 +57,15 @@ export default function DashboardPage({ theme, toggleTheme }) {
                   )}
                 </>
               ) : (
-                <SpinnerWrap>
-                  <Spinner size={32} />
-                </SpinnerWrap>
+                <AlertWrap>
+                  <Alert
+                    intent="warning"
+                    title="Sign up or log in to use Dashboard"
+                    marginBottom={32}
+                  >
+                    This page is available only to authenticated users.
+                  </Alert>
+                </AlertWrap>
               )}
             </DashboardWrap>
           </ContainerWrap>

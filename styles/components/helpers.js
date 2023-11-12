@@ -30,3 +30,11 @@ export const SpinnerWrap = styled.div`
   height: 100%;
   margin-top: 20px;
 `;
+
+export const AlertWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-top: 10px;
+`;
