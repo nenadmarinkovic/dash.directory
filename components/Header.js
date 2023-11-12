@@ -6,7 +6,7 @@ import {
   ThemeButton,
 } from "../styles/components/header";
 import { ContainerWrap } from "../styles/components/layout";
-import { Button, Text, toaster } from "evergreen-ui";
+import { Button, StatusIndicator, Text, toaster } from "evergreen-ui";
 import Logo from "./Logo";
 import Link from "next/link";
 import ScrollIntoView from "react-scroll-into-view";
@@ -50,6 +50,16 @@ function Header({ theme, toggleTheme, showHeaderLink, currentUser }) {
                     </ScrollIntoView>
                   </HeaderLink>
                 </>
+              )}
+
+              {!router.pathname.includes("/dashboard") && currentUser && (
+                <HeaderLink className="no-pointer">
+                  <StatusIndicator color="success">
+                    <Text color={textMuted}>
+                      You are logged in, {currentUser.displayName}.
+                    </Text>
+                  </StatusIndicator>
+                </HeaderLink>
               )}
 
               {currentUser && (

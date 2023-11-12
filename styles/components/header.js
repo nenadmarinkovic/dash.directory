@@ -35,6 +35,10 @@ export const HeaderLink = styled.div`
   display: flex;
   justify-content: center;
   margin-right: 2.5rem;
+
+  &.no-pointer {
+    cursor: text;
+  }
 `;
 
 export const ThemeButton = styled.button`
