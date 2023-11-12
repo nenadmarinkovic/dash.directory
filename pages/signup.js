@@ -9,8 +9,9 @@ import {
   CenteredLayout,
 } from "../styles/components/layout";
 import Footer from "../components/Footer";
+import Sign from "../components/Sign";
 
-export default function Home({ theme, toggleTheme }) {
+export default function SignupPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
   const [isShownEmail, setIsShownEmail] = useState(false);
   const [isShownGithub, setIsShownGithub] = useState(false);
@@ -97,13 +98,12 @@ export default function Home({ theme, toggleTheme }) {
               <Dialog
                 containerProps={{ className: "themed-modal" }}
                 isShown={isShownEmail}
-                title="Continue with Email"
+                title="Signup to Dash Directory"
                 onCloseComplete={() => setIsShownEmail(false)}
-                confirmLabel="Ok"
+                theme={theme}
+                hasFooter={false}
               >
-                We appreciate your patience and look forward to unveiling this
-                exciting addition to our platform in the near future. Stay tuned
-                for updates!
+                <Sign theme={theme} />
               </Dialog>
 
               <Button

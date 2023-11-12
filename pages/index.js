@@ -6,9 +6,12 @@ import Banner from "@/components/Banner";
 import About from "@/components/About";
 import Pricing from "../components/Pricing";
 import Footer from "../components/Footer";
+import { useAuth } from "../context/AuthContext";
+import Sign from "../components/Sign";
 
-export default function Home({ theme, toggleTheme }) {
+export default function HomePage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
+  const { currentUser } = useAuth();
   return (
     <>
       <Head>
@@ -22,6 +25,7 @@ export default function Home({ theme, toggleTheme }) {
         openMenu={openMenu}
         setOpenMenu={setOpenMenu}
         showHeaderLink={true}
+        currentUser={currentUser}
       />
 
       <MainSection>

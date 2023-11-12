@@ -22,3 +22,11 @@ export const Line = styled.div`
     height: 80px;
   }
 `;
+
+export const SpinnerWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-top: 20px;
+`;

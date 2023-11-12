@@ -10,7 +10,7 @@ import {
 import { UpdatesWrap } from "../styles/components/updates";
 import Footer from "../components/Footer";
 
-export default function Home({ theme, toggleTheme }) {
+export default function TermsPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
   let bw = theme === "light" ? "#000" : "#FFF";
   return (
