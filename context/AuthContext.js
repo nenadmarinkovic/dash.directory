@@ -20,7 +20,7 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  async function signup(displayName, email, password, address) {
+  async function signup(displayName, email, password) {
     try {
       const newUserCredentials = await createUserWithEmailAndPassword(
         auth,
@@ -37,7 +37,6 @@ export function AuthProvider({ children }) {
       await setDoc(userDocRef, {
         displayName,
         email,
-        address,
       });
 
       await sendEmailVerification(newUserCredentials.user);
