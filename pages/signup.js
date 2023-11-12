@@ -56,6 +56,7 @@ export default function SignupPage({ theme, toggleTheme }) {
                 lineHeight={1.75}
                 textAlign="center"
                 marginTop={30}
+                color="muted"
               >
                 This page is currently under development. This new feature will
                 allow you to securely access your Dash Directory account,

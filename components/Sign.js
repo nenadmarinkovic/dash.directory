@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Strong, TextInput, Button, Paragraph, toaster } from "evergreen-ui";
 import { useAuth } from "../context/AuthContext";
 import { useRouter } from "next/router";
+import { SignForm, SignField } from "../styles/components/signin";
 
 function Sign({ theme }) {
   const [email, setEmail] = useState("");
@@ -40,26 +41,25 @@ function Sign({ theme }) {
   }
 
   return (
-    <>
-      <div>
-        {isCreatingAccount && (
-          <>
-            <Strong>Your name:</Strong>
-            <br />
-            <TextInput
-              marginTop={3}
-              background={bw}
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              name="text-input-name"
-              placeholder="Your name"
-            />
-            <br />
-            <br />
-          </>
-        )}
-        <Strong>Email address:</Strong>
-        <br />
+    <SignForm>
+      {isCreatingAccount && (
+        <SignField>
+          <Strong color="muted">Your name:</Strong>
+
+          <TextInput
+            marginTop={3}
+            background={bw}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            name="text-input-name"
+            placeholder="Your name"
+            style={{ color: "#696f8c" }}
+          />
+        </SignField>
+      )}
+      <SignField>
+        <Strong color="muted">Email address:</Strong>
+
         <TextInput
           marginTop={3}
           background={bw}
@@ -67,11 +67,12 @@ function Sign({ theme }) {
           onChange={(e) => setEmail(e.target.value)}
           name="text-input-name"
           placeholder="Email Address"
+          style={{ color: "#696f8c" }}
         />
-        <br />
-        <br />
-        <Strong>Password:</Strong>
-        <br />
+      </SignField>
+      <SignField>
+        <Strong color="muted">Password:</Strong>
+
         <TextInput
           background={bw}
           type="password"
@@ -80,12 +81,12 @@ function Sign({ theme }) {
           onChange={(e) => setPassword(e.target.value)}
           name="text-input-name"
           placeholder="Password"
+          style={{ color: "#696f8c" }}
         />
-
-        <br />
-
+      </SignField>
+      <SignField>
         <Button
-          marginTop={20}
+          marginTop={10}
           marginBottom={!isCreatingAccount ? 20 : ""}
           onClick={submitHandler}
           marginRight={16}
@@ -93,22 +94,23 @@ function Sign({ theme }) {
         >
           {isCreatingAccount ? " Create account" : "Login"}
         </Button>
+      </SignField>
 
-        {isCreatingAccount && (
-          <Paragraph
-            onClick={() => setIsCreatingAccount(!isCreatingAccount)}
-            size={500}
-            lineHeight={1.75}
-            textAlign="start"
-            marginTop={20}
-            paddingBottom={20}
-            cursor="pointer"
-          >
-            Already a member? Sign in.
-          </Paragraph>
-        )}
-      </div>
-    </>
+      {isCreatingAccount && (
+        <Paragraph
+          onClick={() => setIsCreatingAccount(!isCreatingAccount)}
+          size={500}
+          lineHeight={1.75}
+          textAlign="start"
+          marginTop={20}
+          paddingBottom={20}
+          cursor="pointer"
+          color="muted"
+        >
+          Already a member? Sign in.
+        </Paragraph>
+      )}
+    </SignForm>
   );
 }
 
