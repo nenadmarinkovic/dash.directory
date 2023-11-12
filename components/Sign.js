@@ -7,12 +7,17 @@ import { SignForm, SignField } from "../styles/components/signin";
 function Sign({ theme }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // const [address, setAddress] = useState(""); // Set additional fields
   const [name, setName] = useState("");
   const [error, setError] = useState(null);
   const [isCreatingAccount, setIsCreatingAccount] = useState(true);
   const { login, signup, currentUser } = useAuth();
 
   let bw = theme === "light" ? "#FFF" : "#000";
+
+  // TODO: Move this logic
+  let textColor = theme === "light" ? "#000" : "#F8FAFF";
+  let textMuted = theme === "light" ? "#676f89" : "#8B93A8";
 
   const router = useRouter();
 
@@ -35,7 +40,7 @@ function Sign({ theme }) {
       return;
     }
 
-    await signup(name, email, password);
+    await signup(name, email, password); // add address, or any additional fields
     router.push("/dashboard");
     toaster.success("Successfully created account. Please verify your email.");
   }
@@ -43,22 +48,23 @@ function Sign({ theme }) {
   return (
     <SignForm>
       {isCreatingAccount && (
-        <SignField>
-          <Strong color="muted">Your name:</Strong>
+        <>
+          <SignField>
+            <Strong color={textMuted}>Name:</Strong>
 
-          <TextInput
-            marginTop={3}
-            background={bw}
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            name="text-input-name"
-            placeholder="Your name"
-            style={{ color: "#696f8c" }}
-          />
-        </SignField>
+            <TextInput
+              marginTop={3}
+              background={bw}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              name="text-input-name"
+              placeholder="Your name"
+            />
+          </SignField>
+        </>
       )}
       <SignField>
-        <Strong color="muted">Email address:</Strong>
+        <Strong color={textMuted}>Email Address:</Strong>
 
         <TextInput
           marginTop={3}
@@ -66,12 +72,11 @@ function Sign({ theme }) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           name="text-input-name"
-          placeholder="Email Address"
-          style={{ color: "#696f8c" }}
+          placeholder="Your email address"
         />
       </SignField>
       <SignField>
-        <Strong color="muted">Password:</Strong>
+        <Strong color={textMuted}>Password:</Strong>
 
         <TextInput
           background={bw}
@@ -80,8 +85,7 @@ function Sign({ theme }) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           name="text-input-name"
-          placeholder="Password"
-          style={{ color: "#696f8c" }}
+          placeholder="Your account password"
         />
       </SignField>
       <SignField>
@@ -89,7 +93,6 @@ function Sign({ theme }) {
           marginTop={10}
           marginBottom={!isCreatingAccount ? 20 : ""}
           onClick={submitHandler}
-          marginRight={16}
           appearance="primary"
         >
           {isCreatingAccount ? " Create account" : "Login"}
@@ -102,10 +105,10 @@ function Sign({ theme }) {
           size={500}
           lineHeight={1.75}
           textAlign="start"
-          marginTop={20}
-          paddingBottom={20}
+          marginTop={10}
+          paddingBottom={10}
           cursor="pointer"
-          color="muted"
+          color={textMuted}
         >
           Already a member? Sign in.
         </Paragraph>

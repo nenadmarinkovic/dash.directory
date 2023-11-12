@@ -1,7 +1,9 @@
 import { Heading } from "evergreen-ui";
 import { TitleWrap } from "../styles/components/title";
 
-const Title = ({ title, id }) => {
+const Title = ({ theme, title, id }) => {
+  let textColor = theme === "light" ? "#000" : "#F8FAFF";
+  let textMuted = theme === "light" ? "#676f89" : "#8B93A8";
   return (
     <TitleWrap id={`${id}`}>
       <Heading
@@ -10,7 +12,7 @@ const Title = ({ title, id }) => {
         fontSize="0.75rem"
         fontWeight={600}
         textTransform="uppercase"
-        color="#696f8c"
+        color={textMuted}
         letterSpacing=".25rem"
         textAlign="center"
         

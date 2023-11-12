@@ -20,6 +20,11 @@ export const GlobalStyle = createGlobalStyle`
       -webkit-font-smoothing: antialiased;
     }
 
+    ::placeholder {
+      color: ${({ theme }) => theme.textMuted};
+      opacity: 1;
+    }
+
     a {
       color: #3faeff;
       font-weight: bold;
@@ -34,7 +39,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     .active-link {
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid ${({ theme }) => theme.muted};;
     }
   
    /* Banner animation */
@@ -180,8 +185,8 @@ export const GlobalStyle = createGlobalStyle`
       align-items: center;
       justify-content: center;
       border-radius: 5px;
-      border: 0.5px solid rgba(200, 200, 200, 0.38);
-              box-shadow: rgba(149, 157, 165, 0.1) 0px 3px 24px;
+      box-shadow: 0 0 0 1px ${({ theme }) => theme.shadowBorder},
+    0 4px 6px rgba(0, 0, 0, 0.04);
 
       @media (max-width: 960px) {
         min-width: 300px;

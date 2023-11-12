@@ -6,8 +6,9 @@ import {
   signOut,
   onAuthStateChanged,
   sendEmailVerification,
-  updateProfile
+  updateProfile,
 } from "firebase/auth";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 
 const AuthContext = React.createContext();
 
@@ -19,16 +20,29 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  async function signup(displayName, email, password) {
+  async function signup(displayName, email, password, address) {
     try {
       const newUserCredentials = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
-      await updateProfile(newUserCredentials.user, { displayName });
+
+      await updateProfile(newUserCredentials.user, {
+        displayName,
+      });
+
+      const userDocRef = doc(db, "users", newUserCredentials.user.uid);
+
+      await setDoc(userDocRef, {
+        displayName,
+        email,
+        address,
+      });
+
       await sendEmailVerification(newUserCredentials.user);
     } catch (error) {
+      console.error("Signup Error:", error.message);
       throw error;
     }
   }
@@ -44,6 +58,23 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       setCurrentUser(user);
+
+      if (user) {
+        // User is logged in, fetch additional data from Firestore
+        const userDocRef = doc(db, "users", user.uid);
+        const userDocSnap = await getDoc(userDocRef);
+
+        if (userDocSnap.exists()) {
+          // User document exists, set additional user data
+          const userData = userDocSnap.data();
+          setCurrentUser((prevUser) => ({
+            ...prevUser,
+            address: userData.address,
+            // Include other fields as needed
+          }));
+        }
+      }
+
       setLoading(false);
     });
     return unsubscribe;

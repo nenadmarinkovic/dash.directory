@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 export const FooterWrap = styled.footer`
   background-color: ${({ theme }) => theme.background};
-  border-top: 0.5px solid rgba(200, 200, 200, 0.38);
+  border-top: 1px solid rgba(200, 200, 200, 0.38);
   margin-top: 3.75rem;
 `;
 
 export const FooterInside = styled.div`
-  padding: 3.75rem 0;
+  padding: 1.75rem 0;
   height: 100%;
   display: flex;
   justify-content: space-between;

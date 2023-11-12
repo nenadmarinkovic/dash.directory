@@ -11,29 +11,28 @@ import Link from "next/link";
 import Logo from "./Logo";
 
 function Footer({ theme }) {
-  let bw = theme === "light" ? "#000" : "#FFF";
+  // TODO: Move this logic
+  let textColor = theme === "light" ? "#000" : "#F8FAFF";
+  let textMuted = theme === "light" ? "#676f89" : "#8B93A8";
   return (
     <FooterWrap>
       <ContainerWrap>
         <FooterInside>
           <FooterFlex>
             <Logo theme={theme} />
-            <Text color={bw} marginTop={25}>
+            <Text color={textColor} marginTop={25}>
               Currently in Development mode.
             </Text>
-            <Text color={bw} marginTop={10}>
+            <Text color={textColor} marginTop={10}>
               See <Link href="/updates">Updates</Link> for more.
             </Text>
           </FooterFlex>
 
           <FooterFlex className="links">
-            <Text color="muted" marginTop={15}>
-            <Link href="/terms">
-            Terms of Service
-            </Link>
-             
+            <Text color={textMuted} marginTop={15}>
+              <Link href="/terms">Terms of Service</Link>
             </Text>
-            <Text color="muted" marginTop={15}>
+            <Text color={textMuted} marginTop={15}>
               <a
                 target="_blank"
                 rel="noreferrer"
@@ -54,7 +53,7 @@ function Footer({ theme }) {
           textAlign="center"
           fontSize={13}
           marginTop="auto"
-          color="muted"
+          color={textMuted}
         >
           © {new Date().getFullYear()} Dash Directory
         </Text>

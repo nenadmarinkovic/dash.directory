@@ -9,6 +9,7 @@ export const Update = styled.div`
   margin-top: 2.5rem;
   line-height: 2;
   padding: 1.8rem;
+  background: ${({ theme }) => theme.clear};
   color: ${({ theme }) => theme.color};
   border-radius: 5px;
   border: 0.5px solid rgba(200, 200, 200, 0.38);

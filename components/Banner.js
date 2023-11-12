@@ -10,14 +10,16 @@ import Link from "next/link";
 import ScrollIntoView from "react-scroll-into-view";
 
 function Banner({ theme }) {
-  let bw = theme === "light" ? "#000" : "#FFF";
+  // TODO: Move this logic
+  let textColor = theme === "light" ? "#000" : "#F8FAFF";
+  let textMuted = theme === "light" ? "#676f89" : "#8B93A8";
 
   return (
     <ContainerWrap>
       <BannerWrap>
         <BannerItem>
           <BannerText>
-            <Text color="muted">
+            <Text color={textMuted}>
               Currently in Development mode. See{" "}
               <Link href="/updates">Updates</Link> for more.
             </Text>
@@ -28,7 +30,7 @@ function Banner({ theme }) {
               fontSize={58}
               marginBottom={8}
               fontWeight={900}
-              color={bw}
+              color={textColor}
               letterSpacing="-.003rem"
               className="big-header"
             >
@@ -36,7 +38,7 @@ function Banner({ theme }) {
             </Heading>
             <Paragraph
               size={500}
-              color="muted"
+              color={textMuted}
               marginTop={18}
               lineHeight={1.75}
             >
@@ -75,7 +77,7 @@ function Banner({ theme }) {
                 />
                 <path
                   d="M421.926 254.14L147.316 413.638L98.4648 385.45L146.55 357.517L372.501 226.143L373.012 225.888L421.926 254.14Z"
-                  fill={bw}
+                  fill={textColor}
                 />
               </g>
               <g id="part2">
@@ -85,7 +87,7 @@ function Banner({ theme }) {
                 />
                 <path
                   d="M616.884 254.138L568.288 282.39L342.338 413.7L293.423 385.448L421.736 310.896L519.374 254.138L372.694 169.446L146.744 300.756L97.8291 272.505L323.779 141.195L371.865 113.198L372.375 112.943L421.29 141.195L568.033 225.886L616.884 254.138Z"
-                  fill={bw}
+                  fill={textColor}
                 />
                 <path
                   d="M616.892 254.139L616.764 310.898L616.892 367.498L342.346 526.53V413.701L568.296 282.391L616.892 254.139Z"
@@ -99,7 +101,7 @@ function Banner({ theme }) {
                 />
                 <path
                   d="M811.904 254.138L763.309 282.39L440.167 470.14L391.252 441.888L568.161 339.085L616.756 310.897L714.394 254.138L372.056 56.4398L48.9145 244.254L0 216.066L323.142 28.188L371.737 0L420.588 28.188L762.99 225.887L811.904 254.138Z"
-                  fill={bw}
+                  fill={textColor}
                 />
                 <path
                   d="M811.904 254.139L811.521 374.544L762.989 402.796L439.783 590.61L440.166 470.141L763.308 282.391L811.904 254.139Z"

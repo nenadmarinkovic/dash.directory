@@ -16,6 +16,9 @@ import { useRouter } from "next/router";
 function Header({ theme, toggleTheme, showHeaderLink, currentUser }) {
   const { logout: authLogout } = useAuth();
 
+  let textColor = theme === "light" ? "#000" : "#F8FAFF";
+  let textMuted = theme === "light" ? "#676f89" : "#8B93A8";
+
   const router = useRouter();
 
   const handleLogout = () => {
@@ -36,18 +39,14 @@ function Header({ theme, toggleTheme, showHeaderLink, currentUser }) {
             <HeaderLinks>
               {!currentUser && (
                 <>
-                  <HeaderLink
-                    style={{ display: `${!showHeaderLink && "none"}` }}
-                  >
+                  <HeaderLink>
                     <ScrollIntoView selector="#about">
-                      <Text color="muted">About</Text>
+                      <Text color={textMuted}>About</Text>
                     </ScrollIntoView>
                   </HeaderLink>
-                  <HeaderLink
-                    style={{ display: `${!showHeaderLink && "none"}` }}
-                  >
+                  <HeaderLink>
                     <ScrollIntoView selector="#pricing">
-                      <Text color="muted">Pricing</Text>
+                      <Text color={textMuted}>Pricing</Text>
                     </ScrollIntoView>
                   </HeaderLink>
                 </>
@@ -57,11 +56,10 @@ function Header({ theme, toggleTheme, showHeaderLink, currentUser }) {
                 <HeaderLink>
                   <Link href="/dashboard">
                     <Text
-                      color="muted"
-                      className={
+                      color={
                         router.pathname.includes("/dashboard")
-                          ? "active-link"
-                          : ""
+                          ? textColor
+                          : textMuted
                       }
                     >
                       Dashboard
@@ -71,7 +69,9 @@ function Header({ theme, toggleTheme, showHeaderLink, currentUser }) {
               )}
 
               <ThemeButton onClick={toggleTheme}>
-                <Text  color="muted"> {theme === "light" ? "Dark mode" : "Light mode"}</Text>
+                <Text color={textMuted}>
+                  {theme === "light" ? "Dark mode" : "Light mode"}
+                </Text>
               </ThemeButton>
 
               {!currentUser ? (

@@ -16,12 +16,16 @@ import Animation from "./Animation";
 import Title from "./Title";
 
 function About({ theme }) {
-  let bw = theme === "light" ? "#000" : "#FFF";
+  // let textColor = theme === "light" ? "#000" : "#FFF";
+
+   // TODO: Move this logic
+   let textColor = theme === "light" ? "#000" : "#F8FAFF";
+   let textMuted = theme === "light" ? "#676f89" : "#8B93A8";
 
   return (
     <AboutWrap>
       <ContainerWrap>
-        <Title title="About the platform" id="about" />
+        <Title theme={theme} title="About the platform" id="about" />
         <AboutTitle>
           <Line />
           <Circle>1</Circle>
@@ -32,7 +36,7 @@ function About({ theme }) {
             fontSize={38}
             marginBottom={8}
             fontWeight={900}
-            color={bw}
+            color={textColor}
             letterSpacing="-.003rem"
             textAlign="center"
           >
@@ -41,7 +45,7 @@ function About({ theme }) {
 
           <Paragraph
             size={500}
-            color="muted"
+            color={textMuted}
             marginTop={18}
             lineHeight={1.75}
             textAlign="center"
@@ -59,7 +63,7 @@ function About({ theme }) {
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
-                stroke={bw}
+                stroke={textColor}
               >
                 <path
                   strokeLinecap="round"
@@ -73,7 +77,7 @@ function About({ theme }) {
                 lineHeight={1.25}
                 fontSize={32}
                 fontWeight={800}
-                color={bw}
+                color={textColor}
                 letterSpacing="-.003rem"
               >
                 Write notes
@@ -82,7 +86,7 @@ function About({ theme }) {
 
             <Paragraph
               size={500}
-              color="muted"
+              color={textMuted}
               marginTop={18}
               lineHeight={1.75}
             >
@@ -92,17 +96,17 @@ function About({ theme }) {
             </Paragraph>
             <AboutItems>
               <AboutItem>
-                <Text fontSize={17} fontWeight={700} color={bw}>
+                <Text fontSize={17} fontWeight={700} color={textColor}>
                   Effortless Note Creation
                 </Text>
               </AboutItem>
               <AboutItem>
-                <Text fontSize={17} fontWeight={700} color={bw}>
+                <Text fontSize={17} fontWeight={700} color={textColor}>
                   Categorize and Tag
                 </Text>
               </AboutItem>
               <AboutItem>
-                <Text fontSize={17} fontWeight={700} color={bw}>
+                <Text fontSize={17} fontWeight={700} color={textColor}>
                   Rich Formatting Options
                 </Text>
               </AboutItem>
@@ -115,7 +119,7 @@ function About({ theme }) {
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
-                stroke={bw}
+                stroke={textColor}
               >
                 <path
                   strokeLinecap="round"
@@ -129,7 +133,7 @@ function About({ theme }) {
                 lineHeight={1.25}
                 fontSize={32}
                 fontWeight={800}
-                color={bw}
+                color={textColor}
                 letterSpacing="-.003rem"
               >
                 Manage bookmarks
@@ -137,7 +141,7 @@ function About({ theme }) {
             </AboutTitleFlex>
             <Paragraph
               size={500}
-              color="muted"
+              color={textMuted}
               marginTop={18}
               lineHeight={1.75}
             >
@@ -146,17 +150,17 @@ function About({ theme }) {
             </Paragraph>
             <AboutItems>
               <AboutItem>
-                <Text fontSize={17} fontWeight={700} color={bw}>
+                <Text fontSize={17} fontWeight={700} color={textColor}>
                   Centralized Bookmark Management
                 </Text>
               </AboutItem>
               <AboutItem>
-                <Text fontSize={17} fontWeight={700} color={bw}>
+                <Text fontSize={17} fontWeight={700} color={textColor}>
                   Bookmark Sync
                 </Text>
               </AboutItem>
               <AboutItem>
-                <Text fontSize={17} fontWeight={700} color={bw}>
+                <Text fontSize={17} fontWeight={700} color={textColor}>
                   Folder Organization
                 </Text>
               </AboutItem>
@@ -170,7 +174,7 @@ function About({ theme }) {
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth="1.5"
-              stroke={bw}
+              stroke={textColor}
             >
               <path
                 strokeLinecap="round"
@@ -184,19 +188,14 @@ function About({ theme }) {
               lineHeight={1.25}
               fontSize={32}
               fontWeight={800}
-              color={bw}
+              color={textColor}
               letterSpacing="-.003rem"
             >
               Organize your daily tasks
             </Heading>
           </AboutTitleFlex>
 
-          <Paragraph
-            size={500}
-            color="muted"
-            marginTop={18}
-            lineHeight={1.75}
-          >
+          <Paragraph size={500} color={textMuted} marginTop={18} lineHeight={1.75}>
             Dash Directory is your ultimate productivity companion, empowering
             you to stay focused and make the most out of your time. With our
             intuitive interface and powerful features, we streamline your

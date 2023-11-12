@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Head from "next/head";
 import Header from "@/components/Header";
-import { Heading } from "evergreen-ui";
+import { Heading, Text } from "evergreen-ui";
 import {
   ContainerWrap,
   MainSection,
@@ -12,7 +12,10 @@ import Footer from "../components/Footer";
 
 export default function Home({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
-  let bw = theme === "light" ? "#000" : "#FFF";
+
+  // TODO: Move this logic
+  let textColor = theme === "light" ? "#000" : "#F8FAFF";
+  let textMuted = theme === "light" ? "#676f89" : "#8B93A8";
   return (
     <>
       <Head>
@@ -38,7 +41,7 @@ export default function Home({ theme, toggleTheme }) {
               fontSize={58}
               marginBottom={8}
               fontWeight={900}
-              color={bw}
+              color={textColor}
               letterSpacing="-.003rem"
             >
               Updates
@@ -51,15 +54,15 @@ export default function Home({ theme, toggleTheme }) {
                   fontSize={28}
                   marginBottom={8}
                   fontWeight={900}
-                  color={bw}
+                  color={textColor}
                   letterSpacing="-.003rem"
                 >
                   Present
                 </Heading>
-                <span>
+                <Text color={textMuted} size={500} lineHeight={1.75}>
                   The development phase progresses, with the implementation of
                   core functionalities and user experience refinements.
-                </span>
+                </Text>
               </Update>
               <Update>
                 <Heading
@@ -68,16 +71,16 @@ export default function Home({ theme, toggleTheme }) {
                   fontSize={28}
                   marginBottom={8}
                   fontWeight={900}
-                  color={bw}
+                  color={textColor}
                   letterSpacing="-.003rem"
                 >
                   January 2023
                 </Heading>
-                <span>
+                <Text color={textMuted} size={500} lineHeight={1.75}>
                   The development begins with working on the initial concept and
                   design of Dash Directory, outlining the key features and user
                   interface.
-                </span>
+                </Text>
               </Update>
               <Update>
                 <Heading
@@ -86,16 +89,16 @@ export default function Home({ theme, toggleTheme }) {
                   fontSize={28}
                   marginBottom={8}
                   fontWeight={900}
-                  color={bw}
+                  color={textColor}
                   letterSpacing="-.003rem"
                 >
                   June 2022
                 </Heading>
-                <span>
+                <Text color={textMuted} size={500} lineHeight={1.75}>
                   The idea for Dash Directory is conceived, with plans to create
                   a platform for task and event management, bookmark
                   organization, and enhanced productivity for my personal use.
-                </span>
+                </Text>
               </Update>
             </UpdatesWrap>
           </CenteredSection>

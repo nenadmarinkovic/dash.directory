@@ -5,12 +5,11 @@ export const HeaderWrap = styled.header`
   top: 0;
   width: 100%;
   padding: 1rem 0px 0.75rem 0;
-  background: rgba(255, 255, 255, 0.75);
   background: ${({ theme }) => theme.headerBackground};
   backdrop-filter: saturate(70%) blur(3px);
   z-index: 2;
   contain: layout;
-  border-bottom: 0.5px solid rgba(200, 200, 200, 0.38);
+  border-bottom: 1px solid rgba(200, 200, 200, 0.38);
 `;
 
 export const HeaderMain = styled.div`

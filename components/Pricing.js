@@ -13,7 +13,9 @@ import Title from "./Title";
 import Link from "next/link";
 
 function Pricing({ theme }) {
-  let bw = theme === "light" ? "#000" : "#FFF";
+  // TODO: Move this logic
+  let textColor = theme === "light" ? "#000" : "#F8FAFF";
+  let textMuted = theme === "light" ? "#676f89" : "#8B93A8";
 
   return (
     <ContainerWrap>
@@ -26,13 +28,13 @@ function Pricing({ theme }) {
             fontSize={28}
             marginBottom={8}
             fontWeight={900}
-            color={bw}
+            color={textColor}
             letterSpacing="-.003rem"
           >
             Free forever
           </Heading>
           <Money>€ 0</Money>
-          <Text marginTop={16} color="muted">
+          <Text marginTop={16} color={textMuted}>
             Access to basic features without any charge.
           </Text>
           <PricingCardItem>
@@ -41,7 +43,7 @@ function Pricing({ theme }) {
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth="1.5"
-              stroke={bw}
+              stroke={textColor}
             >
               <path
                 strokeLinecap="round"
@@ -49,7 +51,10 @@ function Pricing({ theme }) {
                 d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <Text color="muted"> Enjoy the benefits of Dash Directory without any cost</Text>
+            <Text color={textMuted}>
+              {" "}
+              Enjoy the benefits of Dash Directory without any cost
+            </Text>
           </PricingCardItem>
           <PricingCardItem>
             <svg
@@ -57,7 +62,7 @@ function Pricing({ theme }) {
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth="1.5"
-              stroke={bw}
+              stroke={textColor}
             >
               <path
                 strokeLinecap="round"
@@ -65,7 +70,9 @@ function Pricing({ theme }) {
                 d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <Text color="muted">Task and event management functionalities</Text>
+            <Text color={textMuted}>
+              Task and event management functionalities
+            </Text>
           </PricingCardItem>
           <PricingCardItem>
             <svg
@@ -73,7 +80,7 @@ function Pricing({ theme }) {
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth="1.5"
-              stroke={bw}
+              stroke={textColor}
             >
               <path
                 strokeLinecap="round"
@@ -82,7 +89,9 @@ function Pricing({ theme }) {
               />
             </svg>
 
-            <Text color="muted">Priority customer support for prompt assistance</Text>
+            <Text color={textMuted}>
+              Priority customer support for prompt assistance
+            </Text>
           </PricingCardItem>
         </PricingCard>
         <PricingCard>
@@ -92,16 +101,19 @@ function Pricing({ theme }) {
             fontSize={28}
             marginBottom={8}
             fontWeight={900}
-            color={bw}
+            color={textColor}
             letterSpacing="-.003rem"
           >
             Support
           </Heading>
           <Money>
-            € 5 <Text fontSize={18}>/ month</Text>
+            € 5{" "}
+            <Text color={textMuted} fontSize={18}>
+              / month
+            </Text>
           </Money>
 
-          <Text marginTop={16} color="muted">
+          <Text marginTop={16} color={textMuted}>
             Get additional features and premium support.
           </Text>
           <PricingCardItem>
@@ -110,7 +122,7 @@ function Pricing({ theme }) {
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth="1.5"
-              stroke={bw}
+              stroke={textColor}
             >
               <path
                 strokeLinecap="round"
@@ -118,7 +130,9 @@ function Pricing({ theme }) {
                 d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <Text color="muted">Enjoy the benefits of Dash Directory without any cost</Text>
+            <Text color={textMuted}>
+              Enjoy the benefits of Dash Directory without any cost
+            </Text>
           </PricingCardItem>
           <PricingCardItem>
             <svg
@@ -126,7 +140,7 @@ function Pricing({ theme }) {
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth="1.5"
-              stroke={bw}
+              stroke={textColor}
             >
               <path
                 strokeLinecap="round"
@@ -134,7 +148,9 @@ function Pricing({ theme }) {
                 d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <Text color="muted">Task and event management functionalities</Text>
+            <Text color={textMuted}>
+              Task and event management functionalities
+            </Text>
           </PricingCardItem>
           <PricingCardItem>
             <svg
@@ -142,7 +158,7 @@ function Pricing({ theme }) {
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth="1.5"
-              stroke={bw}
+              stroke={textColor}
             >
               <path
                 strokeLinecap="round"
@@ -150,7 +166,9 @@ function Pricing({ theme }) {
                 d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <Text color="muted">Priority customer support for prompt assistance</Text>
+            <Text color={textMuted}>
+              Priority customer support for prompt assistance
+            </Text>
           </PricingCardItem>
         </PricingCard>
       </PricingCards>
@@ -161,7 +179,7 @@ function Pricing({ theme }) {
           fontSize={28}
           marginBottom={8}
           fontWeight={900}
-          color={bw}
+          color={textColor}
           letterSpacing="-.003rem"
           textAlign="center"
         >
@@ -170,7 +188,7 @@ function Pricing({ theme }) {
 
         <Paragraph
           size={500}
-          color="muted"
+          color={textMuted}
           marginTop={18}
           lineHeight={1.75}
           textAlign="center"

@@ -24,7 +24,9 @@ function useElementViewportPosition(ref) {
 }
 
 export default function Animation({ theme }) {
-  let bw = theme === "light" ? "#000" : "#FFF";
+  // TODO: Move this logic
+  let textColor = theme === "light" ? "#000" : "#F8FAFF";
+  let textMuted = theme === "light" ? "#676f89" : "#8B93A8";
 
   const slideAnimation = {
     transition: { duration: 0 },
@@ -78,7 +80,7 @@ export default function Animation({ theme }) {
                 marginTop={8}
                 lineHeight={1.25}
                 fontSize={38}
-                color={bw}
+                color={textColor}
                 marginBottom={8}
                 fontWeight={900}
                 letterSpacing="-.003rem"
@@ -89,7 +91,7 @@ export default function Animation({ theme }) {
 
               <Paragraph
                 size={500}
-                color="muted"
+                color={textMuted}
                 marginTop={18}
                 lineHeight={1.75}
                 textAlign="center"
@@ -127,14 +129,14 @@ export default function Animation({ theme }) {
                         marginTop={8}
                         lineHeight={1.25}
                         fontSize={23}
-                        color={bw}
+                        color={textColor}
                         fontWeight={900}
                         letterSpacing="-.003rem"
                         textAlign="center"
                       >
                         Distraction-free environment
                       </Heading>
-                      <Text color="muted">
+                      <Text color={textMuted}>
                         Dash Directory provides a clutter-free workspace for
                         focused work.
                       </Text>
@@ -160,14 +162,14 @@ export default function Animation({ theme }) {
                         marginTop={8}
                         lineHeight={1.25}
                         fontSize={23}
-                        color={bw}
+                        color={textColor}
                         fontWeight={900}
                         letterSpacing="-.003rem"
                         textAlign="center"
                       >
                         Task Prioritization
                       </Heading>
-                      <Text color="muted">
+                      <Text color={textMuted}>
                         Users can prioritize tasks based on importance or
                         deadlines.
                       </Text>
@@ -193,14 +195,14 @@ export default function Animation({ theme }) {
                         marginTop={8}
                         lineHeight={1.25}
                         fontSize={23}
-                        color={bw}
+                        color={textColor}
                         fontWeight={900}
                         letterSpacing="-.003rem"
                         textAlign="center"
                       >
                         Search functionality
                       </Heading>
-                      <Text color="muted">
+                      <Text color={textMuted}>
                         Dash Directory offers a powerful search feature to
                         quickly find specific tasks or bookmarks.
                       </Text>
@@ -225,14 +227,14 @@ export default function Animation({ theme }) {
                         marginTop={8}
                         lineHeight={1.25}
                         fontSize={23}
-                        color={bw}
+                        color={textColor}
                         fontWeight={900}
                         letterSpacing="-.003rem"
                         textAlign="center"
                       >
                         Event organization
                       </Heading>
-                      <Text color="muted">
+                      <Text color={textMuted}>
                         Dash Directory allows users to create and manage events,
                         with options for reminders and attendee management.
                       </Text>
@@ -258,14 +260,14 @@ export default function Animation({ theme }) {
                         marginTop={8}
                         lineHeight={1.25}
                         fontSize={23}
-                        color={bw}
+                        color={textColor}
                         fontWeight={900}
                         letterSpacing="-.003rem"
                         textAlign="center"
                       >
                         Note Taking
                       </Heading>
-                      <Text color="muted">
+                      <Text color={textMuted}>
                         Dash Directory includes a note-taking feature, allowing
                         users to jot down important information or ideas.
                       </Text>
@@ -286,7 +288,7 @@ export default function Animation({ theme }) {
                 fontSize={38}
                 marginBottom={8}
                 fontWeight={900}
-                color={bw}
+                color={textColor}
                 letterSpacing="-.003rem"
                 textAlign="center"
               >
@@ -295,7 +297,7 @@ export default function Animation({ theme }) {
 
               <Paragraph
                 size={500}
-                color="muted"
+                color={textMuted}
                 marginTop={18}
                 lineHeight={1.75}
                 textAlign="center"

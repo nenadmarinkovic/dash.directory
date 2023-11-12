@@ -7,17 +7,23 @@ export const SignForm = styled.div`
 
 export const SignField = styled.div`
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   margin-top: 10px;
 
   &:first-of-type {
     margin-top: 0;
   }
 
+  input {
+    color: ${({ theme }) => theme.textMuted};
+  }
+
   button {
     display: block;
-    width: 120px;
+    
     line-height: 1;
+    margin-left: auto;
 
     @media (max-width: 560px) {
       width: 100%;
