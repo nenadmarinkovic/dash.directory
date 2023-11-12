@@ -40,23 +40,24 @@ function Header({ theme, toggleTheme, showHeaderLink, currentUser }) {
                     style={{ display: `${!showHeaderLink && "none"}` }}
                   >
                     <ScrollIntoView selector="#about">
-                      <Text>About</Text>
+                      <Text color="muted">About</Text>
                     </ScrollIntoView>
                   </HeaderLink>
                   <HeaderLink
                     style={{ display: `${!showHeaderLink && "none"}` }}
                   >
                     <ScrollIntoView selector="#pricing">
-                      <Text>Pricing</Text>
+                      <Text color="muted">Pricing</Text>
                     </ScrollIntoView>
                   </HeaderLink>
                 </>
               )}
 
               {currentUser && (
-                <HeaderLink >
+                <HeaderLink>
                   <Link href="/dashboard">
                     <Text
+                      color="muted"
                       className={
                         router.pathname.includes("/dashboard")
                           ? "active-link"
@@ -70,7 +71,7 @@ function Header({ theme, toggleTheme, showHeaderLink, currentUser }) {
               )}
 
               <ThemeButton onClick={toggleTheme}>
-                <Text> {theme === "light" ? "Dark mode" : "Light mode"}</Text>
+                <Text  color="muted"> {theme === "light" ? "Dark mode" : "Light mode"}</Text>
               </ThemeButton>
 
               {!currentUser ? (

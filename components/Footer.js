@@ -54,6 +54,7 @@ function Footer({ theme }) {
           textAlign="center"
           fontSize={13}
           marginTop="auto"
+          color="muted"
         >
           © {new Date().getFullYear()} Dash Directory
         </Text>

@@ -134,7 +134,7 @@ export default function Animation({ theme }) {
                       >
                         Distraction-free environment
                       </Heading>
-                      <Text>
+                      <Text color="muted">
                         Dash Directory provides a clutter-free workspace for
                         focused work.
                       </Text>
@@ -167,7 +167,7 @@ export default function Animation({ theme }) {
                       >
                         Task Prioritization
                       </Heading>
-                      <Text>
+                      <Text color="muted">
                         Users can prioritize tasks based on importance or
                         deadlines.
                       </Text>
@@ -200,7 +200,7 @@ export default function Animation({ theme }) {
                       >
                         Search functionality
                       </Heading>
-                      <Text>
+                      <Text color="muted">
                         Dash Directory offers a powerful search feature to
                         quickly find specific tasks or bookmarks.
                       </Text>
@@ -232,7 +232,7 @@ export default function Animation({ theme }) {
                       >
                         Event organization
                       </Heading>
-                      <Text>
+                      <Text color="muted">
                         Dash Directory allows users to create and manage events,
                         with options for reminders and attendee management.
                       </Text>
@@ -265,7 +265,7 @@ export default function Animation({ theme }) {
                       >
                         Note Taking
                       </Heading>
-                      <Text>
+                      <Text color="muted">
                         Dash Directory includes a note-taking feature, allowing
                         users to jot down important information or ideas.
                       </Text>

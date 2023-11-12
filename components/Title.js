@@ -10,9 +10,10 @@ const Title = ({ title, id }) => {
         fontSize="0.75rem"
         fontWeight={600}
         textTransform="uppercase"
-        color="#666"
+        color="#696f8c"
         letterSpacing=".25rem"
         textAlign="center"
+        
       >
         {title}
       </Heading>

@@ -17,7 +17,7 @@ function Banner({ theme }) {
       <BannerWrap>
         <BannerItem>
           <BannerText>
-            <Text>
+            <Text color="muted">
               Currently in Development mode. See{" "}
               <Link href="/updates">Updates</Link> for more.
             </Text>

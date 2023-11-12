@@ -41,7 +41,10 @@ export default function DashboardPage({ theme, toggleTheme }) {
               {currentUser ? (
                 <>
                   {!currentUser?.emailVerified || !currentUser?.displayName ? (
-                    <StatusIndicator color="warning">
+                    <StatusIndicator
+                      color="warning"
+                      style={{ color: "#696f8c" }}
+                    >
                       Hi
                       {currentUser?.displayName
                         ? `, ${currentUser?.displayName}`
@@ -50,7 +53,10 @@ export default function DashboardPage({ theme, toggleTheme }) {
                       Directory.
                     </StatusIndicator>
                   ) : (
-                    <StatusIndicator color="success">
+                    <StatusIndicator
+                      color="success"
+                      style={{ color: "#696f8c" }}
+                    >
                       Welcome, {currentUser?.displayName}! <br /> Your Dashboard
                       is still in developer-mode. Thanks for being patient.
                     </StatusIndicator>
@@ -59,6 +65,7 @@ export default function DashboardPage({ theme, toggleTheme }) {
               ) : (
                 <AlertWrap>
                   <Alert
+                    style={{ color: "#696f8c" }}
                     intent="warning"
                     title="Sign up or log in to use Dashboard"
                     marginBottom={32}

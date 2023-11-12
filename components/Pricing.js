@@ -32,7 +32,7 @@ function Pricing({ theme }) {
             Free forever
           </Heading>
           <Money>€ 0</Money>
-          <Text marginTop={16}>
+          <Text marginTop={16} color="muted">
             Access to basic features without any charge.
           </Text>
           <PricingCardItem>
@@ -49,7 +49,7 @@ function Pricing({ theme }) {
                 d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <Text> Enjoy the benefits of Dash Directory without any cost</Text>
+            <Text color="muted"> Enjoy the benefits of Dash Directory without any cost</Text>
           </PricingCardItem>
           <PricingCardItem>
             <svg
@@ -65,7 +65,7 @@ function Pricing({ theme }) {
                 d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <Text>Task and event management functionalities</Text>
+            <Text color="muted">Task and event management functionalities</Text>
           </PricingCardItem>
           <PricingCardItem>
             <svg
@@ -73,7 +73,7 @@ function Pricing({ theme }) {
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth="1.5"
-              stroke="currentColor"
+              stroke={bw}
             >
               <path
                 strokeLinecap="round"
@@ -82,7 +82,7 @@ function Pricing({ theme }) {
               />
             </svg>
 
-            <Text>Priority customer support for prompt assistance</Text>
+            <Text color="muted">Priority customer support for prompt assistance</Text>
           </PricingCardItem>
         </PricingCard>
         <PricingCard>
@@ -101,7 +101,7 @@ function Pricing({ theme }) {
             € 5 <Text fontSize={18}>/ month</Text>
           </Money>
 
-          <Text marginTop={16}>
+          <Text marginTop={16} color="muted">
             Get additional features and premium support.
           </Text>
           <PricingCardItem>
@@ -118,7 +118,7 @@ function Pricing({ theme }) {
                 d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <Text>Enjoy the benefits of Dash Directory without any cost</Text>
+            <Text color="muted">Enjoy the benefits of Dash Directory without any cost</Text>
           </PricingCardItem>
           <PricingCardItem>
             <svg
@@ -134,7 +134,7 @@ function Pricing({ theme }) {
                 d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <Text>Task and event management functionalities</Text>
+            <Text color="muted">Task and event management functionalities</Text>
           </PricingCardItem>
           <PricingCardItem>
             <svg
@@ -150,7 +150,7 @@ function Pricing({ theme }) {
                 d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <Text>Priority customer support for prompt assistance</Text>
+            <Text color="muted">Priority customer support for prompt assistance</Text>
           </PricingCardItem>
         </PricingCard>
       </PricingCards>
