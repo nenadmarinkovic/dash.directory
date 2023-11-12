@@ -37,7 +37,7 @@ export const CenteredSection = styled.div`
 
 export const CenteredLayout = styled.div`
   text-align: center;
-  padding: 1.5rem 0 30% 0;
+  padding-top: 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
