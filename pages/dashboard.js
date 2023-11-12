@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
 import Header from "@/components/Header";
-import { ContainerWrap, MainSection } from "../styles/components/layout";
+import {
+  ContainerWrap,
+  MainSection,
+  MainWrap,
+  ThemeLayout,
+} from "../styles/components/layout";
 import Footer from "../components/Footer";
 import { useAuth } from "../context/AuthContext";
 import { DashboardWrap } from "../styles/pages/dashboard";
@@ -29,38 +34,38 @@ export default function DashboardPage({ theme, toggleTheme }) {
         showHeaderLink={true}
         currentUser={currentUser}
       />
-
-      <MainSection>
-        <ContainerWrap>
-          <DashboardWrap>
-            {currentUser ? (
-              <>
-                {!currentUser?.emailVerified || !currentUser?.displayName ? (
-                  <StatusIndicator color="warning">
-                    Hi
-                    {currentUser?.displayName
-                      ? `, ${currentUser?.displayName}`
-                      : ""}
-                    . Please verify your email in order to fully use Dash
-                    Directory.
-                  </StatusIndicator>
-                ) : (
-                  <StatusIndicator color="success">
-                    Welcome, {currentUser?.displayName}! <br /> Your Dashboard
-                    is still in developer-mode. Thanks for being patient.
-                  </StatusIndicator>
-                )}
-              </>
-            ) : (
-              <SpinnerWrap>
-                <Spinner size={32} />
-              </SpinnerWrap>
-            )}
-          </DashboardWrap>
-        </ContainerWrap>
-
+      <ThemeLayout>
+        <MainSection>
+          <ContainerWrap>
+            <DashboardWrap>
+              {currentUser ? (
+                <>
+                  {!currentUser?.emailVerified || !currentUser?.displayName ? (
+                    <StatusIndicator color="warning">
+                      Hi
+                      {currentUser?.displayName
+                        ? `, ${currentUser?.displayName}`
+                        : ""}
+                      . Please verify your email in order to fully use Dash
+                      Directory.
+                    </StatusIndicator>
+                  ) : (
+                    <StatusIndicator color="success">
+                      Welcome, {currentUser?.displayName}! <br /> Your Dashboard
+                      is still in developer-mode. Thanks for being patient.
+                    </StatusIndicator>
+                  )}
+                </>
+              ) : (
+                <SpinnerWrap>
+                  <Spinner size={32} />
+                </SpinnerWrap>
+              )}
+            </DashboardWrap>
+          </ContainerWrap>
+        </MainSection>
         <Footer theme={theme} />
-      </MainSection>
+      </ThemeLayout>
     </>
   );
 }

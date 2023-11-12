@@ -47,7 +47,7 @@ export const Money = styled.span`
 
 export const PricingAdditional = styled.div`
   text-align: center;
-  margin: 7.5rem 12rem 0 12rem;
+  margin: 7.5rem 12rem;
 
   @media (max-width: 960px) {
     margin: 3.5rem 0;

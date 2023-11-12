@@ -3,8 +3,7 @@ import styled from "styled-components";
 export const FooterWrap = styled.footer`
   background-color: ${({ theme }) => theme.background};
   border-top: 0.5px solid rgba(200, 200, 200, 0.38);
-  margin-top: 9.75rem;
-  height: 225px;
+  margin-top: 3.75rem;
 `;
 
 export const FooterInside = styled.div`

@@ -4,11 +4,11 @@ export const MainSection = styled.section`
   flex: 1;
 `;
 
-export const ThemeLayout = styled.main`
+export const ThemeLayout = styled.div`
   background: ${({ theme }) => theme.background};
+  min-height: 95vh;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 `;
 
 export const ContainerWrap = styled.div`
