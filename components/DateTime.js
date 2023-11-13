@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { DateTimeWrap, DateTimeSeparator } from "../styles/components/datetime";
 import { Text } from "evergreen-ui";
 
-const DateTimeComponent = () => {
+const DateTimeComponent = ({ theme }) => {
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
+
+  let textMuted = theme === "light" ? "#676f89" : "#8B93A8";
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -27,9 +29,13 @@ const DateTimeComponent = () => {
 
   return (
     <DateTimeWrap>
-      <Text fontFamily="mono">{formattedTime}</Text>
+      <Text color={textMuted} fontFamily="mono">
+        {formattedTime}
+      </Text>
       <DateTimeSeparator>|</DateTimeSeparator>
-      <Text fontFamily="mono">{formattedDate}</Text>
+      <Text color={textMuted} fontFamily="mono">
+        {formattedDate}
+      </Text>
     </DateTimeWrap>
   );
 };
