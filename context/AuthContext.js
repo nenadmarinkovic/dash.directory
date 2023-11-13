@@ -100,7 +100,7 @@ export function AuthProvider({ children }) {
     return unsubscribe;
   }, []);
 
-  const addBookmark = async (title, link, category) => {
+  const addBookmark = async (title, description, link, category) => {
     const user = auth.currentUser;
 
     if (user) {
@@ -110,24 +110,27 @@ export function AuthProvider({ children }) {
       if (bookmarksDocSnap.exists()) {
         // Bookmarks document exists, update bookmarks data
         await updateDoc(bookmarksDocRef, {
-          bookmarks: arrayUnion({ title, link, category }),
+          bookmarks: arrayUnion({ title, description, link, category }),
         });
 
         // Update the local state
         setCurrentUser((prevUser) => ({
           ...prevUser,
-          bookmarks: [...prevUser.bookmarks, { title, link, category }],
+          bookmarks: [
+            ...prevUser.bookmarks,
+            { title, description, link, category }, // Include the 'description' field
+          ],
         }));
       } else {
         // Bookmarks document doesn't exist, create it with the initial state
         await setDoc(bookmarksDocRef, {
-          bookmarks: [{ title, link, category }],
+          bookmarks: [{ title, description, link, category }],
         });
 
         // Update the local state
         setCurrentUser((prevUser) => ({
           ...prevUser,
-          bookmarks: [{ title, link, category }],
+          bookmarks: [{ title, description, link, category }], // Include the 'description' field
         }));
       }
     }

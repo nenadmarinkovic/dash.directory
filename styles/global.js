@@ -116,14 +116,28 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     .custom-button-small-svg {
+      background-color: ${({ theme }) => theme.buttonBackground};
+      color: ${({ theme }) => theme.colorInvert};
+      width: 120px;
+      display: flex;
+      transition: all .3s;
+    
         svg {
-          width: 21px;
-          height: 21px;
+          height: 23px;
+          width: 23px;
+          margin-left: 5px;
           display: block;
-          margin-right: 10px;
+        }
+
+        &:hover {
+          background-color: ${({ theme }) => theme.background};
+          color: ${({ theme }) => theme.color};
+
+            svg {
+              fill: ${({ theme }) => theme.color};
+            }
         }
     }
-
 
     .custom-button-big-svg {
         svg {

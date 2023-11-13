@@ -33,7 +33,7 @@ function Sidebar({ theme }) {
             </Link>
           </SidebarItem>
           <SidebarItem>
-            <Link href="/i/events">
+            <Link href="/i/notes">
               <Text color={textColor}>Notes</Text>
             </Link>
           </SidebarItem>

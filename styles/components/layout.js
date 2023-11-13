@@ -62,11 +62,7 @@ export const PageHeader = styled.div`
   width: 100%;
 
   input {
-    width: 480px;
-  }
-
-  button {
-    width: 150px;
+    width: 580px;
   }
 `;
 
@@ -79,7 +75,6 @@ export const GroupOptions = styled.div`
 export const PageMain = styled.div`
   border-radius: 5px;
   height: 100%;
-  border: 1px solid ${({ theme }) => theme.shadowBorder};
   background: ${({ theme }) => theme.clear};
   margin-top: 1.5rem;
 `;

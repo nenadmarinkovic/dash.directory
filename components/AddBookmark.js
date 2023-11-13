@@ -1,64 +1,63 @@
-import React, { useState } from "react";
-import { useAuth } from "../context/AuthContext";
+// import React, { useState } from "react";
+// import { useAuth } from "../context/AuthContext";
 
-function AddBookmark() {
-  const { addBookmark, currentUser } = useAuth();
-  const [bookmarkTitle, setBookmarkTitle] = useState("");
-  const [bookmarkLink, setBookmarkLink] = useState("");
-  const [bookmarkCategory, setBookmarkCategory] = useState("");
-  const [bookmarks, setBookmarks] = useState([]); // Updated to an object with "bookmarks" key
+// function AddBookmark() {
+//   const { addBookmark, currentUser } = useAuth();
+//   const [bookmarkTitle, setBookmarkTitle] = useState("");
+//   const [bookmarkLink, setBookmarkLink] = useState("");
+//   const [bookmarkDescription, setBookmarkDescription] = useState("");
+//   const [bookmarkCategory, setBookmarkCategory] = useState("");
 
-  const handleAddBookmark = () => {
-    // Example: Add a bookmark with the input field values
-    addBookmark(bookmarkTitle, bookmarkLink, bookmarkCategory);
 
-    // Clear the input fields after adding a bookmark
-    setBookmarkTitle("");
-    setBookmarkLink("");
-    setBookmarkCategory("");
-  };
+//   const handleAddBookmark = () => {
+//     // Example: Add a bookmark with the input field values
+//     addBookmark(bookmarkTitle, bookmarkLink, bookmarkCategory);
 
-  return (
-    <div>
-      {/* Input fields for the bookmark */}
-      <label>
-        Title:
-        <input
-          type="text"
-          value={bookmarkTitle}
-          onChange={(e) => setBookmarkTitle(e.target.value)}
-        />
-      </label>
+//     // Clear the input fields after adding a bookmark
+//     setBookmarkTitle("");
+//     setBookmarkLink("");
+//     setBookmarkDescription("");
+//     setBookmarkCategory("");
+//   };
 
-      <label>
-        Link:
-        <input
-          type="text"
-          value={bookmarkLink}
-          onChange={(e) => setBookmarkLink(e.target.value)}
-        />
-      </label>
+//   return (
+//     <SignForm>
+   
+      
+//         <SignField>
+//           <Strong color={textMuted}>Title:</Strong>
 
-      <label>
-        Category:
-        <input
-          type="text"
-          value={bookmarkCategory}
-          onChange={(e) => setBookmarkCategory(e.target.value)}
-        />
-      </label>
+//           <TextInput
+//             marginTop={3}
+//             background={bw}
+//             value={bookmarkTitle}
+//             onChange={(e) => setBookmarkTitle(e.target.value)}
+//             name="text-input-name"
+//             placeholder="Bookmark's title"
+//           />
+//         </SignField>
+  
+//     <SignField>
+//       <Strong color={textMuted}>Description:</Strong>
 
-      {/* Example of using the addBookmark function */}
-      <button onClick={handleAddBookmark}>Add Bookmark</button>
-      <br />
-      {currentUser?.bookmarks.map((bookmark, index) => (
-        <li key={index}>
-          <strong>{bookmark.title}</strong> - {bookmark.link} (
-          {bookmark.category})
-        </li>
-      ))}
-    </div>
-  );
-}
+//       <TextInput
+//         marginTop={3}
+//         background={bw}
+//         value={bookmarkDescription}
+//         onChange={(e) => setBookmarkDescription(e.target.value)}
+//         name="text-input-name"
+//         placeholder="Bookmark's description"
+//       />
+//     </SignField>
+//     <button onClick={handleAddBookmark}>Add Bookmark</button>
+//     </SignForm>
+   
 
-export default AddBookmark;
+   
+//       <br />
+      
+//     </div>
+//   );
+// }
+
+// export default AddBookmark;

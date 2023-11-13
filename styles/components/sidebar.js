@@ -13,4 +13,8 @@ export const SidebarItems = styled.ul`
 
 export const SidebarItem = styled.li`
   margin-top: 20px;
+
+  span {
+    color: ${({ theme }) => theme.textMuted};
+  }
 `;

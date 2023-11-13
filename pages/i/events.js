@@ -13,7 +13,7 @@ import { useAuth } from "../../context/AuthContext";
 import AddBookmark from "../../components/AddBookmark";
 import Sidebar from "../../components/Sidebar";
 
-export default function StartPage({ theme, toggleTheme }) {
+export default function EventsPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
   const { currentUser } = useAuth();
 
@@ -44,7 +44,7 @@ export default function StartPage({ theme, toggleTheme }) {
             {/* <AddBookmark/> */}
             <PageLayout>
               <Sidebar />
-              <PageContainer>MAIN LAYOUT - Tasks</PageContainer>
+              <PageContainer>MAIN LAYOUT - EVENTS</PageContainer>
             </PageLayout>
           </ContainerWrap>
         </MainSection>

@@ -29,11 +29,11 @@ const DateTimeComponent = ({ theme }) => {
 
   return (
     <DateTimeWrap>
-      <Text fontSize={14} color={textMuted} fontFamily="mono">
+      <Text fontSize={13} color={textMuted} fontFamily="mono">
         {formattedTime}
       </Text>
       <DateTimeSeparator>|</DateTimeSeparator>
-      <Text fontSize={14} color={textMuted} fontFamily="mono">
+      <Text fontSize={13} color={textMuted} fontFamily="mono">
         {formattedDate}
       </Text>
     </DateTimeWrap>

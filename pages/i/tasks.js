@@ -13,7 +13,7 @@ import { useAuth } from "../../context/AuthContext";
 import AddBookmark from "../../components/AddBookmark";
 import Sidebar from "../../components/Sidebar";
 
-export default function StartPage({ theme, toggleTheme }) {
+export default function TasksPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
   const { currentUser } = useAuth();
 
