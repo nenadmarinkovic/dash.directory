@@ -110,14 +110,12 @@ export const GlobalStyle = createGlobalStyle`
           background-color: ${({ theme }) => theme.buttonColor};
           color: #000;
         }
-
-   
       }
     }
 
     .custom-button-small-svg {
       background-color: ${({ theme }) => theme.buttonBackground};
-      color: ${({ theme }) => theme.colorInvert};
+      color: ${({ theme }) => theme.buttonColor};
       width: 120px;
       display: flex;
       transition: all .3s;
@@ -131,7 +129,7 @@ export const GlobalStyle = createGlobalStyle`
 
         &:hover {
           background-color: ${({ theme }) => theme.background};
-          color: ${({ theme }) => theme.color};
+          color: ${({ theme }) => theme.buttonBackground};
 
             svg {
               fill: ${({ theme }) => theme.color};
@@ -160,6 +158,10 @@ export const GlobalStyle = createGlobalStyle`
       @media (max-width: 960px) {
         height: unset;
       }
+     }
+
+     .select-menu {
+      background-color: ${({ theme }) => theme.color};
      }
 
     .motion-progress {
