@@ -102,7 +102,7 @@ function Sign({ theme }) {
           onClick={submitHandler}
           appearance="primary"
         >
-          <Text size={3} fontWeight="bold" color="#FFF">
+          <Text size="small" fontWeight="bold" color="#FFF">
             {isCreatingAccount ? " Create account" : "Login"}
           </Text>
         </Button>

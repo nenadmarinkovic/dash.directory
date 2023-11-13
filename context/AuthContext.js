@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useRef } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { auth, db } from "../lib/firebase";
 import {
   signInWithEmailAndPassword,
@@ -6,9 +6,8 @@ import {
   signOut,
   onAuthStateChanged,
   sendEmailVerification,
-  updateProfile,
 } from "firebase/auth";
-import { doc, setDoc, getDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
 
 const AuthContext = React.createContext();
 
@@ -28,17 +27,18 @@ export function AuthProvider({ children }) {
         password
       );
 
-      await updateProfile(newUserCredentials.user, {
-        displayName,
-      });
-
+      // Create a user document in the "users" collection
       const userDocRef = doc(db, "users", newUserCredentials.user.uid);
-
       await setDoc(userDocRef, {
         displayName,
         email,
       });
 
+      // Create an empty bookmarks document in the "bookmarks" collection
+      const bookmarksDocRef = doc(db, "bookmarks", newUserCredentials.user.uid);
+      await setDoc(bookmarksDocRef, { bookmarks: [] });
+
+      // Send email verification
       await sendEmailVerification(newUserCredentials.user);
     } catch (error) {
       console.error("Signup Error:", error.message);
@@ -46,8 +46,13 @@ export function AuthProvider({ children }) {
     }
   }
 
-  function login(email, password) {
-    return signInWithEmailAndPassword(auth, email, password);
+  async function login(email, password) {
+    try {
+      return await signInWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      console.error("Login Error:", error.message);
+      throw error;
+    }
   }
 
   function logout() {
@@ -68,27 +73,77 @@ export function AuthProvider({ children }) {
           const userData = userDocSnap.data();
           setCurrentUser((prevUser) => ({
             ...prevUser,
-            address: userData.address,
+            displayName: userData.displayName,
+            email: userData.email,
             // Include other fields as needed
           }));
+
+          // Read bookmarks for the user
+          const bookmarksDocRef = doc(db, "bookmarks", user.uid);
+          const bookmarksDocSnap = await getDoc(bookmarksDocRef);
+
+          if (bookmarksDocSnap.exists()) {
+            // Bookmarks document exists, set bookmarks data
+            const bookmarksData = bookmarksDocSnap.data();
+            setCurrentUser((prevUser) => ({
+              ...prevUser,
+              bookmarks: bookmarksData.bookmarks || [],
+              // Include other fields as needed
+            }));
+          }
         }
       }
 
       setLoading(false);
     });
+
     return unsubscribe;
   }, []);
+
+  const addBookmark = async (title, link, category) => {
+    const user = auth.currentUser;
+
+    if (user) {
+      const bookmarksDocRef = doc(db, "bookmarks", user.uid);
+      const bookmarksDocSnap = await getDoc(bookmarksDocRef);
+
+      if (bookmarksDocSnap.exists()) {
+        // Bookmarks document exists, update bookmarks data
+        await updateDoc(bookmarksDocRef, {
+          bookmarks: arrayUnion({ title, link, category }),
+        });
+
+        // Update the local state
+        setCurrentUser((prevUser) => ({
+          ...prevUser,
+          bookmarks: [...prevUser.bookmarks, { title, link, category }],
+        }));
+      } else {
+        // Bookmarks document doesn't exist, create it with the initial state
+        await setDoc(bookmarksDocRef, {
+          bookmarks: [{ title, link, category }],
+        });
+
+        // Update the local state
+        setCurrentUser((prevUser) => ({
+          ...prevUser,
+          bookmarks: [{ title, link, category }],
+        }));
+      }
+    }
+  };
 
   const value = {
     currentUser,
     login,
     signup,
     logout,
+    addBookmark,
   };
 
   return (
     <AuthContext.Provider value={value}>
-      {!loading && children}
+      {!loading ? children : <p>Loading...</p>}
     </AuthContext.Provider>
   );
 }

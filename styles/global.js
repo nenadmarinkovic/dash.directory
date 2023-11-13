@@ -31,6 +31,13 @@ export const GlobalStyle = createGlobalStyle`
       text-decoration: none;
     }
 
+    ul, li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: ${({ theme }) => theme.textMuted};
+    }
+
     .big-header {
       @media (max-width: 960px) {
         font-size: 38px;
@@ -97,6 +104,7 @@ export const GlobalStyle = createGlobalStyle`
         background-color: ${({ theme }) => theme.buttonBackground};
         color: ${({ theme }) => theme.buttonColor};
         transition: .3s;
+        font-weight: bold;
 
         &:not([disabled]):hover {
           background-color: ${({ theme }) => theme.buttonColor};

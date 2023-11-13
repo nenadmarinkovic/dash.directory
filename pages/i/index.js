@@ -116,21 +116,21 @@ export default function StartPage({ theme, toggleTheme }) {
                   </StatusIndicator>
                 ) : (
                   <>
-                  <StartHeader>
-                  <StatusIndicator color="success">
-                      <Text color={textColor} fontSize={14}>
-                        Welcome
-                        <Strong color={textColor} fontSize={14}>
-                          {currentUser?.displayName &&
-                            `, ${currentUser?.displayName}`}
-                        </Strong>
-                        . <br /> Your Start page is still in developer-mode.
-                        Thanks for being patient.
-                      </Text>
-                    </StatusIndicator>
-                    <DateTimeComponent/>
-                  </StartHeader>
-                   
+                    <StartHeader>
+                      <StatusIndicator color="success">
+                        <Text color={textColor} fontSize={14}>
+                          Welcome
+                          <Strong color={textColor} fontSize={14}>
+                            {currentUser?.displayName &&
+                              `, ${currentUser?.displayName}`}
+                          </Strong>
+                          . <br /> Your Start page is still in developer-mode.
+                          Thanks for being patient.
+                        </Text>
+                      </StatusIndicator>
+                      <DateTimeComponent />
+                    </StartHeader>
+
                     <StartMenu theme={theme} />
                   </>
                 )}

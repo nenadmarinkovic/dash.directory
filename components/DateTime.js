@@ -16,7 +16,7 @@ const DateTimeComponent = ({ theme }) => {
   }, []);
 
   const timeOptions = { hour: "2-digit", minute: "2-digit", hour12: false };
-  const dateOptions = { day: "numeric", month: "short", year: "numeric" };
+  const dateOptions = { day: "numeric", month: "short" };
 
   const formattedTime = currentDateTime.toLocaleTimeString(
     "de-DE",
@@ -29,11 +29,11 @@ const DateTimeComponent = ({ theme }) => {
 
   return (
     <DateTimeWrap>
-      <Text color={textMuted} fontFamily="mono">
+      <Text fontSize={14} color={textMuted} fontFamily="mono">
         {formattedTime}
       </Text>
       <DateTimeSeparator>|</DateTimeSeparator>
-      <Text color={textMuted} fontFamily="mono">
+      <Text fontSize={14} color={textMuted} fontFamily="mono">
         {formattedDate}
       </Text>
     </DateTimeWrap>

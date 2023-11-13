@@ -6,6 +6,7 @@ import {
   StartMenuTitle,
 } from "../styles/components/startmenu";
 import { Heading, Paragraph, Text } from "evergreen-ui";
+import Link from "next/link";
 
 function StartMenu({ theme }) {
   let textColor = theme === "light" ? "#000" : "#F8FAFF";
@@ -14,45 +15,48 @@ function StartMenu({ theme }) {
     <div>
       <StartMenuWrap>
         <StartMenuItem>
-          <StartMenuTitle>
-            <StartMenuLogo>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke={textColor}
+          <Link href="/i/bookmarks">
+            <StartMenuTitle>
+              <StartMenuLogo>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke={textColor}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
+                  />
+                </svg>
+              </StartMenuLogo>
+              <Heading
+                is="h2"
+                lineHeight={1.25}
+                fontSize={32}
+                fontWeight={800}
+                color={textColor}
+                letterSpacing="-.003rem"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
-                />
-              </svg>
-            </StartMenuLogo>
-            <Heading
-              is="h2"
-              lineHeight={1.25}
-              fontSize={32}
-              fontWeight={800}
-              color={textColor}
-              letterSpacing="-.003rem"
-            >
-              Bookmarks
-            </Heading>
-          </StartMenuTitle>
+                Bookmarks
+              </Heading>
+            </StartMenuTitle>
 
-          <Paragraph
-            size={500}
-            color={textMuted}
-            marginTop={18}
-            lineHeight={1.75}
-          >
-            Organize your internet life. Save and categorize your favorite
-            website links, making it easy to revisit and stay connected with
-            what matters most to you.
-          </Paragraph>
+            <Paragraph
+              size={500}
+              color={textMuted}
+              marginTop={18}
+              lineHeight={1.75}
+            >
+              Organize your internet life. Save and categorize your favorite
+              website links, making it easy to revisit and stay connected with
+              what matters most to you.
+            </Paragraph>
+          </Link>
         </StartMenuItem>
+
         <StartMenuItem>
           <StartMenuTitle>
             <StartMenuLogo>
@@ -92,6 +96,7 @@ function StartMenu({ theme }) {
             track of tasks and ensuring you stay on top of your day.
           </Paragraph>
         </StartMenuItem>
+
         <StartMenuItem>
           <StartMenuTitle>
             <StartMenuLogo>

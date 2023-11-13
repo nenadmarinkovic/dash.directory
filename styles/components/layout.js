@@ -43,3 +43,43 @@ export const CenteredLayout = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const PageLayout = styled.div`
+  display: flex;
+  margin-top: 3.5rem;
+  justify-content: space-between;
+`;
+
+export const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+`;
+
+export const PageHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  input {
+    width: 480px;
+  }
+
+  button {
+    width: 150px;
+  }
+`;
+
+export const GroupOptions = styled.div`
+  button {
+    width: 80px;
+  }
+`;
+
+export const PageMain = styled.div`
+  border-radius: 5px;
+  height: 100%;
+  border: 1px solid ${({ theme }) => theme.shadowBorder};
+  background: ${({ theme }) => theme.clear};
+  margin-top: 1.5rem;
+`;
