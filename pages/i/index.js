@@ -7,10 +7,10 @@ import {
   CenteredSection,
   CenteredLayout,
   ThemeLayout,
-} from "../styles/components/layout";
-import Footer from "../components/Footer";
-import { useAuth } from "../context/AuthContext";
-import { DashboardWrap } from "../styles/pages/dashboard";
+} from "../../styles/components/layout";
+import Footer from "../../components/Footer";
+import { useAuth } from "../../context/AuthContext";
+import { StartWrap, StartHeader } from "../../styles/pages/start";
 import {
   Heading,
   Strong,
@@ -20,8 +20,10 @@ import {
   Text,
 } from "evergreen-ui";
 import Link from "next/link";
+import StartMenu from "../../components/StartMenu";
+import DateTimeComponent from "../../components/DateTime";
 
-export default function DashboardPage({ theme, toggleTheme }) {
+export default function StartPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
   const { currentUser } = useAuth();
 
@@ -34,7 +36,7 @@ export default function DashboardPage({ theme, toggleTheme }) {
   return (
     <>
       <Head>
-        <title>Dash Directory | Dashboard</title>
+        <title>Dash Directory | Start page</title>
         <meta name="description" content="Web directory for organized minds" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
@@ -97,7 +99,7 @@ export default function DashboardPage({ theme, toggleTheme }) {
             )}
 
             {currentUser && (
-              <DashboardWrap>
+              <StartWrap>
                 {!currentUser?.emailVerified || !currentUser?.displayName ? (
                   <StatusIndicator color="warning">
                     <Text color={textColor} fontSize={14}>
@@ -105,26 +107,34 @@ export default function DashboardPage({ theme, toggleTheme }) {
                       <Strong color={textColor} fontSize={14}>
                         {currentUser?.displayName &&
                           `, ${currentUser?.displayName}`}
-                        .
                       </Strong>
+                      .
                       <br />
                       Please verify your email in order to fully use Dash
                       Directory.
                     </Text>
                   </StatusIndicator>
                 ) : (
+                  <>
+                  <StartHeader>
                   <StatusIndicator color="success">
-                    <Text color={textColor} fontSize={14}>
-                      Welcome,
-                      <Strong color={textColor} fontSize={14}>
-                        {currentUser?.displayName}
-                      </Strong>
-                      ! <br /> Your Dashboard is still in developer-mode. Thanks
-                      for being patient.
-                    </Text>
-                  </StatusIndicator>
+                      <Text color={textColor} fontSize={14}>
+                        Welcome
+                        <Strong color={textColor} fontSize={14}>
+                          {currentUser?.displayName &&
+                            `, ${currentUser?.displayName}`}
+                        </Strong>
+                        . <br /> Your Start page is still in developer-mode.
+                        Thanks for being patient.
+                      </Text>
+                    </StatusIndicator>
+                    <DateTimeComponent/>
+                  </StartHeader>
+                   
+                    <StartMenu theme={theme} />
+                  </>
                 )}
-              </DashboardWrap>
+              </StartWrap>
             )}
           </ContainerWrap>
         </MainSection>

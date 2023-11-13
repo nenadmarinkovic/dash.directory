@@ -37,7 +37,7 @@ function Header({ theme, toggleTheme, showHeaderLink, currentUser }) {
               <Logo theme={theme} />
             </Link>
             <HeaderLinks>
-              {!currentUser && (
+              {!currentUser && router.pathname === "/" && (
                 <>
                   <HeaderLink>
                     <ScrollIntoView selector="#about">
@@ -52,7 +52,7 @@ function Header({ theme, toggleTheme, showHeaderLink, currentUser }) {
                 </>
               )}
 
-              {!router.pathname.includes("/dashboard") && currentUser && (
+              {!router.pathname.startsWith("/i") && currentUser && (
                 <HeaderLink className="no-pointer">
                   <StatusIndicator color="success">
                     <Text color={textMuted}>
@@ -64,15 +64,13 @@ function Header({ theme, toggleTheme, showHeaderLink, currentUser }) {
 
               {currentUser && (
                 <HeaderLink>
-                  <Link href="/dashboard">
+                  <Link href="/i">
                     <Text
                       color={
-                        router.pathname.includes("/dashboard")
-                          ? textColor
-                          : textMuted
+                        router.pathname.startsWith("/i") ? textColor : textMuted
                       }
                     >
-                      Dashboard
+                      Start page
                     </Text>
                   </Link>
                 </HeaderLink>
@@ -86,7 +84,11 @@ function Header({ theme, toggleTheme, showHeaderLink, currentUser }) {
 
               {!currentUser ? (
                 <Link href="/signup">
-                  <Button className="themed-button"  fontWeight="bold" width={100}>
+                  <Button
+                    className="themed-button"
+                    fontWeight="bold"
+                    width={100}
+                  >
                     Sign up
                   </Button>
                 </Link>

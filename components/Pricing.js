@@ -6,7 +6,7 @@ import {
   PricingAdditional,
   Money,
 } from "../styles/components/pricing";
-import { Button, Heading, Paragraph, Text } from "evergreen-ui";
+import { Heading, Paragraph, Text } from "evergreen-ui";
 import { ContainerWrap } from "@/styles/components/layout";
 
 import Title from "./Title";

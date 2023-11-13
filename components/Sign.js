@@ -38,7 +38,7 @@ function Sign({ theme }) {
       try {
         await login(email, password);
         toaster.success("Successfully logged in.");
-        router.push("/dashboard");
+        router.push("/i");
       } catch (err) {
         setError("Incorrect email or password.");
         toaster.danger("Incorrect email or password.");
@@ -48,7 +48,7 @@ function Sign({ theme }) {
     }
 
     await signup(name, email, password); // add address, or any additional fields
-    router.push("/dashboard");
+    router.push("/i");
     toaster.success("Successfully created account. Please verify your email.");
   }
 

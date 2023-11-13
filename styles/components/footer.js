@@ -44,3 +44,19 @@ export const FooterFlex = styled.div`
 export const Year = styled.div`
   background-color: ${({ theme }) => theme.background};
 `;
+
+export const ContactWrap = styled.div`
+  width: 320px;
+  margin-top: 20px;
+  line-height: 1.5;
+
+  .email {
+    color: #3faeff !important;
+    font-weight: bold !important;
+    text-decoration: none;
+  }
+
+  @media (max-width: 960px) {
+    text-align: center;
+  }
+`;

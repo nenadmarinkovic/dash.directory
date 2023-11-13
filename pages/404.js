@@ -70,7 +70,7 @@ export default function SignupPage({ theme, toggleTheme }) {
             </CenteredSection>
             <CenteredLayout>
               {currentUser ? (
-                <Link href="/dashboard">
+                <Link href="/i">
                   <Button
                     className="custom-button-big-svg"
                     appearance="primary"
@@ -79,7 +79,7 @@ export default function SignupPage({ theme, toggleTheme }) {
                     height={50}
                   >
                     <Text fontWeight="bold" color="#FFF">
-                      Go to dashboard
+                      Go to start page
                     </Text>
                   </Button>
                 </Link>

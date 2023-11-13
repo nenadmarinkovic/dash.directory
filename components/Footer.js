@@ -4,6 +4,7 @@ import {
   FooterInside,
   FooterFlex,
   Year,
+  ContactWrap,
 } from "../styles/components/footer";
 import { ContainerWrap } from "../styles/components/layout";
 import { Text } from "evergreen-ui";
@@ -11,8 +12,6 @@ import Link from "next/link";
 import Logo from "./Logo";
 
 function Footer({ theme }) {
-  // TODO: Move this logic
-  let textColor = theme === "light" ? "#000" : "#F8FAFF";
   let textMuted = theme === "light" ? "#676f89" : "#8B93A8";
   return (
     <FooterWrap>
@@ -20,10 +19,10 @@ function Footer({ theme }) {
         <FooterInside>
           <FooterFlex>
             <Logo theme={theme} />
-            <Text color={textColor} marginTop={25}>
+            <Text color={textMuted} marginTop={25}>
               Currently in Development mode.
             </Text>
-            <Text color={textColor} marginTop={10}>
+            <Text color={textMuted} marginTop={10}>
               See <Link href="/updates">Updates</Link> for more.
             </Text>
           </FooterFlex>
@@ -32,15 +31,21 @@ function Footer({ theme }) {
             <Text color={textMuted} marginTop={15}>
               <Link href="/terms">Terms of Service</Link>
             </Text>
-            <Text color={textMuted} marginTop={15}>
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href="https://nenadmarinkovic.com"
-              >
-                Contact the developer
-              </a>
-            </Text>
+            <ContactWrap>
+              <Text color={textMuted} marginTop={15}>
+                For any inquiries, assistance, suggestions, or bug reports, feel
+                free to reach out at{" "}
+                <a
+                  className="email"
+                  target="_blank"
+                  rel="noreferrer"
+                  href="mailto:hello@dash.directory"
+                >
+                  hello@dash.directory
+                </a>
+                .
+              </Text>
+            </ContactWrap>
           </FooterFlex>
         </FooterInside>
       </ContainerWrap>
