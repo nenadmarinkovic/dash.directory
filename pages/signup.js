@@ -113,7 +113,7 @@ export default function SignupPage({ theme, toggleTheme }) {
 
                 <Button
                   onClick={() => setIsShownEmail(true)}
-                  className="custom-button-small-svg"
+                  className="custom-button-big-svg"
                   appearance="primary"
                   fontWeight="bold"
                   width={280}
