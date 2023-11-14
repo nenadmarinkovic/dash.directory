@@ -4,7 +4,7 @@ import { throttle } from "throttle-debounce-ts";
 import { useEffect, useRef, useState } from "react";
 import { AboutTitle } from "../styles/components/about";
 import { Button, Heading, Paragraph, Text } from "evergreen-ui";
-import { Circle, Line } from "@/styles/components/helpers";
+import { Circle, Line } from "../styles/components/helpers";
 import Link from "next/link";
 
 function useElementViewportPosition(ref) {

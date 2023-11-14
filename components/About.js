@@ -10,8 +10,8 @@ import {
   AboutItem,
 } from "../styles/components/about";
 import { Heading, Paragraph, Text } from "evergreen-ui";
-import { ContainerWrap } from "@/styles/components/layout";
-import { Circle, Line } from "@/styles/components/helpers";
+import { ContainerWrap } from "../styles/components/layout";
+import { Circle, Line } from "../styles/components/helpers";
 import Animation from "./Animation";
 import Title from "./Title";
 
