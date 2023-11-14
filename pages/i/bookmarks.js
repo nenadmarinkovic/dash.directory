@@ -1,7 +1,6 @@
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Head from "next/head";
 import Header from "@/components/Header";
-import { css } from "styled-components";
 import {
   ContainerWrap,
   MainSection,

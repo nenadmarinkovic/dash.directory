@@ -1,5 +1,6 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import { auth, db } from "../lib/firebase";
+import { v4 as uuidv4 } from "uuid";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -10,7 +11,7 @@ import {
 import { doc, setDoc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
 import { Spinner } from "evergreen-ui";
 
-const AuthContext = React.createContext();
+const AuthContext = createContext();
 
 export function useAuth() {
   return useContext(AuthContext);
@@ -71,7 +72,6 @@ export function AuthProvider({ children }) {
             ...prevUser,
             displayName: userData.displayName,
             email: userData.email,
-            // Include other fields as needed
           }));
 
           const bookmarksDocRef = doc(db, "bookmarks", user.uid);
@@ -94,32 +94,46 @@ export function AuthProvider({ children }) {
   }, []);
 
   const addBookmark = async (title, description, link, category) => {
-    const user = auth.currentUser;
+    try {
+      const user = auth.currentUser;
 
-    if (user) {
+      if (!user) {
+        console.error("User not authenticated");
+        return;
+      }
+
       const bookmarksDocRef = doc(db, "bookmarks", user.uid);
       const bookmarksDocSnap = await getDoc(bookmarksDocRef);
 
       if (bookmarksDocSnap.exists()) {
-        const updatedBookmarks = arrayUnion({
+        const newBookmark = {
+          id: uuidv4(),
           title,
           description,
           link,
           category,
-        });
+        };
 
         setCurrentUser((prevUser) => ({
           ...prevUser,
           bookmarks: prevUser?.bookmarks
-            ? [...prevUser.bookmarks, updatedBookmarks]
-            : [updatedBookmarks],
+            ? [...prevUser.bookmarks, newBookmark]
+            : [newBookmark],
         }));
 
         await updateDoc(bookmarksDocRef, {
-          bookmarks: updatedBookmarks,
+          bookmarks: arrayUnion(newBookmark),
         });
       } else {
-        const newBookmarks = [{ title, description, link, category }];
+        const newBookmarks = [
+          {
+            id: uuidv4(),
+            title,
+            description,
+            link,
+            category,
+          },
+        ];
 
         setCurrentUser((prevUser) => ({
           ...prevUser,
@@ -132,6 +146,8 @@ export function AuthProvider({ children }) {
           bookmarks: newBookmarks,
         });
       }
+    } catch (error) {
+      console.error("Error adding bookmark:", error.message);
     }
   };
 
