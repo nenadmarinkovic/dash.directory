@@ -41,7 +41,6 @@ export default function BookmarksPage({ theme, toggleTheme }) {
   const [bookmarkDescription, setBookmarkDescription] = useState("");
   const [bookmarkCategory, setBookmarkCategory] = useState("");
 
-  // TODO: Move this logic
   let textColor = theme === "light" ? "#000" : "#F8FAFF";
   let textMuted = theme === "light" ? "#676f89" : "#8B93A8";
   let bw = theme === "light" ? "#FFF" : "#000";
@@ -198,7 +197,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                     </Dialog>
 
                     <Button
-                      className="custom-button-small-svg"
+                      className="custom-button-small"
                       fontWeight="bold"
                       onClick={() => setIsShown(true)}
                     >

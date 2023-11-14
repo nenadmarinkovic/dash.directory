@@ -13,7 +13,6 @@ import Title from "./Title";
 import Link from "next/link";
 
 function Pricing({ theme }) {
-  // TODO: Move this logic
   let textColor = theme === "light" ? "#000" : "#F8FAFF";
   let textMuted = theme === "light" ? "#676f89" : "#8B93A8";
 

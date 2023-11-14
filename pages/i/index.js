@@ -27,7 +27,6 @@ export default function StartPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
   const { currentUser } = useAuth();
 
-  // TODO: Move this logic
   let textColor = theme === "light" ? "#000" : "#F8FAFF";
   let bw = theme === "light" ? "#000" : "#FFF";
 
@@ -83,7 +82,7 @@ export default function StartPage({ theme, toggleTheme }) {
                 <CenteredLayout>
                   <Link href="/signup">
                     <Button
-                      className="custom-button-big-svg"
+                      className="custom-button-big"
                       appearance="primary"
                       fontWeight="bold"
                       width={280}

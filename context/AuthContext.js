@@ -28,18 +28,15 @@ export function AuthProvider({ children }) {
         password
       );
 
-      // Create a user document in the "users" collection
       const userDocRef = doc(db, "users", newUserCredentials.user.uid);
       await setDoc(userDocRef, {
         displayName,
         email,
       });
 
-      // Create an empty bookmarks document in the "bookmarks" collection
       const bookmarksDocRef = doc(db, "bookmarks", newUserCredentials.user.uid);
       await setDoc(bookmarksDocRef, { bookmarks: [] });
 
-      // Send email verification
       await sendEmailVerification(newUserCredentials.user);
     } catch (error) {
       console.error("Signup Error:", error.message);
@@ -65,12 +62,10 @@ export function AuthProvider({ children }) {
       setCurrentUser(user);
 
       if (user) {
-        // User is logged in, fetch additional data from Firestore
         const userDocRef = doc(db, "users", user.uid);
         const userDocSnap = await getDoc(userDocRef);
 
         if (userDocSnap.exists()) {
-          // User document exists, set additional user data
           const userData = userDocSnap.data();
           setCurrentUser((prevUser) => ({
             ...prevUser,
@@ -79,17 +74,14 @@ export function AuthProvider({ children }) {
             // Include other fields as needed
           }));
 
-          // Read bookmarks for the user
           const bookmarksDocRef = doc(db, "bookmarks", user.uid);
           const bookmarksDocSnap = await getDoc(bookmarksDocRef);
 
           if (bookmarksDocSnap.exists()) {
-            // Bookmarks document exists, set bookmarks data
             const bookmarksData = bookmarksDocSnap.data();
             setCurrentUser((prevUser) => ({
               ...prevUser,
               bookmarks: bookmarksData.bookmarks || [],
-              // Include other fields as needed
             }));
           }
         }

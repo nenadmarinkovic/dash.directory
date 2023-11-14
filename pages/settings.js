@@ -1,23 +1,18 @@
 import { useState } from "react";
 import Head from "next/head";
 import Header from "@/components/Header";
-import { Heading, Button, Paragraph, Text, Dialog } from "evergreen-ui";
+import { Heading, Paragraph } from "evergreen-ui";
 import {
   ContainerWrap,
   MainSection,
   CenteredSection,
-  CenteredLayout,
   ThemeLayout,
 } from "../styles/components/layout";
 import { useAuth } from "../context/AuthContext";
 import Footer from "../components/Footer";
-import Sign from "../components/Sign";
-import Link from "next/link";
 
 export default function SignupPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
-  const [isShownEmail, setIsShownEmail] = useState(false);
-  const [isShownGithub, setIsShownGithub] = useState(false);
 
   const { currentUser } = useAuth();
 

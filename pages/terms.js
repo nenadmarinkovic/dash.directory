@@ -12,7 +12,7 @@ import Footer from "../components/Footer";
 
 export default function TermsPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
-  // TODO: Move this logic
+  
   let textColor = theme === "light" ? "#000" : "#F8FAFF";
   let textMuted = theme === "light" ? "#676f89" : "#8B93A8";
   return (

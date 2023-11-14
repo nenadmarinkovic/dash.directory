@@ -13,7 +13,7 @@ import ScrollIntoView from "react-scroll-into-view";
 import { useAuth } from "../context/AuthContext";
 import { useRouter } from "next/router";
 
-function Header({ theme, toggleTheme, showHeaderLink, currentUser }) {
+function Header({ theme, toggleTheme, currentUser }) {
   const { logout: authLogout } = useAuth();
 
   let textColor = theme === "light" ? "#000" : "#F8FAFF";

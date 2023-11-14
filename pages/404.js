@@ -16,9 +16,6 @@ import Link from "next/link";
 
 export default function SignupPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
-  const [isShownEmail, setIsShownEmail] = useState(false);
-  const [isShownGithub, setIsShownGithub] = useState(false);
-
   const { currentUser } = useAuth();
 
   let bw = theme === "light" ? "#000" : "#FFF";
@@ -72,7 +69,7 @@ export default function SignupPage({ theme, toggleTheme }) {
               {currentUser ? (
                 <Link href="/i">
                   <Button
-                    className="custom-button-big-svg"
+                    className="custom-button-big"
                     appearance="primary"
                     fontWeight="bold"
                     width={280}
@@ -86,7 +83,7 @@ export default function SignupPage({ theme, toggleTheme }) {
               ) : (
                 <Link href="/signup">
                   <Button
-                    className="custom-button-big-svg"
+                    className="custom-button-big"
                     appearance="primary"
                     fontWeight="bold"
                     width={280}

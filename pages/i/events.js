@@ -10,16 +10,11 @@ import {
 } from "../../styles/components/layout";
 import Footer from "../../components/Footer";
 import { useAuth } from "../../context/AuthContext";
-import AddBookmark from "../../components/AddBookmark";
 import Sidebar from "../../components/Sidebar";
 
 export default function EventsPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
   const { currentUser } = useAuth();
-
-  // TODO: Move this logic
-  let textColor = theme === "light" ? "#000" : "#F8FAFF";
-  let bw = theme === "light" ? "#000" : "#FFF";
 
   useEffect(() => {}, [currentUser]);
 
@@ -41,7 +36,6 @@ export default function EventsPage({ theme, toggleTheme }) {
       <ThemeLayout>
         <MainSection>
           <ContainerWrap>
-            {/* <AddBookmark/> */}
             <PageLayout>
               <Sidebar />
               <PageContainer>MAIN LAYOUT - EVENTS</PageContainer>

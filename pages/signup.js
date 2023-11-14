@@ -78,7 +78,7 @@ export default function SignupPage({ theme, toggleTheme }) {
                 </Dialog>
                 <Button
                   onClick={() => setIsShownGithub(true)}
-                  className="custom-button-big-svg"
+                  className="custom-button-big"
                   appearance="primary"
                   intent="success"
                   fontWeight="bold"
@@ -113,7 +113,7 @@ export default function SignupPage({ theme, toggleTheme }) {
 
                 <Button
                   onClick={() => setIsShownEmail(true)}
-                  className="custom-button-big-svg"
+                  className="custom-button-big"
                   appearance="primary"
                   fontWeight="bold"
                   width={280}

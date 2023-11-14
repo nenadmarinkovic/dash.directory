@@ -16,11 +16,8 @@ import Animation from "./Animation";
 import Title from "./Title";
 
 function About({ theme }) {
-  // let textColor = theme === "light" ? "#000" : "#FFF";
-
-   // TODO: Move this logic
-   let textColor = theme === "light" ? "#000" : "#F8FAFF";
-   let textMuted = theme === "light" ? "#676f89" : "#8B93A8";
+  let textColor = theme === "light" ? "#000" : "#F8FAFF";
+  let textMuted = theme === "light" ? "#676f89" : "#8B93A8";
 
   return (
     <AboutWrap>
@@ -195,7 +192,12 @@ function About({ theme }) {
             </Heading>
           </AboutTitleFlex>
 
-          <Paragraph size={500} color={textMuted} marginTop={18} lineHeight={1.75}>
+          <Paragraph
+            size={500}
+            color={textMuted}
+            marginTop={18}
+            lineHeight={1.75}
+          >
             Dash Directory is your ultimate productivity companion, empowering
             you to stay focused and make the most out of your time. With our
             intuitive interface and powerful features, we streamline your

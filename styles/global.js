@@ -113,7 +113,7 @@ export const GlobalStyle = createGlobalStyle`
       }
     }
 
-    .custom-button-small-svg {
+    .custom-button-small {
       background-color: ${({ theme }) => theme.buttonBackground};
       color: ${({ theme }) => theme.buttonColor};
       width: 120px;
@@ -137,7 +137,7 @@ export const GlobalStyle = createGlobalStyle`
         }
     }
 
-    .custom-button-big-svg {
+    .custom-button-big {
         svg {
           width: 25px;
           height: 25px;
