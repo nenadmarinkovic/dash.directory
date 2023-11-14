@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Head from "next/head";
-import Header from "@/components/Header";
+import Header from "../components/Header";
 import { MainSection } from "../styles/components/layout";
-import Banner from "@/components/Banner";
-import About from "@/components/About";
+import Banner from "../components/Banner";
+import About from "../components/About";
 import Pricing from "../components/Pricing";
 import Footer from "../components/Footer";
 import { useAuth } from "../context/AuthContext";

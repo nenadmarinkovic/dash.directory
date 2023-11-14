@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Head from "next/head";
-import Header from "@/components/Header";
+import Header from "../components/Header";
 import { Heading, Paragraph, Strong } from "evergreen-ui";
 import {
   ContainerWrap,
@@ -12,7 +12,7 @@ import Footer from "../components/Footer";
 
 export default function TermsPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
-  
+
   let textColor = theme === "light" ? "#000" : "#F8FAFF";
   let textMuted = theme === "light" ? "#676f89" : "#8B93A8";
   return (
