@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { auth, db } from "../lib/firebase";
 import { v4 as uuidv4 } from "uuid";
 import {
@@ -11,7 +11,7 @@ import {
 import { doc, setDoc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
 import { Spinner } from "evergreen-ui";
 
-const AuthContext = createContext();
+const AuthContext = React.createContext();
 
 export function useAuth() {
   return useContext(AuthContext);
