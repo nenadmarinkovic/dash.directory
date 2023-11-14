@@ -243,7 +243,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                             className="custom-table_row"
                             background={bw}
                             color={textMuted}
-                            key={bookmark.title}
+                            key={bookmark.id}
                             isSelectable={false}
                             onSelect={() => alert(bookmark.title)}
                           >
