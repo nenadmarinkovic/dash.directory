@@ -73,7 +73,6 @@ export const GroupOptions = styled.div`
 `;
 
 export const PageMain = styled.div`
-  border-radius: 5px;
   height: 100%;
   background: ${({ theme }) => theme.clear};
   margin-top: 1.5rem;

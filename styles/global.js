@@ -121,8 +121,8 @@ export const GlobalStyle = createGlobalStyle`
       transition: all .3s;
     
         svg {
-          height: 23px;
-          width: 23px;
+          height: 18px;
+          width: 18px;
           margin-left: 5px;
           display: block;
         }
@@ -144,6 +144,27 @@ export const GlobalStyle = createGlobalStyle`
           display: block;
           margin-right: 10px;
         }
+    }
+
+    /* Custom Table Component */
+
+    .custom-table {
+
+      &_head {
+        border-bottom: 1px solid rgba(200, 200, 200, 0.4)
+      }
+
+      &_wrap {
+        border: 0;
+      }
+
+      &_row {
+        border-bottom: 1px solid rgba(200, 200, 200, 0.4)
+      }
+    }
+
+    input, button {
+      border: 1px solid rgba(200, 200, 200, 0.4) !important;
     }
 
      /* Framer animation */

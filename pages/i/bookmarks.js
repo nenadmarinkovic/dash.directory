@@ -29,6 +29,7 @@ import {
   Spinner,
   SelectMenu,
 } from "evergreen-ui";
+import { BookmarksTable } from "../../styles/pages/bookmarks";
 
 export default function BookmarksPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
@@ -211,46 +212,60 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                   </Pane>
                 </PageHeader>
                 <PageMain>
-                  <Table>
-                    <Table.Head background={bw}>
-                      <Table.TextHeaderCell>Title</Table.TextHeaderCell>
-                      <Table.TextHeaderCell>Description</Table.TextHeaderCell>
-                      <Table.TextHeaderCell>Link</Table.TextHeaderCell>
-                      <Table.TextHeaderCell>Category</Table.TextHeaderCell>
-                    </Table.Head>
-                    <Table.Body height={820}>
-                      {currentUser?.bookmarks.map((bookmark) => (
-                        <Table.Row
-                          background={bw}
-                          color={textMuted}
-                          key={bookmark.title}
-                          isSelectable
-                          onSelect={() => alert(bookmark.title)}
-                        >
-                          <Table.TextCell color={textMuted}>
-                            <Text color={textColor} fontSize={12}>
-                              {bookmark.title}
-                            </Text>
-                          </Table.TextCell>
-                          <Table.TextCell>
-                            <Text color={textColor} fontSize={12}>
-                              {bookmark.description}
-                            </Text>
-                          </Table.TextCell>
-                          <Table.TextCell>
-                            <Text color={textColor} fontSize={12}>
-                              {bookmark.link}
-                            </Text>
-                          </Table.TextCell>
-                          <Table.TextCell>
-                            <Text color={textColor} fontSize={12}>
-                              {bookmark.category}
-                            </Text>
-                          </Table.TextCell>
-                        </Table.Row>
-                      ))}
-                    </Table.Body>
-                  </Table>
+                  <BookmarksTable className="custom-table">
+                    <Table className="custom-table_wrap">
+                      <Table.Head className="custom-table_head" background={bw}>
+                        <Table.TextHeaderCell className="custom-table_cell">
+                          Title
+                        </Table.TextHeaderCell>
+                        <Table.TextHeaderCell className="custom-table_cell">
+                          Description
+                        </Table.TextHeaderCell>
+                        <Table.TextHeaderCell className="custom-table_cell">
+                          Link
+                        </Table.TextHeaderCell>
+                        <Table.TextHeaderCell className="custom-table_cell">
+                          Category
+                        </Table.TextHeaderCell>
+                      </Table.Head>
+                      <Table.Body height={820}>
+                        {currentUser?.bookmarks.map((bookmark) => (
+                          <Table.Row
+                            className="custom-table_row"
+                            background={bw}
+                            color={textMuted}
+                            key={bookmark.title}
+                            isSelectable={false}
+                            onSelect={() => alert(bookmark.title)}
+                          >
+                            <Table.TextCell
+                              className="custom-table_cell"
+                              color={textMuted}
+                            >
+                              <Text color={textColor} fontSize={12}>
+                                {bookmark.title}
+                              </Text>
+                            </Table.TextCell>
+                            <Table.TextCell className="custom-table_cell">
+                              <Text color={textColor} fontSize={12}>
+                                {bookmark.description}
+                              </Text>
+                            </Table.TextCell>
+                            <Table.TextCell className="custom-table_cell">
+                              <Text color={textColor} fontSize={12}>
+                                {bookmark.link}
+                              </Text>
+                            </Table.TextCell>
+                            <Table.TextCell className="custom-table_cell">
+                              <Text color={textColor} fontSize={12}>
+                                {bookmark.category}
+                              </Text>
+                            </Table.TextCell>
+                          </Table.Row>
+                        ))}
+                      </Table.Body>
+                    </Table>
+                  </BookmarksTable>
                 </PageMain>
               </PageContainer>
             </PageLayout>
