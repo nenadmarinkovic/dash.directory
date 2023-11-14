@@ -20,7 +20,7 @@ export const SignField = styled.div`
   }
 
   button {
-    display: block;
+    display: flex;
     
     line-height: 1;
     margin-left: auto;

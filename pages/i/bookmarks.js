@@ -28,6 +28,7 @@ import {
   SearchIcon,
   Spinner,
   SelectMenu,
+  StatusIndicator,
 } from "evergreen-ui";
 import { BookmarksTable } from "../../styles/pages/bookmarks";
 
@@ -89,6 +90,16 @@ export default function BookmarksPage({ theme, toggleTheme }) {
       <ThemeLayout>
         <MainSection>
           <ContainerWrap>
+            <StatusIndicator marginTop={22} color="success">
+              <Text color={textColor} fontSize={14}>
+                Welcome
+                <Strong color={textColor} fontSize={14}>
+                  {currentUser?.displayName && `, ${currentUser?.displayName}`}
+                </Strong>
+                . <br /> Dash Directory is still in development-mode. Thanks for
+                being patient.
+              </Text>
+            </StatusIndicator>
             <PageLayout>
               <Sidebar theme={theme} />
               <PageContainer>

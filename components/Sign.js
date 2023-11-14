@@ -14,9 +14,9 @@ import { SignForm, SignField } from "../styles/components/signin";
 function Sign({ theme }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [address, setAddress] = useState(""); // Set additional fields
   const [name, setName] = useState("");
   const [error, setError] = useState(null);
+  const [loading, setIsLoading] = useState(null);
   const [isCreatingAccount, setIsCreatingAccount] = useState(true);
   const { login, signup, currentUser } = useAuth();
 
@@ -29,27 +29,43 @@ function Sign({ theme }) {
   const router = useRouter();
 
   async function submitHandler() {
-    if (!email || !password) {
-      setError("Please enter email and password.");
-      toaster.danger("Please enter email and password.");
+    setError(null);
+
+    if (!email || !password || (isCreatingAccount && !name)) {
+      setError("Please enter valid information.");
+      toaster.danger("Please enter valid information.");
       return;
     }
+
+    setIsLoading(true);
+
     if (!isCreatingAccount) {
       try {
         await login(email, password);
         toaster.success("Successfully logged in.");
         router.push("/i");
       } catch (err) {
-        setError("Incorrect email or password.");
-        toaster.danger("Incorrect email or password.");
+        setError(error);
+        toaster.danger(error);
+      } finally {
+        setIsLoading(false);
       }
 
       return;
     }
 
-    await signup(name, email, password); // add address, or any additional fields
-    router.push("/i");
-    toaster.success("Successfully created account. Please verify your email.");
+    try {
+      await signup(name, email, password);
+      router.push("/i");
+      toaster.success(
+        "Successfully created account. Please verify your email."
+      );
+    } catch (err) {
+      setError("Error creating account. Please try again.");
+      toaster.danger("Error creating account. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -101,6 +117,7 @@ function Sign({ theme }) {
           marginBottom={!isCreatingAccount ? 20 : ""}
           onClick={submitHandler}
           appearance="primary"
+          isLoading={loading}
         >
           <Text size="small" fontWeight="bold" color="#FFF">
             {isCreatingAccount ? " Create account" : "Login"}

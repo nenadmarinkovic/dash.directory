@@ -8,6 +8,7 @@ import {
   sendEmailVerification,
 } from "firebase/auth";
 import { doc, setDoc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
+import { Spinner } from "evergreen-ui";
 
 const AuthContext = React.createContext();
 
@@ -108,30 +109,36 @@ export function AuthProvider({ children }) {
       const bookmarksDocSnap = await getDoc(bookmarksDocRef);
 
       if (bookmarksDocSnap.exists()) {
-        // Bookmarks document exists, update bookmarks data
+        const updatedBookmarks = arrayUnion({
+          title,
+          description,
+          link,
+          category,
+        });
+
+        setCurrentUser((prevUser) => ({
+          ...prevUser,
+          bookmarks: prevUser?.bookmarks
+            ? [...prevUser.bookmarks, updatedBookmarks]
+            : [updatedBookmarks],
+        }));
+
         await updateDoc(bookmarksDocRef, {
-          bookmarks: arrayUnion({ title, description, link, category }),
+          bookmarks: updatedBookmarks,
         });
-
-        // Update the local state
-        setCurrentUser((prevUser) => ({
-          ...prevUser,
-          bookmarks: [
-            ...prevUser.bookmarks,
-            { title, description, link, category }, // Include the 'description' field
-          ],
-        }));
       } else {
-        // Bookmarks document doesn't exist, create it with the initial state
-        await setDoc(bookmarksDocRef, {
-          bookmarks: [{ title, description, link, category }],
-        });
+        const newBookmarks = [{ title, description, link, category }];
 
-        // Update the local state
         setCurrentUser((prevUser) => ({
           ...prevUser,
-          bookmarks: [{ title, description, link, category }], // Include the 'description' field
+          bookmarks: prevUser?.bookmarks
+            ? [...prevUser.bookmarks, ...newBookmarks]
+            : newBookmarks,
         }));
+
+        await setDoc(bookmarksDocRef, {
+          bookmarks: newBookmarks,
+        });
       }
     }
   };
@@ -146,7 +153,7 @@ export function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider value={value}>
-      {!loading ? children : <p>Loading...</p>}
+      {!loading ? children : <Spinner />}
     </AuthContext.Provider>
   );
 }
