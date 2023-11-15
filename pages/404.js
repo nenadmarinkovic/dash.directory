@@ -9,7 +9,7 @@ import {
   CenteredLayout,
   ThemeLayout,
 } from "../styles/components/layout";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/ServicesProvider";
 import Footer from "../components/Footer";
 import Sign from "../components/Sign";
 import Link from "next/link";

@@ -9,7 +9,7 @@ import {
   ThemeLayout,
 } from "../../styles/components/layout";
 import Footer from "../../components/Footer";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../context/ServicesProvider";
 import { StartWrap, StartHeader } from "../../styles/pages/start";
 import {
   Heading,

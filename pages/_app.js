@@ -2,7 +2,7 @@ import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "../styles/global";
 import { useTheme } from "../hooks/useTheme";
 import { lightTheme, darkTheme } from "../styles/theme";
-import { AuthProvider } from "../context/AuthContext";
+import { ServicesProvider } from "../context/ServicesProvider";
 
 export default function App({ Component, pageProps }) {
   const [theme, toggleTheme, componentMounted] = useTheme();
@@ -13,11 +13,11 @@ export default function App({ Component, pageProps }) {
   }
 
   return (
-    <AuthProvider>
+    <ServicesProvider>
       <ThemeProvider theme={themeMode}>
         <GlobalStyle />
         <Component {...pageProps} theme={theme} toggleTheme={toggleTheme} />
       </ThemeProvider>
-    </AuthProvider>
+    </ServicesProvider>
   );
 }

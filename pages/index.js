@@ -6,7 +6,7 @@ import Banner from "../components/Banner";
 import About from "../components/About";
 import Pricing from "../components/Pricing";
 import Footer from "../components/Footer";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/ServicesProvider";
 
 export default function HomePage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);

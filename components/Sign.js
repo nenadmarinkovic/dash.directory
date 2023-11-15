@@ -7,7 +7,7 @@ import {
   Paragraph,
   toaster,
 } from "evergreen-ui";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/ServicesProvider";
 import { useRouter } from "next/router";
 import { SignForm, SignField } from "../styles/components/signin";
 

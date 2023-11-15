@@ -12,7 +12,7 @@ import {
 } from "../../styles/components/layout";
 import { SignForm, SignField } from "../../styles/components/signin";
 import Footer from "../../components/Footer";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../context/ServicesProvider";
 import Sidebar from "../../components/Sidebar";
 import {
   Pane,
@@ -238,7 +238,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                         </Table.TextHeaderCell>
                       </Table.Head>
                       <Table.Body height={820}>
-                        {currentUser?.bookmarks.map((bookmark) => (
+                        {currentUser?.bookmarks && currentUser?.bookmarks.map((bookmark) => (
                           <Table.Row
                             className="custom-table_row"
                             background={bw}

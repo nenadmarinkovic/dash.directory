@@ -9,7 +9,7 @@ import {
   ThemeLayout,
 } from "../../styles/components/layout";
 import Footer from "../../components/Footer";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../context/ServicesProvider";
 import Sidebar from "../../components/Sidebar";
 
 export default function NotesPage({ theme, toggleTheme }) {

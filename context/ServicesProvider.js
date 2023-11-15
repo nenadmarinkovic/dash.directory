@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, createContext } from "react";
 import { auth, db } from "../lib/firebase";
 import { v4 as uuidv4 } from "uuid";
 import {
@@ -11,17 +11,18 @@ import {
 import { doc, setDoc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
 import { Spinner } from "evergreen-ui";
 
-const AuthContext = React.createContext();
+const ContextProvider = createContext();
 
 export function useAuth() {
-  return useContext(AuthContext);
+  return useContext(ContextProvider);
 }
 
-export function AuthProvider({ children }) {
+export function ServicesProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  async function signup(displayName, email, password) {
+  // Signup service
+  const signup = async (displayName, email, password) => {
     try {
       const newUserCredentials = await createUserWithEmailAndPassword(
         auth,
@@ -43,56 +44,24 @@ export function AuthProvider({ children }) {
       console.error("Signup Error:", error.message);
       throw error;
     }
-  }
+  };
 
-  async function login(email, password) {
+  // Login service
+  const login = async (email, password) => {
     try {
       return await signInWithEmailAndPassword(auth, email, password);
     } catch (error) {
       console.error("Login Error:", error.message);
       throw error;
     }
-  }
+  };
 
-  function logout() {
+  // Logout service
+  const logout = async () => {
     return signOut(auth);
-  }
+  };
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      setCurrentUser(user);
-
-      if (user) {
-        const userDocRef = doc(db, "users", user.uid);
-        const userDocSnap = await getDoc(userDocRef);
-
-        if (userDocSnap.exists()) {
-          const userData = userDocSnap.data();
-          setCurrentUser((prevUser) => ({
-            ...prevUser,
-            displayName: userData.displayName,
-            email: userData.email,
-          }));
-
-          const bookmarksDocRef = doc(db, "bookmarks", user.uid);
-          const bookmarksDocSnap = await getDoc(bookmarksDocRef);
-
-          if (bookmarksDocSnap.exists()) {
-            const bookmarksData = bookmarksDocSnap.data();
-            setCurrentUser((prevUser) => ({
-              ...prevUser,
-              bookmarks: bookmarksData.bookmarks || [],
-            }));
-          }
-        }
-      }
-
-      setLoading(false);
-    });
-
-    return unsubscribe;
-  }, []);
-
+  // Add bookmark service
   const addBookmark = async (title, description, link, category) => {
     try {
       const user = auth.currentUser;
@@ -151,6 +120,41 @@ export function AuthProvider({ children }) {
     }
   };
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      setCurrentUser(user);
+
+      if (user) {
+        const userDocRef = doc(db, "users", user.uid);
+        const userDocSnap = await getDoc(userDocRef);
+
+        if (userDocSnap.exists()) {
+          const userData = userDocSnap.data();
+          setCurrentUser((prevUser) => ({
+            ...prevUser,
+            displayName: userData.displayName,
+            email: userData.email,
+          }));
+
+          const bookmarksDocRef = doc(db, "bookmarks", user.uid);
+          const bookmarksDocSnap = await getDoc(bookmarksDocRef);
+
+          if (bookmarksDocSnap.exists()) {
+            const bookmarksData = bookmarksDocSnap.data();
+            setCurrentUser((prevUser) => ({
+              ...prevUser,
+              bookmarks: bookmarksData.bookmarks || [],
+            }));
+          }
+        }
+      }
+
+      setLoading(false);
+    });
+
+    return unsubscribe;
+  }, []);
+
   const value = {
     currentUser,
     login,
@@ -160,8 +164,8 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={value}>
+    <ContextProvider.Provider value={value}>
       {!loading ? children : <Spinner />}
-    </AuthContext.Provider>
+    </ContextProvider.Provider>
   );
 }

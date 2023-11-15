@@ -10,7 +10,7 @@ import { Button, StatusIndicator, Text, toaster } from "evergreen-ui";
 import Logo from "./Logo";
 import Link from "next/link";
 import ScrollIntoView from "react-scroll-into-view";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/ServicesProvider";
 import { useRouter } from "next/router";
 
 function Header({ theme, toggleTheme, currentUser }) {
