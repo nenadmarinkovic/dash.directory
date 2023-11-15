@@ -4,15 +4,25 @@ export const StartMenuWrap = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
+  a {
+    width: 48%;
+    margin-top: 2.7rem;
+    transition: 0.3s;
+
+    :hover {
+      background: ${({ theme }) => theme.hoverButton};
+    }
+  }
 `;
 
 export const StartMenuItem = styled.div`
-  width: 48%;
-  margin-top: 2.7rem;
   background: ${({ theme }) => theme.clear};
   border-radius: 5px;
   padding: 2.8rem;
   cursor: pointer;
+  transition: 0.3s;
+
   box-shadow: 0 0 0 1px ${({ theme }) => theme.shadowBorder},
     0 4px 6px rgba(0, 0, 0, 0.04);
 
@@ -23,6 +33,7 @@ export const StartMenuItem = styled.div`
 
 export const StartMenuTitle = styled.div`
   display: flex;
+  transition: 0.3s;
 `;
 
 export const StartMenuLogo = styled.div`

@@ -11,12 +11,13 @@ import {
 } from "../styles/components/layout";
 import { useServices } from "../services/ServicesProvider";
 import Footer from "../components/Footer";
+import { useThemeColors } from "../styles/theme";
 import Link from "next/link";
 
 export default function SignupPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
   const { currentUser } = useServices();
-  const { background } = useThemeColors(theme);
+  const { textColor } = useThemeColors(theme);
 
   return (
     <>
@@ -46,7 +47,7 @@ export default function SignupPage({ theme, toggleTheme }) {
                 fontSize={58}
                 marginBottom={8}
                 fontWeight={900}
-                color={background}
+                color={textColor}
                 letterSpacing="-.003rem"
               >
                 404 - Page not found.

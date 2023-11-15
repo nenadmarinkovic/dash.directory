@@ -46,7 +46,7 @@ export const CenteredLayout = styled.div`
 
 export const PageLayout = styled.div`
   display: flex;
-  margin-top: 3.5rem;
+  margin-top: 2.5rem;
   justify-content: space-between;
 `;
 
@@ -63,6 +63,7 @@ export const PageHeader = styled.div`
 
   input {
     width: 580px;
+    font-size: 13px;
   }
 `;
 

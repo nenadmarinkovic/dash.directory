@@ -12,6 +12,7 @@ export const lightTheme = {
   buttonBackground: "#000",
   buttonColor: "#FFF",
   buttonText: "#FFF",
+  hoverButton: "#F4F5F9",
   shadowBorder: "rgba(0,0,0,.08)",
 };
 
@@ -29,6 +30,7 @@ export const darkTheme = {
   buttonBackground: "#000",
   buttonColor: "#FFF",
   buttonText: "#FFF",
+  hoverButton: "#202020",
   shadowBorder: "rgba(225,225,225,0.3)",
 };
 
@@ -42,5 +44,6 @@ export const useThemeColors = (theme) => {
     textMuted: selectedTheme.textMuted,
     background: selectedTheme.background,
     backgroundInvert: selectedTheme.backgroundInvert,
+    hoverButton: selectedTheme.hoverButton
   };
 };
