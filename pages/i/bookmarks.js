@@ -320,7 +320,10 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                                 Category
                               </Table.TextHeaderCell>
                             </Table.Head>
-                            <Table.Body height={820}>
+                            <Table.Body
+                              className="custom-table_body"
+                              height={820}
+                            >
                               {currentUser?.bookmarks &&
                                 currentUser?.bookmarks.map((bookmark) => (
                                   <Table.Row

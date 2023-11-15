@@ -150,6 +150,10 @@ export const GlobalStyle = createGlobalStyle`
 
     .custom-table {
 
+      &_body {
+        overflow-y: unset;
+      }
+
       &_head {
         padding: 0;
         border-bottom: 1px solid rgba(200, 200, 200, 0.4)
