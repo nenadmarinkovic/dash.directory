@@ -8,7 +8,7 @@ import {
   CenteredSection,
   ThemeLayout,
 } from "../styles/components/layout";
-import { useServices } from "../context/AuthContext";
+import { useServices } from "../services/ServicesProvider";
 import Footer from "../components/Footer";
 
 export default function SignupPage({ theme, toggleTheme }) {
