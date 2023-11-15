@@ -28,13 +28,16 @@ import {
   Spinner,
   SelectMenu,
   StatusIndicator,
+  toaster,
+  Popover,
+  Menu,
 } from "evergreen-ui";
 import { BookmarksTable } from "../../styles/pages/bookmarks";
 import { useThemeColors } from "../../styles/theme";
 
 export default function BookmarksPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
-  const { addBookmark, currentUser } = useServices();
+  const { addBookmark, deleteBookmark, currentUser } = useServices();
   const [bookmarkTitle, setBookmarkTitle] = useState("");
   const [bookmarkLink, setBookmarkLink] = useState("");
   const [bookmarkDescription, setBookmarkDescription] = useState("");
@@ -58,6 +61,17 @@ export default function BookmarksPage({ theme, toggleTheme }) {
     setBookmarkLink("");
     setBookmarkDescription("");
     setBookmarkCategory("");
+  };
+
+  const handleDeleteBookmark = async (bookmarkId) => {
+    try {
+      await deleteBookmark(bookmarkId);
+      console.log("Bookmark deleted successfully");
+      toaster.notify("Bookmark deleted.");
+    } catch (error) {
+      console.error("Error deleting bookmark:", error.message);
+      toaster.danger("Error deleting bookmark.");
+    }
   };
 
   const handleClick = useCallback(() => {
@@ -269,6 +283,57 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                                   {bookmark.category}
                                 </Text>
                               </Table.TextCell>
+
+                              <span className="custom-table_menu">
+                                <Popover
+                                  content={
+                                    <Menu>
+                                      <Menu.Group>
+                                        <Menu.Item
+                                          onSelect={() =>
+                                            toaster.notify("Edit")
+                                          }
+                                        >
+                                          Edit...
+                                        </Menu.Item>
+                                      </Menu.Group>
+                                      <Menu.Divider />
+                                      <Menu.Group>
+                                        <Menu.Item
+                                          onSelect={() =>
+                                            handleDeleteBookmark(bookmark.id)
+                                          }
+                                          intent="danger"
+                                        >
+                                          Delete...
+                                        </Menu.Item>
+                                      </Menu.Group>
+                                    </Menu>
+                                  }
+                                >
+                                  <Button
+                                    className="custom-table_button"
+                                    fontWeight="bold"
+                                    onClick={() => setIsShown(true)}
+                                  >
+                                    <span>
+                                      <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill={background}
+                                        viewBox="0 0 24 24"
+                                        strokeWidth="1.5"
+                                        stroke="currentColor"
+                                      >
+                                        <path
+                                          strokeLinecap="round"
+                                          strokeLinejoin="round"
+                                          d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"
+                                        />
+                                      </svg>
+                                    </span>
+                                  </Button>
+                                </Popover>
+                              </span>
                             </Table.Row>
                           ))}
                       </Table.Body>

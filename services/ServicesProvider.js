@@ -96,7 +96,7 @@ export function ServicesProvider({ children }) {
   };
 
   // BOOKMARKS SERVICES
-  
+
   const addBookmark = async (title, description, link, category) => {
     try {
       const user = auth.currentUser;
@@ -155,12 +155,44 @@ export function ServicesProvider({ children }) {
     }
   };
 
+  const deleteBookmark = async (bookmarkId) => {
+    try {
+      const user = auth.currentUser;
+
+      if (!user) {
+        console.error("User not authenticated");
+        return;
+      }
+
+      const bookmarksDocRef = doc(db, "bookmarks", user.uid);
+      const bookmarksDocSnap = await getDoc(bookmarksDocRef);
+
+      if (bookmarksDocSnap.exists()) {
+        const updatedBookmarks = (currentUser.bookmarks || []).filter(
+          (bookmark) => bookmark.id !== bookmarkId
+        );
+
+        setCurrentUser((prevUser) => ({
+          ...prevUser,
+          bookmarks: updatedBookmarks,
+        }));
+
+        await updateDoc(bookmarksDocRef, {
+          bookmarks: updatedBookmarks,
+        });
+      }
+    } catch (error) {
+      console.error("Error deleting bookmark:", error.message);
+    }
+  };
+
   const value = {
     currentUser,
     login,
     signup,
     logout,
     addBookmark,
+    deleteBookmark,
   };
 
   return (

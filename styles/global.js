@@ -151,6 +151,7 @@ export const GlobalStyle = createGlobalStyle`
     .custom-table {
 
       &_head {
+        padding: 0;
         border-bottom: 1px solid rgba(200, 200, 200, 0.4)
       }
 
@@ -159,7 +160,33 @@ export const GlobalStyle = createGlobalStyle`
       }
 
       &_row {
+        position: relative;
         border-bottom: 1px solid rgba(200, 200, 200, 0.4)
+      }
+
+      &_menu {
+        padding: 0;
+        position: absolute;
+        right: 0;
+        top: 15px;
+      }
+
+      &_button {
+        padding: 0;
+        margin-right: 15px;
+        border: none !important;
+        background-color: ${({ theme }) => theme.background};
+        color: ${({ theme }) => theme.textColor};
+     
+          svg {
+            height: 18px;
+            width: 18px;
+            display: block;
+
+              fill {
+                color: ${({ theme }) => theme.background};
+              }
+          }
       }
     }
 
