@@ -13,7 +13,7 @@ export const ThemeLayout = styled.div`
 
 export const ContainerWrap = styled.div`
   margin: 0 auto;
-  max-width: 75.8rem;
+  max-width: 1140px;
   width: 100%;
   height: 100%;
   padding: 0 15px;
