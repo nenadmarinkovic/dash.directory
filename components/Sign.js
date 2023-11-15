@@ -7,7 +7,7 @@ import {
   Paragraph,
   toaster,
 } from "evergreen-ui";
-import { useAuth } from "../context/ServicesProvider";
+import { useServices } from "../services/ServicesProvider";
 import { useRouter } from "next/router";
 import { SignForm, SignField } from "../styles/components/signin";
 
@@ -18,7 +18,7 @@ function Sign({ theme }) {
   const [error, setError] = useState(null);
   const [loading, setIsLoading] = useState(null);
   const [isCreatingAccount, setIsCreatingAccount] = useState(true);
-  const { login, signup } = useAuth();
+  const { login, signup } = useServices();
 
   let bw = theme === "light" ? "#FFF" : "#000";
   let textMuted = theme === "light" ? "#676f89" : "#8B93A8";

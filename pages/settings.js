@@ -8,13 +8,13 @@ import {
   CenteredSection,
   ThemeLayout,
 } from "../styles/components/layout";
-import { useAuth } from "../context/AuthContext";
+import { useServices } from "../context/AuthContext";
 import Footer from "../components/Footer";
 
 export default function SignupPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
 
-  const { currentUser } = useAuth();
+  const { currentUser } = useServices();
 
   let bw = theme === "light" ? "#000" : "#FFF";
 

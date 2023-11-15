@@ -10,11 +10,11 @@ import { Button, StatusIndicator, Text, toaster } from "evergreen-ui";
 import Logo from "./Logo";
 import Link from "next/link";
 import ScrollIntoView from "react-scroll-into-view";
-import { useAuth } from "../context/ServicesProvider";
+import { useServices } from "../services/ServicesProvider";
 import { useRouter } from "next/router";
 
 function Header({ theme, toggleTheme, currentUser }) {
-  const { logout: authLogout } = useAuth();
+  const { logout: authLogout } = useServices();
 
   let textColor = theme === "light" ? "#000" : "#F8FAFF";
   let textMuted = theme === "light" ? "#676f89" : "#8B93A8";

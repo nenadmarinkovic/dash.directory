@@ -12,7 +12,7 @@ import {
 } from "../../styles/components/layout";
 import { SignForm, SignField } from "../../styles/components/signin";
 import Footer from "../../components/Footer";
-import { useAuth } from "../../context/ServicesProvider";
+import { useServices } from "../../services/ServicesProvider";
 import Sidebar from "../../components/Sidebar";
 import {
   Pane,
@@ -33,7 +33,7 @@ import { BookmarksTable } from "../../styles/pages/bookmarks";
 
 export default function BookmarksPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
-  const { addBookmark, currentUser } = useAuth();
+  const { addBookmark, currentUser } = useServices();
 
   const [bookmarkTitle, setBookmarkTitle] = useState("");
   const [bookmarkLink, setBookmarkLink] = useState("");

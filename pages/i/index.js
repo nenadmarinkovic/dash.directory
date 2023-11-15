@@ -9,7 +9,7 @@ import {
   ThemeLayout,
 } from "../../styles/components/layout";
 import Footer from "../../components/Footer";
-import { useAuth } from "../../context/ServicesProvider";
+import { useServices } from "../../services/ServicesProvider";
 import { StartWrap, StartHeader } from "../../styles/pages/start";
 import {
   Heading,
@@ -25,7 +25,7 @@ import DateTimeComponent from "../../components/DateTime";
 
 export default function StartPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
-  const { currentUser } = useAuth();
+  const { currentUser } = useServices();
 
   let textColor = theme === "light" ? "#000" : "#F8FAFF";
   let bw = theme === "light" ? "#000" : "#FFF";

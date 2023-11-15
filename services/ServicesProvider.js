@@ -13,7 +13,7 @@ import { Spinner } from "evergreen-ui";
 
 const ContextProvider = createContext();
 
-export function useAuth() {
+export function useServices() {
   return useContext(ContextProvider);
 }
 
@@ -21,7 +21,43 @@ export function ServicesProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Signup service
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      setCurrentUser(user);
+
+      if (user) {
+        const userDocRef = doc(db, "users", user.uid);
+        const userDocSnap = await getDoc(userDocRef);
+
+        if (userDocSnap.exists()) {
+          const userData = userDocSnap.data();
+          setCurrentUser((prevUser) => ({
+            ...prevUser,
+            displayName: userData.displayName,
+            email: userData.email,
+          }));
+
+          const bookmarksDocRef = doc(db, "bookmarks", user.uid);
+          const bookmarksDocSnap = await getDoc(bookmarksDocRef);
+
+          if (bookmarksDocSnap.exists()) {
+            const bookmarksData = bookmarksDocSnap.data();
+            setCurrentUser((prevUser) => ({
+              ...prevUser,
+              bookmarks: bookmarksData.bookmarks || [],
+            }));
+          }
+        }
+      }
+
+      setLoading(false);
+    });
+
+    return unsubscribe;
+  }, []);
+
+  // AUTH SERVICES
+
   const signup = async (displayName, email, password) => {
     try {
       const newUserCredentials = await createUserWithEmailAndPassword(
@@ -46,7 +82,6 @@ export function ServicesProvider({ children }) {
     }
   };
 
-  // Login service
   const login = async (email, password) => {
     try {
       return await signInWithEmailAndPassword(auth, email, password);
@@ -56,12 +91,12 @@ export function ServicesProvider({ children }) {
     }
   };
 
-  // Logout service
   const logout = async () => {
     return signOut(auth);
   };
 
-  // Add bookmark service
+  // BOOKMARKS SERVICES
+  
   const addBookmark = async (title, description, link, category) => {
     try {
       const user = auth.currentUser;
@@ -119,41 +154,6 @@ export function ServicesProvider({ children }) {
       console.error("Error adding bookmark:", error.message);
     }
   };
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      setCurrentUser(user);
-
-      if (user) {
-        const userDocRef = doc(db, "users", user.uid);
-        const userDocSnap = await getDoc(userDocRef);
-
-        if (userDocSnap.exists()) {
-          const userData = userDocSnap.data();
-          setCurrentUser((prevUser) => ({
-            ...prevUser,
-            displayName: userData.displayName,
-            email: userData.email,
-          }));
-
-          const bookmarksDocRef = doc(db, "bookmarks", user.uid);
-          const bookmarksDocSnap = await getDoc(bookmarksDocRef);
-
-          if (bookmarksDocSnap.exists()) {
-            const bookmarksData = bookmarksDocSnap.data();
-            setCurrentUser((prevUser) => ({
-              ...prevUser,
-              bookmarks: bookmarksData.bookmarks || [],
-            }));
-          }
-        }
-      }
-
-      setLoading(false);
-    });
-
-    return unsubscribe;
-  }, []);
 
   const value = {
     currentUser,

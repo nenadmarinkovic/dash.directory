@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Head from "next/head";
 import Header from "../components/Header";
-import { Heading, Button, Paragraph, Text, Dialog } from "evergreen-ui";
+import { Heading, Button, Paragraph, Text } from "evergreen-ui";
 import {
   ContainerWrap,
   MainSection,
@@ -9,14 +9,13 @@ import {
   CenteredLayout,
   ThemeLayout,
 } from "../styles/components/layout";
-import { useAuth } from "../context/ServicesProvider";
+import { useServices } from "../services/ServicesProvider";
 import Footer from "../components/Footer";
-import Sign from "../components/Sign";
 import Link from "next/link";
 
 export default function SignupPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
-  const { currentUser } = useAuth();
+  const { currentUser } = useServices();
 
   let bw = theme === "light" ? "#000" : "#FFF";
 

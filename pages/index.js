@@ -6,11 +6,11 @@ import Banner from "../components/Banner";
 import About from "../components/About";
 import Pricing from "../components/Pricing";
 import Footer from "../components/Footer";
-import { useAuth } from "../context/ServicesProvider";
+import { useServices } from "../services/ServicesProvider";
 
 export default function HomePage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
-  const { currentUser } = useAuth();
+  const { currentUser } = useServices();
   return (
     <>
       <Head>

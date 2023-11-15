@@ -9,12 +9,12 @@ import {
   ThemeLayout,
 } from "../../styles/components/layout";
 import Footer from "../../components/Footer";
-import { useAuth } from "../../context/ServicesProvider";
+import { useServices } from "../../services/ServicesProvider";
 import Sidebar from "../../components/Sidebar";
 
 export default function NotesPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
-  const { currentUser } = useAuth();
+  const { currentUser } = useServices();
 
   useEffect(() => {}, [currentUser]);
 
