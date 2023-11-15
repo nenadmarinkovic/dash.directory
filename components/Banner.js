@@ -8,11 +8,10 @@ import { ContainerWrap } from "../styles/components/layout";
 import { Button, Heading, Paragraph, Text } from "evergreen-ui";
 import Link from "next/link";
 import ScrollIntoView from "react-scroll-into-view";
+import { useThemeColors } from "../styles/theme";
 
 function Banner({ theme }) {
-  // TODO: Move this logic
-  let textColor = theme === "light" ? "#000" : "#F8FAFF";
-  let textMuted = theme === "light" ? "#676f89" : "#8B93A8";
+  const { textColor, textMuted } = useThemeColors(theme);
 
   return (
     <ContainerWrap>

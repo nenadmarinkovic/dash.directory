@@ -11,6 +11,7 @@ import { useServices } from "../services/ServicesProvider";
 export default function HomePage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
   const { currentUser } = useServices();
+
   return (
     <>
       <Head>

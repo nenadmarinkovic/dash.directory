@@ -11,13 +11,13 @@ import {
 } from "../styles/components/layout";
 import Footer from "../components/Footer";
 import Sign from "../components/Sign";
+import { useThemeColors } from "../styles/theme";
 
 export default function SignupPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
   const [isShownEmail, setIsShownEmail] = useState(false);
   const [isShownGithub, setIsShownGithub] = useState(false);
-
-  let bw = theme === "light" ? "#000" : "#FFF";
+  const { background } = useThemeColors(theme);
 
   return (
     <>
@@ -46,7 +46,7 @@ export default function SignupPage({ theme, toggleTheme }) {
                 fontSize={58}
                 marginBottom={8}
                 fontWeight={900}
-                color={bw}
+                color={background}
                 letterSpacing="-.003rem"
               >
                 Create your profile

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { DateTimeWrap, DateTimeSeparator } from "../styles/components/datetime";
 import { Text } from "evergreen-ui";
+import { useThemeColors } from "../styles/theme";
 
 const DateTimeComponent = ({ theme }) => {
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
-
-  let textMuted = theme === "light" ? "#676f89" : "#8B93A8";
+  const { textMuted } = useThemeColors(theme);
 
   useEffect(() => {
     const intervalId = setInterval(() => {

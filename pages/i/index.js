@@ -22,13 +22,12 @@ import {
 import Link from "next/link";
 import StartMenu from "../../components/StartMenu";
 import DateTimeComponent from "../../components/DateTime";
+import { useThemeColors } from "../../styles/theme";
 
 export default function StartPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
   const { currentUser } = useServices();
-
-  let textColor = theme === "light" ? "#000" : "#F8FAFF";
-  let bw = theme === "light" ? "#000" : "#FFF";
+  const { textColor, background } = useThemeColors(theme);
 
   useEffect(() => {}, [currentUser]);
 
@@ -61,7 +60,7 @@ export default function StartPage({ theme, toggleTheme }) {
                     fontSize={58}
                     marginBottom={8}
                     fontWeight={900}
-                    color={bw}
+                    color={background}
                     letterSpacing="-.003rem"
                   >
                     Authentication Required

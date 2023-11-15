@@ -10,9 +10,11 @@ import { ContainerWrap } from "../styles/components/layout";
 import { Text } from "evergreen-ui";
 import Link from "next/link";
 import Logo from "./Logo";
+import { useThemeColors } from "../styles/theme";
 
 function Footer({ theme }) {
-  let textMuted = theme === "light" ? "#676f89" : "#8B93A8";
+  const { textMuted } = useThemeColors(theme);
+
   return (
     <FooterWrap>
       <ContainerWrap>

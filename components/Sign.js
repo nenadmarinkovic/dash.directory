@@ -10,6 +10,7 @@ import {
 import { useServices } from "../services/ServicesProvider";
 import { useRouter } from "next/router";
 import { SignForm, SignField } from "../styles/components/signin";
+import { useThemeColors } from "../styles/theme";
 
 function Sign({ theme }) {
   const [email, setEmail] = useState("");
@@ -19,9 +20,7 @@ function Sign({ theme }) {
   const [loading, setIsLoading] = useState(null);
   const [isCreatingAccount, setIsCreatingAccount] = useState(true);
   const { login, signup } = useServices();
-
-  let bw = theme === "light" ? "#FFF" : "#000";
-  let textMuted = theme === "light" ? "#676f89" : "#8B93A8";
+  const { textMuted, background } = useThemeColors(theme);
 
   const router = useRouter();
 
@@ -74,7 +73,7 @@ function Sign({ theme }) {
 
             <TextInput
               marginTop={3}
-              background={bw}
+              background={background}
               value={name}
               onChange={(e) => setName(e.target.value)}
               name="text-input-name"
@@ -88,7 +87,7 @@ function Sign({ theme }) {
 
         <TextInput
           marginTop={3}
-          background={bw}
+          background={background}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           name="text-input-name"
@@ -99,7 +98,7 @@ function Sign({ theme }) {
         <Strong color={textMuted}>Password:</Strong>
 
         <TextInput
-          background={bw}
+          background={background}
           type="password"
           marginTop={3}
           value={password}

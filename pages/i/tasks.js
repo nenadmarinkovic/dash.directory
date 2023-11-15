@@ -16,7 +16,6 @@ export default function TasksPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
   const { currentUser } = useServices();
 
-
   useEffect(() => {}, [currentUser]);
 
   return (
@@ -37,7 +36,6 @@ export default function TasksPage({ theme, toggleTheme }) {
       <ThemeLayout>
         <MainSection>
           <ContainerWrap>
-           
             <PageLayout>
               <Sidebar />
               <PageContainer>MAIN LAYOUT - TASKS</PageContainer>

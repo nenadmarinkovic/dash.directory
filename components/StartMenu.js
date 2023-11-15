@@ -7,10 +7,11 @@ import {
 } from "../styles/components/startmenu";
 import { Heading, Paragraph, Text } from "evergreen-ui";
 import Link from "next/link";
+import { useThemeColors } from "../styles/theme";
 
 function StartMenu({ theme }) {
-  let textColor = theme === "light" ? "#000" : "#F8FAFF";
-  let textMuted = theme === "light" ? "#676f89" : "#8B93A8";
+  const { textColor, textMuted } = useThemeColors(theme);
+  
   return (
     <div>
       <StartMenuWrap>

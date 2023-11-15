@@ -14,10 +14,10 @@ import { ContainerWrap } from "../styles/components/layout";
 import { Circle, Line } from "../styles/components/helpers";
 import Animation from "./Animation";
 import Title from "./Title";
+import { useThemeColors } from "../styles/theme";
 
 function About({ theme }) {
-  let textColor = theme === "light" ? "#000" : "#F8FAFF";
-  let textMuted = theme === "light" ? "#676f89" : "#8B93A8";
+  const { textColor, textMuted } = useThemeColors(theme);
 
   return (
     <AboutWrap>

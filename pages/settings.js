@@ -10,13 +10,12 @@ import {
 } from "../styles/components/layout";
 import { useServices } from "../services/ServicesProvider";
 import Footer from "../components/Footer";
+import { useThemeColors } from "../styles/theme";
 
 export default function SignupPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
-
   const { currentUser } = useServices();
-
-  let bw = theme === "light" ? "#000" : "#FFF";
+  const { textColor } = useThemeColors(theme);
 
   return (
     <>
@@ -46,7 +45,7 @@ export default function SignupPage({ theme, toggleTheme }) {
                 fontSize={58}
                 marginBottom={8}
                 fontWeight={900}
-                color={bw}
+                color={textColor}
                 letterSpacing="-.003rem"
               >
                 Settings

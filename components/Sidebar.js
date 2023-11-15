@@ -7,14 +7,15 @@ import {
 } from "../styles/components/sidebar";
 import { Text } from "evergreen-ui";
 import Link from "next/link";
+import { useThemeColors } from "../styles/theme";
 
 function Sidebar({ theme }) {
-  let textColor = theme === "light" ? "#000" : "#F8FAFF";
+  const { textColor } = useThemeColors(theme);
+  
   return (
     <>
-  
       <SidebarWrap>
-      <DateTimeComponent />
+        <DateTimeComponent />
         <SidebarItems>
           <SidebarItem>
             <Link href="/i/bookmarks">

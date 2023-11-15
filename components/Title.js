@@ -1,8 +1,9 @@
 import { Heading } from "evergreen-ui";
 import { TitleWrap } from "../styles/components/title";
+import { useThemeColors } from "../styles/theme";
 
 const Title = ({ theme, title, id }) => {
-  let textMuted = theme === "light" ? "#676f89" : "#8B93A8";
+  const { textMuted } = useThemeColors(theme);
   return (
     <TitleWrap id={`${id}`}>
       <Heading

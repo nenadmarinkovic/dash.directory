@@ -30,21 +30,19 @@ import {
   StatusIndicator,
 } from "evergreen-ui";
 import { BookmarksTable } from "../../styles/pages/bookmarks";
+import { useThemeColors } from "../../styles/theme";
 
 export default function BookmarksPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
   const { addBookmark, currentUser } = useServices();
-
   const [bookmarkTitle, setBookmarkTitle] = useState("");
   const [bookmarkLink, setBookmarkLink] = useState("");
   const [bookmarkDescription, setBookmarkDescription] = useState("");
   const [bookmarkCategory, setBookmarkCategory] = useState("");
-
-  let textColor = theme === "light" ? "#000" : "#F8FAFF";
-  let textMuted = theme === "light" ? "#676f89" : "#8B93A8";
-  let bw = theme === "light" ? "#FFF" : "#000";
-
+  const { textColor, textMuted, background } = useThemeColors(theme);
   const [isShown, setIsShown] = useState(false);
+  const [selected, setSelected] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {}, [currentUser]);
 
@@ -62,9 +60,6 @@ export default function BookmarksPage({ theme, toggleTheme }) {
     setBookmarkCategory("");
   };
 
-  const [selected, setSelected] = useState(null);
-
-  const [isLoading, setIsLoading] = useState(false);
   const handleClick = useCallback(() => {
     setIsLoading(true);
     setTimeout(() => setIsLoading(false), 1000);
@@ -104,12 +99,12 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                 <PageHeader>
                   <Group>
                     <TextInput
-                      background={bw}
+                      background={background}
                       disabled={isLoading}
                       placeholder="Search by title, description, category..."
                     />
                     <IconButton
-                      background={bw}
+                      background={background}
                       disabled={isLoading}
                       icon={isLoading ? Spinner : SearchIcon}
                       onClick={handleClick}
@@ -126,7 +121,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                     selected={selected}
                     onSelect={(item) => setSelected(item.value)}
                   >
-                    <Button background={bw} color={textMuted}>
+                    <Button background={background} color={textMuted}>
                       {"Select category..."}
                     </Button>
                   </SelectMenu>
@@ -148,7 +143,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
 
                           <TextInput
                             marginTop={3}
-                            background={bw}
+                            background={background}
                             value={bookmarkTitle}
                             onChange={(e) => setBookmarkTitle(e.target.value)}
                             name="text-input-name"
@@ -159,7 +154,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                           <Strong color={textMuted}>Description:</Strong>
                           <TextInput
                             marginTop={3}
-                            background={bw}
+                            background={background}
                             value={bookmarkDescription}
                             onChange={(e) =>
                               setBookmarkDescription(e.target.value)
@@ -172,7 +167,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                           <Strong color={textMuted}>Link:</Strong>
                           <TextInput
                             marginTop={3}
-                            background={bw}
+                            background={background}
                             value={bookmarkLink}
                             onChange={(e) => setBookmarkLink(e.target.value)}
                             name="text-input-name"
@@ -183,7 +178,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                           <Strong color={textMuted}>Category:</Strong>
                           <TextInput
                             marginTop={3}
-                            background={bw}
+                            background={background}
                             value={bookmarkCategory}
                             onChange={(e) =>
                               setBookmarkCategory(e.target.value)
@@ -223,7 +218,10 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                 <PageMain>
                   <BookmarksTable className="custom-table">
                     <Table className="custom-table_wrap">
-                      <Table.Head className="custom-table_head" background={bw}>
+                      <Table.Head
+                        className="custom-table_head"
+                        background={background}
+                      >
                         <Table.TextHeaderCell className="custom-table_cell">
                           Title
                         </Table.TextHeaderCell>
@@ -238,40 +236,41 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                         </Table.TextHeaderCell>
                       </Table.Head>
                       <Table.Body height={820}>
-                        {currentUser?.bookmarks && currentUser?.bookmarks.map((bookmark) => (
-                          <Table.Row
-                            className="custom-table_row"
-                            background={bw}
-                            color={textMuted}
-                            key={bookmark.id}
-                            isSelectable={false}
-                            onSelect={() => alert(bookmark.title)}
-                          >
-                            <Table.TextCell
-                              className="custom-table_cell"
+                        {currentUser?.bookmarks &&
+                          currentUser?.bookmarks.map((bookmark) => (
+                            <Table.Row
+                              className="custom-table_row"
+                              background={background}
                               color={textMuted}
+                              key={bookmark.id}
+                              isSelectable={false}
+                              onSelect={() => alert(bookmark.title)}
                             >
-                              <Text color={textColor} fontSize={12}>
-                                {bookmark.title}
-                              </Text>
-                            </Table.TextCell>
-                            <Table.TextCell className="custom-table_cell">
-                              <Text color={textColor} fontSize={12}>
-                                {bookmark.description}
-                              </Text>
-                            </Table.TextCell>
-                            <Table.TextCell className="custom-table_cell">
-                              <Text color={textColor} fontSize={12}>
-                                {bookmark.link}
-                              </Text>
-                            </Table.TextCell>
-                            <Table.TextCell className="custom-table_cell">
-                              <Text color={textColor} fontSize={12}>
-                                {bookmark.category}
-                              </Text>
-                            </Table.TextCell>
-                          </Table.Row>
-                        ))}
+                              <Table.TextCell
+                                className="custom-table_cell"
+                                color={textMuted}
+                              >
+                                <Text color={textColor} fontSize={12}>
+                                  {bookmark.title}
+                                </Text>
+                              </Table.TextCell>
+                              <Table.TextCell className="custom-table_cell">
+                                <Text color={textColor} fontSize={12}>
+                                  {bookmark.description}
+                                </Text>
+                              </Table.TextCell>
+                              <Table.TextCell className="custom-table_cell">
+                                <Text color={textColor} fontSize={12}>
+                                  {bookmark.link}
+                                </Text>
+                              </Table.TextCell>
+                              <Table.TextCell className="custom-table_cell">
+                                <Text color={textColor} fontSize={12}>
+                                  {bookmark.category}
+                                </Text>
+                              </Table.TextCell>
+                            </Table.Row>
+                          ))}
                       </Table.Body>
                     </Table>
                   </BookmarksTable>

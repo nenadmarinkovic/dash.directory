@@ -12,12 +12,11 @@ import Link from "next/link";
 import ScrollIntoView from "react-scroll-into-view";
 import { useServices } from "../services/ServicesProvider";
 import { useRouter } from "next/router";
+import { useThemeColors } from "../styles/theme";
 
 function Header({ theme, toggleTheme, currentUser }) {
   const { logout: authLogout } = useServices();
-
-  let textColor = theme === "light" ? "#000" : "#F8FAFF";
-  let textMuted = theme === "light" ? "#676f89" : "#8B93A8";
+  const { textColor, textMuted } = useThemeColors(theme);
 
   const router = useRouter();
 

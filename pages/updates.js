@@ -9,12 +9,12 @@ import {
 } from "../styles/components/layout";
 import { UpdatesWrap, Update } from "../styles/components/updates";
 import Footer from "../components/Footer";
+import { useThemeColors } from "../styles/theme";
 
 export default function Home({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
+  const { textColor, textMuted } = useThemeColors(theme);
 
-  let textColor = theme === "light" ? "#000" : "#F8FAFF";
-  let textMuted = theme === "light" ? "#676f89" : "#8B93A8";
   return (
     <>
       <Head>

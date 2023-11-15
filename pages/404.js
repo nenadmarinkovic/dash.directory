@@ -16,8 +16,7 @@ import Link from "next/link";
 export default function SignupPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
   const { currentUser } = useServices();
-
-  let bw = theme === "light" ? "#000" : "#FFF";
+  const { background } = useThemeColors(theme);
 
   return (
     <>
@@ -47,7 +46,7 @@ export default function SignupPage({ theme, toggleTheme }) {
                 fontSize={58}
                 marginBottom={8}
                 fontWeight={900}
-                color={bw}
+                color={background}
                 letterSpacing="-.003rem"
               >
                 404 - Page not found.

@@ -6,6 +6,7 @@ import { AboutTitle } from "../styles/components/about";
 import { Button, Heading, Paragraph, Text } from "evergreen-ui";
 import { Circle, Line } from "../styles/components/helpers";
 import Link from "next/link";
+import { useThemeColors } from "../styles/theme";
 
 function useElementViewportPosition(ref) {
   const [position, setPosition] = useState([0, 0]);
@@ -24,9 +25,7 @@ function useElementViewportPosition(ref) {
 }
 
 export default function Animation({ theme }) {
-  // TODO: Move this logic
-  let textColor = theme === "light" ? "#000" : "#F8FAFF";
-  let textMuted = theme === "light" ? "#676f89" : "#8B93A8";
+  const { textColor, textMuted } = useThemeColors(theme);
 
   const slideAnimation = {
     transition: { duration: 0 },
