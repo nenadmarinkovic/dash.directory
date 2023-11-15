@@ -12,12 +12,14 @@ import {
 import Footer from "../components/Footer";
 import Sign from "../components/Sign";
 import { useThemeColors } from "../styles/theme";
+import { useServices } from "../services/ServicesProvider";
 
 export default function SignupPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
   const [isShownEmail, setIsShownEmail] = useState(false);
   const [isShownGithub, setIsShownGithub] = useState(false);
   const { textColor } = useThemeColors(theme);
+  const { signInWithGitHub } = useServices();
 
   return (
     <>
@@ -77,7 +79,7 @@ export default function SignupPage({ theme, toggleTheme }) {
                   tuned for updates!
                 </Dialog>
                 <Button
-                  onClick={() => setIsShownGithub(true)}
+                  onClick={() => signInWithGitHub()}
                   className="custom-button-big"
                   appearance="primary"
                   intent="success"

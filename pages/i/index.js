@@ -23,11 +23,18 @@ import Link from "next/link";
 import StartMenu from "../../components/StartMenu";
 import DateTimeComponent from "../../components/DateTime";
 import { useThemeColors } from "../../styles/theme";
+import {
+  isUserEmailVerified,
+  isUserRegisteredWithGitHub,
+} from "../../services/ServicesHelpers";
 
 export default function StartPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
   const { currentUser } = useServices();
-  const { textColor, background } = useThemeColors(theme);
+  const { textColor } = useThemeColors(theme);
+
+  const userIsRegisteredWithGitHub = isUserRegisteredWithGitHub(currentUser);
+  const userEmailVerified = isUserEmailVerified(currentUser);
 
   useEffect(() => {}, [currentUser]);
 
@@ -96,44 +103,47 @@ export default function StartPage({ theme, toggleTheme }) {
               </>
             )}
 
-            {currentUser && (
-              <StartWrap>
-                {!currentUser?.emailVerified || !currentUser?.displayName ? (
-                  <StatusIndicator color="warning">
-                    <Text color={textColor} fontSize={14}>
-                      Welcome
-                      <Strong color={textColor} fontSize={14}>
-                        {currentUser?.displayName &&
-                          `, ${currentUser?.displayName}`}
-                      </Strong>
-                      .
-                      <br />
-                      Please verify your email in order to fully use Dash
-                      Directory.
-                    </Text>
-                  </StatusIndicator>
-                ) : (
-                  <>
-                    <StartHeader>
-                      <StatusIndicator color="success">
-                        <Text color={textColor} fontSize={14}>
-                          Welcome
-                          <Strong color={textColor} fontSize={14}>
-                            {currentUser?.displayName &&
-                              `, ${currentUser?.displayName}`}
-                          </Strong>
-                          . <br /> Your Start page is still in developer-mode.
-                          Thanks for being patient.
-                        </Text>
-                      </StatusIndicator>
-                      <DateTimeComponent />
-                    </StartHeader>
+            {currentUser &&
+              (userEmailVerified || userIsRegisteredWithGitHub) && (
+                <StartWrap>
+                  {(!userIsRegisteredWithGitHub &&
+                    !currentUser?.emailVerified) ||
+                  !currentUser?.displayName ? (
+                    <StatusIndicator color="warning">
+                      <Text color={textColor} fontSize={14}>
+                        Welcome
+                        <Strong color={textColor} fontSize={14}>
+                          {currentUser?.displayName &&
+                            `, ${currentUser?.displayName}`}
+                        </Strong>
+                        .
+                        <br />
+                        Please verify your email in order to fully use Dash
+                        Directory.
+                      </Text>
+                    </StatusIndicator>
+                  ) : (
+                    <>
+                      <StartHeader>
+                        <StatusIndicator color="success">
+                          <Text color={textColor} fontSize={14}>
+                            Welcome
+                            <Strong color={textColor} fontSize={14}>
+                              {currentUser?.displayName &&
+                                `, ${currentUser?.displayName}`}
+                            </Strong>
+                            . <br /> Your Start page is still in developer-mode.
+                            Thanks for being patient.
+                          </Text>
+                        </StatusIndicator>
+                        <DateTimeComponent />
+                      </StartHeader>
 
-                    <StartMenu theme={theme} />
-                  </>
-                )}
-              </StartWrap>
-            )}
+                      <StartMenu theme={theme} />
+                    </>
+                  )}
+                </StartWrap>
+              )}
           </ContainerWrap>
         </MainSection>
         <Footer theme={theme} />

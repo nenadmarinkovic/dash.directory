@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect, createContext } from "react";
-import { auth, db } from "../lib/firebase";
+import { auth, db, githubProvider } from "../lib/firebase";
 import { v4 as uuidv4 } from "uuid";
 import {
   signInWithEmailAndPassword,
@@ -7,7 +7,9 @@ import {
   signOut,
   onAuthStateChanged,
   sendEmailVerification,
+  signInWithPopup,
 } from "firebase/auth";
+import { useRouter } from "next/router";
 import { doc, setDoc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
 import { Spinner } from "evergreen-ui";
 
@@ -20,6 +22,8 @@ export function useServices() {
 export function ServicesProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const router = useRouter();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -54,9 +58,9 @@ export function ServicesProvider({ children }) {
     });
 
     return unsubscribe;
-  }, []);
+  }, [router]);
 
-  // AUTH SERVICES
+  // Auth services
 
   const signup = async (displayName, email, password) => {
     try {
@@ -86,7 +90,7 @@ export function ServicesProvider({ children }) {
     try {
       return await signInWithEmailAndPassword(auth, email, password);
     } catch (error) {
-      console.error("Login Error:", error.message);
+      console.error("Login Error:", error);
       throw error;
     }
   };
@@ -95,7 +99,34 @@ export function ServicesProvider({ children }) {
     return signOut(auth);
   };
 
-  // BOOKMARKS SERVICES
+  const signInWithGitHub = async () => {
+    try {
+      setLoading(true);
+      const result = await signInWithPopup(auth, githubProvider);
+      const user = result.user;
+
+      const userDocRef = doc(db, "users", user.uid);
+      const userDocSnap = await getDoc(userDocRef);
+
+      if (!userDocSnap.exists()) {
+        await setDoc(userDocRef, {
+          displayName: user.displayName,
+          email: user.email,
+        });
+
+        const bookmarksDocRef = doc(db, "bookmarks", user.uid);
+        await setDoc(bookmarksDocRef, { bookmarks: [] });
+      }
+
+      router.push("/");
+    } catch (error) {
+      console.error("GitHub authentication error:", error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Bookmark services
 
   const addBookmark = async (title, description, link, category) => {
     try {
@@ -191,6 +222,7 @@ export function ServicesProvider({ children }) {
     login,
     signup,
     logout,
+    signInWithGitHub,
     addBookmark,
     deleteBookmark,
   };

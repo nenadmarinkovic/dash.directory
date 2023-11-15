@@ -11,6 +11,7 @@ import { useServices } from "../services/ServicesProvider";
 import { useRouter } from "next/router";
 import { SignForm, SignField } from "../styles/components/signin";
 import { useThemeColors } from "../styles/theme";
+import { handleAuthenticationError } from "../services/ServicesHelpers";
 
 function Sign({ theme }) {
   const [email, setEmail] = useState("");
@@ -40,9 +41,8 @@ function Sign({ theme }) {
         await login(email, password);
         toaster.success("Successfully logged in.");
         router.push("/i");
-      } catch (err) {
-        setError(error);
-        toaster.danger(error);
+      } catch (error) {
+        handleAuthenticationError(error, setError);
       } finally {
         setIsLoading(false);
       }
@@ -56,9 +56,8 @@ function Sign({ theme }) {
       toaster.success(
         "Successfully created account. Please verify your email."
       );
-    } catch (err) {
-      setError("Error creating account. Please try again.");
-      toaster.danger("Error creating account. Please try again.");
+    } catch (error) {
+      handleAuthenticationError(error, setError);
     } finally {
       setIsLoading(false);
     }
