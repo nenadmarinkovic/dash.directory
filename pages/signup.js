@@ -17,7 +17,7 @@ export default function SignupPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
   const [isShownEmail, setIsShownEmail] = useState(false);
   const [isShownGithub, setIsShownGithub] = useState(false);
-  const { background } = useThemeColors(theme);
+  const { textColor } = useThemeColors(theme);
 
   return (
     <>
@@ -46,7 +46,7 @@ export default function SignupPage({ theme, toggleTheme }) {
                 fontSize={58}
                 marginBottom={8}
                 fontWeight={900}
-                color={background}
+                color={textColor}
                 letterSpacing="-.003rem"
               >
                 Create your profile

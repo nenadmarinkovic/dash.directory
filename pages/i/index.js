@@ -60,7 +60,7 @@ export default function StartPage({ theme, toggleTheme }) {
                     fontSize={58}
                     marginBottom={8}
                     fontWeight={900}
-                    color={background}
+                    color={textColor}
                     letterSpacing="-.003rem"
                   >
                     Authentication Required

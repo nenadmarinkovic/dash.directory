@@ -161,7 +161,8 @@ export const GlobalStyle = createGlobalStyle`
 
       &_row {
         position: relative;
-        border-bottom: 1px solid rgba(200, 200, 200, 0.4)
+        border-bottom: 1px solid rgba(200, 200, 200, 0.4);
+        background-color: ${({ theme }) => theme.clear};;
       }
 
       &_menu {
@@ -175,7 +176,7 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         margin-right: 15px;
         border: none !important;
-        background-color: ${({ theme }) => theme.background};
+        background-color: ${({ theme }) => theme.clear};
         color: ${({ theme }) => theme.textColor};
      
           svg {
