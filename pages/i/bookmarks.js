@@ -225,6 +225,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
 
                         <Pane>
                           <Dialog
+                            containerProps={{ className: "themed-modal" }}
                             isShown={isDialogShown}
                             title="Dialog title"
                             onCloseComplete={() => setIsDialogShown(false)}
