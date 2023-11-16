@@ -218,8 +218,9 @@ export const GlobalStyle = createGlobalStyle`
     border: 1px solid rgba(200, 200, 200, 0.4) !important;
   }
 
+
+  .custom-icon-button,
   .category-button {
-    transition: 0.3s;
     &:hover {
       background-color: ${({ theme }) => theme.hoverButton} !important;
     }

@@ -21,9 +21,12 @@ export const SignField = styled.div`
 
   button {
     display: flex;
-
     line-height: 1;
     margin-left: auto;
+
+    &:hover {
+      background-color: ${({ theme }) => theme.hoverButton} !important;
+    }
 
     @media (max-width: 560px) {
       width: 100%;

@@ -195,6 +195,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                             placeholder="Search by title, description, category..."
                           />
                           <IconButton
+                            className="custom-icon-button"
                             background={background}
                             disabled={isLoading}
                             icon={isLoading ? Spinner : SearchIcon}
