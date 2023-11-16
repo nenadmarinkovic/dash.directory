@@ -7,7 +7,7 @@ export const SidebarWrap = styled.nav`
 `;
 
 export const SidebarItems = styled.ul`
-  margin-top: -2px;
+  margin-top: -5px;
 `;
 
 export const SidebarItem = styled.li`
@@ -25,7 +25,7 @@ export const SidebarItem = styled.li`
     padding: 10px;
     max-width: 180px;
     border-radius: 5px;
-    transition: .3s;
+    transition: 0.3s;
   }
 
   svg {
