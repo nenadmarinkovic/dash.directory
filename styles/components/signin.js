@@ -21,7 +21,7 @@ export const SignField = styled.div`
 
   button {
     display: flex;
-    
+
     line-height: 1;
     margin-left: auto;
 
@@ -29,4 +29,11 @@ export const SignField = styled.div`
       width: 100%;
     }
   }
+`;
+
+export const SignButtons = styled.div`
+  display: flex;
+  justify-content: end;
+  gap: 1rem;
+  padding: 20px 0;
 `;

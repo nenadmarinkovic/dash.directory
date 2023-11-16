@@ -29,8 +29,8 @@ export const SidebarItem = styled.li`
   }
 
   svg {
-    width: 18px;
-    height: 18px;
+    width: 23px;
+    height: 23px;
     margin-right: 5px;
   }
 

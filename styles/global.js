@@ -192,12 +192,19 @@ export const GlobalStyle = createGlobalStyle`
                 color: ${({ theme }) => theme.background};
               }
           }
+
+          &:hover {
+            background-color: ${({ theme }) => theme.hoverButton} !important;
+          }
+
+          &:not([disabled])[aria-expanded="true"] {
+            background-color: ${({ theme }) => theme.hoverButton};
+          }
       }
     }
 
     input, button {
       border: 1px solid rgba(200, 200, 200, 0.4) !important;
-      min-height: 35px !important;
     }
 
     .category-button {

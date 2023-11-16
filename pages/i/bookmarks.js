@@ -13,7 +13,11 @@ import {
   CenteredLayout,
 } from "../../styles/components/layout";
 import Link from "next/link";
-import { SignForm, SignField } from "../../styles/components/signin";
+import {
+  SignForm,
+  SignField,
+  SignButtons,
+} from "../../styles/components/signin";
 import Footer from "../../components/Footer";
 import { useServices } from "../../services/ServicesProvider";
 import Sidebar from "../../components/Sidebar";
@@ -52,7 +56,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
   const [bookmarkDescription, setBookmarkDescription] = useState("");
   const [bookmarkCategory, setBookmarkCategory] = useState("");
   const { textColor, textMuted, background } = useThemeColors(theme);
-  const [isShown, setIsShown] = useState(false);
+  const [isDialogShown, setIsDialogShown] = useState(false);
   const [selected, setSelected] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -61,9 +65,13 @@ export default function BookmarksPage({ theme, toggleTheme }) {
 
   useEffect(() => {}, [currentUser]);
 
+  const handleShowDialog = () => {
+    setIsDialogShown(true);
+  };
+
   const handleAddBookmark = () => {
     if (!bookmarkTitle || !bookmarkLink || !bookmarkCategory) {
-      toaster.danger("Please fill out fields.");
+      toaster.danger("Please fill out all fields.");
       return false;
     }
 
@@ -206,10 +214,9 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                           onSelect={(item) => setSelected(item.value)}
                         >
                           <Button
-                          className="category-button"
+                            className="category-button"
                             background={background}
                             color={textMuted}
-                            
                             fontSize={13}
                           >
                             {"Select category..."}
@@ -218,79 +225,97 @@ export default function BookmarksPage({ theme, toggleTheme }) {
 
                         <Pane>
                           <Dialog
-                            containerProps={{ className: "themed-modal" }}
-                            isShown={isShown}
-                            title="Add bookmark"
-                            onConfirm={() =>
-                              handleAddBookmark() && setIsShown(false)
-                            }
-                            confirmLabel="Add bookmark"
+                            isShown={isDialogShown}
+                            title="Dialog title"
+                            onCloseComplete={() => setIsDialogShown(false)}
+                            confirmLabel="Custom Label"
+                            hasFooter={false}
                           >
-                            <SignForm>
-                              <SignField>
-                                <Strong color={textMuted}>Title:</Strong>
+                            {({ close }) => (
+                              <Pane>
+                                <SignForm>
+                                  <SignField>
+                                    <Strong color={textMuted}>Title:</Strong>
 
-                                <TextInput
-                                  marginTop={3}
-                                  background={background}
-                                  fontSize={13}
-                                  value={bookmarkTitle}
-                                  onChange={(e) =>
-                                    setBookmarkTitle(e.target.value)
-                                  }
-                                  name="text-input-name"
-                                  placeholder="Dash Directory"
-                                />
-                              </SignField>
-                              <SignField>
-                                <Strong color={textMuted}>Description:</Strong>
-                                <TextInput
-                                  marginTop={3}
-                                  background={background}
-                                  fontSize={13}
-                                  value={bookmarkDescription}
-                                  onChange={(e) =>
-                                    setBookmarkDescription(e.target.value)
-                                  }
-                                  name="text-input-name"
-                                  placeholder="Personal management tool"
-                                />
-                              </SignField>
-                              <SignField>
-                                <Strong color={textMuted}>Link:</Strong>
-                                <TextInput
-                                  marginTop={3}
-                                  background={background}
-                                  fontSize={13}
-                                  value={bookmarkLink}
-                                  onChange={(e) =>
-                                    setBookmarkLink(e.target.value)
-                                  }
-                                  name="text-input-name"
-                                  placeholder="https://dash.directory"
-                                />
-                              </SignField>
-                              <SignField>
-                                <Strong color={textMuted}>Category:</Strong>
-                                <TextInput
-                                  marginTop={3}
-                                  background={background}
-                                  fontSize={13}
-                                  value={bookmarkCategory}
-                                  onChange={(e) =>
-                                    setBookmarkCategory(e.target.value)
-                                  }
-                                  name="text-input-name"
-                                  placeholder="Tools"
-                                />
-                              </SignField>
-                            </SignForm>
+                                    <TextInput
+                                      marginTop={3}
+                                      background={background}
+                                      fontSize={13}
+                                      value={bookmarkTitle}
+                                      onChange={(e) =>
+                                        setBookmarkTitle(e.target.value)
+                                      }
+                                      name="text-input-name"
+                                      placeholder="Dash Directory"
+                                    />
+                                  </SignField>
+                                  <SignField>
+                                    <Strong color={textMuted}>
+                                      Description:
+                                    </Strong>
+                                    <TextInput
+                                      marginTop={3}
+                                      background={background}
+                                      fontSize={13}
+                                      value={bookmarkDescription}
+                                      onChange={(e) =>
+                                        setBookmarkDescription(e.target.value)
+                                      }
+                                      name="text-input-name"
+                                      placeholder="Personal management tool"
+                                    />
+                                  </SignField>
+                                  <SignField>
+                                    <Strong color={textMuted}>Link:</Strong>
+                                    <TextInput
+                                      marginTop={3}
+                                      background={background}
+                                      fontSize={13}
+                                      value={bookmarkLink}
+                                      onChange={(e) =>
+                                        setBookmarkLink(e.target.value)
+                                      }
+                                      name="text-input-name"
+                                      placeholder="https://dash.directory"
+                                    />
+                                  </SignField>
+                                  <SignField>
+                                    <Strong color={textMuted}>Category:</Strong>
+                                    <TextInput
+                                      marginTop={3}
+                                      background={background}
+                                      fontSize={13}
+                                      value={bookmarkCategory}
+                                      onChange={(e) =>
+                                        setBookmarkCategory(e.target.value)
+                                      }
+                                      name="text-input-name"
+                                      placeholder="Tools"
+                                    />
+                                  </SignField>
+                                </SignForm>
+                                <SignButtons>
+                                  <Button onClick={() => close()}>
+                                    Cancel
+                                  </Button>
+
+                                  <Button
+                                    appearance="primary"
+                                    onClick={() =>
+                                      handleAddBookmark() && close()
+                                    }
+                                  >
+                                    Add Bookmark
+                                  </Button>
+                                </SignButtons>
+                              </Pane>
+                            )}
                           </Dialog>
 
                           <Button
                             className="custom-button-small"
                             fontWeight="bold"
-                            onClick={() => setIsShown(true)}
+                            onClick={handleShowDialog}
                           >
                             <span>Add</span>
 
@@ -399,7 +424,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                                         <Button
                                           className="custom-table_button"
                                           fontWeight="bold"
-                                          onClick={() => setIsShown(true)}
+                                          onClick={() => setIsDialogShown(true)}
                                         >
                                           <span>
                                             <svg

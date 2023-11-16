@@ -63,6 +63,7 @@ export const PageHeader = styled.div`
 
   input {
     width: 580px;
+    height: 32px;
     font-size: 13px;
   }
 `;
