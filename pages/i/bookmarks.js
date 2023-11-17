@@ -62,6 +62,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
   const [filteredBookmarks, setFilteredBookmarks] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All categories");
+  const [searchQuery, setSearchQuery] = useState("");
 
   const userIsRegisteredWithGitHub = isUserRegisteredWithGitHub(currentUser);
   const userEmailVerified = isUserEmailVerified(currentUser);
@@ -84,6 +85,8 @@ export default function BookmarksPage({ theme, toggleTheme }) {
       bookmarkLink,
       bookmarkCategory
     );
+
+    setSelectedCategory("All categories")
 
     setBookmarkTitle("");
     setBookmarkLink("");
@@ -117,15 +120,25 @@ export default function BookmarksPage({ theme, toggleTheme }) {
   useEffect(() => {
     if (currentUser && currentUser.bookmarks) {
       if (selectedCategory === "All categories") {
-        setFilteredBookmarks(currentUser.bookmarks);
+      
+        const filtered = currentUser.bookmarks.filter((bookmark) => 
+          bookmark.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          bookmark.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          bookmark.category.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+        setFilteredBookmarks(filtered);
       } else {
+     
         const filtered = currentUser.bookmarks.filter(
-          (bookmark) => bookmark.category === selectedCategory
+          (bookmark) =>
+            bookmark.category === selectedCategory &&
+            (bookmark.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            bookmark.description.toLowerCase().includes(searchQuery.toLowerCase()))
         );
         setFilteredBookmarks(filtered);
       }
     }
-  }, [currentUser, selectedCategory]);
+  }, [currentUser, selectedCategory, searchQuery]);
 
   return (
     <>
@@ -211,11 +224,13 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                     <PageContainer>
                       <PageHeader>
                         <Group>
-                          <TextInput
+                        <TextInput
                             background={background}
                             height={30}
                             disabled={isLoading}
                             placeholder="Search by title, description, category..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
                           />
                           <IconButton
                             className="custom-icon-button"
@@ -227,7 +242,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                         </Group>
 
                         <CustomSelect
-                          options={[...categories]} // Assuming 'categories' is an array of unique categories
+                          options={["All categories", ...categories]} // Assuming 'categories' is an array of unique categories
                           selectedOption={selectedCategory}
                           onSelect={(option) => setSelectedCategory(option)}
                         />
@@ -324,7 +339,6 @@ export default function BookmarksPage({ theme, toggleTheme }) {
 
                           <Button
                             className="custom-button-small"
-                            appearance="primary"
                             fontWeight="bold"
                             onClick={handleShowDialog}
                           >

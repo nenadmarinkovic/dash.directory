@@ -35,6 +35,7 @@ const CustomSelect = ({ options, onSelect }) => {
       <CustomSelectButton onClick={() => setIsOpen(!isOpen)}>
         <span>{selectedOption || "Select category"}</span>
         <svg
+
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth="1.5"
