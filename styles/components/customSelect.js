@@ -19,32 +19,37 @@ export const CustomSelectContainer = styled.div`
   position: relative;
   width: 200px;
   font-size: 16px;
-  margin: 0 20px;
+  margin: 0 10px;
 `
 
 export const CustomSelectButton = styled.button`
   padding: 8px;
   width: 100%;
   font-size: 12px;
-  font-weight: bold;
+  font-weight: 500;
   text-align: left;
-  background-color: ${({ theme }) => theme.background};
-  color: ${({ theme }) => theme.textColor};
+  background: ${({ theme }) => theme.clear};
+  color: ${({ theme }) => theme.textMuted};
   border-radius: 4px;
-  transition: 0.3s;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 32px;
+  border: 1px solid rgba(200, 200, 200, 0.4);
 
   svg {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
+    color: ${({ theme }) => theme.textMuted};
   }
 
   &:hover {
     background: ${({ theme }) => theme.hoverButton};
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px #d6e0ff;
   }
 `
 

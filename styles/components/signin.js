@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const SignForm = styled.div`
   display: flex;
   flex-direction: column;
-`;
+`
 
 export const SignField = styled.div`
   display: flex;
@@ -24,19 +24,15 @@ export const SignField = styled.div`
     line-height: 1;
     margin-left: auto;
 
-    &:hover {
-      background-color: ${({ theme }) => theme.hoverButton} !important;
-    }
-
     @media (max-width: 560px) {
       width: 100%;
     }
   }
-`;
+`
 
 export const SignButtons = styled.div`
   display: flex;
   justify-content: end;
   gap: 1rem;
   padding: 20px 0;
-`;
+`

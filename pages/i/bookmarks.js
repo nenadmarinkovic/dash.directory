@@ -10,7 +10,8 @@ import {
   PageHeader,
   PageMain,
   CenteredSection,
-  CenteredLayout
+  CenteredLayout,
+  InputHeader
 } from '../../styles/components/layout'
 import Link from 'next/link'
 import {
@@ -30,9 +31,6 @@ import {
   Group,
   Table,
   TextInput,
-  IconButton,
-  SearchIcon,
-  Spinner,
   StatusIndicator,
   toaster,
   Popover,
@@ -231,24 +229,32 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                     <PageContainer>
                       <PageHeader>
                         <Group>
-                          <TextInput
-                            background={background}
-                            height={30}
-                            disabled={isLoading}
-                            placeholder="Search by title, description, category..."
-                            value={searchQuery}
-                            onChange={(e) => {
-                              setSearchQuery(e.target.value)
-                              setSelectedCategory('All categories') // Set selected category to "All categories"
-                            }}
-                          />
-                          <IconButton
-                            className="custom-icon-button"
-                            background={background}
-                            disabled={isLoading}
-                            icon={isLoading ? Spinner : SearchIcon}
-                            onClick={handleClick}
-                          />
+                          <InputHeader>
+                            <TextInput
+                              background={background}
+                              height={30}
+                              disabled={isLoading}
+                              placeholder="Search by title, description, category..."
+                              value={searchQuery}
+                              onChange={(e) => {
+                                setSearchQuery(e.target.value)
+                                setSelectedCategory('All categories')
+                              }}
+                            />
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill={background}
+                              viewBox="0 0 24 24"
+                              strokeWidth="1.5"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                              />
+                            </svg>
+                          </InputHeader>
                         </Group>
 
                         <CustomSelect

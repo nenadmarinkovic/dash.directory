@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const StartMenuWrap = styled.div`
   display: flex;
@@ -11,7 +11,6 @@ export const StartMenuWrap = styled.div`
     background: ${({ theme }) => theme.clear};
     border-radius: 5px;
     cursor: pointer;
-    transition: 0.3s;
     box-shadow: 0 0 0 1px ${({ theme }) => theme.shadowBorder},
       0 4px 6px rgba(0, 0, 0, 0.04);
 
@@ -23,19 +22,18 @@ export const StartMenuWrap = styled.div`
       width: 100%;
     }
   }
-`;
+`
 
 export const StartMenuText = styled.div`
   padding: 0 1.5rem 1.5rem 1.5rem;
-`;
+`
 
 export const StartMenuTitle = styled.div`
   display: flex;
-  transition: 0.3s;
   padding: 1.5rem 1.5rem 0.5rem 1.5rem;
-`;
+`
 
 export const StartMenuLogo = styled.div`
   width: 40px;
   margin-right: 10px;
-`;
+`

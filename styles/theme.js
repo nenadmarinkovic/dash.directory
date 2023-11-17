@@ -14,6 +14,8 @@ export const lightTheme = {
   buttonText: "#FFF",
   hoverButton: "#F4F5F9",
   shadowBorder: "rgba(0,0,0,.08)",
+  primary: "#2952CC",
+  primaryActive: "#1F3D99"
 };
 
 export const darkTheme = {
@@ -32,6 +34,8 @@ export const darkTheme = {
   buttonText: "#FFF",
   hoverButton: "#202020",
   shadowBorder: "rgba(225,225,225,0.3)",
+  primary: "#2952CC",
+  primaryActive: "#1F3D99"
 };
 
 // For Evergreen Design System

@@ -34,6 +34,7 @@ const CustomSelect = ({ options, onSelect }) => {
     <CustomSelectContainer ref={dropdownRef}>
       <CustomSelectButton onClick={() => setIsOpen(!isOpen)}>
         <span>Select category</span>
+
         <svg
           fill="none"
           viewBox="0 0 24 24"

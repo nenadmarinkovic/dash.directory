@@ -117,13 +117,14 @@ export const GlobalStyle = styled.createGlobalStyle`
   }
 
   .custom-button-small {
-    background-color: ${({ theme }) => theme.buttonBackground};
-    color: ${({ theme }) => theme.buttonColor};
+    background-color: ${({ theme }) => theme.primary};
+    color: white;
     width: 160px;
     display: flex;
     align-items: center;
+    font-weight: 500;
     justify-content: space-between;
-    transition: all 0.3s;
+    border: none !important;
 
     svg {
       height: 18px;
@@ -132,9 +133,12 @@ export const GlobalStyle = styled.createGlobalStyle`
       display: block;
     }
 
+    &:not([disabled]):hover {
+      background-color: ${({ theme }) => theme.primaryActive};
+    }
+
     &:hover {
-      background-color: ${({ theme }) => theme.background};
-      color: ${({ theme }) => theme.buttonBackground};
+      background-color: ${({ theme }) => theme.primaryActive};
 
       svg {
         fill: ${({ theme }) => theme.color};
