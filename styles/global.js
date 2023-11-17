@@ -1,6 +1,8 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
-export const GlobalStyle = createGlobalStyle`
+const styled = { createGlobalStyle }
+
+export const GlobalStyle = styled.createGlobalStyle`
   * {
     box-sizing: border-box;
   }
@@ -12,18 +14,8 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${({ theme }) => theme.background};
     padding: 0;
     margin: 0;
-    font-family:
-      -apple-system,
-      BlinkMacSystemFont,
-      Segoe UI,
-      Roboto,
-      Oxygen,
-      Ubuntu,
-      Cantarell,
-      Fira Sans,
-      Droid Sans,
-      Helvetica Neue,
-      sans-serif !important;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
     scrollbar-gutter: stable;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
@@ -166,6 +158,11 @@ export const GlobalStyle = createGlobalStyle`
       overflow-y: unset;
     }
 
+    &_body {
+     max-height: 700px;
+     overflow: auto;
+    }
+
     &_head {
       padding: 0;
       border-bottom: 1px solid rgba(200, 200, 200, 0.4);
@@ -209,7 +206,7 @@ export const GlobalStyle = createGlobalStyle`
         background-color: ${({ theme }) => theme.hoverButton} !important;
       }
 
-      &:not([disabled])[aria-expanded="true"] {
+      &:not([disabled])[aria-expanded='true'] {
         background-color: ${({ theme }) => theme.hoverButton};
       }
     }
@@ -223,7 +220,6 @@ export const GlobalStyle = createGlobalStyle`
       padding: 10px;
       background-color: #000;
     }
-  
   }
 
   input,
@@ -231,14 +227,13 @@ export const GlobalStyle = createGlobalStyle`
     border: 1px solid rgba(200, 200, 200, 0.4) !important;
   }
 
-
   .custom-icon-button,
   .category-button {
     &:hover {
       background-color: ${({ theme }) => theme.hoverButton} !important;
     }
 
-    &:not([disabled])[aria-expanded="true"] {
+    &:not([disabled])[aria-expanded='true'] {
       background-color: ${({ theme }) => theme.hoverButton};
     }
   }
@@ -306,8 +301,7 @@ export const GlobalStyle = createGlobalStyle`
     align-items: center;
     justify-content: center;
     border-radius: 5px;
-    box-shadow:
-      0 0 0 1px ${({ theme }) => theme.shadowBorder},
+    box-shadow: 0 0 0 1px ${({ theme }) => theme.shadowBorder},
       0 4px 6px rgba(0, 0, 0, 0.04);
 
     @media (max-width: 960px) {
@@ -337,4 +331,4 @@ export const GlobalStyle = createGlobalStyle`
       padding: 1.5rem;
     }
   }
-`;
+`

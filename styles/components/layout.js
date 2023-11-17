@@ -1,15 +1,15 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const MainSection = styled.section`
   flex: 1;
-`;
+`
 
 export const ThemeLayout = styled.div`
   background: ${({ theme }) => theme.background};
   min-height: 95vh;
   display: flex;
   flex-direction: column;
-`;
+`
 
 export const ContainerWrap = styled.div`
   margin: 0 auto;
@@ -25,7 +25,7 @@ export const ContainerWrap = styled.div`
   @media (max-width: 1560px) {
     max-width: 72.8rem;
   }
-`;
+`
 
 export const CenteredSection = styled.div`
   margin: 5.5rem 12.5rem 1.5rem 12.5rem;
@@ -33,7 +33,7 @@ export const CenteredSection = styled.div`
   @media (max-width: 960px) {
     margin: 3.5rem 0;
   }
-`;
+`
 
 export const CenteredLayout = styled.div`
   text-align: center;
@@ -42,19 +42,19 @@ export const CenteredLayout = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`;
+`
 
 export const PageLayout = styled.div`
   display: flex;
   margin-top: 2.5rem;
   justify-content: space-between;
-`;
+`
 
 export const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 80%;
-`;
+`
 
 export const PageHeader = styled.div`
   display: flex;
@@ -66,16 +66,15 @@ export const PageHeader = styled.div`
     height: 32px;
     font-size: 13px;
   }
-`;
+`
 
 export const GroupOptions = styled.div`
   button {
     width: 80px;
   }
-`;
+`
 
 export const PageMain = styled.div`
-  height: 100%;
   background: ${({ theme }) => theme.clear};
   margin-top: 1.5rem;
-`;
+`

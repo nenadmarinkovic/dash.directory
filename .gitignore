@@ -30,9 +30,13 @@ yarn-error.log*
 # vercel
 .vercel
 
+# firebase
 firebase.json
 .firebaserc
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# prettier
+.prettierrc

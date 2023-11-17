@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback } from "react";
-import Head from "next/head";
-import Header from "../../components/Header";
+import { useState, useEffect, useCallback } from 'react'
+import Head from 'next/head'
+import Header from '../../components/Header'
 import {
   ContainerWrap,
   MainSection,
@@ -10,17 +10,17 @@ import {
   PageHeader,
   PageMain,
   CenteredSection,
-  CenteredLayout,
-} from "../../styles/components/layout";
-import Link from "next/link";
+  CenteredLayout
+} from '../../styles/components/layout'
+import Link from 'next/link'
 import {
   SignForm,
   SignField,
-  SignButtons,
-} from "../../styles/components/signin";
-import Footer from "../../components/Footer";
-import { useServices } from "../../services/ServicesProvider";
-import Sidebar from "../../components/Sidebar";
+  SignButtons
+} from '../../styles/components/signin'
+import Footer from '../../components/Footer'
+import { useServices } from '../../services/ServicesProvider'
+import Sidebar from '../../components/Sidebar'
 import {
   Pane,
   Text,
@@ -33,50 +33,49 @@ import {
   IconButton,
   SearchIcon,
   Spinner,
-  Select,
   StatusIndicator,
   toaster,
   Popover,
   Menu,
   Heading,
-  Paragraph,
-} from "evergreen-ui";
-import { BookmarksTable } from "../../styles/pages/bookmarks";
-import { useThemeColors } from "../../styles/theme";
+  Paragraph
+} from 'evergreen-ui'
+import { BookmarksTable } from '../../styles/pages/bookmarks'
+import { useThemeColors } from '../../styles/theme'
 import {
   isUserEmailVerified,
-  isUserRegisteredWithGitHub,
-} from "../../services/ServicesHelpers";
-import CustomSelect from "../../components/CustomSelect";
+  isUserRegisteredWithGitHub
+} from '../../services/ServicesHelpers'
+import CustomSelect from '../../components/CustomSelect'
 
 export default function BookmarksPage({ theme, toggleTheme }) {
-  const [openMenu, setOpenMenu] = useState(false);
-  const { addBookmark, deleteBookmark, currentUser } = useServices();
-  const [bookmarkTitle, setBookmarkTitle] = useState("");
-  const [bookmarkLink, setBookmarkLink] = useState("");
-  const [bookmarkDescription, setBookmarkDescription] = useState("");
-  const [bookmarkCategory, setBookmarkCategory] = useState("");
-  const { textColor, textMuted, background } = useThemeColors(theme);
-  const [isDialogShown, setIsDialogShown] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [filteredBookmarks, setFilteredBookmarks] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("All categories");
-  const [searchQuery, setSearchQuery] = useState("");
+  const [openMenu, setOpenMenu] = useState(false)
+  const { addBookmark, deleteBookmark, currentUser } = useServices()
+  const [bookmarkTitle, setBookmarkTitle] = useState('')
+  const [bookmarkLink, setBookmarkLink] = useState('')
+  const [bookmarkDescription, setBookmarkDescription] = useState('')
+  const [bookmarkCategory, setBookmarkCategory] = useState('')
+  const { textColor, textMuted, background } = useThemeColors(theme)
+  const [isDialogShown, setIsDialogShown] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [filteredBookmarks, setFilteredBookmarks] = useState([])
+  const [categories, setCategories] = useState([])
+  const [selectedCategory, setSelectedCategory] = useState('All categories')
+  const [searchQuery, setSearchQuery] = useState('')
 
-  const userIsRegisteredWithGitHub = isUserRegisteredWithGitHub(currentUser);
-  const userEmailVerified = isUserEmailVerified(currentUser);
+  const userIsRegisteredWithGitHub = isUserRegisteredWithGitHub(currentUser)
+  const userEmailVerified = isUserEmailVerified(currentUser)
 
-  useEffect(() => {}, [currentUser]);
+  useEffect(() => {}, [currentUser])
 
   const handleShowDialog = () => {
-    setIsDialogShown(true);
-  };
+    setIsDialogShown(true)
+  }
 
   const handleAddBookmark = () => {
     if (!bookmarkTitle || !bookmarkLink || !bookmarkCategory) {
-      toaster.danger("Please fill out all fields.");
-      return false;
+      toaster.danger('Please fill out all fields.')
+      return false
     }
 
     addBookmark(
@@ -84,61 +83,68 @@ export default function BookmarksPage({ theme, toggleTheme }) {
       bookmarkDescription,
       bookmarkLink,
       bookmarkCategory
-    );
+    )
 
-    setSelectedCategory("All categories")
+    setSelectedCategory('All categories')
 
-    setBookmarkTitle("");
-    setBookmarkLink("");
-    setBookmarkDescription("");
-    setBookmarkCategory("");
+    setBookmarkTitle('')
+    setBookmarkLink('')
+    setBookmarkDescription('')
+    setBookmarkCategory('')
 
-    return true;
-  };
+    return true
+  }
 
   const handleDeleteBookmark = async (bookmarkId) => {
     try {
-      await deleteBookmark(bookmarkId);
+      await deleteBookmark(bookmarkId)
     } catch (error) {}
-  };
+  }
 
   const handleClick = useCallback(() => {
-    setIsLoading(true);
-    setTimeout(() => setIsLoading(false), 1000);
-  }, []);
+    setIsLoading(true)
+    setTimeout(() => setIsLoading(false), 1000)
+  }, [])
 
   useEffect(() => {
     if (currentUser && currentUser.bookmarks) {
       const uniqueCategories = Array.from(
         new Set(currentUser.bookmarks.map((bookmark) => bookmark.category))
-      );
+      )
 
-      setCategories(["All categories", ...uniqueCategories]);
+      setCategories(['All categories', ...uniqueCategories])
     }
-  }, [currentUser]);
+  }, [currentUser])
 
   useEffect(() => {
     if (currentUser && currentUser.bookmarks) {
-      if (selectedCategory === "All categories") {
-      
-        const filtered = currentUser.bookmarks.filter((bookmark) => 
-          bookmark.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          bookmark.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          bookmark.category.toLowerCase().includes(searchQuery.toLowerCase())
-        );
-        setFilteredBookmarks(filtered);
+      setIsLoading(true) // Set loading state before filtering bookmarks
+
+      if (selectedCategory === 'All categories') {
+        const filtered = currentUser.bookmarks.filter(
+          (bookmark) =>
+            bookmark.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            bookmark.description
+              .toLowerCase()
+              .includes(searchQuery.toLowerCase()) ||
+            bookmark.category.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+        setFilteredBookmarks(filtered)
       } else {
-     
         const filtered = currentUser.bookmarks.filter(
           (bookmark) =>
             bookmark.category === selectedCategory &&
             (bookmark.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            bookmark.description.toLowerCase().includes(searchQuery.toLowerCase()))
-        );
-        setFilteredBookmarks(filtered);
+              bookmark.description
+                .toLowerCase()
+                .includes(searchQuery.toLowerCase()))
+        )
+        setFilteredBookmarks(filtered)
       }
+
+      setIsLoading(false) // Reset loading state after filtering bookmarks
     }
-  }, [currentUser, selectedCategory, searchQuery]);
+  }, [currentUser, selectedCategory, searchQuery])
 
   return (
     <>
@@ -224,13 +230,16 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                     <PageContainer>
                       <PageHeader>
                         <Group>
-                        <TextInput
+                          <TextInput
                             background={background}
                             height={30}
                             disabled={isLoading}
                             placeholder="Search by title, description, category..."
                             value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onChange={(e) => {
+                              setSearchQuery(e.target.value)
+                              setSelectedCategory('All categories') // Set selected category to "All categories"
+                            }}
                           />
                           <IconButton
                             className="custom-icon-button"
@@ -242,14 +251,17 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                         </Group>
 
                         <CustomSelect
-                          options={["All categories", ...categories]} // Assuming 'categories' is an array of unique categories
+                          options={[...categories]}
                           selectedOption={selectedCategory}
-                          onSelect={(option) => setSelectedCategory(option)}
+                          onSelect={(option) => {
+                            setSearchQuery('')
+                            setSelectedCategory(option)
+                          }}
                         />
 
                         <Pane>
                           <Dialog
-                            containerProps={{ className: "themed-modal" }}
+                            containerProps={{ className: 'themed-modal' }}
                             isShown={isDialogShown}
                             title="Dialog title"
                             onCloseComplete={() => setIsDialogShown(false)}
@@ -261,7 +273,6 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                                 <SignForm>
                                   <SignField>
                                     <Strong color={textMuted}>Title:</Strong>
-
                                     <TextInput
                                       marginTop={3}
                                       background={background}
@@ -382,10 +393,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                                 Category
                               </Table.TextHeaderCell>
                             </Table.Head>
-                            <Table.Body
-                              className="custom-table_body"
-                              height={820}
-                            >
+                            <Table.Body className="custom-table_body">
                               {currentUser?.bookmarks &&
                                 filteredBookmarks.map((bookmark) => (
                                   <Table.Row
@@ -424,7 +432,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                                             <Menu.Group>
                                               <Menu.Item
                                                 onSelect={() =>
-                                                  toaster.notify("Edit")
+                                                  toaster.notify('Edit')
                                                 }
                                               >
                                                 Edit...
@@ -484,5 +492,5 @@ export default function BookmarksPage({ theme, toggleTheme }) {
         <Footer theme={theme} />
       </ThemeLayout>
     </>
-  );
+  )
 }
