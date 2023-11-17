@@ -406,101 +406,122 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                             </Table.Head>
                             <Table.Body className="custom-table_body">
                               {currentUser?.bookmarks &&
-                                filteredBookmarks.map((bookmark) => (
+                                (filteredBookmarks.length < 1 ? (
                                   <Table.Row
                                     className="custom-table_row"
                                     background={background}
                                     color={textMuted}
-                                    key={bookmark.id}
+                                    key="no-bookmarks"
                                     isSelectable={false}
-                                    onSelect={() => alert(bookmark.title)}
                                   >
-                                    <Table.TextCell className="custom-table_cell">
+                                    <Table.TextCell
+                                      className="custom-table_cell"
+                                      textAlign="center"
+                                    >
                                       <Text color={textColor} fontSize={14}>
-                                        {bookmark.title}
+                                        No bookmarks found.
                                       </Text>
                                     </Table.TextCell>
-                                    <Table.TextCell className="custom-table_cell">
-                                      <Tooltip
-                                        content={bookmark.description}
-                                        position="top"
-                                      >
-                                        <Text color={textColor} fontSize={14}>
-                                          {bookmark.description}
-                                        </Text>
-                                      </Tooltip>
-                                    </Table.TextCell>
-                                    <Table.TextCell className="custom-table_cell">
-                                      <Text color={textColor} fontSize={14}>
-                                        <a
-                                          className="custom-table_link"
-                                          href={`https://${bookmark.link}`}
-                                          target="_blank"
-                                          rel="noreferrer"
-                                        >
-                                          {bookmark.link}
-                                        </a>
-                                      </Text>
-                                    </Table.TextCell>
-                                    <Table.TextCell className="custom-table_cell">
-                                      <Text color={textColor} fontSize={14}>
-                                        {bookmark.category}
-                                      </Text>
-                                    </Table.TextCell>
-
-                                    <span className="custom-table_menu">
-                                      <Popover
-                                        content={
-                                          <Menu>
-                                            <Menu.Group>
-                                              <Menu.Item
-                                                onSelect={() =>
-                                                  toaster.notify('Edit')
-                                                }
-                                              >
-                                                Edit...
-                                              </Menu.Item>
-                                            </Menu.Group>
-                                            <Menu.Divider />
-                                            <Menu.Group>
-                                              <Menu.Item
-                                                onSelect={() =>
-                                                  handleDeleteBookmark(
-                                                    bookmark.id
-                                                  )
-                                                }
-                                                intent="danger"
-                                              >
-                                                Delete...
-                                              </Menu.Item>
-                                            </Menu.Group>
-                                          </Menu>
-                                        }
-                                      >
-                                        <Button
-                                          className="custom-table_button"
-                                          fontWeight="bold"
-                                          onClick={() => setIsDialogShown(true)}
-                                        >
-                                          <span>
-                                            <svg
-                                              xmlns="http://www.w3.org/2000/svg"
-                                              fill={background}
-                                              viewBox="0 0 24 24"
-                                              strokeWidth="1.5"
-                                              stroke="currentColor"
-                                            >
-                                              <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"
-                                              />
-                                            </svg>
-                                          </span>
-                                        </Button>
-                                      </Popover>
-                                    </span>
                                   </Table.Row>
+                                ) : (
+                                  filteredBookmarks.map((bookmark) => (
+                                    <Table.Row
+                                      className="custom-table_row"
+                                      background={background}
+                                      color={textMuted}
+                                      key={bookmark.id}
+                                      isSelectable={false}
+                                      onSelect={() => alert(bookmark.title)}
+                                    >
+                                      <Table.TextCell className="custom-table_cell">
+                                        <Text color={textColor} fontSize={14}>
+                                          {bookmark.title}
+                                        </Text>
+                                      </Table.TextCell>
+                                      <Table.TextCell className="custom-table_cell">
+                                        <Tooltip
+                                          content={bookmark.description}
+                                          position="top"
+                                        >
+                                          <Text color={textColor} fontSize={14}>
+                                            {bookmark.description}
+                                          </Text>
+                                        </Tooltip>
+                                      </Table.TextCell>
+                                      <Table.TextCell className="custom-table_cell">
+                                        <Text color={textColor} fontSize={14}>
+                                          <a
+                                            className="custom-table_link"
+                                            href={`https://${bookmark.link}`}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                          >
+                                            {bookmark.link}
+                                          </a>
+                                        </Text>
+                                      </Table.TextCell>
+                                      <Table.TextCell className="custom-table_cell">
+                                        <Text color={textColor} fontSize={14}>
+                                          {bookmark.category}
+                                        </Text>
+                                      </Table.TextCell>
+
+                                      <span className="custom-table_menu">
+                                        <Popover
+                                          content={
+                                            <Menu>
+                                              <Menu.Group>
+                                                <Menu.Item
+                                                  onSelect={() =>
+                                                    toaster.notify('Edit')
+                                                  }
+                                                >
+                                                  Edit...
+                                                </Menu.Item>
+                                              </Menu.Group>
+                                              <Menu.Divider />
+                                              <Menu.Group>
+                                                <Menu.Item
+                                                  onSelect={() =>
+                                                    handleDeleteBookmark(
+                                                      bookmark.id
+                                                    )
+                                                  }
+                                                  intent="danger"
+                                                >
+                                                  Delete...
+                                                </Menu.Item>
+                                              </Menu.Group>
+                                            </Menu>
+                                          }
+                                        >
+                                          <Button
+                                            className="custom-table_button"
+                                            fontWeight="bold"
+                                            onClick={() =>
+                                              setIsDialogShown(true)
+                                            }
+                                          >
+                                            <span>
+                                              <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                fill={background}
+                                                viewBox="0 0 24 24"
+                                                strokeWidth="1.5"
+                                                stroke="currentColor"
+                                              >
+                                                <path
+                                                  strokeLinecap="round"
+                                                  strokeLinejoin="round"
+                                                  d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"
+                                                />
+                                              </svg>
+                                            </span>
+                                          </Button>
+                                        </Popover>
+                                      </span>
+                                    </Table.Row>
+                                  ))
                                 ))}
                             </Table.Body>
                           </Table>
