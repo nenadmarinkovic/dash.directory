@@ -159,13 +159,17 @@ export const GlobalStyle = styled.createGlobalStyle`
     }
 
     &_body {
-     max-height: 700px;
-     overflow: auto;
+      max-height: 700px;
+      overflow: auto;
     }
 
     &_head {
       padding: 0;
       border-bottom: 1px solid rgba(200, 200, 200, 0.4);
+
+      &.add-right-padding {
+        padding-right: 15px;
+      }
     }
 
     &_wrap {
@@ -209,16 +213,6 @@ export const GlobalStyle = styled.createGlobalStyle`
       &:not([disabled])[aria-expanded='true'] {
         background-color: ${({ theme }) => theme.hoverButton};
       }
-    }
-  }
-
-  /* Custom Select Component */
-
-  .custom-select {
-    margin: 0 20px;
-    option {
-      padding: 10px;
-      background-color: #000;
     }
   }
 

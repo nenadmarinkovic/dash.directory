@@ -377,7 +377,10 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                         <BookmarksTable className="custom-table">
                           <Table className="custom-table_wrap">
                             <Table.Head
-                              className="custom-table_head"
+                              className={`custom-table_head ${
+                                filteredBookmarks.length > 10 &&
+                                'add-right-padding'
+                              }`}
                               background={background}
                             >
                               <Table.TextHeaderCell className="custom-table_cell">
