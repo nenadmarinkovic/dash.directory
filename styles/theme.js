@@ -34,7 +34,7 @@ export const darkTheme = {
   buttonText: "#FFF",
   hoverButton: "#202020",
   shadowBorder: "rgba(225,225,225,0.3)",
-  primary: "#2952CC",
+  primary: "#2f81f7",
   primaryActive: "#1F3D99"
 };
 

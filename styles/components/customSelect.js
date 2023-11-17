@@ -35,7 +35,7 @@ export const CustomSelectButton = styled.button`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 32px;
+  height: 38px;
   border: 1px solid rgba(200, 200, 200, 0.4);
 
   svg {

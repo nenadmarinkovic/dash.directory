@@ -7,11 +7,11 @@ export const SidebarWrap = styled.nav`
 `
 
 export const SidebarItems = styled.ul`
-  margin-top: -7px;
+  margin-top: -2.5px;
 `
 
 export const SidebarItem = styled.li`
-  margin-top: 26px;
+  margin-top: 27.5px;
   transition: 0.3s;
   display: block;
 

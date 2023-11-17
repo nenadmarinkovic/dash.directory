@@ -59,6 +59,7 @@ export const PageContainer = styled.div`
 export const PageHeader = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
 `
 
@@ -67,10 +68,10 @@ export const InputHeader = styled.div`
 
   input {
     width: 520px;
-    height: 32px;
+    height: 38px;
     font-size: 13px;
     background: ${({ theme }) => theme.clear};
-    border: 1px solid rgba(200, 200, 200, 0.4)
+    border: 1px solid rgba(200, 200, 200, 0.4);
   }
 
   svg {
@@ -78,7 +79,7 @@ export const InputHeader = styled.div`
     height: 16px;
     position: absolute;
     right: 10px;
-    top: 8px;
+    top: 11px;
     color: ${({ theme }) => theme.textMuted};
   }
 `

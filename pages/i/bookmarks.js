@@ -36,7 +36,8 @@ import {
   Popover,
   Menu,
   Heading,
-  Paragraph
+  Paragraph,
+  Tooltip
 } from 'evergreen-ui'
 import { BookmarksTable } from '../../styles/pages/bookmarks'
 import { useThemeColors } from '../../styles/theme'
@@ -289,7 +290,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                                         setBookmarkTitle(e.target.value)
                                       }
                                       name="text-input-name"
-                                      placeholder="Dash Directory"
+                                      placeholder="GitHub"
                                     />
                                   </SignField>
                                   <SignField>
@@ -305,7 +306,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                                         setBookmarkDescription(e.target.value)
                                       }
                                       name="text-input-name"
-                                      placeholder="Personal management tool"
+                                      placeholder="A Git-based platform for software."
                                     />
                                   </SignField>
                                   <SignField>
@@ -319,7 +320,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                                         setBookmarkLink(e.target.value)
                                       }
                                       name="text-input-name"
-                                      placeholder="https://dash.directory"
+                                      placeholder="github.com"
                                     />
                                   </SignField>
                                   <SignField>
@@ -333,7 +334,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                                         setBookmarkCategory(e.target.value)
                                       }
                                       name="text-input-name"
-                                      placeholder="Tools"
+                                      placeholder="Development"
                                     />
                                   </SignField>
                                 </SignForm>
@@ -420,13 +421,25 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                                       </Text>
                                     </Table.TextCell>
                                     <Table.TextCell className="custom-table_cell">
-                                      <Text color={textColor} fontSize={14}>
-                                        {bookmark.description}
-                                      </Text>
+                                      <Tooltip
+                                        content={bookmark.description}
+                                        position="top"
+                                      >
+                                        <Text color={textColor} fontSize={14}>
+                                          {bookmark.description}
+                                        </Text>
+                                      </Tooltip>
                                     </Table.TextCell>
                                     <Table.TextCell className="custom-table_cell">
                                       <Text color={textColor} fontSize={14}>
-                                        {bookmark.link}
+                                        <a
+                                          className="custom-table_link"
+                                          href={`https://${bookmark.link}`}
+                                          target="_blank"
+                                          rel="noreferrer"
+                                        >
+                                          {bookmark.link}
+                                        </a>
                                       </Text>
                                     </Table.TextCell>
                                     <Table.TextCell className="custom-table_cell">

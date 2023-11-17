@@ -122,9 +122,10 @@ export const GlobalStyle = styled.createGlobalStyle`
     width: 160px;
     display: flex;
     align-items: center;
-    font-weight: 500;
+    font-weight: 600;
     justify-content: space-between;
     border: none !important;
+    height: 36px;
 
     svg {
       height: 18px;
@@ -193,9 +194,16 @@ export const GlobalStyle = styled.createGlobalStyle`
       top: 15px;
     }
 
+    &_link {
+      color: ${({ theme }) => theme.primary};
+      font-weight: bold;
+    }
+
     &_button {
       padding: 0;
       margin-right: 15px;
+      height: 28px;
+      font-weight: 600;
       border: none !important;
       background-color: ${({ theme }) => theme.clear};
       color: ${({ theme }) => theme.textColor};
