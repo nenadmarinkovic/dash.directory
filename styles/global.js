@@ -127,8 +127,10 @@ export const GlobalStyle = createGlobalStyle`
   .custom-button-small {
     background-color: ${({ theme }) => theme.buttonBackground};
     color: ${({ theme }) => theme.buttonColor};
-    width: 120px;
+    width: 160px;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     transition: all 0.3s;
 
     svg {
@@ -211,6 +213,17 @@ export const GlobalStyle = createGlobalStyle`
         background-color: ${({ theme }) => theme.hoverButton};
       }
     }
+  }
+
+  /* Custom Select Component */
+
+  .custom-select {
+    margin: 0 20px;
+    option {
+      padding: 10px;
+      background-color: #000;
+    }
+  
   }
 
   input,

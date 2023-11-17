@@ -62,7 +62,7 @@ export const PageHeader = styled.div`
   width: 100%;
 
   input {
-    width: 580px;
+    width: 480px;
     height: 32px;
     font-size: 13px;
   }

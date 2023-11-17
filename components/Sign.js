@@ -39,7 +39,7 @@ function Sign({ theme }) {
     if (!isCreatingAccount) {
       try {
         await login(email, password);
-        toaster.success("Successfully logged in.");
+        toaster.success("Login successful!");
         router.push("/i");
       } catch (error) {
         handleAuthenticationError(error, setError);

@@ -33,7 +33,7 @@ import {
   IconButton,
   SearchIcon,
   Spinner,
-  SelectMenu,
+  Select,
   StatusIndicator,
   toaster,
   Popover,
@@ -47,6 +47,7 @@ import {
   isUserEmailVerified,
   isUserRegisteredWithGitHub,
 } from "../../services/ServicesHelpers";
+import CustomSelect from "../../components/CustomSelect";
 
 export default function BookmarksPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
@@ -57,8 +58,10 @@ export default function BookmarksPage({ theme, toggleTheme }) {
   const [bookmarkCategory, setBookmarkCategory] = useState("");
   const { textColor, textMuted, background } = useThemeColors(theme);
   const [isDialogShown, setIsDialogShown] = useState(false);
-  const [selected, setSelected] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [filteredBookmarks, setFilteredBookmarks] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("All categories");
 
   const userIsRegisteredWithGitHub = isUserRegisteredWithGitHub(currentUser);
   const userEmailVerified = isUserEmailVerified(currentUser);
@@ -93,16 +96,36 @@ export default function BookmarksPage({ theme, toggleTheme }) {
   const handleDeleteBookmark = async (bookmarkId) => {
     try {
       await deleteBookmark(bookmarkId);
-      toaster.notify("Bookmark deleted successfully.");
-    } catch (error) {
-      toaster.danger("Error deleting bookmark. Please try again.");
-    }
+    } catch (error) {}
   };
 
   const handleClick = useCallback(() => {
     setIsLoading(true);
     setTimeout(() => setIsLoading(false), 1000);
   }, []);
+
+  useEffect(() => {
+    if (currentUser && currentUser.bookmarks) {
+      const uniqueCategories = Array.from(
+        new Set(currentUser.bookmarks.map((bookmark) => bookmark.category))
+      );
+
+      setCategories(["All categories", ...uniqueCategories]);
+    }
+  }, [currentUser]);
+
+  useEffect(() => {
+    if (currentUser && currentUser.bookmarks) {
+      if (selectedCategory === "All categories") {
+        setFilteredBookmarks(currentUser.bookmarks);
+      } else {
+        const filtered = currentUser.bookmarks.filter(
+          (bookmark) => bookmark.category === selectedCategory
+        );
+        setFilteredBookmarks(filtered);
+      }
+    }
+  }, [currentUser, selectedCategory]);
 
   return (
     <>
@@ -202,27 +225,12 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                             onClick={handleClick}
                           />
                         </Group>
-                        <SelectMenu
-                          title="Select category"
-                          options={["Tools", "Personal", "Development"].map(
-                            (label) => ({ label, value: label })
-                          )}
-                          height={120}
-                          fontSize={13}
-                          hasFilter={false}
-                          hasTitle={false}
-                          selected={selected}
-                          onSelect={(item) => setSelected(item.value)}
-                        >
-                          <Button
-                            className="category-button"
-                            background={background}
-                            color={textMuted}
-                            fontSize={13}
-                          >
-                            {"Select category..."}
-                          </Button>
-                        </SelectMenu>
+
+                        <CustomSelect
+                          options={[...categories]} // Assuming 'categories' is an array of unique categories
+                          selectedOption={selectedCategory}
+                          onSelect={(option) => setSelectedCategory(option)}
+                        />
 
                         <Pane>
                           <Dialog
@@ -316,10 +324,11 @@ export default function BookmarksPage({ theme, toggleTheme }) {
 
                           <Button
                             className="custom-button-small"
+                            appearance="primary"
                             fontWeight="bold"
                             onClick={handleShowDialog}
                           >
-                            <span>Add</span>
+                            <span>Add bookmark</span>
 
                             <span>
                               <svg
@@ -364,7 +373,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                               height={820}
                             >
                               {currentUser?.bookmarks &&
-                                currentUser?.bookmarks.map((bookmark) => (
+                                filteredBookmarks.map((bookmark) => (
                                   <Table.Row
                                     className="custom-table_row"
                                     background={background}

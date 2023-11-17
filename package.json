@@ -9,16 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "eslint": "8.42.0",
-    "eslint-config-next": "13.4.4",
-    "evergreen-ui": "^7.1.8",
+    "eslint": "8.53.0",
+    "eslint-config-next": "14.0.3",
+    "evergreen-ui": "^7.1.9",
     "firebase": "^10.6.0",
-    "framer-motion": "^10.12.16",
-    "next": "13.4.4",
+    "framer-motion": "^10.16.5",
+    "next": "14.0.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-scroll-into-view": "^1.12.1",
-    "styled-components": "^6.0.0-rc.3",
+    "react-scroll-into-view": "^2.0.2",
+    "styled-components": "^6.1.1",
     "throttle-debounce-ts": "^1.1.1",
     "uuid": "^9.0.1"
   }

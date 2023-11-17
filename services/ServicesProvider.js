@@ -11,7 +11,7 @@ import {
 } from "firebase/auth";
 import { useRouter } from "next/router";
 import { doc, setDoc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
-import { Spinner } from "evergreen-ui";
+import { Spinner, toaster } from "evergreen-ui";
 
 const ContextProvider = createContext();
 
@@ -118,7 +118,8 @@ export function ServicesProvider({ children }) {
         await setDoc(bookmarksDocRef, { bookmarks: [] });
       }
 
-      router.push("/");
+      router.push("/i");
+      toaster.success("GitHub authentication successful!");
     } catch (error) {
       console.error("GitHub authentication error:", error.message);
     } finally {
@@ -181,6 +182,7 @@ export function ServicesProvider({ children }) {
           bookmarks: newBookmarks,
         });
       }
+      toaster.success("Bookmark added.");
     } catch (error) {
       console.error("Error adding bookmark:", error.message);
     }
@@ -212,6 +214,7 @@ export function ServicesProvider({ children }) {
           bookmarks: updatedBookmarks,
         });
       }
+      toaster.success("Bookmark deleted!");
     } catch (error) {
       console.error("Error deleting bookmark:", error.message);
     }
