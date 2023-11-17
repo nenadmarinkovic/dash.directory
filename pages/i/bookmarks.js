@@ -98,6 +98,8 @@ export default function BookmarksPage({ theme, toggleTheme }) {
   const handleDeleteBookmark = async (bookmarkId) => {
     try {
       await deleteBookmark(bookmarkId)
+      setSelectedCategory('All categories')
+      setSearchQuery('')
     } catch (error) {}
   }
 
@@ -118,8 +120,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
 
   useEffect(() => {
     if (currentUser && currentUser.bookmarks) {
-      setIsLoading(true) // Set loading state before filtering bookmarks
-
+      setIsLoading(true)
       if (selectedCategory === 'All categories') {
         const filtered = currentUser.bookmarks.filter(
           (bookmark) =>
@@ -142,7 +143,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
         setFilteredBookmarks(filtered)
       }
 
-      setIsLoading(false) // Reset loading state after filtering bookmarks
+      setIsLoading(false)
     }
   }, [currentUser, selectedCategory, searchQuery])
 
