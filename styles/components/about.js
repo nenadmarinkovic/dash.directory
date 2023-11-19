@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const AboutWrap = styled.section`
   flex: 1;
@@ -20,8 +20,7 @@ export const AboutSmall = styled.div`
   width: 48%;
   border-radius: 5px;
   padding: 2.8rem;
-  box-shadow: 0 0 0 1px ${({ theme }) => theme.shadowBorder},
-    0 4px 6px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 0 0 1px ${({ theme }) => theme.shadowBorder}, 0 4px 6px rgba(0, 0, 0, 0.04);
 
   @media (max-width: 960px) {
     width: 100%;
@@ -36,8 +35,7 @@ export const AboutFull = styled.div`
   width: 100%;
   border-radius: 5px;
   padding: 2.8rem;
-  box-shadow: 0 0 0 1px ${({ theme }) => theme.shadowBorder},
-    0 4px 6px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 0 0 1px ${({ theme }) => theme.shadowBorder}, 0 4px 6px rgba(0, 0, 0, 0.04);
 
   p {
     width: 70%;

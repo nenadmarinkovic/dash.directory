@@ -1,6 +1,6 @@
-import React, { useContext, useState, useEffect, createContext } from "react";
-import { auth, db, githubProvider } from "../lib/firebase";
-import { v4 as uuidv4 } from "uuid";
+import React, { useContext, useState, useEffect, createContext } from 'react';
+import { auth, db, githubProvider } from '../lib/firebase';
+import { v4 as uuidv4 } from 'uuid';
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -8,10 +8,10 @@ import {
   onAuthStateChanged,
   sendEmailVerification,
   signInWithPopup,
-} from "firebase/auth";
-import { useRouter } from "next/router";
-import { doc, setDoc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
-import { Spinner, toaster } from "evergreen-ui";
+} from 'firebase/auth';
+import { useRouter } from 'next/router';
+import { doc, setDoc, getDoc, updateDoc, arrayUnion } from 'firebase/firestore';
+import { Spinner, toaster } from 'evergreen-ui';
 
 const ContextProvider = createContext();
 
@@ -30,7 +30,7 @@ export function ServicesProvider({ children }) {
       setCurrentUser(user);
 
       if (user) {
-        const userDocRef = doc(db, "users", user.uid);
+        const userDocRef = doc(db, 'users', user.uid);
         const userDocSnap = await getDoc(userDocRef);
 
         if (userDocSnap.exists()) {
@@ -41,7 +41,7 @@ export function ServicesProvider({ children }) {
             email: userData.email,
           }));
 
-          const bookmarksDocRef = doc(db, "bookmarks", user.uid);
+          const bookmarksDocRef = doc(db, 'bookmarks', user.uid);
           const bookmarksDocSnap = await getDoc(bookmarksDocRef);
 
           if (bookmarksDocSnap.exists()) {
@@ -64,24 +64,20 @@ export function ServicesProvider({ children }) {
 
   const signup = async (displayName, email, password) => {
     try {
-      const newUserCredentials = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      const newUserCredentials = await createUserWithEmailAndPassword(auth, email, password);
 
-      const userDocRef = doc(db, "users", newUserCredentials.user.uid);
+      const userDocRef = doc(db, 'users', newUserCredentials.user.uid);
       await setDoc(userDocRef, {
         displayName,
         email,
       });
 
-      const bookmarksDocRef = doc(db, "bookmarks", newUserCredentials.user.uid);
+      const bookmarksDocRef = doc(db, 'bookmarks', newUserCredentials.user.uid);
       await setDoc(bookmarksDocRef, { bookmarks: [] });
 
       await sendEmailVerification(newUserCredentials.user);
     } catch (error) {
-      console.error("Signup Error:", error.message);
+      console.error('Signup Error:', error.message);
       throw error;
     }
   };
@@ -90,7 +86,7 @@ export function ServicesProvider({ children }) {
     try {
       return await signInWithEmailAndPassword(auth, email, password);
     } catch (error) {
-      console.error("Login Error:", error);
+      console.error('Login Error:', error);
       throw error;
     }
   };
@@ -105,7 +101,7 @@ export function ServicesProvider({ children }) {
       const result = await signInWithPopup(auth, githubProvider);
       const user = result.user;
 
-      const userDocRef = doc(db, "users", user.uid);
+      const userDocRef = doc(db, 'users', user.uid);
       const userDocSnap = await getDoc(userDocRef);
 
       if (!userDocSnap.exists()) {
@@ -114,14 +110,14 @@ export function ServicesProvider({ children }) {
           email: user.email,
         });
 
-        const bookmarksDocRef = doc(db, "bookmarks", user.uid);
+        const bookmarksDocRef = doc(db, 'bookmarks', user.uid);
         await setDoc(bookmarksDocRef, { bookmarks: [] });
       }
 
-      router.push("/i");
-      toaster.success("GitHub authentication successful!");
+      router.push('/i');
+      toaster.success('GitHub authentication successful!');
     } catch (error) {
-      console.error("GitHub authentication error:", error.message);
+      console.error('GitHub authentication error:', error.message);
     } finally {
       setLoading(false);
     }
@@ -134,11 +130,11 @@ export function ServicesProvider({ children }) {
       const user = auth.currentUser;
 
       if (!user) {
-        console.error("User not authenticated");
+        console.error('User not authenticated');
         return;
       }
 
-      const bookmarksDocRef = doc(db, "bookmarks", user.uid);
+      const bookmarksDocRef = doc(db, 'bookmarks', user.uid);
       const bookmarksDocSnap = await getDoc(bookmarksDocRef);
 
       if (bookmarksDocSnap.exists()) {
@@ -152,9 +148,7 @@ export function ServicesProvider({ children }) {
 
         setCurrentUser((prevUser) => ({
           ...prevUser,
-          bookmarks: prevUser?.bookmarks
-            ? [...prevUser.bookmarks, newBookmark]
-            : [newBookmark],
+          bookmarks: prevUser?.bookmarks ? [...prevUser.bookmarks, newBookmark] : [newBookmark],
         }));
 
         await updateDoc(bookmarksDocRef, {
@@ -173,18 +167,16 @@ export function ServicesProvider({ children }) {
 
         setCurrentUser((prevUser) => ({
           ...prevUser,
-          bookmarks: prevUser?.bookmarks
-            ? [...prevUser.bookmarks, ...newBookmarks]
-            : newBookmarks,
+          bookmarks: prevUser?.bookmarks ? [...prevUser.bookmarks, ...newBookmarks] : newBookmarks,
         }));
 
         await setDoc(bookmarksDocRef, {
           bookmarks: newBookmarks,
         });
       }
-      toaster.success("Bookmark added.");
+      toaster.success('Bookmark added.');
     } catch (error) {
-      console.error("Error adding bookmark:", error.message);
+      console.error('Error adding bookmark:', error.message);
     }
   };
 
@@ -193,16 +185,16 @@ export function ServicesProvider({ children }) {
       const user = auth.currentUser;
 
       if (!user) {
-        console.error("User not authenticated");
+        console.error('User not authenticated');
         return;
       }
 
-      const bookmarksDocRef = doc(db, "bookmarks", user.uid);
+      const bookmarksDocRef = doc(db, 'bookmarks', user.uid);
       const bookmarksDocSnap = await getDoc(bookmarksDocRef);
 
       if (bookmarksDocSnap.exists()) {
         const updatedBookmarks = (currentUser.bookmarks || []).filter(
-          (bookmark) => bookmark.id !== bookmarkId
+          (bookmark) => bookmark.id !== bookmarkId,
         );
 
         setCurrentUser((prevUser) => ({
@@ -214,9 +206,42 @@ export function ServicesProvider({ children }) {
           bookmarks: updatedBookmarks,
         });
       }
-      toaster.success("Bookmark deleted!");
+      toaster.success('Bookmark deleted!');
     } catch (error) {
-      console.error("Error deleting bookmark:", error.message);
+      console.error('Error deleting bookmark:', error.message);
+    }
+  };
+
+  const editBookmark = async (bookmarkId, updatedBookmark) => {
+    try {
+      const user = auth.currentUser;
+
+      if (!user) {
+        console.error('User not authenticated');
+        return;
+      }
+
+      const bookmarksDocRef = doc(db, 'bookmarks', user.uid);
+      const bookmarksDocSnap = await getDoc(bookmarksDocRef);
+
+      if (bookmarksDocSnap.exists()) {
+        const updatedBookmarks = (currentUser.bookmarks || []).map((bookmark) =>
+          bookmark.id === bookmarkId ? { ...bookmark, ...updatedBookmark } : bookmark,
+        );
+
+        setCurrentUser((prevUser) => ({
+          ...prevUser,
+          bookmarks: updatedBookmarks,
+        }));
+
+        await updateDoc(bookmarksDocRef, {
+          bookmarks: updatedBookmarks,
+        });
+      }
+
+      toaster.success('Bookmark updated!');
+    } catch (error) {
+      console.error('Error updating bookmark:', error.message);
     }
   };
 
@@ -228,6 +253,7 @@ export function ServicesProvider({ children }) {
     signInWithGitHub,
     addBookmark,
     deleteBookmark,
+    editBookmark,
   };
 
   return (

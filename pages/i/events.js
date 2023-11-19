@@ -1,16 +1,16 @@
-import { useState, useEffect } from "react";
-import Head from "next/head";
-import Header from "../../components/Header";
+import { useState, useEffect } from 'react';
+import Head from 'next/head';
+import Header from '../../components/Header';
 import {
   ContainerWrap,
   MainSection,
   PageContainer,
   PageLayout,
   ThemeLayout,
-} from "../../styles/components/layout";
-import Footer from "../../components/Footer";
-import { useServices } from "../../services/ServicesProvider";
-import Sidebar from "../../components/Sidebar";
+} from '../../styles/components/layout';
+import Footer from '../../components/Footer';
+import { useServices } from '../../services/ServicesProvider';
+import Sidebar from '../../components/Sidebar';
 
 export default function EventsPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
@@ -22,8 +22,8 @@ export default function EventsPage({ theme, toggleTheme }) {
     <>
       <Head>
         <title>Dash Directory | Events</title>
-        <meta name="description" content="Web directory for organized minds" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name='description' content='Web directory for organized minds' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
       <Header
         toggleTheme={toggleTheme}

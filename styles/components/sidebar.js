@@ -1,14 +1,16 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const SidebarWrap = styled.nav`
   display: flex;
   flex-direction: column;
   width: 20%;
-`
+`;
 
 export const SidebarItems = styled.ul`
-  margin-top: -2.5px;
-`
+  margin-top: -3px;
+  position: relative;
+  left: -12px;
+`;
 
 export const SidebarItem = styled.li`
   margin-top: 27.5px;
@@ -37,4 +39,4 @@ export const SidebarItem = styled.li`
   :hover {
     background: ${({ theme }) => theme.hoverButton};
   }
-`
+`;

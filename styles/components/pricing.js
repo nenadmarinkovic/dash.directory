@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const PricingCards = styled.div`
   display: flex;
@@ -17,8 +17,7 @@ export const PricingCard = styled.div`
   width: 43.5%;
   border-radius: 5px;
   padding: 2.8rem;
-  box-shadow: 0 0 0 1px ${({ theme }) => theme.shadowBorder},
-    0 4px 6px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 0 0 1px ${({ theme }) => theme.shadowBorder}, 0 4px 6px rgba(0, 0, 0, 0.04);
 
   @media (max-width: 960px) {
     width: 100%;

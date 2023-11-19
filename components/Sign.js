@@ -1,22 +1,15 @@
-import React, { useState } from "react";
-import {
-  Strong,
-  TextInput,
-  Button,
-  Text,
-  Paragraph,
-  toaster,
-} from "evergreen-ui";
-import { useServices } from "../services/ServicesProvider";
-import { useRouter } from "next/router";
-import { SignForm, SignField } from "../styles/components/signin";
-import { useThemeColors } from "../styles/theme";
-import { handleAuthenticationError } from "../services/ServicesHelpers";
+import React, { useState } from 'react';
+import { Strong, TextInput, Button, Text, Paragraph, toaster } from 'evergreen-ui';
+import { useServices } from '../services/ServicesProvider';
+import { useRouter } from 'next/router';
+import { SignForm, SignField } from '../styles/components/signin';
+import { useThemeColors } from '../styles/theme';
+import { handleAuthenticationError } from '../services/ServicesHelpers';
 
 function Sign({ theme }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
   const [error, setError] = useState(null);
   const [loading, setIsLoading] = useState(null);
   const [isCreatingAccount, setIsCreatingAccount] = useState(true);
@@ -29,8 +22,8 @@ function Sign({ theme }) {
     setError(null);
 
     if (!email || !password || (isCreatingAccount && !name)) {
-      setError("Please enter valid information.");
-      toaster.danger("Please enter valid information.");
+      setError('Please enter valid information.');
+      toaster.danger('Please enter valid information.');
       return;
     }
 
@@ -39,8 +32,8 @@ function Sign({ theme }) {
     if (!isCreatingAccount) {
       try {
         await login(email, password);
-        toaster.success("Login successful!");
-        router.push("/i");
+        toaster.success('Login successful!');
+        router.push('/i');
       } catch (error) {
         handleAuthenticationError(error, setError);
       } finally {
@@ -52,10 +45,8 @@ function Sign({ theme }) {
 
     try {
       await signup(name, email, password);
-      router.push("/i");
-      toaster.success(
-        "Successfully created account. Please verify your email."
-      );
+      router.push('/i');
+      toaster.success('Successfully created account. Please verify your email.');
     } catch (error) {
       handleAuthenticationError(error, setError);
     } finally {
@@ -75,8 +66,8 @@ function Sign({ theme }) {
               background={background}
               value={name}
               onChange={(e) => setName(e.target.value)}
-              name="text-input-name"
-              placeholder="Your name"
+              name='text-input-name'
+              placeholder='Your name'
             />
           </SignField>
         </>
@@ -89,8 +80,8 @@ function Sign({ theme }) {
           background={background}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          name="text-input-name"
-          placeholder="Your email address"
+          name='text-input-name'
+          placeholder='Your email address'
         />
       </SignField>
       <SignField>
@@ -98,24 +89,24 @@ function Sign({ theme }) {
 
         <TextInput
           background={background}
-          type="password"
+          type='password'
           marginTop={3}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          name="text-input-name"
-          placeholder="Your account password"
+          name='text-input-name'
+          placeholder='Your account password'
         />
       </SignField>
       <SignField>
         <Button
           marginTop={10}
-          marginBottom={!isCreatingAccount ? 20 : ""}
+          marginBottom={!isCreatingAccount ? 20 : ''}
           onClick={submitHandler}
-          appearance="primary"
+          appearance='primary'
           isLoading={loading}
         >
-          <Text size="small" fontWeight="bold" color="#FFF">
-            {isCreatingAccount ? " Create account" : "Login"}
+          <Text size='small' fontWeight='bold' color='#FFF'>
+            {isCreatingAccount ? ' Create account' : 'Login'}
           </Text>
         </Button>
       </SignField>
@@ -125,10 +116,10 @@ function Sign({ theme }) {
           onClick={() => setIsCreatingAccount(!isCreatingAccount)}
           size={500}
           lineHeight={1.75}
-          textAlign="start"
+          textAlign='start'
           marginTop={10}
           paddingBottom={10}
-          cursor="pointer"
+          cursor='pointer'
           color={textMuted}
         >
           Already a member? Sign in.

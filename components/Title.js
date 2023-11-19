@@ -1,21 +1,20 @@
-import { Heading } from "evergreen-ui";
-import { TitleWrap } from "../styles/components/title";
-import { useThemeColors } from "../styles/theme";
+import { Heading } from 'evergreen-ui';
+import { TitleWrap } from '../styles/components/title';
+import { useThemeColors } from '../styles/theme';
 
 const Title = ({ theme, title, id }) => {
   const { textMuted } = useThemeColors(theme);
   return (
     <TitleWrap id={`${id}`}>
       <Heading
-        is="h3"
+        is='h3'
         lineHeight={1.25}
-        fontSize="0.75rem"
+        fontSize='0.75rem'
         fontWeight={600}
-        textTransform="uppercase"
+        textTransform='uppercase'
         color={textMuted}
-        letterSpacing=".25rem"
-        textAlign="center"
-        
+        letterSpacing='.25rem'
+        textAlign='center'
       >
         {title}
       </Heading>

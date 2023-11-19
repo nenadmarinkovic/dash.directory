@@ -1,16 +1,16 @@
-import { useState } from "react";
-import Head from "next/head";
-import Header from "../components/Header";
-import { Heading, Paragraph } from "evergreen-ui";
+import { useState } from 'react';
+import Head from 'next/head';
+import Header from '../components/Header';
+import { Heading, Paragraph } from 'evergreen-ui';
 import {
   ContainerWrap,
   MainSection,
   CenteredSection,
   ThemeLayout,
-} from "../styles/components/layout";
-import { useServices } from "../services/ServicesProvider";
-import Footer from "../components/Footer";
-import { useThemeColors } from "../styles/theme";
+} from '../styles/components/layout';
+import { useServices } from '../services/ServicesProvider';
+import Footer from '../components/Footer';
+import { useThemeColors } from '../styles/theme';
 
 export default function SignupPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
@@ -21,8 +21,8 @@ export default function SignupPage({ theme, toggleTheme }) {
     <>
       <Head>
         <title>Dash Directory | Settings</title>
-        <meta name="description" content="Web directory for organized minds" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name='description' content='Web directory for organized minds' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
       <Header
         toggleTheme={toggleTheme}
@@ -38,24 +38,24 @@ export default function SignupPage({ theme, toggleTheme }) {
           <ContainerWrap>
             <CenteredSection>
               <Heading
-                is="h1"
-                align="center"
+                is='h1'
+                align='center'
                 marginTop={8}
                 lineHeight={1.25}
                 fontSize={58}
                 marginBottom={8}
                 fontWeight={900}
                 color={textColor}
-                letterSpacing="-.003rem"
+                letterSpacing='-.003rem'
               >
                 Settings
               </Heading>
               <Paragraph
                 size={500}
                 lineHeight={1.75}
-                textAlign="center"
+                textAlign='center'
                 marginTop={30}
-                color="muted"
+                color='muted'
               >
                 In development mode.
               </Paragraph>

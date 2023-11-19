@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { DateTimeWrap, DateTimeSeparator } from "../styles/components/datetime";
-import { Text } from "evergreen-ui";
-import { useThemeColors } from "../styles/theme";
+import React, { useState, useEffect } from 'react';
+import { DateTimeWrap, DateTimeSeparator } from '../styles/components/datetime';
+import { Text } from 'evergreen-ui';
+import { useThemeColors } from '../styles/theme';
 
 const DateTimeComponent = ({ theme }) => {
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
@@ -15,25 +15,19 @@ const DateTimeComponent = ({ theme }) => {
     return () => clearInterval(intervalId);
   }, []);
 
-  const timeOptions = { hour: "2-digit", minute: "2-digit", hour12: false };
-  const dateOptions = { day: "numeric", month: "short" };
+  const timeOptions = { hour: '2-digit', minute: '2-digit', hour12: false };
+  const dateOptions = { day: 'numeric', month: 'short' };
 
-  const formattedTime = currentDateTime.toLocaleTimeString(
-    "de-DE",
-    timeOptions
-  );
-  const formattedDate = currentDateTime.toLocaleDateString(
-    "de-DE",
-    dateOptions
-  );
+  const formattedTime = currentDateTime.toLocaleTimeString('de-DE', timeOptions);
+  const formattedDate = currentDateTime.toLocaleDateString('de-DE', dateOptions);
 
   return (
     <DateTimeWrap>
-      <Text fontSize={13} color={textMuted} fontFamily="mono">
+      <Text fontSize={13} color={textMuted} fontFamily='mono'>
         {formattedTime}
       </Text>
       <DateTimeSeparator>|</DateTimeSeparator>
-      <Text fontSize={13} color={textMuted} fontFamily="mono">
+      <Text fontSize={13} color={textMuted} fontFamily='mono'>
         {formattedDate}
       </Text>
     </DateTimeWrap>

@@ -1,6 +1,6 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components';
 
-const styled = { createGlobalStyle }
+const styled = { createGlobalStyle };
 
 export const GlobalStyle = styled.createGlobalStyle`
   * {
@@ -14,8 +14,8 @@ export const GlobalStyle = styled.createGlobalStyle`
     background-color: ${({ theme }) => theme.background};
     padding: 0;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+      Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
     scrollbar-gutter: stable;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
@@ -307,8 +307,7 @@ export const GlobalStyle = styled.createGlobalStyle`
     align-items: center;
     justify-content: center;
     border-radius: 5px;
-    box-shadow: 0 0 0 1px ${({ theme }) => theme.shadowBorder},
-      0 4px 6px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 0 0 1px ${({ theme }) => theme.shadowBorder}, 0 4px 6px rgba(0, 0, 0, 0.04);
 
     @media (max-width: 960px) {
       min-width: 300px;
@@ -337,4 +336,4 @@ export const GlobalStyle = styled.createGlobalStyle`
       padding: 1.5rem;
     }
   }
-`
+`;

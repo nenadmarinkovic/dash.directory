@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const CustomOptionsContainer = styled.div`
   position: absolute;
@@ -11,16 +11,15 @@ export const CustomOptionsContainer = styled.div`
   z-index: 1;
   display: ${({ $isOpen }) => ($isOpen ? 'block' : 'none')};
   background-color: ${({ theme }) => theme.background};
-  box-shadow: 0 0 0 1px ${({ theme }) => theme.shadowBorder},
-    0 4px 6px rgba(0, 0, 0, 0.04);
-`
+  box-shadow: 0 0 0 1px ${({ theme }) => theme.shadowBorder}, 0 4px 6px rgba(0, 0, 0, 0.04);
+`;
 
 export const CustomSelectContainer = styled.div`
   position: relative;
   width: 200px;
   font-size: 16px;
   margin: 0 10px;
-`
+`;
 
 export const CustomSelectButton = styled.button`
   padding: 8px;
@@ -51,7 +50,7 @@ export const CustomSelectButton = styled.button`
   &:focus {
     box-shadow: 0 0 0 2px #d6e0ff;
   }
-`
+`;
 
 export const CustomOption = styled.div`
   padding: 10px;
@@ -63,4 +62,4 @@ export const CustomOption = styled.div`
   &:hover {
     background: ${({ theme }) => theme.hoverButton};
   }
-`
+`;
