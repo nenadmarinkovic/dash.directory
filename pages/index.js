@@ -30,7 +30,7 @@ export default function HomePage({ theme, toggleTheme }) {
 
       <MainSection>
         <Banner theme={theme} />
-        <About theme={theme} />
+        <About theme={theme} currentUser={currentUser} />
         <Pricing theme={theme} />
         <Footer theme={theme} />
       </MainSection>

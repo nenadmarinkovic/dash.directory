@@ -24,7 +24,7 @@ function useElementViewportPosition(ref) {
   return { position };
 }
 
-export default function Animation({ theme }) {
+export default function Animation({ currentUser, theme }) {
   const { textColor, textMuted } = useThemeColors(theme);
 
   const slideAnimation = {
@@ -272,35 +272,72 @@ export default function Animation({ theme }) {
             <AboutTitle>
               <Line />
               <Circle>3</Circle>
-              <Heading
-                is='h2'
-                marginTop={8}
-                lineHeight={1.25}
-                fontSize={38}
-                marginBottom={8}
-                fontWeight={900}
-                color={textColor}
-                letterSpacing='-.003rem'
-                textAlign='center'
-              >
-                Create your profile now
-              </Heading>
+              {currentUser ? (
+                <>
+                  <Heading
+                    is='h2'
+                    marginTop={8}
+                    lineHeight={1.25}
+                    fontSize={38}
+                    marginBottom={8}
+                    fontWeight={900}
+                    color={textColor}
+                    letterSpacing='-.003rem'
+                    textAlign='center'
+                  >
+                    Start using Dash Directory now
+                  </Heading>
 
-              <Paragraph
-                size={500}
-                color={textMuted}
-                marginTop={18}
-                lineHeight={1.75}
-                textAlign='center'
-              >
-                Profile creation feature will be available on Dash Directory soon, enabling users to
-                customize their settings and personalize their experience.
-              </Paragraph>
-              <Link href='/signup'>
-                <Button className='themed-button' marginTop={15} width={120}>
-                  Sign up
-                </Button>
-              </Link>
+                  <Paragraph
+                    size={500}
+                    color={textMuted}
+                    marginTop={18}
+                    lineHeight={1.75}
+                    textAlign='center'
+                  >
+                    Start using your Dash Directory profile now. Organize your daily life, and make
+                    the most of your Dash Directory journey.
+                  </Paragraph>
+                  <Link href='/i'>
+                    <Button className='themed-button' marginTop={15} width={120}>
+                      Start page
+                    </Button>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Heading
+                    is='h2'
+                    marginTop={8}
+                    lineHeight={1.25}
+                    fontSize={38}
+                    marginBottom={8}
+                    fontWeight={900}
+                    color={textColor}
+                    letterSpacing='-.003rem'
+                    textAlign='center'
+                  >
+                    Create your profile now
+                  </Heading>
+
+                  <Paragraph
+                    size={500}
+                    color={textMuted}
+                    marginTop={18}
+                    lineHeight={1.75}
+                    textAlign='center'
+                  >
+                    Start using Dash Directory by creating your profile and accessing a personalized
+                    experience. Organize your daily life, and make the most of your Dash Directory
+                    journey.
+                  </Paragraph>
+                  <Link href='/signup'>
+                    <Button className='themed-button' marginTop={15} width={120}>
+                      Sign up
+                    </Button>
+                  </Link>
+                </>
+              )}
             </AboutTitle>
           </div>
         </div>

@@ -16,7 +16,7 @@ import Animation from './Animation';
 import Title from './Title';
 import { useThemeColors } from '../styles/theme';
 
-function About({ theme }) {
+function About({ theme, currentUser }) {
   const { textColor, textMuted } = useThemeColors(theme);
 
   return (
@@ -189,7 +189,7 @@ function About({ theme }) {
       </ContainerWrap>
 
       <ContainerWrap>
-        <Animation theme={theme} />
+        <Animation theme={theme} currentUser={currentUser} />
       </ContainerWrap>
     </AboutWrap>
   );
