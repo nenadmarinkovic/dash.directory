@@ -32,7 +32,6 @@ import {
   Heading,
   Paragraph,
   Tooltip,
-  SelectMenu,
 } from 'evergreen-ui';
 import Select from '../../components/Select';
 import Dropdown from '../../components/Dropdown';
@@ -41,14 +40,14 @@ import { useThemeColors } from '../../styles/theme';
 import { isUserEmailVerified, isUserRegisteredWithGitHub } from '../../services/ServicesHelpers';
 
 export default function BookmarksPage({ theme, toggleTheme }) {
-  const [openMenu, setOpenMenu] = useState(false);
   const { addBookmark, deleteBookmark, editBookmark, currentUser } = useServices();
+  const [openMenu, setOpenMenu] = useState(false);
   const [bookmarkTitle, setBookmarkTitle] = useState('');
   const [bookmarkLink, setBookmarkLink] = useState('');
   const [bookmarkDescription, setBookmarkDescription] = useState('');
   const [bookmarkCategory, setBookmarkCategory] = useState('');
   const { textColor, textMuted, background } = useThemeColors(theme);
-  const [isDialogShown, setIsDialogShown] = useState(false);
+  const [isDialogShown, setIsNewBookmarkDialogShown] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [filteredBookmarks, setFilteredBookmarks] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -56,8 +55,6 @@ export default function BookmarksPage({ theme, toggleTheme }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [isEditBookmarkShown, setIsEditBookmarkShown] = useState({});
   const [openDropdownId, setOpenDropdownId] = useState(null);
-
-  const [selected, setSelected] = useState(null);
 
   const userIsRegisteredWithGitHub = isUserRegisteredWithGitHub(currentUser);
   const userEmailVerified = isUserEmailVerified(currentUser);
@@ -104,8 +101,8 @@ export default function BookmarksPage({ theme, toggleTheme }) {
     [editBookmark, updatedBookmark],
   );
 
-  const handleShowDialog = () => {
-    setIsDialogShown(true);
+  const handleShowNewBookmarkDialog = () => {
+    setIsNewBookmarkDialogShown(true);
   };
 
   const handleAddBookmark = () => {
@@ -124,6 +121,18 @@ export default function BookmarksPage({ theme, toggleTheme }) {
     setBookmarkCategory('');
 
     return true;
+  };
+
+  const isBookmarkEdited = (bookmark) => {
+    const { title, description, link, category } = updatedBookmark;
+    const originalBookmark = bookmark;
+
+    return (
+      title !== originalBookmark.title ||
+      description !== originalBookmark.description ||
+      link !== originalBookmark.link ||
+      category !== originalBookmark.category
+    );
   };
 
   const handleDeleteBookmark = async (bookmarkId) => {
@@ -291,7 +300,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                           containerProps={{ className: 'themed-modal' }}
                           isShown={isDialogShown}
                           title='Add bookmark'
-                          onCloseComplete={() => setIsDialogShown(false)}
+                          onCloseComplete={() => setIsNewBookmarkDialogShown(false)}
                           confirmLabel='Custom Label'
                           hasFooter={false}
                         >
@@ -364,10 +373,9 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                         <Button
                           className='custom-button-small'
                           fontWeight='bold'
-                          onClick={handleShowDialog}
+                          onClick={handleShowNewBookmarkDialog}
                         >
                           <span>Add bookmark</span>
-
                           <span>
                             <svg
                               xmlns='http://www.w3.org/2000/svg'
@@ -596,6 +604,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                                                 onClick={() =>
                                                   handleSaveEditedBookmarkClick(bookmark)
                                                 }
+                                                disabled={!isBookmarkEdited(bookmark)}
                                               >
                                                 Save
                                               </Button>
