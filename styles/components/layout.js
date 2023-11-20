@@ -54,6 +54,10 @@ export const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 80%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const PageHeader = styled.div`
@@ -61,10 +65,21 @@ export const PageHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+
+  @media (max-width: 1140px) {
+    flex-direction: column;
+    align-items: unset;
+    gap: 10px;
+    width: 100%;
+  }
 `;
 
 export const InputHeader = styled.div`
   position: relative;
+
+  @media (max-width: 1140px) {
+    width: 100%;
+  }
 
   input {
     width: 520px;
@@ -72,6 +87,10 @@ export const InputHeader = styled.div`
     font-size: 13px;
     background: ${({ theme }) => theme.clear};
     border: 1px solid rgba(200, 200, 200, 0.4);
+
+    @media (max-width: 1140px) {
+      width: 100%;
+    }
   }
 
   svg {

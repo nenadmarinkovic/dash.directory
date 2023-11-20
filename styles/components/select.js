@@ -19,6 +19,11 @@ export const SelectContainer = styled.div`
   width: 200px;
   font-size: 16px;
   margin: 0 10px;
+
+  @media (max-width: 1140px) {
+    width: 100%;
+    margin: 0;
+  }
 `;
 
 export const SelectButton = styled.button`

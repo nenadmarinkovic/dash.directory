@@ -4,6 +4,10 @@ export const SidebarWrap = styled.nav`
   display: flex;
   flex-direction: column;
   width: 20%;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const SidebarItems = styled.ul`
