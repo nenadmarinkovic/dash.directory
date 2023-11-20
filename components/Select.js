@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import {
-  CustomSelectContainer,
-  CustomOptionsContainer,
-  CustomSelectButton,
-  CustomOption,
-} from '../styles/components/customSelect';
+  SelectContainer,
+  SelectOptionsContainer,
+  SelectButton,
+  SelectOption,
+} from '../styles/components/select';
 
-const CustomSelect = ({ options, onSelect }) => {
+const Select = ({ options, onSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
   const dropdownRef = useRef(null);
@@ -31,23 +31,23 @@ const CustomSelect = ({ options, onSelect }) => {
   }, []);
 
   return (
-    <CustomSelectContainer ref={dropdownRef}>
-      <CustomSelectButton onClick={() => setIsOpen(!isOpen)}>
+    <SelectContainer ref={dropdownRef}>
+      <SelectButton onClick={() => setIsOpen(!isOpen)}>
         <span>Select category</span>
 
         <svg fill='none' viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor'>
           <path strokeLinecap='round' strokeLinejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5' />
         </svg>
-      </CustomSelectButton>
-      <CustomOptionsContainer as='div' $isOpen={isOpen}>
+      </SelectButton>
+      <SelectOptionsContainer as='div' $isOpen={isOpen}>
         {options.map((option) => (
-          <CustomOption key={option} onClick={() => handleSelect(option)}>
+          <SelectOption key={option} onClick={() => handleSelect(option)}>
             {option}
-          </CustomOption>
+          </SelectOption>
         ))}
-      </CustomOptionsContainer>
-    </CustomSelectContainer>
+      </SelectOptionsContainer>
+    </SelectContainer>
   );
 };
 
-export default CustomSelect;
+export default Select;

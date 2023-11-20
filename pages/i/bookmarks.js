@@ -29,18 +29,15 @@ import {
   TextInput,
   StatusIndicator,
   toaster,
-  Popover,
-  Menu,
   Heading,
   Paragraph,
   Tooltip,
 } from 'evergreen-ui';
+import Select from '../../components/Select';
+import Dropdown from '../../components/Dropdown';
 import { BookmarksTable } from '../../styles/pages/bookmarks';
 import { useThemeColors } from '../../styles/theme';
 import { isUserEmailVerified, isUserRegisteredWithGitHub } from '../../services/ServicesHelpers';
-import CustomSelect from '../../components/CustomSelect';
-import CustomDropdown from '../../components/Dropdown';
-import Dropdown from '../../components/Dropdown';
 
 export default function BookmarksPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
@@ -57,14 +54,14 @@ export default function BookmarksPage({ theme, toggleTheme }) {
   const [selectedCategory, setSelectedCategory] = useState('All categories');
   const [searchQuery, setSearchQuery] = useState('');
   const [isEditBookmarkShown, setIsEditBookmarkShown] = useState({});
-  const [currentlyOpenId, setCurrentlyOpenId] = useState(null);
-
-  const handleToggle = (id) => {
-    setCurrentlyOpenId(id === currentlyOpenId ? null : id);
-  };
+  const [openDropdownId, setOpenDropdownId] = useState(null);
 
   const userIsRegisteredWithGitHub = isUserRegisteredWithGitHub(currentUser);
   const userEmailVerified = isUserEmailVerified(currentUser);
+
+  const handleToggleDropdown = (id) => {
+    setOpenDropdownId(id === openDropdownId ? null : id);
+  };
 
   const [updatedBookmark, setUpdatedBookmark] = useState({
     title: '',
@@ -72,6 +69,24 @@ export default function BookmarksPage({ theme, toggleTheme }) {
     link: '',
     category: '',
   });
+
+  const handleSaveEditedBookmarkClick = (bookmark) => {
+    if (
+      !updatedBookmark.title.trim() ||
+      !updatedBookmark.description.trim() ||
+      !updatedBookmark.link.trim() ||
+      !updatedBookmark.category.trim()
+    ) {
+      toaster.danger('Please fill out all fields.');
+      return;
+    }
+
+    handleEditBookmarkSubmit(bookmark);
+    setIsEditBookmarkShown((prev) => ({
+      ...prev,
+      [bookmark.id]: false,
+    }));
+  };
 
   const handleEditBookmarkSubmit = useCallback(
     async (bookmark) => {
@@ -259,7 +274,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                         </InputHeader>
                       </Group>
 
-                      <CustomSelect
+                      <Select
                         options={[...categories]}
                         selectedOption={selectedCategory}
                         onSelect={(option) => {
@@ -449,8 +464,8 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                                     <span className='custom-table_menu'>
                                       <Dropdown
                                         theme={theme}
-                                        isOpen={currentlyOpenId === bookmark.id}
-                                        onToggle={() => handleToggle(bookmark.id)}
+                                        isOpen={openDropdownId === bookmark.id}
+                                        onToggle={() => handleToggleDropdown(bookmark.id)}
                                       >
                                         <button
                                           onClick={() => {
@@ -522,6 +537,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                                                     }))
                                                   }
                                                   name='text-input-name'
+                                                  placeholder='A Git-based platform for software.'
                                                 />
                                               </SignField>
                                               <SignField>
@@ -538,6 +554,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                                                     }))
                                                   }
                                                   name='text-input-name'
+                                                  placeholder='github.com'
                                                 />
                                               </SignField>
                                               <SignField>
@@ -554,6 +571,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                                                     }))
                                                   }
                                                   name='text-input-name'
+                                                  placeholder='Development'
                                                 />
                                               </SignField>
                                             </SignForm>
@@ -571,13 +589,9 @@ export default function BookmarksPage({ theme, toggleTheme }) {
 
                                               <Button
                                                 appearance='primary'
-                                                onClick={() => {
-                                                  handleEditBookmarkSubmit(bookmark);
-                                                  setIsEditBookmarkShown((prev) => ({
-                                                    ...prev,
-                                                    [bookmark.id]: false,
-                                                  }));
-                                                }}
+                                                onClick={() =>
+                                                  handleSaveEditedBookmarkClick(bookmark)
+                                                }
                                               >
                                                 Save
                                               </Button>

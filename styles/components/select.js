@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const CustomOptionsContainer = styled.div`
+export const SelectOptionsContainer = styled.div`
   position: absolute;
   top: 100%;
   left: 0;
@@ -14,14 +14,14 @@ export const CustomOptionsContainer = styled.div`
   box-shadow: 0 0 0 1px ${({ theme }) => theme.shadowBorder}, 0 4px 6px rgba(0, 0, 0, 0.04);
 `;
 
-export const CustomSelectContainer = styled.div`
+export const SelectContainer = styled.div`
   position: relative;
   width: 200px;
   font-size: 16px;
   margin: 0 10px;
 `;
 
-export const CustomSelectButton = styled.button`
+export const SelectButton = styled.button`
   padding: 8px;
   width: 100%;
   font-size: 12px;
@@ -52,7 +52,7 @@ export const CustomSelectButton = styled.button`
   }
 `;
 
-export const CustomOption = styled.div`
+export const SelectOption = styled.div`
   padding: 10px;
   font-size: 13px;
   background: ${({ theme }) => theme.clear};
