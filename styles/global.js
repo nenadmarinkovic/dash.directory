@@ -160,12 +160,8 @@ export const GlobalStyle = styled.createGlobalStyle`
 
   .custom-table {
     &_body {
-      overflow-y: unset;
-    }
-
-    &_body {
       max-height: 700px;
-      /* overflow: auto; */
+      overflow-y: auto;
     }
 
     &_head {
@@ -190,8 +186,8 @@ export const GlobalStyle = styled.createGlobalStyle`
     &_menu {
       padding: 0;
       position: absolute;
-      right: 0;
-      top: 15px;
+      right: 10px;
+      top: 20px;
     }
 
     &_link {

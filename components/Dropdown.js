@@ -1,26 +1,36 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { DropdownContainer, DropdownButton, DropdownList } from '../styles/components/dropdown';
 
-const Dropdown = ({ children, isOpen, onToggle }) => {
-  const handleOutsideClick = useCallback(
-    (event) => {
-      if (isOpen && !event.target.closest('.custom-dropdown')) {
-        onToggle(false);
-      }
-    },
-    [isOpen, onToggle],
-  );
+const Dropdown = ({ children, isOpen }) => {
+  const [$isOpen, setIsOpen] = useState(false);
+  const [position, setPosition] = useState({ $top: 0, $left: 0 });
+  const buttonRef = useRef(null);
+
+  const handleToggle = () => {
+    if (buttonRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect();
+      setPosition({ $top: rect.bottom, $left: rect.left });
+    }
+    setIsOpen(!isOpen);
+  };
 
   useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if ($isOpen && buttonRef.current && !buttonRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
     document.addEventListener('click', handleOutsideClick);
+
     return () => {
       document.removeEventListener('click', handleOutsideClick);
     };
-  }, [handleOutsideClick]);
+  }, [$isOpen, buttonRef]);
 
   return (
-    <DropdownContainer className='custom-dropdown'>
-      <DropdownButton onClick={() => onToggle(!isOpen)}>
+    <DropdownContainer>
+      <DropdownButton ref={buttonRef} onClick={handleToggle}>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           viewBox='0 0 24 24'
@@ -34,7 +44,7 @@ const Dropdown = ({ children, isOpen, onToggle }) => {
           />
         </svg>
       </DropdownButton>
-      <DropdownList as='div' $isOpen={isOpen}>
+      <DropdownList $isOpen={$isOpen} $top={position.$top} $left={position.$left}>
         {children}
       </DropdownList>
     </DropdownContainer>

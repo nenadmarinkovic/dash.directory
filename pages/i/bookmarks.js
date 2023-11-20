@@ -32,6 +32,7 @@ import {
   Heading,
   Paragraph,
   Tooltip,
+  SelectMenu,
 } from 'evergreen-ui';
 import Select from '../../components/Select';
 import Dropdown from '../../components/Dropdown';
@@ -55,6 +56,8 @@ export default function BookmarksPage({ theme, toggleTheme }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [isEditBookmarkShown, setIsEditBookmarkShown] = useState({});
   const [openDropdownId, setOpenDropdownId] = useState(null);
+
+  const [selected, setSelected] = useState(null);
 
   const userIsRegisteredWithGitHub = isUserRegisteredWithGitHub(currentUser);
   const userEmailVerified = isUserEmailVerified(currentUser);
@@ -384,7 +387,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                       </Pane>
                     </PageHeader>
                     <PageMain>
-                      <BookmarksTable className='custom-table'>
+                      <BookmarksTable>
                         <Table className='custom-table_wrap'>
                           <Table.Head
                             className={`custom-table_head ${

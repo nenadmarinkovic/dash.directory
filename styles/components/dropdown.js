@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
 export const DropdownContainer = styled.div`
-  position: absolute;
   display: inline-block;
-  top: 10px;
-  right: 20px;
+  position: relative;
 `;
 
 export const DropdownButton = styled.button`
@@ -22,14 +20,15 @@ export const DropdownButton = styled.button`
 export const DropdownList = styled.div`
   padding: 0;
   margin: 0;
-  position: absolute;
-  right: 10px;
+  position: fixed;
+  top: ${(props) => props.$top}px;
+  left: ${(props) => props.$left - 100}px;
   border-radius: 4px;
   display: ${(props) => (props.$isOpen ? 'flex' : 'none')};
   flex-direction: column;
   background-color: ${({ theme }) => theme.clear};
   box-shadow: 0 0 0 1px ${({ theme }) => theme.shadowBorder}, 0 4px 6px rgba(0, 0, 0, 0.04);
-  z-index: 5;
+  z-index: 10;
 
   button {
     padding: 10px;
