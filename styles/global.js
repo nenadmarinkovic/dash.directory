@@ -165,7 +165,7 @@ export const GlobalStyle = styled.createGlobalStyle`
 
     &_body {
       max-height: 700px;
-      overflow: auto;
+      /* overflow: auto; */
     }
 
     &_head {

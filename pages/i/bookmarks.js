@@ -39,6 +39,8 @@ import { BookmarksTable } from '../../styles/pages/bookmarks';
 import { useThemeColors } from '../../styles/theme';
 import { isUserEmailVerified, isUserRegisteredWithGitHub } from '../../services/ServicesHelpers';
 import CustomSelect from '../../components/CustomSelect';
+import CustomDropdown from '../../components/Dropdown';
+import Dropdown from '../../components/Dropdown';
 
 export default function BookmarksPage({ theme, toggleTheme }) {
   const [openMenu, setOpenMenu] = useState(false);
@@ -55,6 +57,11 @@ export default function BookmarksPage({ theme, toggleTheme }) {
   const [selectedCategory, setSelectedCategory] = useState('All categories');
   const [searchQuery, setSearchQuery] = useState('');
   const [isEditBookmarkShown, setIsEditBookmarkShown] = useState({});
+  const [currentlyOpenId, setCurrentlyOpenId] = useState(null);
+
+  const handleToggle = (id) => {
+    setCurrentlyOpenId(id === currentlyOpenId ? null : id);
+  };
 
   const userIsRegisteredWithGitHub = isUserRegisteredWithGitHub(currentUser);
   const userEmailVerified = isUserEmailVerified(currentUser);
@@ -440,64 +447,36 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                                     </Table.TextCell>
 
                                     <span className='custom-table_menu'>
-                                      <Popover
-                                        content={
-                                          <Menu>
-                                            <Menu.Group>
-                                              <Menu.Item>
-                                                <span
-                                                  onClick={() => {
-                                                    setUpdatedBookmark({
-                                                      title: bookmark.title,
-                                                      description: bookmark.description,
-                                                      link: bookmark.link,
-                                                      category: bookmark.category,
-                                                    });
-
-                                                    setIsEditBookmarkShown((prev) => ({
-                                                      ...prev,
-                                                      [bookmark.id]: true,
-                                                    }));
-                                                  }}
-                                                >
-                                                  Edit
-                                                </span>
-                                              </Menu.Item>
-                                            </Menu.Group>
-                                            <Menu.Divider />
-                                            <Menu.Group>
-                                              <Menu.Item
-                                                onSelect={() => handleDeleteBookmark(bookmark.id)}
-                                                intent='danger'
-                                              >
-                                                Delete...
-                                              </Menu.Item>
-                                            </Menu.Group>
-                                          </Menu>
-                                        }
+                                      <Dropdown
+                                        theme={theme}
+                                        isOpen={currentlyOpenId === bookmark.id}
+                                        onToggle={() => handleToggle(bookmark.id)}
                                       >
-                                        <Button
-                                          className='custom-table_button'
-                                          fontWeight='bold'
-                                          onClick={() => setIsDialogShown(true)}
+                                        <button
+                                          onClick={() => {
+                                            setUpdatedBookmark({
+                                              title: bookmark.title,
+                                              description: bookmark.description,
+                                              link: bookmark.link,
+                                              category: bookmark.category,
+                                            });
+
+                                            setIsEditBookmarkShown((prev) => ({
+                                              ...prev,
+                                              [bookmark.id]: true,
+                                            }));
+                                          }}
                                         >
-                                          <span>
-                                            <svg
-                                              xmlns='http://www.w3.org/2000/svg'
-                                              fill={background}
-                                              viewBox='0 0 24 24'
-                                              strokeWidth='1.5'
-                                              stroke='currentColor'
-                                            >
-                                              <path
-                                                strokeLinecap='round'
-                                                strokeLinejoin='round'
-                                                d='M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z'
-                                              />
-                                            </svg>
-                                          </span>
-                                        </Button>
-                                      </Popover>
+                                          Edit
+                                        </button>
+                                        <button
+                                          className='danger'
+                                          onClick={() => handleDeleteBookmark(bookmark.id)}
+                                        >
+                                          Delete
+                                        </button>
+                                      </Dropdown>
+
                                       <Pane>
                                         <Dialog
                                           isShown={isEditBookmarkShown[bookmark.id]}
@@ -579,7 +558,16 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                                               </SignField>
                                             </SignForm>
                                             <SignButtons>
-                                              <Button onClick={() => close()}>Cancel</Button>
+                                              <Button
+                                                onClick={() =>
+                                                  setIsEditBookmarkShown((prev) => ({
+                                                    ...prev,
+                                                    [bookmark.id]: false,
+                                                  }))
+                                                }
+                                              >
+                                                Cancel
+                                              </Button>
 
                                               <Button
                                                 appearance='primary'
