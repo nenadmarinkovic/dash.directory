@@ -31,10 +31,10 @@ function Banner({ theme }) {
               Web directory for organized minds
             </Heading>
             <Paragraph size={500} color={textMuted} marginTop={18} lineHeight={1.75}>
-              Dash Directory is a powerful online platform designed to simplify your digital life. A
-              clean and distraction-free environment enhances your web experience, reduces your
-              cognitive load, and enables you to organize your notes, manage bookmarks, and stay on
-              top of your daily tasks.
+              Dash Directory is an online platform designed to simplify your digital life. A clean
+              and distraction-free environment enhances your web experience, reduces your cognitive
+              load, and enables you to organize your notes, manage bookmarks, and stay on top of
+              your daily tasks.
             </Paragraph>
 
             <ScrollIntoView selector='#about'>

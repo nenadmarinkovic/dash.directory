@@ -141,12 +141,12 @@ function About({ theme, currentUser }) {
               </AboutItem>
               <AboutItem>
                 <Text fontSize={17} fontWeight={700} color={textColor}>
-                  Bookmark Sync
+                  Filtering functionality
                 </Text>
               </AboutItem>
               <AboutItem>
                 <Text fontSize={17} fontWeight={700} color={textColor}>
-                  Folder Organization
+                  Fast search query
                 </Text>
               </AboutItem>
             </AboutItems>
@@ -181,9 +181,10 @@ function About({ theme, currentUser }) {
           </AboutTitleFlex>
 
           <Paragraph size={500} color={textMuted} marginTop={18} lineHeight={1.75}>
-            Dash Directory is your ultimate productivity companion, empowering you to stay focused
-            and make the most out of your time. With our intuitive interface and powerful features,
-            we streamline your workflow, allowing you to concentrate on what truly matters.
+            Dash Directory serves as your ultimate productivity companion, enabling you to
+            efficiently manage and prioritize your daily tasks. Our user-friendly interface ensures
+            that you can focus on what truly matters. Stay organized and make the most out of your
+            time with Dash Directory.
           </Paragraph>
         </AboutFull>
       </ContainerWrap>
