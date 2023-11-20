@@ -27,7 +27,7 @@ export const DropdownList = styled.div`
   border-radius: 4px;
   display: ${(props) => (props.$isOpen ? 'flex' : 'none')};
   flex-direction: column;
-  background-color: ${({ theme }) => theme.background};
+  background-color: ${({ theme }) => theme.clear};
   box-shadow: 0 0 0 1px ${({ theme }) => theme.shadowBorder}, 0 4px 6px rgba(0, 0, 0, 0.04);
   z-index: 5;
 

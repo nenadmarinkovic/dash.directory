@@ -494,6 +494,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
 
                                       <Pane>
                                         <Dialog
+                                          containerProps={{ className: 'themed-modal' }}
                                           isShown={isEditBookmarkShown[bookmark.id]}
                                           title='Edit bookmark'
                                           onCloseComplete={() =>
