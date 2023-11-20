@@ -110,6 +110,7 @@ export const GlobalStyle = styled.createGlobalStyle`
     &-button {
       background-color: ${({ theme }) => theme.buttonBackground};
       color: ${({ theme }) => theme.buttonColor};
+      border: 1px solid rgba(200, 200, 200, 0.4) !important;
       transition: 0.3s;
       font-weight: bold;
 
@@ -228,13 +229,13 @@ export const GlobalStyle = styled.createGlobalStyle`
     }
   }
 
-  input,
+  /* input,
   button {
     border: 1px solid rgba(200, 200, 200, 0.4) !important;
     [disabled] {
       opacity: 0.3 !important;
     }
-  }
+  } */
 
   .custom-icon-button,
   .category-button {

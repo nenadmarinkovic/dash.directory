@@ -17,6 +17,7 @@ export const SignField = styled.div`
 
   input {
     color: ${({ theme }) => theme.textMuted};
+    border: 1px solid rgba(200, 200, 200, 0.4) !important;
   }
 
   button {
@@ -40,12 +41,13 @@ export const SignButtons = styled.div`
     background-color: ${({ theme }) => theme.primary};
   }
 
-  /* .button-cancel {
-    background-color: ${({ theme }) => theme.buttonBackground};
-    color: ${({ theme }) => theme.buttonColor};
+  .button-cancel {
+    background-color: transparent;
+    border: 1px solid rgba(200, 200, 200, 0.4) !important;
+    color: ${({ theme }) => theme.color};
 
     &:not([disabled]):hover {
       background-color: ${({ theme }) => theme.hoverButton};
     }
-  } */
+  }
 `;

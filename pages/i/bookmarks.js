@@ -70,35 +70,34 @@ export default function BookmarksPage({ theme, toggleTheme }) {
     category: '',
   });
 
-  const handleSaveEditedBookmarkClick = (bookmark) => {
-    if (
-      !updatedBookmark.title.trim() ||
-      !updatedBookmark.description.trim() ||
-      !updatedBookmark.link.trim() ||
-      !updatedBookmark.category.trim()
-    ) {
-      toaster.danger('Please fill out all fields.');
-      return;
-    }
-
-    handleEditBookmarkSubmit(bookmark);
-    setIsEditBookmarkShown((prev) => ({
-      ...prev,
-      [bookmark.id]: false,
-    }));
-  };
-
   const handleEditBookmarkSubmit = useCallback(
     async (bookmark) => {
+      const { title, description, link, category } = updatedBookmark;
+
+      if (
+        title === bookmark.title &&
+        description === bookmark.description &&
+        link === bookmark.link &&
+        category === bookmark.category
+      ) {
+        toaster.warning('Bookmark is not edited');
+        return;
+      }
+
       try {
         await editBookmark(bookmark.id, updatedBookmark);
         toaster.success('Bookmark updated successfully');
+
+        setIsEditBookmarkShown((prev) => ({
+          ...prev,
+          [bookmark.id]: false,
+        }));
       } catch (error) {
         console.error('Error updating bookmark:', error);
         toaster.danger('Error updating bookmark. Please try again.');
       }
     },
-    [editBookmark, updatedBookmark],
+    [editBookmark, updatedBookmark, setIsEditBookmarkShown],
   );
 
   const handleShowNewBookmarkDialog = () => {
@@ -121,18 +120,6 @@ export default function BookmarksPage({ theme, toggleTheme }) {
     setBookmarkCategory('');
 
     return true;
-  };
-
-  const isBookmarkEdited = (bookmark) => {
-    const { title, description, link, category } = updatedBookmark;
-    const originalBookmark = bookmark;
-
-    return (
-      title !== originalBookmark.title ||
-      description !== originalBookmark.description ||
-      link !== originalBookmark.link ||
-      category !== originalBookmark.category
-    );
   };
 
   const handleDeleteBookmark = async (bookmarkId) => {
@@ -303,6 +290,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                           onCloseComplete={() => setIsNewBookmarkDialogShown(false)}
                           confirmLabel='Custom Label'
                           hasFooter={false}
+                          hasClose={false}
                         >
                           {({ close }) => (
                             <Pane>
@@ -518,6 +506,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                                             }))
                                           }
                                           hasFooter={false}
+                                          hasClose={false}
                                         >
                                           <Pane>
                                             <SignForm>
@@ -592,6 +581,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                                             </SignForm>
                                             <SignButtons>
                                               <Button
+                                                className='button-cancel'
                                                 onClick={() =>
                                                   setIsEditBookmarkShown((prev) => ({
                                                     ...prev,
@@ -603,11 +593,9 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                                               </Button>
 
                                               <Button
+                                                className='button-add'
                                                 appearance='primary'
-                                                onClick={() =>
-                                                  handleSaveEditedBookmarkClick(bookmark)
-                                                }
-                                                disabled={!isBookmarkEdited(bookmark)}
+                                                onClick={() => handleEditBookmarkSubmit(bookmark)}
                                               >
                                                 Save
                                               </Button>
