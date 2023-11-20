@@ -14,7 +14,7 @@ export const lightTheme = {
   buttonText: '#FFF',
   hoverButton: '#F4F5F9',
   shadowBorder: 'rgba(0,0,0,.08)',
-  primary: '#2952CC',
+  primary: '#2b70f2',
   primaryActive: '#1F3D99',
 };
 
@@ -32,9 +32,9 @@ export const darkTheme = {
   buttonBackground: '#000',
   buttonColor: '#FFF',
   buttonText: '#FFF',
-  hoverButton: '#202020',
+  hoverButton: '#111',
   shadowBorder: 'rgba(225,225,225,0.3)',
-  primary: '#2f81f7',
+  primary: '#3882e1',
   primaryActive: '#1F3D99',
 };
 

@@ -4,8 +4,8 @@ export const Circle = styled.div`
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: #3faeff;
-  color: ${({ theme }) => theme.colorInvert};
+  background-color: ${({ theme }) => theme.primary};
+  color: #fff;
   text-align: center;
   line-height: 30px;
   font-size: 1rem;

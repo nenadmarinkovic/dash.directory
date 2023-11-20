@@ -27,9 +27,13 @@ export const GlobalStyle = styled.createGlobalStyle`
   }
 
   a {
-    color: #3faeff;
+    color: ${({ theme }) => theme.primary};
     font-weight: bold;
     text-decoration: none;
+  }
+
+  .logo-link {
+    display: flex;
   }
 
   ul,
@@ -227,6 +231,9 @@ export const GlobalStyle = styled.createGlobalStyle`
   input,
   button {
     border: 1px solid rgba(200, 200, 200, 0.4) !important;
+    [disabled] {
+      opacity: 0.3 !important;
+    }
   }
 
   .custom-icon-button,

@@ -32,7 +32,7 @@ function Header({ theme, toggleTheme, currentUser }) {
       <HeaderWrap>
         <ContainerWrap>
           <HeaderMain>
-            <Link href='/'>
+            <Link className='logo-link' href='/'>
               <Logo theme={theme} />
             </Link>
             <HeaderLinks>

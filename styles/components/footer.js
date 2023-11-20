@@ -51,7 +51,7 @@ export const ContactWrap = styled.div`
   line-height: 1.5;
 
   .email {
-    color: #3faeff !important;
+    color: ${({ theme }) => theme.primary} !important;
     font-weight: bold !important;
     text-decoration: none;
   }

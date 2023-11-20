@@ -357,9 +357,12 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                                 </SignField>
                               </SignForm>
                               <SignButtons>
-                                <Button onClick={() => close()}>Cancel</Button>
+                                <Button className='button-cancel' onClick={() => close()}>
+                                  Cancel
+                                </Button>
 
                                 <Button
+                                  className='button-add'
                                   appearance='primary'
                                   onClick={() => handleAddBookmark() && close()}
                                 >

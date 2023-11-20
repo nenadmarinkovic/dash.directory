@@ -35,4 +35,17 @@ export const SignButtons = styled.div`
   justify-content: end;
   gap: 1rem;
   padding: 20px 0;
+
+  .button-add {
+    background-color: ${({ theme }) => theme.primary};
+  }
+
+  /* .button-cancel {
+    background-color: ${({ theme }) => theme.buttonBackground};
+    color: ${({ theme }) => theme.buttonColor};
+
+    &:not([disabled]):hover {
+      background-color: ${({ theme }) => theme.hoverButton};
+    }
+  } */
 `;

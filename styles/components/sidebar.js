@@ -11,7 +11,7 @@ export const SidebarWrap = styled.nav`
 `;
 
 export const SidebarItems = styled.ul`
-  margin-top: -3px;
+  margin-top: -4px;
   position: relative;
   left: -12px;
 `;
