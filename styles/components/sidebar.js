@@ -11,15 +11,14 @@ export const SidebarWrap = styled.nav`
 `;
 
 export const SidebarItems = styled.ul`
-  margin-top: -4px;
   position: relative;
   left: -12px;
 `;
 
 export const SidebarItem = styled.li`
   margin-top: 27.5px;
-  transition: 0.3s;
   display: block;
+  transition: 0.15s;
 
   &:first-of-type {
     margin-top: 0;
@@ -28,10 +27,19 @@ export const SidebarItem = styled.li`
   a {
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 7.5px 10px;
     max-width: 180px;
     border-radius: 5px;
-    transition: 0.3s;
+
+    &.active-sidebar-link {
+      background-color: ${({ theme }) => theme.hoverButton};
+    }
+
+    span {
+      font-size: 14px;
+      color: ${({ theme }) => theme.textColor};
+      font-weight: 400;
+    }
   }
 
   svg {

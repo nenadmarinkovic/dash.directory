@@ -6,7 +6,7 @@ import { useThemeColors } from '../styles/theme';
 import { useRouter } from 'next/router';
 
 function Sidebar({ theme }) {
-  const { textColor, textMuted } = useThemeColors(theme);
+  const { textColor } = useThemeColors(theme);
 
   const router = useRouter();
 
@@ -15,13 +15,16 @@ function Sidebar({ theme }) {
       <SidebarWrap>
         <SidebarItems>
           <SidebarItem>
-            <Link href='/i/bookmarks'>
+            <Link
+              className={router.pathname === '/i/bookmarks' ? 'active-sidebar-link' : ''}
+              href='/i/bookmarks'
+            >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 fill='none'
                 viewBox='0 0 24 24'
                 strokeWidth='1.5'
-                stroke={router.pathname === '/i/bookmarks' ? textColor : textMuted}
+                stroke={textColor}
               >
                 <path
                   strokeLinecap='round'
@@ -30,19 +33,20 @@ function Sidebar({ theme }) {
                 />
               </svg>
 
-              <Text color={router.pathname === '/i/bookmarks' ? textColor : textMuted}>
-                Bookmarks
-              </Text>
+              <span color={textColor}>Bookmarks</span>
             </Link>
           </SidebarItem>
           <SidebarItem>
-            <Link href='/i/tasks'>
+            <Link
+              className={router.pathname === '/i/tasks' ? 'active-sidebar-link' : ''}
+              href='/i/tasks'
+            >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 fill='none'
                 viewBox='0 0 24 24'
                 strokeWidth='1.5'
-                stroke={router.pathname === '/i/tasks' ? textColor : textMuted}
+                stroke={textColor}
               >
                 <path
                   strokeLinecap='round'
@@ -51,17 +55,20 @@ function Sidebar({ theme }) {
                 />
               </svg>
 
-              <Text color={router.pathname === '/i/tasks' ? textColor : textMuted}>Tasks</Text>
+              <span color={textColor}>Tasks</span>
             </Link>
           </SidebarItem>
           <SidebarItem>
-            <Link href='/i/events'>
+            <Link
+              className={router.pathname === '/i/events' ? 'active-sidebar-link' : ''}
+              href='/i/events'
+            >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 fill='none'
                 viewBox='0 0 24 24'
                 strokeWidth='1.5'
-                stroke={router.pathname === '/i/events' ? textColor : textMuted}
+                stroke={textColor}
               >
                 <path
                   strokeLinecap='round'
@@ -69,17 +76,20 @@ function Sidebar({ theme }) {
                   d='M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5'
                 />
               </svg>
-              <Text color={router.pathname === '/i/events' ? textColor : textMuted}>Events</Text>
+              <span color={textColor}>Events</span>
             </Link>
           </SidebarItem>
           <SidebarItem>
-            <Link href='/i/notes'>
+            <Link
+              className={router.pathname === '/i/notes' ? 'active-sidebar-link' : ''}
+              href='/i/notes'
+            >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 fill='none'
                 viewBox='0 0 24 24'
                 strokeWidth='1.5'
-                stroke={router.pathname === '/i/notes' ? textColor : textMuted}
+                stroke={textColor}
               >
                 <path
                   strokeLinecap='round'
@@ -87,17 +97,20 @@ function Sidebar({ theme }) {
                   d='M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10'
                 />
               </svg>
-              <Text color={router.pathname === '/i/notes' ? textColor : textMuted}>Notes</Text>
+              <span color={textColor}>Notes</span>
             </Link>
           </SidebarItem>
           <SidebarItem>
-            <Link href='/i/settings'>
+            <Link
+              className={router.pathname === '/i/settings' ? 'active-sidebar-link' : ''}
+              href='/i/settings'
+            >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 fill='none'
                 viewBox='0 0 24 24'
                 strokeWidth='1.5'
-                stroke={router.pathname === '/i/settings' ? textColor : textMuted}
+                stroke={textColor}
               >
                 <path
                   strokeLinecap='round'
@@ -111,9 +124,9 @@ function Sidebar({ theme }) {
                 />
               </svg>
 
-              <Text fontSize={14} color={router.pathname === '/i/settings' ? textColor : textMuted}>
+              <span fontSize={14} color={textColor}>
                 Settings
-              </Text>
+              </span>
             </Link>
           </SidebarItem>
         </SidebarItems>
