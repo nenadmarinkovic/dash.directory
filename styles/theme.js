@@ -19,14 +19,14 @@ export const lightTheme = {
 };
 
 export const darkTheme = {
-  background: '#000',
+  background: '#0E0E0E',
   backgroundInvert: '#FFF',
   color: '#fff',
   colorInvert: '#000',
   textColor: '#F8FAFF',
   textMuted: '#8B93A8',
   muted: '#8B93A8',
-  clear: '#000',
+  clear: '#151515',
   headerBackground: 'rgba(0, 0, 0, 0.5)',
   lineBackground: 'linear-gradient(0deg, #B9B9B9 0%, #000 100%)',
   buttonBackground: '#000',
