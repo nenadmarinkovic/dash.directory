@@ -62,9 +62,7 @@ function Header({ theme, toggleTheme, currentUser }) {
               {currentUser && (
                 <HeaderLink>
                   <Link href='/i'>
-                    <Text color={router.pathname.startsWith('/i') ? textColor : textMuted}>
-                      Start page
-                    </Text>
+                    <Text color={router.pathname === '/i' ? textColor : textMuted}>Start page</Text>
                   </Link>
                 </HeaderLink>
               )}

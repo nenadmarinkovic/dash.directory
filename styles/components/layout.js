@@ -48,6 +48,10 @@ export const PageLayout = styled.div`
   display: flex;
   margin-top: 2.5rem;
   justify-content: space-between;
+
+  .no-margins {
+    margin: 0;
+  }
 `;
 
 export const PageContainer = styled.div`

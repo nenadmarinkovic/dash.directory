@@ -38,7 +38,7 @@ import { isUserEmailVerified, isUserRegisteredWithGitHub } from '../../services/
 import { BookmarksTable } from '../../styles/pages/bookmarks';
 
 export default function EventsPage({ theme, toggleTheme }) {
-  const { addBookmark, editBookmark, currentUser } = useServices();
+  const { addBookmark, currentUser } = useServices();
   const [openMenu, setOpenMenu] = useState(false);
   const [bookmarkTitle, setBookmarkTitle] = useState('');
   const [bookmarkLink, setBookmarkLink] = useState('');

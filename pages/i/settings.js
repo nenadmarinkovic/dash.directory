@@ -1,55 +1,30 @@
 import { useState } from 'react';
 import Head from 'next/head';
-import Header from '../components/Header';
+import Header from '../../components/Header';
 import {
   ContainerWrap,
   MainSection,
   PageContainer,
   PageLayout,
   ThemeLayout,
-  PageHeader,
   PageMain,
   CenteredSection,
   CenteredLayout,
-  InputHeader,
-} from '../styles/components/layout';
+} from '../../styles/components/layout';
 import Link from 'next/link';
-import { SignForm, SignField, SignButtons } from '../styles/components/signin';
-import Footer from '../components/Footer';
-import { useServices } from '../services/ServicesProvider';
-import Sidebar from '../components/Sidebar';
-import {
-  Pane,
-  Text,
-  Dialog,
-  Strong,
-  Button,
-  Group,
-  TextInput,
-  StatusIndicator,
-  toaster,
-  Heading,
-  Paragraph,
-} from 'evergreen-ui';
-import Select from '../components/Select';
+import Footer from '../../components/Footer';
+import { useServices } from '../../services/ServicesProvider';
+import Sidebar from '../../components/Sidebar';
+import { Text, Strong, Button, StatusIndicator, Heading, Paragraph } from 'evergreen-ui';
 
-import { useThemeColors } from '../styles/theme';
-import { isUserEmailVerified, isUserRegisteredWithGitHub } from '../services/ServicesHelpers';
-import { BookmarksTable } from '../styles/pages/bookmarks';
+import { useThemeColors } from '../../styles/theme';
+import { isUserEmailVerified, isUserRegisteredWithGitHub } from '../../services/ServicesHelpers';
+import { BookmarksTable } from '../../styles/pages/bookmarks';
 
 export default function EventsPage({ theme, toggleTheme }) {
-  const { addBookmark, editBookmark, currentUser } = useServices();
+  const { currentUser } = useServices();
   const [openMenu, setOpenMenu] = useState(false);
-  const [bookmarkTitle, setBookmarkTitle] = useState('');
-  const [bookmarkLink, setBookmarkLink] = useState('');
-  const [bookmarkDescription, setBookmarkDescription] = useState('');
-  const [bookmarkCategory, setBookmarkCategory] = useState('');
   const { textColor, textMuted, background } = useThemeColors(theme);
-  const [isDialogShown, setIsNewBookmarkDialogShown] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('All categories');
-  const [searchQuery, setSearchQuery] = useState('');
 
   const userIsRegisteredWithGitHub = isUserRegisteredWithGitHub(currentUser);
   const userEmailVerified = isUserEmailVerified(currentUser);
@@ -57,7 +32,7 @@ export default function EventsPage({ theme, toggleTheme }) {
   return (
     <>
       <Head>
-        <title>Dash Directory | Bookmarks</title>
+        <title>Dash Directory | Settings</title>
         <meta name='description' content='Web directory for organized minds' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
@@ -132,46 +107,7 @@ export default function EventsPage({ theme, toggleTheme }) {
                 <PageLayout>
                   <Sidebar theme={theme} />
                   <PageContainer>
-                    <PageHeader>
-                      <Group>
-                        <InputHeader>
-                          <TextInput
-                            background={background}
-                            height={30}
-                            disabled={isLoading}
-                            placeholder='Search by title, description, category...'
-                            value={searchQuery}
-                            onChange={(e) => {
-                              setSearchQuery(e.target.value);
-                              setSelectedCategory('All categories');
-                            }}
-                          />
-                          <svg
-                            xmlns='http://www.w3.org/2000/svg'
-                            fill={background}
-                            viewBox='0 0 24 24'
-                            strokeWidth='1.5'
-                            stroke='currentColor'
-                          >
-                            <path
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                              d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z'
-                            />
-                          </svg>
-                        </InputHeader>
-                      </Group>
-
-                      <Select
-                        options={[...categories]}
-                        selectedOption={selectedCategory}
-                        onSelect={(option) => {
-                          setSearchQuery('');
-                          setSelectedCategory(option);
-                        }}
-                      />
-                    </PageHeader>
-                    <PageMain>
+                    <PageMain className='no-margins'>
                       <BookmarksTable>
                         <Heading
                           is='h3'
