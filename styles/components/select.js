@@ -9,7 +9,8 @@ export const SelectOptionsContainer = styled.div`
   border-radius: 0 0 4px 4px;
   overflow: hidden;
   z-index: 1;
-  display: ${({ $isOpen }) => ($isOpen ? 'block' : 'none')};
+  display: ${({ $isOpen }) => ($isOpen ? 'flex' : 'none')};
+  flex-direction: column;
   background-color: ${({ theme }) => theme.background};
   box-shadow: 0 0 0 1px ${({ theme }) => theme.shadowBorder}, 0 4px 6px rgba(0, 0, 0, 0.04);
 `;
@@ -38,6 +39,7 @@ export const SelectButton = styled.button`
   cursor: pointer;
   display: flex;
   justify-content: space-between;
+
   align-items: center;
   height: 38px;
   border: 1px solid rgba(200, 200, 200, 0.4);
@@ -57,9 +59,11 @@ export const SelectButton = styled.button`
   }
 `;
 
-export const SelectOption = styled.div`
+export const SelectOption = styled.button`
   padding: 10px;
   font-size: 13px;
+  border: none;
+  text-align: start;
   background: ${({ theme }) => theme.clear};
   color: ${({ theme }) => theme.textColor};
   cursor: pointer;

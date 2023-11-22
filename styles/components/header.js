@@ -41,10 +41,12 @@ export const HeaderLink = styled.div`
   }
 `;
 
-export const ThemeButton = styled.span`
+export const ThemeButton = styled.button`
   padding: 1.5px;
   font-size: 0.9rem;
   border: none;
   cursor: pointer;
   margin-right: 2.5rem;
+  border: none;
+  background-color: transparent;
 `;

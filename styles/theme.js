@@ -14,7 +14,7 @@ export const lightTheme = {
   buttonText: '#FFF',
   hoverButton: '#F1F2F5',
   shadowBorder: 'rgba(0,0,0,.08)',
-  primary: '#2b70f2',
+  primary: '#276df0',
   danger: '#F23839',
   primaryActive: '#1F3D99',
 };
