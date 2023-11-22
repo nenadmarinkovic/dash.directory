@@ -28,7 +28,8 @@ export default function Home({ theme, toggleTheme }) {
       <MainSection>
         <ContainerWrap>
           <CenteredSection>
-            <Text
+            <Heading
+              is='h1'
               align='center'
               marginTop={8}
               lineHeight={1.25}
@@ -39,7 +40,7 @@ export default function Home({ theme, toggleTheme }) {
               letterSpacing='-.003rem'
             >
               Updates
-            </Text>
+            </Heading>
             <UpdatesWrap>
               <Update>
                 <Heading

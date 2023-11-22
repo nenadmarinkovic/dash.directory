@@ -156,18 +156,16 @@ function Pricing({ theme }) {
         </PricingCard>
       </PricingCards>
       <PricingAdditional>
-        <Heading
-          is='h4'
+        <Text
           lineHeight={1.25}
           fontSize={28}
           marginBottom={8}
           fontWeight={900}
           color={textColor}
           letterSpacing='-.003rem'
-          textAlign='center'
         >
           Updates
-        </Heading>
+        </Text>
 
         <Paragraph size={500} color={textMuted} marginTop={18} lineHeight={1.75} textAlign='center'>
           The Updates page keeps users informed about the latest features, improvements, and
