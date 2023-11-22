@@ -20,8 +20,7 @@ function Pricing({ theme }) {
       <Title title='Pricing' id='pricing' />
       <PricingCards>
         <PricingCard>
-          <Heading
-            is='h4'
+          <Text
             lineHeight={1.25}
             fontSize={28}
             marginBottom={8}
@@ -30,7 +29,7 @@ function Pricing({ theme }) {
             letterSpacing='-.003rem'
           >
             Free forever
-          </Heading>
+          </Text>
           <Money>€ 0</Money>
           <Text marginTop={16} color={textMuted}>
             Access to basic features without any charge.
@@ -86,8 +85,7 @@ function Pricing({ theme }) {
           </PricingCardItem>
         </PricingCard>
         <PricingCard>
-          <Heading
-            is='h4'
+          <Text
             lineHeight={1.25}
             fontSize={28}
             marginBottom={8}
@@ -96,7 +94,7 @@ function Pricing({ theme }) {
             letterSpacing='-.003rem'
           >
             Support
-          </Heading>
+          </Text>
           <Money>
             € 5{' '}
             <Text color={textMuted} fontSize={18}>

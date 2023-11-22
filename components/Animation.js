@@ -149,8 +149,7 @@ export default function Animation({ currentUser, theme }) {
                         />
                       </svg>
 
-                      <Heading
-                        is='h4'
+                      <Text
                         marginTop={8}
                         lineHeight={1.25}
                         fontSize={23}
@@ -160,7 +159,7 @@ export default function Animation({ currentUser, theme }) {
                         textAlign='center'
                       >
                         Task Prioritization
-                      </Heading>
+                      </Text>
                       <Text color={textMuted}>
                         Users can prioritize tasks based on importance or deadlines.
                       </Text>
