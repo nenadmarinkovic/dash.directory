@@ -17,7 +17,7 @@ function Pricing({ theme }) {
 
   return (
     <ContainerWrap>
-      <Title title='Pricing' id='pricing' />
+      <Title title='Pricing' theme={theme} id='pricing' />
       <PricingCards>
         <PricingCard>
           <Text
