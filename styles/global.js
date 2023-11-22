@@ -30,6 +30,10 @@ export const GlobalStyle = styled.createGlobalStyle`
     color: ${({ theme }) => theme.primary};
     font-weight: bold;
     text-decoration: none;
+
+    &.with-top-margin {
+      margin-top: 20px;
+    }
   }
 
   .logo-link {

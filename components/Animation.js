@@ -298,8 +298,8 @@ export default function Animation({ currentUser, theme }) {
                     Start using your Dash Directory profile now. Organize your daily life, and make
                     the most of your Dash Directory journey.
                   </Paragraph>
-                  <Link href='/i'>
-                    <Button className='themed-button' marginTop={15} width={120}>
+                  <Link href='/i' className='with-top-margin'>
+                    <Button className='themed-button' width={120}>
                       Start page
                     </Button>
                   </Link>
