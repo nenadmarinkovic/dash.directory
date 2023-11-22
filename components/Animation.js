@@ -73,8 +73,7 @@ export default function Animation({ currentUser, theme }) {
             <AboutTitle>
               <Line />
               <Circle>2</Circle>
-              <Heading
-                is='h2'
+              <Text
                 marginTop={8}
                 lineHeight={1.25}
                 fontSize={38}
@@ -85,7 +84,7 @@ export default function Animation({ currentUser, theme }) {
                 textAlign='center'
               >
                 Keep your focus on what is important
-              </Heading>
+              </Text>
 
               <Paragraph
                 size={500}
@@ -117,8 +116,7 @@ export default function Animation({ currentUser, theme }) {
                           d='M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9'
                         />
                       </svg>
-                      <Heading
-                        is='h4'
+                      <Text
                         marginTop={8}
                         lineHeight={1.25}
                         fontSize={23}
@@ -128,7 +126,7 @@ export default function Animation({ currentUser, theme }) {
                         textAlign='center'
                       >
                         Distraction-free environment
-                      </Heading>
+                      </Text>
                       <Text color={textMuted}>
                         Dash Directory provides a clutter-free workspace for focused work.
                       </Text>
@@ -180,8 +178,7 @@ export default function Animation({ currentUser, theme }) {
                         />
                       </svg>
 
-                      <Heading
-                        is='h4'
+                      <Text
                         marginTop={8}
                         lineHeight={1.25}
                         fontSize={23}
@@ -191,7 +188,7 @@ export default function Animation({ currentUser, theme }) {
                         textAlign='center'
                       >
                         Search functionality
-                      </Heading>
+                      </Text>
                       <Text color={textMuted}>
                         Dash Directory offers a powerful search feature to quickly find specific
                         tasks or bookmarks.
@@ -212,8 +209,7 @@ export default function Animation({ currentUser, theme }) {
                           d='M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9'
                         />
                       </svg>
-                      <Heading
-                        is='h4'
+                      <Text
                         marginTop={8}
                         lineHeight={1.25}
                         fontSize={23}
@@ -223,7 +219,7 @@ export default function Animation({ currentUser, theme }) {
                         textAlign='center'
                       >
                         Event organization
-                      </Heading>
+                      </Text>
                       <Text color={textMuted}>
                         Dash Directory allows users to create and manage events, with options for
                         reminders and attendee management.
@@ -245,8 +241,7 @@ export default function Animation({ currentUser, theme }) {
                         />
                       </svg>
 
-                      <Heading
-                        is='h4'
+                      <Text
                         marginTop={8}
                         lineHeight={1.25}
                         fontSize={23}
@@ -256,7 +251,7 @@ export default function Animation({ currentUser, theme }) {
                         textAlign='center'
                       >
                         Note Taking
-                      </Heading>
+                      </Text>
                       <Text color={textMuted}>
                         Dash Directory includes a note-taking feature, allowing users to jot down
                         important information or ideas.
@@ -273,8 +268,7 @@ export default function Animation({ currentUser, theme }) {
               <Circle>3</Circle>
               {currentUser ? (
                 <>
-                  <Heading
-                    is='h2'
+                  <Text
                     marginTop={8}
                     lineHeight={1.25}
                     fontSize={38}
@@ -285,7 +279,7 @@ export default function Animation({ currentUser, theme }) {
                     textAlign='center'
                   >
                     Start using Dash Directory now
-                  </Heading>
+                  </Text>
 
                   <Paragraph
                     size={500}
