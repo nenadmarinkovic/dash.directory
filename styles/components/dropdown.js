@@ -45,7 +45,7 @@ export const DropdownList = styled.div`
     }
 
     &.danger {
-      color: #d50808;
+      color: ${({ theme }) => theme.danger};
     }
   }
 `;

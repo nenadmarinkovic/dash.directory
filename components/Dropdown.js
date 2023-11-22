@@ -21,10 +21,20 @@ const Dropdown = ({ children, isOpen }) => {
       }
     };
 
+    const handleScrollAndResize = () => {
+      if ($isOpen) {
+        setIsOpen(false);
+      }
+    };
+
     document.addEventListener('click', handleOutsideClick);
+    window.addEventListener('scroll', handleScrollAndResize);
+    window.addEventListener('resize', handleScrollAndResize);
 
     return () => {
       document.removeEventListener('click', handleOutsideClick);
+      window.removeEventListener('scroll', handleScrollAndResize);
+      window.removeEventListener('resize', handleScrollAndResize);
     };
   }, [$isOpen, buttonRef]);
 

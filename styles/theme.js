@@ -15,6 +15,7 @@ export const lightTheme = {
   hoverButton: '#F1F2F5',
   shadowBorder: 'rgba(0,0,0,.08)',
   primary: '#2b70f2',
+  danger: '#F23839',
   primaryActive: '#1F3D99',
 };
 
@@ -35,6 +36,7 @@ export const darkTheme = {
   hoverButton: '#1E2022',
   shadowBorder: 'rgba(225,225,225,0.3)',
   primary: '#3882e1',
+  danger: '#FF2021',
   primaryActive: '#1F3D99',
 };
 
