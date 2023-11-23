@@ -25,41 +25,6 @@ export function ServicesProvider({ children }) {
 
   const router = useRouter();
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      setCurrentUser(user);
-
-      if (user) {
-        const userDocRef = doc(db, 'users', user.uid);
-        const userDocSnap = await getDoc(userDocRef);
-
-        if (userDocSnap.exists()) {
-          const userData = userDocSnap.data();
-          setCurrentUser((prevUser) => ({
-            ...prevUser,
-            displayName: userData.displayName,
-            email: userData.email,
-          }));
-
-          const bookmarksDocRef = doc(db, 'bookmarks', user.uid);
-          const bookmarksDocSnap = await getDoc(bookmarksDocRef);
-
-          if (bookmarksDocSnap.exists()) {
-            const bookmarksData = bookmarksDocSnap.data();
-            setCurrentUser((prevUser) => ({
-              ...prevUser,
-              bookmarks: bookmarksData.bookmarks || [],
-            }));
-          }
-        }
-      }
-
-      setLoading(false);
-    });
-
-    return unsubscribe;
-  }, [router]);
-
   // Auth services
 
   const signup = async (displayName, email, password) => {
@@ -245,6 +210,165 @@ export function ServicesProvider({ children }) {
     }
   };
 
+  // Task services
+
+  const addTask = async (date, name, project, priority) => {
+    try {
+      const user = auth.currentUser;
+
+      if (!user) {
+        console.error('User not authenticated');
+        return;
+      }
+
+      const tasksDocRef = doc(db, 'tasks', user.uid);
+      const tasksDocSnap = await getDoc(tasksDocRef);
+
+      const newTask = {
+        id: uuidv4(),
+        date,
+        name,
+        project,
+        priority,
+      };
+
+      if (tasksDocSnap.exists()) {
+        setCurrentUser((prevUser) => ({
+          ...prevUser,
+          tasks: prevUser?.tasks ? [...prevUser.tasks, newTask] : [newTask],
+        }));
+
+        await updateDoc(tasksDocRef, {
+          tasks: arrayUnion(newTask),
+        });
+      } else {
+        const newTasks = [newTask];
+
+        setCurrentUser((prevUser) => ({
+          ...prevUser,
+          tasks: prevUser?.tasks ? [...prevUser.tasks, ...newTasks] : newTasks,
+        }));
+
+        await setDoc(tasksDocRef, {
+          tasks: newTasks,
+        });
+      }
+
+      toaster.success('Task added.');
+    } catch (error) {
+      console.error('Error adding task:', error.message);
+      toaster.danger('Failed to add task. Please try again.');
+    }
+  };
+
+  const deleteTask = async (taskId) => {
+    try {
+      const user = auth.currentUser;
+
+      if (!user) {
+        console.error('User not authenticated');
+        return;
+      }
+
+      const tasksDocRef = doc(db, 'tasks', user.uid);
+      const tasksDocSnap = await getDoc(tasksDocRef);
+
+      if (tasksDocSnap.exists()) {
+        const updatedTasks = (currentUser.tasks || []).filter((task) => task.id !== taskId);
+
+        setCurrentUser((prevUser) => ({
+          ...prevUser,
+          tasks: updatedTasks,
+        }));
+
+        await updateDoc(tasksDocRef, {
+          tasks: updatedTasks,
+        });
+      }
+      toaster.success('Task deleted!');
+    } catch (error) {
+      console.error('Error deleting task:', error.message);
+    }
+  };
+
+  const editTask = async (taskId, updatedTask) => {
+    try {
+      const user = auth.currentUser;
+
+      if (!user) {
+        console.error('User not authenticated');
+        return;
+      }
+
+      const tasksDocRef = doc(db, 'tasks', user.uid);
+      const tasksDocSnap = await getDoc(tasksDocRef);
+
+      if (tasksDocSnap.exists()) {
+        const updatedTasks = (currentUser.tasks || []).map((task) =>
+          task.id === taskId ? { ...task, ...updatedTask } : task,
+        );
+
+        setCurrentUser((prevUser) => ({
+          ...prevUser,
+          tasks: updatedTasks,
+        }));
+
+        await updateDoc(tasksDocRef, {
+          tasks: updatedTasks,
+        });
+      }
+
+      toaster.success('Task updated!');
+    } catch (error) {
+      console.error('Error updating task:', error.message);
+    }
+  };
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      setCurrentUser(user);
+
+      if (user) {
+        const userDocRef = doc(db, 'users', user.uid);
+        const userDocSnap = await getDoc(userDocRef);
+
+        if (userDocSnap.exists()) {
+          const userData = userDocSnap.data();
+          setCurrentUser((prevUser) => ({
+            ...prevUser,
+            displayName: userData.displayName,
+            email: userData.email,
+          }));
+
+          const bookmarksDocRef = doc(db, 'bookmarks', user.uid);
+          const bookmarksDocSnap = await getDoc(bookmarksDocRef);
+
+          if (bookmarksDocSnap.exists()) {
+            const bookmarksData = bookmarksDocSnap.data();
+            setCurrentUser((prevUser) => ({
+              ...prevUser,
+              bookmarks: bookmarksData.bookmarks || [],
+            }));
+          }
+
+          const tasksDocRef = doc(db, 'tasks', user.uid);
+          const tasksDocSnap = await getDoc(tasksDocRef);
+
+          if (tasksDocSnap.exists()) {
+            setCurrentUser((prevUser) => ({
+              ...prevUser,
+              tasks: tasksDocSnap.data().tasks || [],
+            }));
+          }
+        }
+      }
+
+      setLoading(false);
+    });
+
+    return unsubscribe;
+  }, [router]);
+
   const value = {
     currentUser,
     login,
@@ -254,6 +378,9 @@ export function ServicesProvider({ children }) {
     addBookmark,
     deleteBookmark,
     editBookmark,
+    addTask,
+    deleteTask,
+    editTask,
   };
 
   return (
