@@ -4,6 +4,7 @@ import Header from '../../components/Header';
 import Sidebar from '../../components/Sidebar';
 import Footer from '../../components/Footer';
 import { useServices } from '../../services/ServicesProvider';
+import { isUserEmailVerified, isUserRegisteredWithGitHub } from '../../services/ServicesHelpers';
 import {
   ContainerWrap,
   MainSection,
@@ -13,18 +14,33 @@ import {
   PageHeader,
   PageMain,
   InputHeader,
+  CenteredLayout,
+  CenteredSection,
 } from '../../styles/components/layout';
 import { SignForm, SignField, SignButtons } from '../../styles/components/signin';
 import { BookmarksTable } from '../../styles/pages/bookmarks';
-import { Pane, Text, Dialog, Strong, Button, Table, TextInput, toaster, Group } from 'evergreen-ui';
+import {
+  Pane,
+  Text,
+  Dialog,
+  Strong,
+  Button,
+  Table,
+  TextInput,
+  toaster,
+  Group,
+  Paragraph,
+  Heading,
+  StatusIndicator,
+} from 'evergreen-ui';
 import Dropdown from '../../components/Dropdown';
 import { useThemeColors } from '../../styles/theme';
 import Select from '../../components/Select';
+import Link from 'next/link';
 
 export default function TasksPage({ theme, toggleTheme }) {
   const { addTask, deleteTask, editTask, currentUser } = useServices();
   const { textColor, textMuted, background } = useThemeColors(theme);
-
   const [openMenu, setOpenMenu] = useState(false);
   const [taskName, setTaskName] = useState('');
   const [taskDate, setTaskDate] = useState('');
@@ -38,6 +54,9 @@ export default function TasksPage({ theme, toggleTheme }) {
   const [projects, setProjects] = useState([]);
   const [isEditTaskShown, setIsEditTaskShown] = useState({});
   const [openDropdownId, setOpenDropdownId] = useState(null);
+
+  const userIsRegisteredWithGitHub = isUserRegisteredWithGitHub(currentUser);
+  const userEmailVerified = isUserEmailVerified(currentUser);
 
   const handleToggleDropdown = (id) => {
     setOpenDropdownId(id === openDropdownId ? null : id);
@@ -166,8 +185,63 @@ export default function TasksPage({ theme, toggleTheme }) {
       <ThemeLayout>
         <MainSection>
           <ContainerWrap>
-            {currentUser && (
+            {!currentUser && (
               <>
+                <CenteredSection>
+                  <Heading
+                    is='h1'
+                    align='center'
+                    marginTop={8}
+                    lineHeight={1.25}
+                    fontSize={58}
+                    marginBottom={8}
+                    fontWeight={900}
+                    color={textColor}
+                    letterSpacing='-.003rem'
+                  >
+                    Authentication Required
+                  </Heading>
+                  <Paragraph
+                    size={500}
+                    lineHeight={1.75}
+                    textAlign='center'
+                    marginTop={30}
+                    color='muted'
+                  >
+                    It seems like you`re trying to access a restricted area, and you haven`t been
+                    authenticated yet. This could be because you`re not logged in or don`t have the
+                    necessary permissions to view Dashboard page.
+                  </Paragraph>
+                </CenteredSection>
+                <CenteredLayout>
+                  <Link href='/signup'>
+                    <Button
+                      className='custom-button-big'
+                      appearance='primary'
+                      fontWeight='bold'
+                      width={280}
+                      height={50}
+                    >
+                      <Text fontWeight='bold' color='#FFF'>
+                        Create account
+                      </Text>
+                    </Button>
+                  </Link>
+                </CenteredLayout>
+              </>
+            )}
+
+            {currentUser && (userEmailVerified || userIsRegisteredWithGitHub) && (
+              <>
+                <StatusIndicator marginTop={22} color='success'>
+                  <Text color={textColor} fontSize={14}>
+                    Welcome
+                    <Strong color={textColor} fontSize={14}>
+                      {currentUser?.displayName && `, ${currentUser?.displayName}`}
+                    </Strong>
+                    . <br /> Dash Directory is still in development-mode. Thanks for being patient.
+                  </Text>
+                </StatusIndicator>
                 <PageLayout>
                   <Sidebar theme={theme} />
                   <PageContainer>
