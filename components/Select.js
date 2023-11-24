@@ -6,7 +6,7 @@ import {
   SelectOption,
 } from '../styles/components/select';
 
-const Select = ({ options, onSelect }) => {
+const Select = ({ options, onSelect, label = 'Select category' }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
   const dropdownRef = useRef(null);
@@ -33,7 +33,7 @@ const Select = ({ options, onSelect }) => {
   return (
     <SelectContainer ref={dropdownRef}>
       <SelectButton onClick={() => setIsOpen(!isOpen)}>
-        <span>Select category</span>
+        <span>{label}</span>
 
         <svg fill='none' viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor'>
           <path strokeLinecap='round' strokeLinejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5' />

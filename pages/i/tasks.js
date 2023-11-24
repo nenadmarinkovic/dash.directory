@@ -12,27 +12,30 @@ import {
   ThemeLayout,
   PageHeader,
   PageMain,
+  InputHeader,
 } from '../../styles/components/layout';
-
 import { SignForm, SignField, SignButtons } from '../../styles/components/signin';
 import { BookmarksTable } from '../../styles/pages/bookmarks';
-import { Pane, Text, Dialog, Strong, Button, Table, TextInput, toaster } from 'evergreen-ui';
-
+import { Pane, Text, Dialog, Strong, Button, Table, TextInput, toaster, Group } from 'evergreen-ui';
 import Dropdown from '../../components/Dropdown';
 import { useThemeColors } from '../../styles/theme';
+import Select from '../../components/Select';
 
 export default function TasksPage({ theme, toggleTheme }) {
   const { addTask, deleteTask, editTask, currentUser } = useServices();
+  const { textColor, textMuted, background } = useThemeColors(theme);
+
   const [openMenu, setOpenMenu] = useState(false);
   const [taskName, setTaskName] = useState('');
   const [taskDate, setTaskDate] = useState('');
   const [taskProject, setTaskProject] = useState('');
   const [taskPriority, setTaskPriority] = useState('');
-  const { textColor, textMuted, background } = useThemeColors(theme);
   const [isNewTaskDialogShown, setIsNewTaskDialogShown] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [filteredTasks, setFilteredTasks] = useState([]);
+  const [selectedProject, setSelectedProject] = useState('All projects');
   const [searchQuery, setSearchQuery] = useState('');
+  const [projects, setProjects] = useState([]);
   const [isEditTaskShown, setIsEditTaskShown] = useState({});
   const [openDropdownId, setOpenDropdownId] = useState(null);
 
@@ -41,8 +44,8 @@ export default function TasksPage({ theme, toggleTheme }) {
   };
 
   const [updatedTask, setUpdatedTask] = useState({
-    name: '',
     date: '',
+    name: '',
     project: '',
     priority: '',
   });
@@ -89,6 +92,8 @@ export default function TasksPage({ theme, toggleTheme }) {
 
     addTask(taskDate, taskName, taskProject, taskPriority);
 
+    setSelectedProject('All projects');
+
     setTaskDate('');
     setTaskName('');
     setTaskProject('');
@@ -102,6 +107,7 @@ export default function TasksPage({ theme, toggleTheme }) {
   const handleDeleteTask = async (taskId) => {
     try {
       await deleteTask(taskId);
+      setSelectedProject('All projects');
     } catch (error) {
       console.error('Error deleting task:', error);
     }
@@ -109,18 +115,38 @@ export default function TasksPage({ theme, toggleTheme }) {
 
   useEffect(() => {
     if (currentUser && currentUser.tasks) {
+      const uniqueProjects = Array.from(new Set(currentUser.tasks.map((task) => task.project)));
+
+      setProjects(['All projects', ...uniqueProjects]);
+    }
+  }, [currentUser]);
+
+  useEffect(() => {
+    if (currentUser && currentUser.tasks) {
       setIsLoading(true);
-      const filtered = currentUser.tasks.filter(
-        (task) =>
-          task.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          task.project.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          task.date.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          task.priority.toLowerCase().includes(searchQuery.toLowerCase()),
-      );
-      setFilteredTasks(filtered);
+      if (selectedProject === 'All projects') {
+        const filtered = currentUser.tasks.filter(
+          (task) =>
+            task.date.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            task.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            task.project.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            task.priority.toLowerCase().includes(searchQuery.toLowerCase()),
+        );
+        setFilteredTasks(filtered);
+      } else {
+        const filtered = currentUser.tasks.filter(
+          (task) =>
+            task.project === selectedProject &&
+            (task.date.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              task.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              task.priority.toLowerCase().includes(searchQuery.toLowerCase())),
+        );
+        setFilteredTasks(filtered);
+      }
+
       setIsLoading(false);
     }
-  }, [currentUser, searchQuery]);
+  }, [currentUser, selectedProject, searchQuery]);
 
   return (
     <>
@@ -146,6 +172,42 @@ export default function TasksPage({ theme, toggleTheme }) {
                   <Sidebar theme={theme} />
                   <PageContainer>
                     <PageHeader>
+                      <Group>
+                        <InputHeader>
+                          <TextInput
+                            background={background}
+                            height={30}
+                            disabled={isLoading}
+                            placeholder='Search by title, description, category...'
+                            value={searchQuery}
+                            onChange={(e) => {
+                              setSearchQuery(e.target.value);
+                              setSelectedProject('All projects');
+                            }}
+                          />
+                          <svg
+                            xmlns='http://www.w3.org/2000/svg'
+                            fill={background}
+                            viewBox='0 0 24 24'
+                            strokeWidth='1.5'
+                            stroke='currentColor'
+                          >
+                            <path
+                              strokeLinecap='round'
+                              strokeLinejoin='round'
+                              d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z'
+                            />
+                          </svg>
+                        </InputHeader>
+                      </Group>
+                      <Select
+                        label='Select project'
+                        options={[...projects]}
+                        onSelect={(option) => {
+                          setSearchQuery('');
+                          setSelectedProject(option);
+                        }}
+                      />
                       <Pane>
                         <Dialog
                           containerProps={{ className: 'themed-modal' }}
