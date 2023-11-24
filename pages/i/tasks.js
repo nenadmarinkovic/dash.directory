@@ -47,35 +47,35 @@ export default function TasksPage({ theme, toggleTheme }) {
     priority: '',
   });
 
-  // const handleEditTaskSubmit = useCallback(
-  //   async (task) => {
-  //     const { name, date, project, priority } = updatedTask;
+  const handleEditTaskSubmit = useCallback(
+    async (task) => {
+      const { date, name, project, priority } = updatedTask;
 
-  //     if (
-  //       name === task.name &&
-  //       date === task.date &&
-  //       project === task.project &&
-  //       priority === task.priority
-  //     ) {
-  //       toaster.warning('Task is not edited');
-  //       return;
-  //     }
+      if (
+        date === task.date &&
+        name === task.name &&
+        project === task.project &&
+        priority === task.priority
+      ) {
+        toaster.warning('Task is not edited');
+        return;
+      }
 
-  //     try {
-  //       await editTask(task.id, updatedTask);
-  //       toaster.success('Task updated successfully');
+      try {
+        await editTask(task.id, updatedTask);
+        toaster.success('Task updated successfully');
 
-  //       setIsEditTaskShown((prev) => ({
-  //         ...prev,
-  //         [task.id]: false,
-  //       }));
-  //     } catch (error) {
-  //       console.error('Error updating task:', error);
-  //       toaster.danger('Error updating task. Please try again.');
-  //     }
-  //   },
-  //   [editTask, updatedTask, setIsEditTaskShown],
-  // );
+        setIsEditTaskShown((prev) => ({
+          ...prev,
+          [task.id]: false,
+        }));
+      } catch (error) {
+        console.error('Error updating task:', error);
+        toaster.danger('Error updating task. Please try again.');
+      }
+    },
+    [editTask, updatedTask, setIsEditTaskShown],
+  );
 
   const handleShowNewTaskDialog = () => {
     setIsNewTaskDialogShown(true);
@@ -99,13 +99,13 @@ export default function TasksPage({ theme, toggleTheme }) {
     return true;
   };
 
-  // const handleDeleteTask = async (taskId) => {
-  //   try {
-  //     await deleteTask(taskId);
-  //   } catch (error) {
-  //     console.error('Error deleting task:', error);
-  //   }
-  // };
+  const handleDeleteTask = async (taskId) => {
+    try {
+      await deleteTask(taskId);
+    } catch (error) {
+      console.error('Error deleting task:', error);
+    }
+  };
 
   useEffect(() => {
     if (currentUser && currentUser.tasks) {
@@ -322,7 +322,29 @@ export default function TasksPage({ theme, toggleTheme }) {
                                         isOpen={openDropdownId === task.id}
                                         onToggle={() => handleToggleDropdown(task.id)}
                                       >
-                                        {/* ... Dropdown items for editing and deleting tasks */}
+                                        <button
+                                          onClick={() => {
+                                            setUpdatedTask({
+                                              date: task.date,
+                                              name: task.name,
+                                              project: task.project,
+                                              priority: task.priority,
+                                            });
+
+                                            setIsEditTaskShown((prev) => ({
+                                              ...prev,
+                                              [task.id]: true,
+                                            }));
+                                          }}
+                                        >
+                                          Edit
+                                        </button>
+                                        <button
+                                          className='danger'
+                                          onClick={() => handleDeleteTask(task.id)}
+                                        >
+                                          Delete
+                                        </button>
                                       </Dropdown>
 
                                       <Pane>
@@ -341,10 +363,95 @@ export default function TasksPage({ theme, toggleTheme }) {
                                         >
                                           <Pane>
                                             <SignForm>
-                                              {/* ... Input fields for editing task */}
+                                              <SignField>
+                                                <Strong color={textMuted}>Date:</Strong>
+                                                <TextInput
+                                                  marginTop={3}
+                                                  background={background}
+                                                  fontSize={13}
+                                                  value={updatedTask.date}
+                                                  onChange={(e) =>
+                                                    setUpdatedTask((prev) => ({
+                                                      ...prev,
+                                                      date: e.target.value,
+                                                    }))
+                                                  }
+                                                  name='text-input-name'
+                                                  placeholder='GitHub'
+                                                />
+                                              </SignField>
+                                              <SignField>
+                                                <Strong color={textMuted}>Name:</Strong>
+                                                <TextInput
+                                                  marginTop={3}
+                                                  background={background}
+                                                  fontSize={13}
+                                                  value={updatedTask.name}
+                                                  onChange={(e) =>
+                                                    setUpdatedTask((prev) => ({
+                                                      ...prev,
+                                                      name: e.target.value,
+                                                    }))
+                                                  }
+                                                  name='text-input-name'
+                                                  placeholder='A Git-based platform for software.'
+                                                />
+                                              </SignField>
+                                              <SignField>
+                                                <Strong color={textMuted}>Project:</Strong>
+                                                <TextInput
+                                                  marginTop={3}
+                                                  background={background}
+                                                  fontSize={13}
+                                                  value={updatedTask.project}
+                                                  onChange={(e) =>
+                                                    setUpdatedTask((prev) => ({
+                                                      ...prev,
+                                                      project: e.target.value,
+                                                    }))
+                                                  }
+                                                  name='text-input-name'
+                                                  placeholder='github.com'
+                                                />
+                                              </SignField>
+                                              <SignField>
+                                                <Strong color={textMuted}>Priority:</Strong>
+                                                <TextInput
+                                                  marginTop={3}
+                                                  background={background}
+                                                  fontSize={13}
+                                                  value={updatedTask.priority}
+                                                  onChange={(e) =>
+                                                    setUpdatedTask((prev) => ({
+                                                      ...prev,
+                                                      priority: e.target.value,
+                                                    }))
+                                                  }
+                                                  name='text-input-name'
+                                                  placeholder='Development'
+                                                />
+                                              </SignField>
                                             </SignForm>
                                             <SignButtons>
-                                              {/* ... Buttons for canceling and saving edited task */}
+                                              <Button
+                                                className='button-cancel'
+                                                onClick={() =>
+                                                  setIsEditTaskShown((prev) => ({
+                                                    ...prev,
+                                                    [task.id]: false,
+                                                  }))
+                                                }
+                                              >
+                                                Cancel
+                                              </Button>
+
+                                              <Button
+                                                className='button-add'
+                                                appearance='primary'
+                                                onClick={() => handleEditTaskSubmit(task)}
+                                              >
+                                                Save
+                                              </Button>
                                             </SignButtons>
                                           </Pane>
                                         </Dialog>
