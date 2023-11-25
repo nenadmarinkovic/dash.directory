@@ -254,7 +254,9 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                             value={searchQuery}
                             onChange={(e) => {
                               setSearchQuery(e.target.value);
-                              setSelectedCategory('All categories');
+                              if (e.target.value.trim() !== '') {
+                                setSelectedCategory('All categories');
+                              }
                             }}
                           />
                           <svg
@@ -276,6 +278,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                       <Select
                         options={[...categories]}
                         selectedOption={selectedCategory}
+                        label={searchQuery.trim() !== '' ? 'All categories' : selectedCategory}
                         onSelect={(option) => {
                           setSearchQuery('');
                           setSelectedCategory(option);

@@ -304,8 +304,8 @@ export default function TasksPage({ theme, toggleTheme }) {
                         </InputHeader>
                       </Group>
                       <Select
-                        label='Select project'
                         options={[...projects]}
+                        label={searchQuery.trim() !== '' ? 'All projects' : selectedProject}
                         onSelect={(option) => {
                           setSearchQuery('');
                           setSelectedProject(option);

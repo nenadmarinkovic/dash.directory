@@ -33,8 +33,7 @@ const Select = ({ options, onSelect, label = 'Select category' }) => {
   return (
     <SelectContainer ref={dropdownRef}>
       <SelectButton onClick={() => setIsOpen(!isOpen)}>
-        <span>{label}</span>
-
+        <span>{label ? label : selectedOption}</span>
         <svg fill='none' viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor'>
           <path strokeLinecap='round' strokeLinejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5' />
         </svg>
