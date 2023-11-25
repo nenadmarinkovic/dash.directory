@@ -181,6 +181,13 @@ export const GlobalStyle = styled.createGlobalStyle`
         padding-right: 15px;
       }
     }
+    &_cell {
+      span {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+    }
 
     &_wrap {
       border: 0;
@@ -242,6 +249,15 @@ export const GlobalStyle = styled.createGlobalStyle`
     &:not([disabled])[aria-expanded='true'] {
       background-color: ${({ theme }) => theme.hoverButton};
     }
+  }
+
+  .done-task {
+    text-decoration: line-through;
+  }
+
+  .done-task-div {
+    background-color: ${({ theme }) => theme.hoverButton};
+    opacity: 0.5;
   }
 
   /* Framer animation */

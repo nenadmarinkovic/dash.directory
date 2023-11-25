@@ -226,6 +226,7 @@ export function ServicesProvider({ children }) {
 
       const newTask = {
         id: uuidv4(),
+        done: false,
         date,
         name,
         project,
@@ -239,7 +240,14 @@ export function ServicesProvider({ children }) {
         }));
 
         await updateDoc(tasksDocRef, {
-          tasks: arrayUnion(newTask),
+          tasks: arrayUnion({
+            id: newTask.id,
+            done: newTask.done || false,
+            date: newTask.date || '',
+            name: newTask.name || '',
+            project: newTask.project || '',
+            priority: newTask.priority || '',
+          }),
         });
       } else {
         const newTasks = [newTask];
@@ -324,6 +332,13 @@ export function ServicesProvider({ children }) {
     }
   };
 
+  const updateTask = (tasks) => {
+    setCurrentUser((prevUser) => ({
+      ...prevUser,
+      tasks: tasks,
+    }));
+  };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       setCurrentUser(user);
@@ -381,6 +396,7 @@ export function ServicesProvider({ children }) {
     addTask,
     deleteTask,
     editTask,
+    updateTask,
   };
 
   return (
