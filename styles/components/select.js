@@ -19,7 +19,6 @@ export const SelectContainer = styled.div`
   position: relative;
   width: 200px;
   font-size: 16px;
-  margin: 0 10px;
 
   @media (max-width: 1140px) {
     width: 100%;
@@ -39,7 +38,6 @@ export const SelectButton = styled.button`
   cursor: pointer;
   display: flex;
   justify-content: space-between;
-
   align-items: center;
   height: 38px;
   border: 1px solid rgba(200, 200, 200, 0.4);

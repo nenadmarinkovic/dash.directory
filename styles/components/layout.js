@@ -69,6 +69,7 @@ export const PageHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  gap: 20px;
 
   @media (max-width: 1140px) {
     flex-direction: column;
@@ -80,25 +81,15 @@ export const PageHeader = styled.div`
 
 export const InputHeader = styled.div`
   position: relative;
-
-  @media (max-width: 1140px) {
-    width: 100%;
-  }
+  width: 100%;
 
   input {
-    width: 520px;
+    width: 100%;
+    max-width: 100%;
     height: 38px;
     font-size: 13px;
     background: ${({ theme }) => theme.clear};
     border: 1px solid rgba(200, 200, 200, 0.4);
-
-    &.full-width {
-      width: 718px;
-    }
-
-    @media (max-width: 1140px) {
-      width: 100%;
-    }
   }
 
   svg {

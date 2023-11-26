@@ -244,7 +244,7 @@ export default function BookmarksPage({ theme, toggleTheme }) {
                   <Sidebar theme={theme} />
                   <PageContainer>
                     <PageHeader>
-                      <Group>
+                      <Group width='100%'>
                         <InputHeader>
                           <TextInput
                             background={background}

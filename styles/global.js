@@ -197,6 +197,19 @@ export const GlobalStyle = styled.createGlobalStyle`
       }
     }
 
+    &_cell-date {
+      span {
+        display: flex;
+        align-items: start;
+        gap: 5px;
+      }
+
+      .time {
+        display: flex;
+        align-items: center;
+      }
+    }
+
     &_wrap {
       border: 0;
     }
@@ -270,12 +283,33 @@ export const GlobalStyle = styled.createGlobalStyle`
 
   /* Tasks */
 
+  .task-date {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    svg {
+      width: 17px;
+      height: 17px;
+    }
+  }
+
+  .task-priority {
+    display: flex;
+    width: 56%;
+    justify-content: space-between;
+  }
+
   .task-container {
     min-height: 600px;
     border-top-left-radius: 4px;
     border-radius: 4px;
     display: flex;
     border: 1px solid rgba(200, 200, 200, 0.4);
+
+    &_tablist {
+      border-top-left-radius: 4px;
+    }
 
     &_tabs-title {
       border-top-left-radius: 4px;

@@ -35,6 +35,8 @@ import {
   Checkbox,
   Tab,
   Tablist,
+  Radio,
+  Badge,
 } from 'evergreen-ui';
 import Dropdown from '../../components/Dropdown';
 import { useThemeColors } from '../../styles/theme';
@@ -57,6 +59,8 @@ export default function TasksPage({ theme, toggleTheme }) {
   const [openDropdownId, setOpenDropdownId] = useState(null);
   const [isPageLoading, setisPageLoading] = useState(true);
 
+  const [selectedPriority, setSelectedPriority] = useState('');
+
   const userIsRegisteredWithGitHub = isUserRegisteredWithGitHub(currentUser);
   const userEmailVerified = isUserEmailVerified(currentUser);
 
@@ -75,7 +79,6 @@ export default function TasksPage({ theme, toggleTheme }) {
   };
 
   const [updatedTask, setUpdatedTask] = useState({
-    date: '',
     name: '',
     project: '',
     priority: '',
@@ -83,20 +86,17 @@ export default function TasksPage({ theme, toggleTheme }) {
 
   const handleEditTaskSubmit = useCallback(
     async (task) => {
-      const { date, name, project, priority } = updatedTask;
+      const { name, project, priority } = updatedTask;
 
-      if (
-        date === task.date &&
-        name === task.name &&
-        project === task.project &&
-        priority === task.priority
-      ) {
+      console.log('selectedPriority before update:', selectedPriority); // Add this line
+
+      if (name === task.name && project === task.project && selectedPriority === task.priority) {
         toaster.warning('Task is not edited');
         return;
       }
 
       try {
-        await editTask(task.id, updatedTask);
+        await editTask(task.id, { ...updatedTask, priority: selectedPriority });
         toaster.success('Task updated successfully');
 
         setIsEditTaskShown((prev) => ({
@@ -108,7 +108,7 @@ export default function TasksPage({ theme, toggleTheme }) {
         toaster.danger('Error updating task. Please try again.');
       }
     },
-    [editTask, updatedTask, setIsEditTaskShown],
+    [editTask, updatedTask, selectedPriority],
   );
 
   const handleShowNewTaskDialog = () => {
@@ -116,20 +116,17 @@ export default function TasksPage({ theme, toggleTheme }) {
   };
 
   const handleAddTask = () => {
-    if (!taskDate || !taskName || !taskProject || !taskPriority) {
+    if (!taskName || !taskProject || !selectedPriority) {
       toaster.danger('Please fill out all fields.');
       return false;
     }
 
-    addTask(taskDate, taskName, taskProject, taskPriority);
+    addTask(taskName, taskProject, selectedPriority);
 
     setSelectedProject('All projects');
-
-    setTaskDate('');
     setTaskName('');
     setTaskProject('');
     setTaskPriority('');
-
     setIsNewTaskDialogShown(false);
 
     return true;
@@ -162,6 +159,19 @@ export default function TasksPage({ theme, toggleTheme }) {
     }
   };
 
+  const getPriorityColor = (priority) => {
+    switch (priority.toLowerCase()) {
+      case 'high':
+        return 'red';
+      case 'medium':
+        return 'orange';
+      case 'low':
+        return 'green'; // or any color you prefer for low priority
+      default:
+        return 'gray'; // or any default color
+    }
+  };
+
   useEffect(() => {
     if (currentUser && currentUser.tasks) {
       setIsLoading(true);
@@ -172,7 +182,6 @@ export default function TasksPage({ theme, toggleTheme }) {
       if (selectedIndex === 0) {
         const filtered = sortedTasks.filter(
           (task) =>
-            task.date.toLowerCase().includes(searchQuery.toLowerCase()) ||
             task.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
             task.project.toLowerCase().includes(searchQuery.toLowerCase()) ||
             task.priority.toLowerCase().includes(searchQuery.toLowerCase()),
@@ -183,8 +192,7 @@ export default function TasksPage({ theme, toggleTheme }) {
         const filtered = sortedTasks.filter(
           (task) =>
             task.project === selectedProject &&
-            (task.date.toLowerCase().includes(searchQuery.toLowerCase()) ||
-              task.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            (task.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
               task.priority.toLowerCase().includes(searchQuery.toLowerCase())),
         );
         setFilteredTasks(filtered);
@@ -277,7 +285,7 @@ export default function TasksPage({ theme, toggleTheme }) {
                   <Sidebar theme={theme} />
                   <PageContainer>
                     <PageHeader>
-                      <Group>
+                      <Group width='100%'>
                         <InputHeader>
                           <TextInput
                             className='full-width'
@@ -321,18 +329,6 @@ export default function TasksPage({ theme, toggleTheme }) {
                             <Pane>
                               <SignForm>
                                 <SignField>
-                                  <Strong color={textMuted}>Date:</Strong>
-                                  <TextInput
-                                    marginTop={3}
-                                    background={background}
-                                    fontSize={13}
-                                    value={taskDate}
-                                    onChange={(e) => setTaskDate(e.target.value)}
-                                    name='text-input-name'
-                                    placeholder='Date'
-                                  />
-                                </SignField>
-                                <SignField>
                                   <Strong color={textMuted}>Name:</Strong>
                                   <TextInput
                                     marginTop={3}
@@ -358,15 +354,30 @@ export default function TasksPage({ theme, toggleTheme }) {
                                 </SignField>
                                 <SignField>
                                   <Strong color={textMuted}>Priority:</Strong>
-                                  <TextInput
-                                    marginTop={3}
-                                    background={background}
-                                    fontSize={13}
-                                    value={taskPriority}
-                                    onChange={(e) => setTaskPriority(e.target.value)}
-                                    name='text-input-name'
-                                    placeholder='Priority'
-                                  />
+                                  <Pane
+                                    className='task-priority'
+                                    aria-label='Radio Group Label 16'
+                                    role='group'
+                                  >
+                                    <Radio
+                                      checked={selectedPriority === 'High'}
+                                      size={16}
+                                      label='High'
+                                      onChange={() => setSelectedPriority('High')}
+                                    />
+                                    <Radio
+                                      checked={selectedPriority === 'Medium'}
+                                      size={16}
+                                      label='Medium'
+                                      onChange={() => setSelectedPriority('Medium')}
+                                    />
+                                    <Radio
+                                      checked={selectedPriority === 'Low'}
+                                      size={16}
+                                      label='Low'
+                                      onChange={() => setSelectedPriority('Low')}
+                                    />
+                                  </Pane>
                                 </SignField>
                               </SignForm>
                               <SignButtons>
@@ -413,7 +424,11 @@ export default function TasksPage({ theme, toggleTheme }) {
 
                     <PageMain>
                       <Pane className='task-container'>
-                        <Tablist flexBasis={240}>
+                        <Tablist
+                          background={background}
+                          flexBasis={240}
+                          className='task-container_tablist'
+                        >
                           <div className='task-container_tabs-title'>
                             <Text>Project</Text>
                           </div>
@@ -432,7 +447,7 @@ export default function TasksPage({ theme, toggleTheme }) {
                               key={tab}
                               onSelect={() => setSelectedIndex(index)}
                             >
-                              <Text> {tab}</Text>
+                              <Text color={textColor}> {tab}</Text>
                             </Tab>
                           ))}
                         </Tablist>
@@ -453,7 +468,7 @@ export default function TasksPage({ theme, toggleTheme }) {
                                   background={background}
                                 >
                                   <Table.TextHeaderCell
-                                    flexBasis={120}
+                                    flexBasis={180}
                                     className='custom-table_cell'
                                   >
                                     Name
@@ -463,7 +478,7 @@ export default function TasksPage({ theme, toggleTheme }) {
                                     Priority
                                   </Table.TextHeaderCell>
                                   <Table.TextHeaderCell className='custom-table_cell'>
-                                    Date
+                                    Date added
                                   </Table.TextHeaderCell>
                                 </Table.Head>
 
@@ -510,7 +525,7 @@ export default function TasksPage({ theme, toggleTheme }) {
                                               isSelectable={false}
                                             >
                                               <Table.TextCell
-                                                flexBasis={120}
+                                                flexBasis={180}
                                                 className={
                                                   task.done
                                                     ? ' done-task-div custom-table_cell'
@@ -541,19 +556,80 @@ export default function TasksPage({ theme, toggleTheme }) {
                                                 }
                                               >
                                                 <Text color={textColor} fontSize={14}>
-                                                  {task.priority}
+                                                  <Badge color={getPriorityColor(task.priority)}>
+                                                    {task.priority}
+                                                  </Badge>
                                                 </Text>
                                               </Table.TextCell>
 
                                               <Table.TextCell
                                                 className={
                                                   task.done
-                                                    ? ' done-task-div custom-table_cell'
-                                                    : 'custom-table_cell'
+                                                    ? ' done-task-div custom-table_cell-date'
+                                                    : 'custom-table_cell-date'
                                                 }
                                               >
-                                                <Text color={textColor} fontSize={14}>
-                                                  {task.date}
+                                                <Text
+                                                  color={textMuted}
+                                                  fontSize={13}
+                                                  className='task-date'
+                                                >
+                                                  <span className='date'>
+                                                    {typeof task.date === 'string'
+                                                      ? task.date
+                                                      : task.date instanceof Date
+                                                      ? task.date
+                                                          .toLocaleString('de-DE', {
+                                                            day: 'numeric',
+                                                            month: 'numeric',
+                                                            year: 'numeric',
+                                                          })
+                                                          .replace(',', '')
+                                                      : task.date
+                                                          ?.toDate()
+                                                          .toLocaleString('de-DE', {
+                                                            day: 'numeric',
+                                                            month: 'numeric',
+                                                            year: 'numeric',
+                                                          })
+                                                          .replace(',', '')}
+                                                  </span>
+
+                                                  <span className='time'>
+                                                    <svg
+                                                      xmlns='http://www.w3.org/2000/svg'
+                                                      fill='none'
+                                                      viewBox='0 0 24 24'
+                                                      strokeWidth='1.5'
+                                                      stroke='currentColor'
+                                                    >
+                                                      <path
+                                                        strokeLinecap='round'
+                                                        strokeLinejoin='round'
+                                                        d='M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z'
+                                                      />
+                                                    </svg>
+                                                    <span className='time-exact'>
+                                                      {typeof task.date === 'string'
+                                                        ? ''
+                                                        : task.date instanceof Date
+                                                        ? task.date
+                                                            .toLocaleString('de-DE', {
+                                                              hour: 'numeric',
+                                                              minute: 'numeric',
+                                                              hour12: false,
+                                                            })
+                                                            .replace(',', '')
+                                                        : task.date
+                                                            ?.toDate()
+                                                            .toLocaleString('de-DE', {
+                                                              hour: 'numeric',
+                                                              minute: 'numeric',
+                                                              hour12: false,
+                                                            })
+                                                            .replace(',', '')}
+                                                    </span>
+                                                  </span>
                                                 </Text>
                                               </Table.TextCell>
 
@@ -591,7 +667,6 @@ export default function TasksPage({ theme, toggleTheme }) {
                                                 <Pane>
                                                   <Dialog
                                                     containerProps={{ className: 'themed-modal' }}
-                                                    isShown={isEditTaskShown[task.id]}
                                                     title='Edit task'
                                                     onCloseComplete={() =>
                                                       setIsEditTaskShown((prev) => ({
@@ -599,30 +674,16 @@ export default function TasksPage({ theme, toggleTheme }) {
                                                         [task.id]: false,
                                                       }))
                                                     }
+                                                    isShown={isEditTaskShown[task.id]}
                                                     hasFooter={false}
                                                     hasClose={false}
                                                   >
                                                     <Pane>
                                                       <SignForm>
                                                         <SignField>
-                                                          <Strong color={textMuted}>Date:</Strong>
-                                                          <TextInput
-                                                            marginTop={3}
-                                                            background={background}
-                                                            fontSize={13}
-                                                            value={updatedTask.date}
-                                                            onChange={(e) =>
-                                                              setUpdatedTask((prev) => ({
-                                                                ...prev,
-                                                                date: e.target.value,
-                                                              }))
-                                                            }
-                                                            name='text-input-name'
-                                                            placeholder='GitHub'
-                                                          />
-                                                        </SignField>
-                                                        <SignField>
-                                                          <Strong color={textMuted}>Name:</Strong>
+                                                          <Strong color={textMuted}>
+                                                            Name: {task.priority}
+                                                          </Strong>
                                                           <TextInput
                                                             marginTop={3}
                                                             background={background}
@@ -661,20 +722,48 @@ export default function TasksPage({ theme, toggleTheme }) {
                                                           <Strong color={textMuted}>
                                                             Priority:
                                                           </Strong>
-                                                          <TextInput
-                                                            marginTop={3}
-                                                            background={background}
-                                                            fontSize={13}
-                                                            value={updatedTask.priority}
-                                                            onChange={(e) =>
-                                                              setUpdatedTask((prev) => ({
-                                                                ...prev,
-                                                                priority: e.target.value,
-                                                              }))
-                                                            }
-                                                            name='text-input-name'
-                                                            placeholder='Development'
-                                                          />
+                                                          <Pane
+                                                            className='task-priority'
+                                                            aria-label='Radio Group Label 16'
+                                                            role='group'
+                                                          >
+                                                            <Radio
+                                                              size={16}
+                                                              label='High'
+                                                              onChange={() =>
+                                                                setSelectedPriority('High')
+                                                              }
+                                                              checked={
+                                                                selectedPriority === 'High' ||
+                                                                (!selectedPriority &&
+                                                                  task.priority === 'High')
+                                                              }
+                                                            />
+                                                            <Radio
+                                                              size={16}
+                                                              label='Medium'
+                                                              onChange={() =>
+                                                                setSelectedPriority('Medium')
+                                                              }
+                                                              checked={
+                                                                selectedPriority === 'Medium' ||
+                                                                (!selectedPriority &&
+                                                                  task.priority === 'Medium')
+                                                              }
+                                                            />
+                                                            <Radio
+                                                              size={16}
+                                                              label='Low'
+                                                              onChange={() =>
+                                                                setSelectedPriority('Low')
+                                                              }
+                                                              checked={
+                                                                selectedPriority === 'Low' ||
+                                                                (!selectedPriority &&
+                                                                  task.priority === 'Low')
+                                                              }
+                                                            />
+                                                          </Pane>
                                                         </SignField>
                                                       </SignForm>
                                                       <SignButtons>

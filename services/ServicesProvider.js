@@ -10,7 +10,7 @@ import {
   signInWithPopup,
 } from 'firebase/auth';
 import { useRouter } from 'next/router';
-import { doc, setDoc, getDoc, updateDoc, arrayUnion } from 'firebase/firestore';
+import { doc, setDoc, getDoc, updateDoc, arrayUnion, serverTimestamp } from 'firebase/firestore';
 import { Spinner, toaster } from 'evergreen-ui';
 
 const ContextProvider = createContext();
@@ -212,7 +212,7 @@ export function ServicesProvider({ children }) {
 
   // Task services
 
-  const addTask = async (date, name, project, priority) => {
+  const addTask = async (name, project, priority) => {
     try {
       const user = auth.currentUser;
 
@@ -227,7 +227,7 @@ export function ServicesProvider({ children }) {
       const newTask = {
         id: uuidv4(),
         done: false,
-        date,
+        date: new Date(), // Use current date
         name,
         project,
         priority,
