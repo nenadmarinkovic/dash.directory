@@ -19,7 +19,6 @@ import {
   CenteredSection,
 } from '../../styles/components/layout';
 import { SignForm, SignField, SignButtons } from '../../styles/components/signin';
-import { BookmarksTable } from '../../styles/pages/bookmarks';
 import {
   Pane,
   Text,
@@ -421,7 +420,11 @@ export default function TasksPage({ theme, toggleTheme }) {
 
                           {tabs.map((tab, index) => (
                             <Tab
-                              marginTop={17.5}
+                              className='task-container_selected'
+                              marginTop={15}
+                              paddingLeft={12}
+                              paddingTop={20}
+                              paddingBottom={20}
                               borderRadius={0}
                               aria-controls={`panel-${tab}`}
                               direction='vertical'

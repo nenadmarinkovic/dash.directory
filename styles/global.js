@@ -276,6 +276,7 @@ export const GlobalStyle = styled.createGlobalStyle`
     border-radius: 4px;
     display: flex;
     border: 1px solid rgba(200, 200, 200, 0.4);
+
     &_tabs-title {
       border-top-left-radius: 4px;
       text-transform: uppercase;
@@ -291,6 +292,19 @@ export const GlobalStyle = styled.createGlobalStyle`
         color: #696f8c;
         font-size: 12px;
         font-weight: 600;
+      }
+    }
+    &_selected {
+      &:hover {
+        background-color: ${({ theme }) => theme.hoverButton} !important;
+      }
+
+      &:active {
+        background-color: ${({ theme }) => theme.hoverButton} !important;
+      }
+
+      &[aria-selected='true'] {
+        background-color: ${({ theme }) => theme.hoverButton} !important;
       }
     }
   }
