@@ -171,6 +171,14 @@ export const GlobalStyle = styled.createGlobalStyle`
     &_body {
       max-height: 700px;
       overflow-y: auto;
+
+      &.with-border-left {
+        border-left: 1px solid rgba(200, 200, 200, 0.4);
+      }
+
+      &.with-min-height {
+        min-height: 700px;
+      }
     }
 
     &_head {
@@ -258,6 +266,33 @@ export const GlobalStyle = styled.createGlobalStyle`
   .done-task-div {
     background-color: ${({ theme }) => theme.hoverButton};
     opacity: 0.5;
+  }
+
+  /* Tasks */
+
+  .task-container {
+    min-height: 600px;
+    border-top-left-radius: 4px;
+    border-radius: 4px;
+    display: flex;
+    border: 1px solid rgba(200, 200, 200, 0.4);
+    &_tabs-title {
+      border-top-left-radius: 4px;
+      text-transform: uppercase;
+      padding: 0 12px;
+      display: flex;
+      align-items: center;
+      height: 56px;
+      background-color: ${({ theme }) => theme.background};
+      border-bottom: 1px solid rgba(200, 200, 200, 0.4);
+      span {
+        line-height: 16px;
+        letter-spacing: 0;
+        color: #696f8c;
+        font-size: 12px;
+        font-weight: 600;
+      }
+    }
   }
 
   /* Framer animation */

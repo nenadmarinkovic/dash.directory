@@ -92,6 +92,10 @@ export const InputHeader = styled.div`
     background: ${({ theme }) => theme.clear};
     border: 1px solid rgba(200, 200, 200, 0.4);
 
+    &.full-width {
+      width: 718px;
+    }
+
     @media (max-width: 1140px) {
       width: 100%;
     }
