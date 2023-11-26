@@ -58,21 +58,12 @@ export default function TasksPage({ theme, toggleTheme }) {
   const [isEditTaskShown, setIsEditTaskShown] = useState({});
   const [openDropdownId, setOpenDropdownId] = useState(null);
   const [isPageLoading, setisPageLoading] = useState(true);
-
+  const [tabs, setTabs] = useState([]);
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const [selectedPriority, setSelectedPriority] = useState('');
 
   const userIsRegisteredWithGitHub = isUserRegisteredWithGitHub(currentUser);
   const userEmailVerified = isUserEmailVerified(currentUser);
-
-  const [tabs, setTabs] = useState([]);
-  const [selectedIndex, setSelectedIndex] = useState(0);
-
-  useEffect(() => {
-    if (currentUser && currentUser.tasks) {
-      const uniqueProjects = Array.from(new Set(currentUser.tasks.map((task) => task.project)));
-      setTabs(['All projects', ...uniqueProjects]);
-    }
-  }, [currentUser]);
 
   const handleToggleDropdown = (id) => {
     setOpenDropdownId(id === openDropdownId ? null : id);
@@ -84,12 +75,26 @@ export default function TasksPage({ theme, toggleTheme }) {
     priority: '',
   });
 
+  const findTaskToEdit = () => {
+    return currentUser && currentUser.tasks ? currentUser.tasks[0] : null;
+  };
+
+  const taskToEdit = findTaskToEdit();
+
+  useEffect(() => {
+    if (taskToEdit && taskToEdit.priority) {
+      setSelectedPriority(taskToEdit.priority);
+    }
+  }, [taskToEdit]);
+
   const handleEditTaskSubmit = useCallback(
     async (task) => {
-      const { name, project, priority } = updatedTask;
+      const { name, project } = updatedTask;
 
-      console.log('selectedPriority before update:', selectedPriority); // Add this line
-
+      if (!selectedPriority) {
+        toaster.warning('Task is not edited');
+        return;
+      }
       if (name === task.name && project === task.project && selectedPriority === task.priority) {
         toaster.warning('Task is not edited');
         return;
@@ -166,9 +171,9 @@ export default function TasksPage({ theme, toggleTheme }) {
       case 'medium':
         return 'orange';
       case 'low':
-        return 'green'; // or any color you prefer for low priority
+        return 'green';
       default:
-        return 'gray'; // or any default color
+        return 'gray';
     }
   };
 
@@ -201,6 +206,13 @@ export default function TasksPage({ theme, toggleTheme }) {
       setIsLoading(false);
     }
   }, [currentUser, selectedIndex, searchQuery, tabs]);
+
+  useEffect(() => {
+    if (currentUser && currentUser.tasks) {
+      const uniqueProjects = Array.from(new Set(currentUser.tasks.map((task) => task.project)));
+      setTabs(['All projects', ...uniqueProjects]);
+    }
+  }, [currentUser]);
 
   useEffect(() => {
     setisPageLoading(false);
@@ -292,7 +304,7 @@ export default function TasksPage({ theme, toggleTheme }) {
                             background={background}
                             height={30}
                             disabled={isLoading}
-                            placeholder='Search by title, description, category...'
+                            placeholder='Search by name and priority in selected project...'
                             value={searchQuery}
                             onChange={(e) => {
                               setSearchQuery(e.target.value);
@@ -681,9 +693,7 @@ export default function TasksPage({ theme, toggleTheme }) {
                                                     <Pane>
                                                       <SignForm>
                                                         <SignField>
-                                                          <Strong color={textMuted}>
-                                                            Name: {task.priority}
-                                                          </Strong>
+                                                          <Strong color={textMuted}>Name:</Strong>
                                                           <TextInput
                                                             marginTop={3}
                                                             background={background}
