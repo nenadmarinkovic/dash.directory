@@ -24,7 +24,7 @@ import { BookmarksTable } from '../../styles/pages/bookmarks';
 export default function EventsPage({ theme, toggleTheme }) {
   const { currentUser } = useServices();
   const [openMenu, setOpenMenu] = useState(false);
-  const { textColor, textMuted, background } = useThemeColors(theme);
+  const { textColor, textMuted } = useThemeColors(theme);
 
   const userIsRegisteredWithGitHub = isUserRegisteredWithGitHub(currentUser);
   const userEmailVerified = isUserEmailVerified(currentUser);
@@ -120,7 +120,7 @@ export default function EventsPage({ theme, toggleTheme }) {
                           color={textColor}
                           letterSpacing='-.003rem'
                         >
-                          Settings page
+                          Settings page - soon
                         </Heading>
                         <Paragraph padding={10} color={textMuted} size={500} lineHeight={1.75}>
                           Currently in development mode.

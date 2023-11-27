@@ -90,7 +90,6 @@ export default function TasksPage({ theme, toggleTheme }) {
       }
 
       try {
-        console.log('Whai is:', priorityToSet);
         await editTask(task.id, { ...updatedTask, priority: priorityToSet });
         toaster.success('Task updated successfully');
 
@@ -98,7 +97,7 @@ export default function TasksPage({ theme, toggleTheme }) {
           ...prev,
           [task.id]: false,
         }));
-        setSelectedPriority(''); // Reset selectedPriority to an empty string after successful update if needed
+        setSelectedPriority('');
       } catch (error) {
         console.error('Error updating task:', error);
         toaster.danger('Error updating task. Please try again.');
