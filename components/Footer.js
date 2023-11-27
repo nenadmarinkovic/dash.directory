@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   FooterWrap,
   FooterInside,
@@ -7,16 +7,73 @@ import {
   ContactWrap,
 } from '../styles/components/footer';
 import { ContainerWrap } from '../styles/components/layout';
-import { Text } from 'evergreen-ui';
+import { Button, CornerDialog, Pane, Text } from 'evergreen-ui';
 import Link from 'next/link';
 import Logo from './Logo';
 import { useThemeColors } from '../styles/theme';
+import { useServices } from '../services/ServicesProvider';
 
 function Footer({ theme }) {
-  const { textMuted } = useThemeColors(theme);
+  const { textMuted, textColor } = useThemeColors(theme);
+  const [isCookieDialogShown, setIsCookieDialogShown] = useState(false);
+  const { currentUser, cookieBannerAccepted, handleCookieBannerAccept } = useServices();
+
+  useEffect(() => {
+    if (!cookieBannerAccepted) {
+      const timeoutId = setTimeout(() => {
+        setIsCookieDialogShown(true);
+      }, 5000);
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [cookieBannerAccepted]);
+
+  useEffect(() => {
+    if (currentUser) {
+      const timeoutId = setTimeout(() => {
+        setIsCookieDialogShown(true);
+      }, 2000);
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [currentUser]);
+
+  useEffect(() => {}, [currentUser]);
 
   return (
     <FooterWrap>
+      {!cookieBannerAccepted && (
+        <CornerDialog
+          containerProps={{ className: 'themed-cookie-dialog' }}
+          title='Cookies'
+          isShown={isCookieDialogShown}
+          onCloseComplete={() => setIsCookieDialogShown(false)}
+          hasFooter={false}
+          hasClose={false}
+        >
+          {({ close }) => (
+            <Pane>
+              <Text color={textMuted}>
+                We use cookies to enhance your experience on our website. By continuing to use this
+                site, you consent to the use of cookies.
+              </Text>
+              <br />
+
+              <Button
+                className='themed-button'
+                fontWeight='bold'
+                marginTop={30}
+                onClick={() => {
+                  handleCookieBannerAccept();
+                  close();
+                }}
+              >
+                Accept Cookies
+              </Button>
+            </Pane>
+          )}
+        </CornerDialog>
+      )}
       <ContainerWrap>
         <FooterInside>
           <FooterFlex>

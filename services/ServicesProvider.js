@@ -22,8 +22,17 @@ export function useServices() {
 export function ServicesProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [cookieBannerAccepted, setCookieBannerAccepted] = useState(false); // New state
 
   const router = useRouter();
+
+  // Cookie Banner
+
+  const handleCookieBannerAccept = () => {
+    // Save the user's preference in local storage
+    localStorage.setItem('cookieBannerAccepted', 'true');
+    setCookieBannerAccepted(true);
+  };
 
   // Auth services
 
@@ -340,6 +349,11 @@ export function ServicesProvider({ children }) {
   };
 
   useEffect(() => {
+    const isCookieBannerAccepted = localStorage.getItem('cookieBannerAccepted');
+    setCookieBannerAccepted(Boolean(isCookieBannerAccepted));
+  }, []);
+
+  useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       setCurrentUser(user);
 
@@ -386,6 +400,8 @@ export function ServicesProvider({ children }) {
 
   const value = {
     currentUser,
+    cookieBannerAccepted,
+    handleCookieBannerAccept,
     login,
     signup,
     logout,

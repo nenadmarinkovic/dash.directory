@@ -103,6 +103,17 @@ export const GlobalStyle = styled.createGlobalStyle`
   /* Theme */
 
   .themed {
+    &-cookie-dialog {
+      background-color: ${({ theme }) => theme.background};
+      box-shadow: 0 0 0 1px ${({ theme }) => theme.shadowBorder}, 0 4px 6px rgba(0, 0, 0, 0.04);
+
+      h4 {
+        color: ${({ theme }) => theme.color};
+      }
+    }
+  }
+
+  .themed {
     &-modal {
       background-color: ${({ theme }) => theme.background};
 
