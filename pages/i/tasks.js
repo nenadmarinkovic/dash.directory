@@ -463,353 +463,322 @@ export default function TasksPage({ theme, toggleTheme }) {
                             </Tab>
                           ))}
                         </Tablist>
-                        <Pane flex='1'>
-                          {tabs.map((tab, index) => (
-                            <Pane
-                              aria-labelledby={tab}
-                              aria-hidden={index !== selectedIndex}
-                              display={index === selectedIndex ? 'block' : 'none'}
-                              key={tab}
-                              role='tabpanel'
-                            >
-                              <Table className='custom-table_wrap'>
-                                <Table.Head
-                                  className={`custom-table_head ${
-                                    filteredTasks.length > 10 && 'add-right-padding'
-                                  }`}
-                                  background={background}
-                                >
-                                  <Table.TextHeaderCell
-                                    flexBasis={180}
-                                    className='custom-table_cell'
-                                  >
-                                    Name
-                                  </Table.TextHeaderCell>
 
-                                  <Table.TextHeaderCell className='custom-table_cell'>
-                                    Priority
-                                  </Table.TextHeaderCell>
-                                  <Table.TextHeaderCell className='custom-table_cell'>
-                                    Date added
-                                  </Table.TextHeaderCell>
-                                </Table.Head>
+                        <Table className='custom-table_wrap'>
+                          <Table.Head
+                            className={`custom-table_head ${
+                              filteredTasks.length > 10 && 'add-right-padding'
+                            }`}
+                            background={background}
+                          >
+                            <Table.TextHeaderCell flexBasis={180} className='custom-table_cell'>
+                              Name
+                            </Table.TextHeaderCell>
 
-                                <Table.Body className='custom-table_body with-border-left with-min-height'>
-                                  {!isPageLoading &&
-                                    currentUser?.tasks &&
-                                    filteredTasks.length < 1 && (
+                            <Table.TextHeaderCell className='custom-table_cell'>
+                              Priority
+                            </Table.TextHeaderCell>
+                            <Table.TextHeaderCell className='custom-table_cell'>
+                              Date added
+                            </Table.TextHeaderCell>
+                          </Table.Head>
+
+                          <Table.Body className='custom-table_body with-border-left with-min-height'>
+                            {!isPageLoading && currentUser?.tasks && filteredTasks.length < 1 && (
+                              <Table.Row
+                                className='custom-table_row'
+                                background={background}
+                                color={textMuted}
+                                key='no-tasks'
+                                isSelectable={false}
+                              >
+                                <Table.TextCell className='custom-table_cell' textAlign='center'>
+                                  <Text color={textColor} fontSize={14}>
+                                    No tasks found.
+                                  </Text>
+                                </Table.TextCell>
+                              </Table.Row>
+                            )}
+
+                            <AnimatePresence initial={false}>
+                              {!isPageLoading &&
+                                filteredTasks
+                                  .filter(
+                                    (task) =>
+                                      task.project === tabs[selectedIndex] || selectedIndex === 0,
+                                  )
+                                  .map((task) => (
+                                    <motion.div key={task.id} layout>
                                       <Table.Row
                                         className='custom-table_row'
                                         background={background}
                                         color={textMuted}
-                                        key='no-tasks'
+                                        key={task.id}
                                         isSelectable={false}
                                       >
                                         <Table.TextCell
-                                          className='custom-table_cell'
-                                          textAlign='center'
+                                          flexBasis={180}
+                                          className={
+                                            task.done
+                                              ? ' done-task-div custom-table_cell'
+                                              : 'custom-table_cell'
+                                          }
                                         >
-                                          <Text color={textColor} fontSize={14}>
-                                            No tasks found.
+                                          <Checkbox
+                                            margin={2}
+                                            checked={Boolean(task.done)}
+                                            onChange={(e) =>
+                                              handleTaskCheckChange(task.id, e.target.checked)
+                                            }
+                                          />
+                                          <Text
+                                            color={textColor}
+                                            fontSize={14}
+                                            className={task.done ? 'done-task' : ''}
+                                          >
+                                            {task.name}
                                           </Text>
                                         </Table.TextCell>
-                                      </Table.Row>
-                                    )}
 
-                                  <AnimatePresence initial={false}>
-                                    {!isPageLoading &&
-                                      filteredTasks
-                                        .filter(
-                                          (task) =>
-                                            task.project === tabs[selectedIndex] ||
-                                            selectedIndex === 0,
-                                        )
-                                        .map((task) => (
-                                          <motion.div
-                                            key={task.id}
-                                            layout={index === selectedIndex}
+                                        <Table.TextCell
+                                          className={
+                                            task.done
+                                              ? ' done-task-div custom-table_cell'
+                                              : 'custom-table_cell'
+                                          }
+                                        >
+                                          <Text color={textColor} fontSize={14}>
+                                            <Badge color={getPriorityColor(task.priority)}>
+                                              {task.priority}
+                                            </Badge>
+                                          </Text>
+                                        </Table.TextCell>
+
+                                        <Table.TextCell
+                                          className={
+                                            task.done
+                                              ? ' done-task-div custom-table_cell-date'
+                                              : 'custom-table_cell-date'
+                                          }
+                                        >
+                                          <Text
+                                            color={textMuted}
+                                            fontSize={13}
+                                            className='task-date'
                                           >
-                                            <Table.Row
-                                              className='custom-table_row'
-                                              background={background}
-                                              color={textMuted}
-                                              key={task.id}
-                                              isSelectable={false}
-                                            >
-                                              <Table.TextCell
-                                                flexBasis={180}
-                                                className={
-                                                  task.done
-                                                    ? ' done-task-div custom-table_cell'
-                                                    : 'custom-table_cell'
-                                                }
+                                            <span className='date'>
+                                              {typeof task.date === 'string'
+                                                ? task.date
+                                                : task.date instanceof Date
+                                                ? task.date
+                                                    .toLocaleString('de-DE', {
+                                                      day: 'numeric',
+                                                      month: 'numeric',
+                                                      year: 'numeric',
+                                                    })
+                                                    .replace(',', '')
+                                                : task.date
+                                                    ?.toDate()
+                                                    .toLocaleString('de-DE', {
+                                                      day: 'numeric',
+                                                      month: 'numeric',
+                                                      year: 'numeric',
+                                                    })
+                                                    .replace(',', '')}
+                                            </span>
+
+                                            <span className='time'>
+                                              <svg
+                                                xmlns='http://www.w3.org/2000/svg'
+                                                fill='none'
+                                                viewBox='0 0 24 24'
+                                                strokeWidth='1.5'
+                                                stroke='currentColor'
                                               >
-                                                <Checkbox
-                                                  margin={2}
-                                                  checked={Boolean(task.done)}
-                                                  onChange={(e) =>
-                                                    handleTaskCheckChange(task.id, e.target.checked)
-                                                  }
+                                                <path
+                                                  strokeLinecap='round'
+                                                  strokeLinejoin='round'
+                                                  d='M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z'
                                                 />
-                                                <Text
-                                                  color={textColor}
-                                                  fontSize={14}
-                                                  className={task.done ? 'done-task' : ''}
-                                                >
-                                                  {task.name}
-                                                </Text>
-                                              </Table.TextCell>
+                                              </svg>
+                                              <span className='time-exact'>
+                                                {typeof task.date === 'string'
+                                                  ? ''
+                                                  : task.date instanceof Date
+                                                  ? task.date
+                                                      .toLocaleString('de-DE', {
+                                                        hour: 'numeric',
+                                                        minute: 'numeric',
+                                                        hour12: false,
+                                                      })
+                                                      .replace(',', '')
+                                                  : task.date
+                                                      ?.toDate()
+                                                      .toLocaleString('de-DE', {
+                                                        hour: 'numeric',
+                                                        minute: 'numeric',
+                                                        hour12: false,
+                                                      })
+                                                      .replace(',', '')}
+                                              </span>
+                                            </span>
+                                          </Text>
+                                        </Table.TextCell>
 
-                                              <Table.TextCell
-                                                className={
-                                                  task.done
-                                                    ? ' done-task-div custom-table_cell'
-                                                    : 'custom-table_cell'
-                                                }
-                                              >
-                                                <Text color={textColor} fontSize={14}>
-                                                  <Badge color={getPriorityColor(task.priority)}>
-                                                    {task.priority}
-                                                  </Badge>
-                                                </Text>
-                                              </Table.TextCell>
+                                        <span className='custom-table_menu'>
+                                          <Dropdown
+                                            theme={theme}
+                                            isOpen={openDropdownId === task.id}
+                                            onToggle={() => handleToggleDropdown(task.id)}
+                                          >
+                                            <button
+                                              onClick={() => {
+                                                setUpdatedTask({
+                                                  date: task.date,
+                                                  name: task.name,
+                                                  project: task.project,
+                                                  priority: task.priority,
+                                                });
 
-                                              <Table.TextCell
-                                                className={
-                                                  task.done
-                                                    ? ' done-task-div custom-table_cell-date'
-                                                    : 'custom-table_cell-date'
-                                                }
-                                              >
-                                                <Text
-                                                  color={textMuted}
-                                                  fontSize={13}
-                                                  className='task-date'
-                                                >
-                                                  <span className='date'>
-                                                    {typeof task.date === 'string'
-                                                      ? task.date
-                                                      : task.date instanceof Date
-                                                      ? task.date
-                                                          .toLocaleString('de-DE', {
-                                                            day: 'numeric',
-                                                            month: 'numeric',
-                                                            year: 'numeric',
-                                                          })
-                                                          .replace(',', '')
-                                                      : task.date
-                                                          ?.toDate()
-                                                          .toLocaleString('de-DE', {
-                                                            day: 'numeric',
-                                                            month: 'numeric',
-                                                            year: 'numeric',
-                                                          })
-                                                          .replace(',', '')}
-                                                  </span>
+                                                setIsEditTaskShown((prev) => ({
+                                                  ...prev,
+                                                  [task.id]: true,
+                                                }));
+                                              }}
+                                            >
+                                              Edit
+                                            </button>
+                                            <button
+                                              className='danger'
+                                              onClick={() => handleDeleteTask(task.id)}
+                                            >
+                                              Delete
+                                            </button>
+                                          </Dropdown>
 
-                                                  <span className='time'>
-                                                    <svg
-                                                      xmlns='http://www.w3.org/2000/svg'
-                                                      fill='none'
-                                                      viewBox='0 0 24 24'
-                                                      strokeWidth='1.5'
-                                                      stroke='currentColor'
+                                          <Pane>
+                                            <Dialog
+                                              containerProps={{ className: 'themed-modal' }}
+                                              title='Edit task'
+                                              onCloseComplete={() =>
+                                                setIsEditTaskShown((prev) => ({
+                                                  ...prev,
+                                                  [task.id]: false,
+                                                }))
+                                              }
+                                              isShown={isEditTaskShown[task.id]}
+                                              hasFooter={false}
+                                              hasClose={false}
+                                            >
+                                              <Pane>
+                                                <SignForm>
+                                                  <SignField>
+                                                    <Strong color={textMuted}>Name:</Strong>
+                                                    <TextInput
+                                                      marginTop={3}
+                                                      background={background}
+                                                      fontSize={13}
+                                                      value={updatedTask.name}
+                                                      onChange={(e) =>
+                                                        setUpdatedTask((prev) => ({
+                                                          ...prev,
+                                                          name: e.target.value,
+                                                        }))
+                                                      }
+                                                      name='text-input-name'
+                                                      placeholder='A Git-based platform for software.'
+                                                    />
+                                                  </SignField>
+                                                  <SignField>
+                                                    <Strong color={textMuted}>Project:</Strong>
+                                                    <TextInput
+                                                      marginTop={3}
+                                                      background={background}
+                                                      fontSize={13}
+                                                      value={updatedTask.project}
+                                                      onChange={(e) =>
+                                                        setUpdatedTask((prev) => ({
+                                                          ...prev,
+                                                          project: e.target.value,
+                                                        }))
+                                                      }
+                                                      name='text-input-name'
+                                                      placeholder='github.com'
+                                                    />
+                                                  </SignField>
+                                                  <SignField>
+                                                    <Strong color={textMuted}>Priority:</Strong>
+                                                    <Pane
+                                                      className='task-priority'
+                                                      aria-label='Radio Group Label 16'
+                                                      role='group'
                                                     >
-                                                      <path
-                                                        strokeLinecap='round'
-                                                        strokeLinejoin='round'
-                                                        d='M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z'
+                                                      <Radio
+                                                        size={16}
+                                                        label='High'
+                                                        onChange={() => setSelectedPriority('High')}
+                                                        checked={
+                                                          selectedPriority === 'High' ||
+                                                          (!selectedPriority &&
+                                                            task.priority === 'High')
+                                                        }
                                                       />
-                                                    </svg>
-                                                    <span className='time-exact'>
-                                                      {typeof task.date === 'string'
-                                                        ? ''
-                                                        : task.date instanceof Date
-                                                        ? task.date
-                                                            .toLocaleString('de-DE', {
-                                                              hour: 'numeric',
-                                                              minute: 'numeric',
-                                                              hour12: false,
-                                                            })
-                                                            .replace(',', '')
-                                                        : task.date
-                                                            ?.toDate()
-                                                            .toLocaleString('de-DE', {
-                                                              hour: 'numeric',
-                                                              minute: 'numeric',
-                                                              hour12: false,
-                                                            })
-                                                            .replace(',', '')}
-                                                    </span>
-                                                  </span>
-                                                </Text>
-                                              </Table.TextCell>
-
-                                              <span className='custom-table_menu'>
-                                                <Dropdown
-                                                  theme={theme}
-                                                  isOpen={openDropdownId === task.id}
-                                                  onToggle={() => handleToggleDropdown(task.id)}
-                                                >
-                                                  <button
-                                                    onClick={() => {
-                                                      setUpdatedTask({
-                                                        date: task.date,
-                                                        name: task.name,
-                                                        project: task.project,
-                                                        priority: task.priority,
-                                                      });
-
-                                                      setIsEditTaskShown((prev) => ({
-                                                        ...prev,
-                                                        [task.id]: true,
-                                                      }));
-                                                    }}
-                                                  >
-                                                    Edit
-                                                  </button>
-                                                  <button
-                                                    className='danger'
-                                                    onClick={() => handleDeleteTask(task.id)}
-                                                  >
-                                                    Delete
-                                                  </button>
-                                                </Dropdown>
-
-                                                <Pane>
-                                                  <Dialog
-                                                    containerProps={{ className: 'themed-modal' }}
-                                                    title='Edit task'
-                                                    onCloseComplete={() =>
+                                                      <Radio
+                                                        size={16}
+                                                        label='Medium'
+                                                        onChange={() =>
+                                                          setSelectedPriority('Medium')
+                                                        }
+                                                        checked={
+                                                          selectedPriority === 'Medium' ||
+                                                          (!selectedPriority &&
+                                                            task.priority === 'Medium')
+                                                        }
+                                                      />
+                                                      <Radio
+                                                        size={16}
+                                                        label='Low'
+                                                        onChange={() => setSelectedPriority('Low')}
+                                                        checked={
+                                                          selectedPriority === 'Low' ||
+                                                          (!selectedPriority &&
+                                                            task.priority === 'Low')
+                                                        }
+                                                      />
+                                                    </Pane>
+                                                  </SignField>
+                                                </SignForm>
+                                                <SignButtons>
+                                                  <Button
+                                                    className='button-cancel'
+                                                    onClick={() =>
                                                       setIsEditTaskShown((prev) => ({
                                                         ...prev,
                                                         [task.id]: false,
                                                       }))
                                                     }
-                                                    isShown={isEditTaskShown[task.id]}
-                                                    hasFooter={false}
-                                                    hasClose={false}
                                                   >
-                                                    <Pane>
-                                                      <SignForm>
-                                                        <SignField>
-                                                          <Strong color={textMuted}>Name:</Strong>
-                                                          <TextInput
-                                                            marginTop={3}
-                                                            background={background}
-                                                            fontSize={13}
-                                                            value={updatedTask.name}
-                                                            onChange={(e) =>
-                                                              setUpdatedTask((prev) => ({
-                                                                ...prev,
-                                                                name: e.target.value,
-                                                              }))
-                                                            }
-                                                            name='text-input-name'
-                                                            placeholder='A Git-based platform for software.'
-                                                          />
-                                                        </SignField>
-                                                        <SignField>
-                                                          <Strong color={textMuted}>
-                                                            Project:
-                                                          </Strong>
-                                                          <TextInput
-                                                            marginTop={3}
-                                                            background={background}
-                                                            fontSize={13}
-                                                            value={updatedTask.project}
-                                                            onChange={(e) =>
-                                                              setUpdatedTask((prev) => ({
-                                                                ...prev,
-                                                                project: e.target.value,
-                                                              }))
-                                                            }
-                                                            name='text-input-name'
-                                                            placeholder='github.com'
-                                                          />
-                                                        </SignField>
-                                                        <SignField>
-                                                          <Strong color={textMuted}>
-                                                            Priority:
-                                                          </Strong>
-                                                          <Pane
-                                                            className='task-priority'
-                                                            aria-label='Radio Group Label 16'
-                                                            role='group'
-                                                          >
-                                                            <Radio
-                                                              size={16}
-                                                              label='High'
-                                                              onChange={() =>
-                                                                setSelectedPriority('High')
-                                                              }
-                                                              checked={
-                                                                selectedPriority === 'High' ||
-                                                                (!selectedPriority &&
-                                                                  task.priority === 'High')
-                                                              }
-                                                            />
-                                                            <Radio
-                                                              size={16}
-                                                              label='Medium'
-                                                              onChange={() =>
-                                                                setSelectedPriority('Medium')
-                                                              }
-                                                              checked={
-                                                                selectedPriority === 'Medium' ||
-                                                                (!selectedPriority &&
-                                                                  task.priority === 'Medium')
-                                                              }
-                                                            />
-                                                            <Radio
-                                                              size={16}
-                                                              label='Low'
-                                                              onChange={() =>
-                                                                setSelectedPriority('Low')
-                                                              }
-                                                              checked={
-                                                                selectedPriority === 'Low' ||
-                                                                (!selectedPriority &&
-                                                                  task.priority === 'Low')
-                                                              }
-                                                            />
-                                                          </Pane>
-                                                        </SignField>
-                                                      </SignForm>
-                                                      <SignButtons>
-                                                        <Button
-                                                          className='button-cancel'
-                                                          onClick={() =>
-                                                            setIsEditTaskShown((prev) => ({
-                                                              ...prev,
-                                                              [task.id]: false,
-                                                            }))
-                                                          }
-                                                        >
-                                                          Cancel
-                                                        </Button>
+                                                    Cancel
+                                                  </Button>
 
-                                                        <Button
-                                                          className='button-add'
-                                                          appearance='primary'
-                                                          onClick={() => handleEditTaskSubmit(task)}
-                                                        >
-                                                          Save
-                                                        </Button>
-                                                      </SignButtons>
-                                                    </Pane>
-                                                  </Dialog>
-                                                </Pane>
-                                              </span>
-                                            </Table.Row>
-                                          </motion.div>
-                                        ))}
-                                  </AnimatePresence>
-                                </Table.Body>
-                              </Table>
-                            </Pane>
-                          ))}
-                        </Pane>
+                                                  <Button
+                                                    className='button-add'
+                                                    appearance='primary'
+                                                    onClick={() => handleEditTaskSubmit(task)}
+                                                  >
+                                                    Save
+                                                  </Button>
+                                                </SignButtons>
+                                              </Pane>
+                                            </Dialog>
+                                          </Pane>
+                                        </span>
+                                      </Table.Row>
+                                    </motion.div>
+                                  ))}
+                            </AnimatePresence>
+                          </Table.Body>
+                        </Table>
                       </Pane>
                     </PageMain>
                   </PageContainer>

@@ -211,6 +211,7 @@ export const GlobalStyle = styled.createGlobalStyle`
     }
 
     &_wrap {
+      width: 100%;
       border: 0;
     }
 
