@@ -174,6 +174,10 @@ export const GlobalStyle = styled.createGlobalStyle`
 
       &.with-border-left {
         border-left: 1px solid rgba(200, 200, 200, 0.4);
+
+        @media (max-width: 960px) {
+          border-left: 0;
+        }
       }
 
       &.with-min-height {
@@ -185,6 +189,10 @@ export const GlobalStyle = styled.createGlobalStyle`
       padding: 0;
       border-bottom: 1px solid rgba(200, 200, 200, 0.4);
 
+      @media (max-width: 960px) {
+        border-top: 1px solid rgba(200, 200, 200, 0.4);
+      }
+
       &.add-right-padding {
         padding-right: 15px;
       }
@@ -194,6 +202,10 @@ export const GlobalStyle = styled.createGlobalStyle`
         display: flex;
         align-items: center;
         gap: 10px;
+      }
+
+      @media (max-width: 560px) {
+        flex-basis: unset;
       }
     }
 
@@ -219,6 +231,18 @@ export const GlobalStyle = styled.createGlobalStyle`
       position: relative;
       border-bottom: 1px solid rgba(200, 200, 200, 0.4);
       background-color: ${({ theme }) => theme.clear};
+
+      @media (max-width: 560px) {
+        gap: 10px;
+        height: unset;
+        display: flex;
+        flex-direction: column;
+        margin: 10px 0;
+        padding: 10px 0;
+        border-bottom-right-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+        border-bottom: 1px solid rgba(200, 200, 200, 0.4) !important;
+      }
     }
 
     &_menu {
@@ -280,9 +304,11 @@ export const GlobalStyle = styled.createGlobalStyle`
   .done-task-div {
     background-color: ${({ theme }) => theme.hoverButton};
     opacity: 0.5;
-  }
 
-  /* Tasks */
+    @media (max-width: 560px) {
+      background-color: unset;
+    }
+  }
 
   .task-date {
     display: flex;
@@ -293,12 +319,25 @@ export const GlobalStyle = styled.createGlobalStyle`
       width: 17px;
       height: 17px;
     }
+
+    @media (max-width: 560px) {
+      flex-direction: row;
+
+      span {
+        margin-right: 10px;
+      }
+    }
   }
 
   .task-priority {
     display: flex;
     width: 56%;
     justify-content: space-between;
+
+    @media (max-width: 560px) {
+      flex-direction: column;
+      width: 72%;
+    }
   }
 
   .task-container {
@@ -341,6 +380,10 @@ export const GlobalStyle = styled.createGlobalStyle`
       &[aria-selected='true'] {
         background-color: ${({ theme }) => theme.hoverButton} !important;
       }
+    }
+
+    @media (max-width: 960px) {
+      flex-direction: column;
     }
   }
 

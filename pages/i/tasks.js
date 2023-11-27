@@ -60,6 +60,7 @@ export default function TasksPage({ theme, toggleTheme }) {
   const [tabs, setTabs] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [selectedPriority, setSelectedPriority] = useState('');
+  const [isBigResolution, setIsBigResolution] = useState(false);
 
   const userIsRegisteredWithGitHub = isUserRegisteredWithGitHub(currentUser);
   const userEmailVerified = isUserEmailVerified(currentUser);
@@ -195,6 +196,19 @@ export default function TasksPage({ theme, toggleTheme }) {
       setIsLoading(false);
     }
   }, [currentUser, selectedIndex, searchQuery, tabs]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsBigResolution(window.innerWidth > 560);
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     if (currentUser && currentUser.tasks) {
@@ -446,7 +460,10 @@ export default function TasksPage({ theme, toggleTheme }) {
                               direction='vertical'
                               isSelected={index === selectedIndex}
                               key={tab}
-                              onSelect={() => setSelectedIndex(index)}
+                              onSelect={() => {
+                                setSelectedIndex(index);
+                                setSearchQuery('');
+                              }}
                             >
                               <Text color={textColor}> {tab}</Text>
                             </Tab>
@@ -461,14 +478,14 @@ export default function TasksPage({ theme, toggleTheme }) {
                             background={background}
                           >
                             <Table.TextHeaderCell flexBasis={180} className='custom-table_cell'>
-                              Name
+                              {isBigResolution ? 'Name:' : 'Task:'}
                             </Table.TextHeaderCell>
 
                             <Table.TextHeaderCell className='custom-table_cell'>
-                              Priority
+                              {isBigResolution && 'Priority:'}
                             </Table.TextHeaderCell>
                             <Table.TextHeaderCell className='custom-table_cell'>
-                              Date added
+                              {isBigResolution && 'Date added:'}
                             </Table.TextHeaderCell>
                           </Table.Head>
 

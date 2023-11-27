@@ -11,6 +11,12 @@ export const SignField = styled.div`
   justify-content: space-between;
   margin-top: 10px;
 
+  @media (max-width: 560px) {
+    flex-direction: column;
+    align-items: start;
+    margin-top: 20px;
+  }
+
   &:first-of-type {
     margin-top: 0;
   }
@@ -18,6 +24,10 @@ export const SignField = styled.div`
   input {
     color: ${({ theme }) => theme.textMuted};
     border: 1px solid rgba(200, 200, 200, 0.4) !important;
+
+    @media (max-width: 560px) {
+      width: 100%;
+    }
   }
 
   button {
