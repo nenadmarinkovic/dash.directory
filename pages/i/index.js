@@ -26,8 +26,6 @@ export default function StartPage({ theme, toggleTheme }) {
   const userIsRegisteredWithGitHub = isUserRegisteredWithGitHub(currentUser);
   const userEmailVerified = isUserEmailVerified(currentUser);
 
-  useEffect(() => {}, [currentUser]);
-
   return (
     <>
       <Head>

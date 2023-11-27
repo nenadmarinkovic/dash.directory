@@ -14,7 +14,7 @@ import { useThemeColors } from '../styles/theme';
 import { useServices } from '../services/ServicesProvider';
 
 function Footer({ theme }) {
-  const { textMuted, textColor } = useThemeColors(theme);
+  const { textMuted } = useThemeColors(theme);
   const [isCookieDialogShown, setIsCookieDialogShown] = useState(false);
   const { currentUser, cookieBannerAccepted, handleCookieBannerAccept } = useServices();
 

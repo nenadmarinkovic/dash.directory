@@ -22,14 +22,13 @@ export function useServices() {
 export function ServicesProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [cookieBannerAccepted, setCookieBannerAccepted] = useState(false); // New state
+  const [cookieBannerAccepted, setCookieBannerAccepted] = useState(false);
 
   const router = useRouter();
 
-  // Cookie Banner
+  // Cookie service
 
   const handleCookieBannerAccept = () => {
-    // Save the user's preference in local storage
     localStorage.setItem('cookieBannerAccepted', 'true');
     setCookieBannerAccepted(true);
   };
