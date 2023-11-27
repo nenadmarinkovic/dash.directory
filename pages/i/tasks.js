@@ -47,7 +47,6 @@ export default function TasksPage({ theme, toggleTheme }) {
   const { textColor, textMuted, background } = useThemeColors(theme);
   const [openMenu, setOpenMenu] = useState(false);
   const [taskName, setTaskName] = useState('');
-  const [taskDate, setTaskDate] = useState('');
   const [taskProject, setTaskProject] = useState('');
   const [taskPriority, setTaskPriority] = useState('');
   const [isNewTaskDialogShown, setIsNewTaskDialogShown] = useState(false);
@@ -75,18 +74,6 @@ export default function TasksPage({ theme, toggleTheme }) {
     priority: '',
   });
 
-  const findTaskToEdit = () => {
-    return currentUser && currentUser.tasks ? currentUser.tasks[0] : null;
-  };
-
-  const taskToEdit = findTaskToEdit();
-
-  useEffect(() => {
-    if (taskToEdit && taskToEdit.priority) {
-      setSelectedPriority(taskToEdit.priority);
-    }
-  }, [taskToEdit]);
-
   const handleEditTaskSubmit = useCallback(
     async (task) => {
       const { name, project } = updatedTask;
@@ -108,6 +95,7 @@ export default function TasksPage({ theme, toggleTheme }) {
           ...prev,
           [task.id]: false,
         }));
+        setSelectedPriority('');
       } catch (error) {
         console.error('Error updating task:', error);
         toaster.danger('Error updating task. Please try again.');
@@ -133,6 +121,7 @@ export default function TasksPage({ theme, toggleTheme }) {
     setTaskProject('');
     setTaskPriority('');
     setIsNewTaskDialogShown(false);
+    setSelectedPriority('');
 
     return true;
   };
