@@ -59,8 +59,8 @@ export default function TasksPage({ theme, toggleTheme }) {
   const [isPageLoading, setisPageLoading] = useState(true);
   const [tabs, setTabs] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [selectedPriority, setSelectedPriority] = useState('');
   const [isBigResolution, setIsBigResolution] = useState(false);
+  const [selectedPriority, setSelectedPriority] = useState('');
 
   const userIsRegisteredWithGitHub = isUserRegisteredWithGitHub(currentUser);
   const userEmailVerified = isUserEmailVerified(currentUser);
@@ -79,24 +79,26 @@ export default function TasksPage({ theme, toggleTheme }) {
     async (task) => {
       const { name, project } = updatedTask;
 
-      if (!selectedPriority) {
-        toaster.warning('Task is not edited');
-        return;
-      }
-      if (name === task.name && project === task.project && selectedPriority === task.priority) {
+      const priorityToSet = selectedPriority || task.priority;
+
+      if (
+        !priorityToSet ||
+        (name === task.name && project === task.project && priorityToSet === task.priority)
+      ) {
         toaster.warning('Task is not edited');
         return;
       }
 
       try {
-        await editTask(task.id, { ...updatedTask, priority: selectedPriority });
+        console.log('Whai is:', priorityToSet);
+        await editTask(task.id, { ...updatedTask, priority: priorityToSet });
         toaster.success('Task updated successfully');
 
         setIsEditTaskShown((prev) => ({
           ...prev,
           [task.id]: false,
         }));
-        setSelectedPriority('');
+        setSelectedPriority(''); // Reset selectedPriority to an empty string after successful update if needed
       } catch (error) {
         console.error('Error updating task:', error);
         toaster.danger('Error updating task. Please try again.');
