@@ -60,9 +60,8 @@ export default function SignupPage({ theme, toggleTheme }) {
                 marginTop={30}
                 color='muted'
               >
-                This page is currently under development. This new feature will allow you to
-                securely access your Dash Directory account, ensuring a personalized and seamless
-                experience.
+                Create your profile on Dash Directory and enjoy a personalized experience. Start
+                exploring to maximize the benefits of a more organized digital life.
               </Paragraph>
             </CenteredSection>
             <CenteredLayout>

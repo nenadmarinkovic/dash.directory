@@ -68,7 +68,7 @@ function Footer({ theme }) {
                   close();
                 }}
               >
-                Accept Cookies
+                Accept
               </Button>
             </Pane>
           )}
@@ -92,8 +92,8 @@ function Footer({ theme }) {
             </Text>
             <ContactWrap>
               <Text color={textMuted} marginTop={15}>
-                For any inquiries, assistance, suggestions, or bug reports, feel free to reach out
-                at{' '}
+                For any inquiries, assistance, suggestions for improvements, or bug reports, feel
+                free to reach out at{' '}
                 <a
                   className='email'
                   target='_blank'
