@@ -479,14 +479,14 @@ export default function TasksPage({ theme, toggleTheme }) {
                             background={background}
                           >
                             <Table.TextHeaderCell flexBasis={180} className='custom-table_cell'>
-                              {isBigResolution ? 'Name:' : 'Task:'}
+                              {isBigResolution ? 'Name' : 'Task:'}
                             </Table.TextHeaderCell>
 
                             <Table.TextHeaderCell className='custom-table_cell'>
-                              {isBigResolution && 'Priority:'}
+                              {isBigResolution && 'Priority'}
                             </Table.TextHeaderCell>
                             <Table.TextHeaderCell className='custom-table_cell'>
-                              {isBigResolution && 'Date added:'}
+                              {isBigResolution && 'Date added'}
                             </Table.TextHeaderCell>
                           </Table.Head>
 
