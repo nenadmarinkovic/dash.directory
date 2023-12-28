@@ -18,8 +18,8 @@ const DateTimeComponent = ({ theme }) => {
   const timeOptions = { hour: '2-digit', minute: '2-digit', hour12: false };
   const dateOptions = { day: 'numeric', month: 'short' };
 
-  const formattedTime = currentDateTime.toLocaleTimeString('de-DE', timeOptions);
-  const formattedDate = currentDateTime.toLocaleDateString('de-DE', dateOptions);
+  const formattedTime = currentDateTime.toLocaleTimeString('us-US', timeOptions);
+  const formattedDate = currentDateTime.toLocaleDateString('us-US', dateOptions);
 
   return (
     <DateTimeWrap>

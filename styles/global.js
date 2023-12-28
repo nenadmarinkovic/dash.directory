@@ -122,6 +122,13 @@ export const GlobalStyle = styled.createGlobalStyle`
       }
     }
 
+    &-cookie-dialog {
+      @media (max-width: 560px) {
+        max-width: 85%;
+        right: 20px;
+      }
+    }
+
     &-button {
       background-color: ${({ theme }) => theme.buttonBackground};
       color: ${({ theme }) => theme.buttonColor};
